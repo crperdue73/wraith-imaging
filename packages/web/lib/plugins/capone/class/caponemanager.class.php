@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category CaponeManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Manager class for Capone
  *
  * @category CaponeManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class CaponeManager extends FOGManagerController
+class CaponeManager extends WRAITHManagerController
 {
     /**
      * The base table name.
@@ -83,21 +83,21 @@ class CaponeManager extends FOGManagerController
         );
         $insert_values = array();
         $insert_values[] = array(
-            'FOG_PLUGIN_CAPONE_DMI',
+            'WRAITH_PLUGIN_CAPONE_DMI',
             'This setting is used for the capone '
             . 'module to set the DMI field used.',
             '',
             $category
         );
         $insert_values[] = array(
-            'FOG_PLUGIN_CAPONE_REGEX',
+            'WRAITH_PLUGIN_CAPONE_REGEX',
             'This setting is used for the capone '
             . 'module to set the reg ex used.',
             '',
             $category
         );
         $insert_values[] = array(
-            'FOG_PLUGIN_CAPONE_SHUTDOWN',
+            'WRAITH_PLUGIN_CAPONE_SHUTDOWN',
             'This setting is used for the capone '
             . 'module to set the shutdown after imaging.',
             '',
@@ -120,13 +120,13 @@ class CaponeManager extends FOGManagerController
         self::getClass('ServiceManager')
             ->destroy(
                 array(
-                    'name' => 'FOG_PLUGIN_CAPONE_%'
+                    'name' => 'WRAITH_PLUGIN_CAPONE_%'
                 )
             );
         self::getClass('PXEMenuOptionsManager')
             ->destroy(
                 array(
-                    'name' => 'fog.capone'
+                    'name' => 'wraith.capone'
                 )
             );
         return parent::uninstall();

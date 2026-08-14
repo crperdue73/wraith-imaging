@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ServiceModule
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The service module checks
  *
  * @category ServiceModule
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ServiceModule extends FOGClient implements FOGClientSend
+class ServiceModule extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Creates the send string and stores to send variable

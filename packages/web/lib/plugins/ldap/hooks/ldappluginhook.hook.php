@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category LDAPPluginHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * LDAPPluginHook enables our checks as required
  *
  * @category LDAPPluginHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class LDAPPluginHook extends Hook
 {
@@ -196,7 +196,7 @@ class LDAPPluginHook extends Hook
      */
     public function setTypeFilter($arguments)
     {
-        $arguments['types'] = explode(',', self::getSetting('FOG_USER_FILTER'));
+        $arguments['types'] = explode(',', self::getSetting('WRAITH_USER_FILTER'));
     }
     /**
      * Tests if the user is containing the ldap types.
@@ -219,12 +219,12 @@ class LDAPPluginHook extends Hook
      */
     public function removeLdapShadow()
     {
-        if (!self::$FOGUser instanceof User) {
+        if (!self::$WRAITHUser instanceof User) {
             return;
         }
         $types = array(990, 991);
-        if (in_array(self::$FOGUser->get('type'), $types)) {
-            self::$FOGUser->destroy();
+        if (in_array(self::$WRAITHUser->get('type'), $types)) {
+            self::$WRAITHUser->destroy();
         }
     }
 }

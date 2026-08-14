@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category LocationManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Location manager mass management class
  *
  * @category LocationManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class LocationManager extends FOGManagerController
+class LocationManager extends WRAITHManagerController
 {
     /**
      * The base table name.
@@ -110,7 +110,7 @@ class LocationManager extends FOGManagerController
     {
         $res = true;
         self::getClass('Service')
-            ->set('name', 'FOG_SNAPIN_LOCATION_SEND_ENABLED')
+            ->set('name', 'WRAITH_SNAPIN_LOCATION_SEND_ENABLED')
             ->load('name')
             ->destroy();
         self::getClass('LocationAssociationManager')->uninstall();
@@ -184,7 +184,7 @@ class LocationManager extends FOGManagerController
         $optionProtocol = '<select class="form-control" name="storagenodeprotocol" '
             . 'id="storagenodeprotocol">'
             . '<option value="">- '
-            . self::$foglang['PleaseSelect']
+            . self::$wraithlang['PleaseSelect']
             . ' -</option>'
             . ob_get_clean()
             . '</select>';

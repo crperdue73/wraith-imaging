@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category Location
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nope@nope.nope>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The location class.
  *
  * @category Location
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nope@nope.nope>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Location extends FOGController
+class Location extends WRAITHController
 {
     /**
      * The location table

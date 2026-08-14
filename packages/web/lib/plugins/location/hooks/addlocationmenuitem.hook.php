@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AddLocationMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Adds the location menu item.
  *
  * @category AddLocationMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddLocationMenuItem extends Hook
 {
@@ -102,7 +102,7 @@ class AddLocationMenuItem extends Hook
         $Service = self::getClass('Service')
             ->set(
                 'name',
-                'FOG_SNAPIN_LOCATION_SEND_ENABLED'
+                'WRAITH_SNAPIN_LOCATION_SEND_ENABLED'
             )->load('name');
         if (!$Service->isValid()) {
             $Service
@@ -117,7 +117,7 @@ class AddLocationMenuItem extends Hook
                         _('Default is disabled')
                     )
                 )->set('value', 0)
-                ->set('category', 'FOG Client - Snapins')
+                ->set('category', 'WRAITH Client - Snapins')
                 ->save();
         }
     }

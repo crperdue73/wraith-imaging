@@ -6,25 +6,25 @@ declare(strict_types=1);
  * PHP version 5
  *
  * @category Index
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Presents the page the same to all.
  *
  * @category Index
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 // Ensure session is started
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-$ulang = isset($_SESSION['FOG_LANG']) ? $_SESSION['FOG_LANG'] : '';
+$ulang = isset($_SESSION['WRAITH_LANG']) ? $_SESSION['WRAITH_LANG'] : '';
 echo '<!DOCTYPE html>';
 echo '<html lang="' . $ulang . '">';
 echo '<head>';
@@ -44,7 +44,7 @@ foreach ((array)$this->stylesheets as &$stylesheet) {
     echo '<link href="'
         . $stylesheet
         . '?ver='
-        . FOG_BCACHE_VER
+        . WRAITH_BCACHE_VER
         . '" rel="stylesheet" type="text/css"/>';
     unset($stylesheet);
 }
@@ -52,7 +52,7 @@ unset($this->stylesheets);
 echo '<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>';
 echo '</head>';
 echo '<body>';
-if (self::$FOGUser->isValid()) {
+if (self::$WRAITHUser->isValid()) {
     /**
      * Navigation items
      */
@@ -72,7 +72,7 @@ if (self::$FOGUser->isValid()) {
     echo '<div class="collapse navbar-collapse">';
     echo '<ul class="nav navbar-nav">';
     echo '<a class="navbar-brand" href="../management/index.php?node=home">';
-    echo '<b>FOG</b> Project';
+    echo '<b>WRAITH</b> Project';
     echo '</a>';
     self::getSearchForm();
     echo $this->menu;
@@ -105,19 +105,19 @@ if (self::$FOGUser->isValid()) {
     echo '<h4 class="title">'
         . $this->sectionTitle
         . '</h4>';
-    if (isset(self::$FOGUser->isValid) && self::$FOGUser->isValid && isset($this->pageTitle) && $this->pageTitle) {
+    if (isset(self::$WRAITHUser->isValid) && self::$WRAITHUser->isValid && isset($this->pageTitle) && $this->pageTitle) {
         echo '<h5 class="title">'
             . $this->pageTitle
             . '</h5>';
     }
     echo '</div>';
-    echo '<input type="hidden" class="fog-delete" id="FOGDeleteAuth" value="'
-        . (int)self::$fogdeleteactive
+    echo '<input type="hidden" class="wraith-delete" id="WRAITHDeleteAuth" value="'
+        . (int)self::$wraithdeleteactive
         . '"/>';
-    echo '<input type="hidden" class="fog-export" id="FOGExportAuth" value="'
-        . (int)self::$fogexportactive
+    echo '<input type="hidden" class="wraith-export" id="WRAITHExportAuth" value="'
+        . (int)self::$wraithexportactive
         . '"/>';
-    echo '<input type="hidden" class="fog-variable" id="screenview" value="'
+    echo '<input type="hidden" class="wraith-variable" id="screenview" value="'
         . self::$defaultscreen
         . '"/>';
     echo '<div class="panel-body">';
@@ -144,7 +144,7 @@ if (self::$FOGUser->isValid()) {
     echo '<div class="collapse navbar-collapse">';
     echo '<ul class="nav navbar-nav">';
     echo '<a class="navbar-brand" href="../management/index.php?node=home">';
-    echo '<b>FOG</b> Project';
+    echo '<b>WRAITH</b> Project';
     echo '</a>';
     echo '</ul>';
     echo '</div>';
@@ -168,24 +168,24 @@ echo '<footer class="footer">';
 echo '<nav class="navbar navbar-inverse navbar-fixed-bottom">';
 echo '<div class="container-fluid">';
 echo '<ul class="nav navbar-nav">';
-echo '<li><a href="https://wiki.fogproject.org/wiki/index.php?title=Credits">'
+echo '<li><a href="https://wiki.wraithproject.org/wiki/index.php?title=Credits">'
     . _('Credits')
     . '</a></li>';
 echo '<li><a href="?node=client">'
-    . _('FOG Client')
+    . _('WRAITH Client')
     . '</a></li>';
 echo '<li><a href="https://www.paypal.com/cgi-bin/webscr?item_name=Donation'
-    . '+to+FOG+-+A+Free+Cloning+Solution&cmd=_donations&business=fogproject.org'
+    . '+to+WRAITH+-+A+Free+Cloning+Solution&cmd=_donations&business=wraithproject.org'
     . '@gmail.com" target="_blank">'
-    . _('Donate to FOG')
+    . _('Donate to WRAITH')
     . '</a></li>';
-if (self::$FOGUser->isValid()) {
+if (self::$WRAITHUser->isValid()) {
     echo '<li class="pull-right">';
     echo '<a href="../management/index.php?node=about">';
     echo '<b>';
     echo _('Version');
     echo '</b> ';
-    echo FOG_VERSION;
+    echo WRAITH_VERSION;
     echo '</a>';
     echo '</li>';
 }
@@ -198,7 +198,7 @@ foreach ((array)$this->javascripts as &$javascript) {
     echo '<script src="'
         . $javascript
         . '?ver='
-        . FOG_BCACHE_VER
+        . WRAITH_BCACHE_VER
         . '" type="text/javascript"></script>';
     unset($javascript);
 }

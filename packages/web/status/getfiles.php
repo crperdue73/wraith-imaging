@@ -5,10 +5,10 @@
  * PHP version 5
  *
  * @category Getfiles
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Get's files stored as requested
@@ -16,13 +16,13 @@
  * PHP version 5
  *
  * @category Getfiles
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
-FOGCore::checkAuthAndCSRF();
+WRAITHCore::checkAuthAndCSRF();
 $path = filter_input(INPUT_GET, 'path');
 if (!is_string($path)) {
     echo json_encode(
@@ -41,7 +41,7 @@ Route::ids('storagenode', [], 'snapinpath');
 $snapinPaths = json_decode(Route::getData(), true);
 $validPaths = [
     '/var/log/apache2',
-    '/var/log/fog',
+    '/var/log/wraith',
     '/var/log/httpd',
     '/var/log/nginx',
     '/var/log/php*'
@@ -59,7 +59,7 @@ foreach ((array)$paths as $decodedPath) {
         continue;
     }
     foreach ($pathTest as $path) {
-        $realpaths = FOGCore::fastmerge(
+        $realpaths = WRAITHCore::fastmerge(
             (array)$realpaths,
             glob($path)
         );
@@ -83,7 +83,7 @@ foreach ($realpaths as $path) {
         $replaced_dir_sep,
         DS
     );
-    $files = FOGCore::fastmerge(
+    $files = WRAITHCore::fastmerge(
         (array)$files,
         (array)glob($glob_str)
     );

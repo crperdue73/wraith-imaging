@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category UserTrack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Logs the user who logged in
  *
  * @category UserTrack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class UserTrack extends FOGClient implements FOGClientSend
+class UserTrack extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

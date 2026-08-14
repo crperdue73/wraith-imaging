@@ -5,11 +5,11 @@
  * PHP Version 5
  *
  * @category Imaging_Log
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Imaging_Log extends ReportManagementPage
 {
@@ -21,7 +21,7 @@ class Imaging_Log extends ReportManagementPage
 
     public function file()
     {
-        $this->title = _('FOG Imaging - Search');
+        $this->title = _('WRAITH Imaging - Search');
         unset(
             $this->data,
             $this->form,
@@ -178,7 +178,7 @@ class Imaging_Log extends ReportManagementPage
         );
 
 
-        $this->title = _('FOG Imaging Log');
+        $this->title = _('WRAITH Imaging Log');
 
         $this->headerData = array(
             _('Created By'),
@@ -258,7 +258,7 @@ class Imaging_Log extends ReportManagementPage
             }
             $createdBy = (
                 $ImagingLog->createdBy ?:
-                self::$FOGUser->get('name')
+                self::$WRAITHUser->get('name')
             );
             if (isset($ImagingLog->image->id) && $ImagingLog->image->id) {
                 $imagename = $ImagingLog->image->name;
@@ -342,6 +342,6 @@ class Imaging_Log extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

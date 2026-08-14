@@ -6,22 +6,22 @@
  * PHP version 5
  *
  * @category PingHosts
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Gets the current ping code of each host and
  * updates the hosts related to them.
  *
  * @category PingHosts
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PingHosts extends FOGService
+class PingHosts extends WRAITHService
 {
     /**
      * Is the host lookup/ping enabled
@@ -30,11 +30,11 @@ class PingHosts extends FOGService
      */
     private static $_pingOn = 0;
     /**
-     * The fog web host
+     * The wraith web host
      *
      * @var string
      */
-    private static $_fogWeb = '';
+    private static $_wraithWeb = '';
     /**
      * Where to get the services sleeptime
      *
@@ -50,7 +50,7 @@ class PingHosts extends FOGService
     {
         parent::__construct();
         list(
-            self::$_fogWeb,
+            self::$_wraithWeb,
             $dev,
             $log,
             $zzz
@@ -58,7 +58,7 @@ class PingHosts extends FOGService
             'Service',
             array(
                 'name' => array(
-                    'FOG_WEB_HOST',
+                    'WRAITH_WEB_HOST',
                     'PINGHOSTDEVICEOUTPUT',
                     'PINGHOSTLOGFILENAME',
                     self::$sleeptime
@@ -76,7 +76,7 @@ class PingHosts extends FOGService
             (
                 self::$logpath ?
                 self::$logpath :
-                '/opt/fog/log/'
+                '/opt/wraith/log/'
             ),
             (
                 $log ?
@@ -113,15 +113,15 @@ class PingHosts extends FOGService
                 throw new Exception(_(' * Ping hosts is globally disabled'));
             }
             $webServerIP = self::resolveHostName(
-                self::$_fogWeb
+                self::$_wraithWeb
             );
             self::outall(
-                sprintf(' * FOG Web Host IP: %s', $webServerIP)
+                sprintf(' * WRAITH Web Host IP: %s', $webServerIP)
             );
             self::getIPAddress();
             if (!in_array($webServerIP, self::$ips)) {
                 throw new Exception(
-                    _('I am not the fog web server')
+                    _('I am not the wraith web server')
                 );
             }
             foreach ((array)self::$ips as $index => &$ip) {

@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category SnapinTaskComplete_Slack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Sends notification when snapin task completes.
  *
  * @category SnapinTaskComplete_Slack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class SnapinTaskComplete_Slack extends Event
 {

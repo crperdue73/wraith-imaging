@@ -1,8 +1,8 @@
-# Contributing to the FOG Project
+# Contributing to the WRAITH Project
 
 Thanks for taking the time to check out this document and consider contributing! You are very welcome to go ahead.
 
-Below you'll find information on how the FOG Project is structured and how to contribute to it. These are mostly guidelines, not hard rules. Use your best judgment, and feel free to propose changes to this document and to the project as a whole.
+Below you'll find information on how the WRAITH Project is structured and how to contribute to it. These are mostly guidelines, not hard rules. Use your best judgment, and feel free to propose changes to this document and to the project as a whole.
 
 #### Table Of Contents
 
@@ -96,8 +96,8 @@ representative at an online or offline event.
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement through the
 project's regular community channels — the
-[FOG forums](https://forums.fogproject.org) or the
-[GitHub issue tracker](https://github.com/FOGProject/fogproject/issues).
+[WRAITH forums](https://forums.wraithproject.org) or the
+[GitHub issue tracker](https://github.com/WRAITHProject/wraithproject/issues).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -173,9 +173,9 @@ for confirmed bugs and concrete enhancement proposals. If you simply need help,
 have a usage question, or aren't yet sure whether something is a bug, start in
 one of these places instead:
 
- - **Forums:** https://forums.fogproject.org — the best place for general help,
+ - **Forums:** https://forums.wraithproject.org — the best place for general help,
    "how do I…?" questions, and discussion.
- - **Wiki / documentation:** https://docs.fogproject.org — installation guides,
+ - **Wiki / documentation:** https://docs.wraithproject.org — installation guides,
    configuration, and troubleshooting.
 
 Questions answered in the right place get better, faster responses and keep the
@@ -186,16 +186,16 @@ issue tracker focused on actual work.
 
 ### Repos, languages and foo
 
-The FOG Project is split across a few repositories under the
-[FOGProject organization](https://github.com/FOGProject):
+The WRAITH Project is split across a few repositories under the
+[WRAITHProject organization](https://github.com/WRAITHProject):
 
- - [**fogproject**](https://github.com/FOGProject/fogproject) — the main
+ - [**wraithproject**](https://github.com/WRAITHProject/wraithproject) — the main
    repository: the web management interface, the installer, and the background
    services. This is where most contributions land.
- - [**fos**](https://github.com/FOGProject/fos) — the FOG Operating System: the
+ - [**fos**](https://github.com/WRAITHProject/fos) — the WRAITH Operating System: the
    Linux/Buildroot environment that boots on clients to capture and deploy
    images.
- - [**fog-client**](https://github.com/FOGProject/fog-client) — the cross-platform
+ - [**wraith-client**](https://github.com/WRAITHProject/wraith-client) — the cross-platform
    client agent that runs on managed hosts.
 
 Languages and tooling you'll encounter in the main repo:
@@ -205,7 +205,7 @@ Languages and tooling you'll encounter in the main repo:
  - **JavaScript** — front-end behavior, built on **jQuery**, **Bootstrap**, and
    **AdminLTE**. There is **no build step**; JS and CSS are served as-is and
    third-party libraries are vendored.
- - **Shell (bash)** — the installer (`bin/installfog.sh`) and its per-distro
+ - **Shell (bash)** — the installer (`bin/installwraith.sh`) and its per-distro
    library scripts in `lib/`.
  - **SQL** — the schema lives in PHP as `CREATE TABLE` definitions in
    `packages/web/commons/schema.php`.
@@ -213,8 +213,8 @@ Languages and tooling you'll encounter in the main repo:
 A quick map of the main repo:
 
 ```
-fogproject/
-├── bin/                  # installfog.sh installer
+wraithproject/
+├── bin/                  # installwraith.sh installer
 ├── lib/                  # per-distro shell library scripts
 └── packages/
     ├── service/          # PHP CLI background daemons (scheduler, replicators, etc.)
@@ -242,12 +242,12 @@ issue before you start — it saves rework.
 
 ### Reporting Bugs
 
-Bugs are tracked as [GitHub issues](https://github.com/FOGProject/fogproject/issues).
+Bugs are tracked as [GitHub issues](https://github.com/WRAITHProject/wraithproject/issues).
 Before opening one:
 
 1. **Search existing issues** (open and closed) to avoid duplicates.
 2. **Confirm it's a bug**, not a configuration or usage question — if in doubt,
-   ask on the [forums](https://forums.fogproject.org) first.
+   ask on the [forums](https://forums.wraithproject.org) first.
 3. **Use the latest version** if you can, to verify the problem still exists.
 
 A good bug report includes:
@@ -255,19 +255,19 @@ A good bug report includes:
  - A clear, descriptive **title**.
  - **Exact steps to reproduce**, in order.
  - **What you expected** to happen vs. **what actually happened**.
- - Your **environment**: FOG version, OS and version of the FOG server, client
-   OS where relevant, and how FOG was installed.
- - Relevant **logs, screenshots, or error messages**. The FOG logs (web UI under
-   *FOG Configuration → Log Viewer*, and the service logs under `/opt/fog/log/`)
+ - Your **environment**: WRAITH version, OS and version of the WRAITH server, client
+   OS where relevant, and how WRAITH was installed.
+ - Relevant **logs, screenshots, or error messages**. The WRAITH logs (web UI under
+   *WRAITH Configuration → Log Viewer*, and the service logs under `/opt/wraith/log/`)
    are often the most useful thing you can attach.
 
 You can also report bugs in the
-[bug-reports forum category](https://forums.fogproject.org/category/17/bug-reports).
+[bug-reports forum category](https://forums.wraithproject.org/category/17/bug-reports).
 
 ### Suggesting Enhancements
 
 Enhancement suggestions are also tracked as
-[GitHub issues](https://github.com/FOGProject/fogproject/issues). When proposing
+[GitHub issues](https://github.com/WRAITHProject/wraithproject/issues). When proposing
 one:
 
  - **Search first** to see if it's already been suggested.
@@ -288,12 +288,12 @@ Unsure where to begin? Good entry points:
 
 To get a local development environment running:
 
-1. Stand up a test FOG server (a throwaway VM is ideal — never develop against
+1. Stand up a test WRAITH server (a throwaway VM is ideal — never develop against
    production).
 2. **Fork** the repository and clone your fork.
 3. Create a topic branch off `dev-branch`:
    `git checkout dev-branch && git checkout -b my-fix dev-branch`.
-4. Make your changes and test them against your running FOG server.
+4. Make your changes and test them against your running WRAITH server.
 5. Push to your fork and open a pull request (see below).
 
 ### Pull Requests
@@ -306,8 +306,8 @@ To get a local development environment running:
    far easier and faster. Open separate PRs for unrelated changes.
 
 3. **Bump the version.** Increase the version number in
-   [`system.class.php`](https://github.com/FOGProject/fogproject/blob/dev-branch/packages/web/lib/fog/system.class.php)
-   (the `FOG_VERSION` define) to the version this change would represent,
+   [`system.class.php`](https://github.com/WRAITHProject/wraithproject/blob/dev-branch/packages/web/lib/wraith/system.class.php)
+   (the `WRAITH_VERSION` define) to the version this change would represent,
    following [SemVer](https://semver.org/).
 
 4. **Follow the styleguides** below and match the conventions of the
@@ -316,7 +316,7 @@ To get a local development environment running:
 5. **Describe your change.** In the PR description, explain *what* changed and
    *why*, and link any related issue (e.g. `Fixes #123`).
 
-6. **Test before you submit.** Verify your change works against a running FOG
+6. **Test before you submit.** Verify your change works against a running WRAITH
    server and that you haven't broken adjacent functionality.
 
 
@@ -339,13 +339,13 @@ PHP is the primary language; please match the existing conventions:
    relies on it (e.g. `HostManagement` lives in `HostManagement.page.php`).
  - **Private methods** use a single underscore prefix (`_init()`, `_verCheck()`).
  - Prefer the established factory helpers over `new ClassName()` directly — use
-   `FOGBase::getClass()` / `FOGBase::getManager()`.
+   `WRAITHBase::getClass()` / `WRAITHBase::getManager()`.
  - Read input via `filter_input()` or the already-sanitized values — **never**
    raw `$_GET` / `$_POST`.
  - **Always escape user-controlled output** with `Initiator::e()` when echoing
    into HTML.
  - Use gettext for user-facing strings: `_('string')` inline, or
-   `$foglang['Key']` for predefined strings in `text.php`.
+   `$wraithlang['Key']` for predefined strings in `text.php`.
  - Add or maintain **PHPDoc** blocks on classes and methods.
  - Only add `declare(strict_types=1)` to files that already use it — don't add it
    retroactively to older files.
@@ -355,8 +355,8 @@ PHP is the primary language; please match the existing conventions:
 
  - There is **no build step** — write plain, browser-ready JavaScript; don't
    introduce a bundler or transpiler.
- - FOG-specific scripts live under `packages/web/management/js/fog/`, with
-   per-entity files named `fog.{entity}.{sub}.js`.
+ - WRAITH-specific scripts live under `packages/web/management/js/wraith/`, with
+   per-entity files named `wraith.{entity}.{sub}.js`.
  - Reuse the shared helpers (`$.apiCall()`, `$.notifyFromAPI()`, the `Common`
    object) rather than reinventing them.
  - Keep third-party libraries **vendored**; don't pull dependencies from a CDN.
@@ -372,7 +372,7 @@ PHP is the primary language; please match the existing conventions:
    lowercasing the heading, replacing spaces with hyphens, and dropping
    punctuation).
  - User-facing end-user documentation lives in the
-   [wiki / docs](https://docs.fogproject.org).
+   [wiki / docs](https://docs.wraithproject.org).
 
 
 ## Additional Notes

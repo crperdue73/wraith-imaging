@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AddSubnetGroupType
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Adds Broadcast type for export.
  *
  * @category AddSubnetGroupType
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSubnetGroupType extends Hook
 {

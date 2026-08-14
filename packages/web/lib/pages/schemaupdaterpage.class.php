@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SchemaUpdaterPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Handles the display of schema and schema updating in general.
  *
  * @category SchemaUpdaterPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SchemaUpdaterPage extends FOGPage
+class SchemaUpdaterPage extends WRAITHPage
 {
     /**
      * The relevant calling node url
@@ -38,7 +38,7 @@ class SchemaUpdaterPage extends FOGPage
     {
         parent::__construct($name);
         $schema = new Schema(1);
-        if ($schema->get('version') >= FOG_SCHEMA) {
+        if ($schema->get('version') >= WRAITH_SCHEMA) {
             self::redirect('index.php');
         }
         $this->name = _('Database Schema Installer / Updater');
@@ -69,7 +69,7 @@ class SchemaUpdaterPage extends FOGPage
         printf(
             '%s %s %s %s %s (%s->%s->%s), %s %s.',
             _('If you would like to backup your'),
-            _('FOG database you can do so using'),
+            _('WRAITH database you can do so using'),
             _('MySQL Administrator or by running'),
             _('the following command in a terminal'),
             _('window'),
@@ -80,18 +80,18 @@ class SchemaUpdaterPage extends FOGPage
             _('directory')
         );
         echo '<pre>';
-        echo 'mysqldump --allow-keywords -x -v fog > fogbackup.sql</p</pre>';
+        echo 'mysqldump --allow-keywords -x -v wraith > wraithbackup.sql</p</pre>';
         echo '</div>';
         echo '</div>';
         printf(
             '%s, %s %s. %s, %s %s %s. %s, %s %s.',
-            _('Your FOG database schema is not up to date'),
+            _('Your WRAITH database schema is not up to date'),
             _('either because you have updated'),
-            _('or this is a new FOG installation'),
+            _('or this is a new WRAITH installation'),
             _('If this is an upgrade'),
             _('there will be a database backup stored on your'),
-            _('FOG server defaulting under the folder'),
-            '/home/fogDBbackups',
+            _('WRAITH server defaulting under the folder'),
+            '/home/wraithDBbackups',
             _('Should anything go wrong'),
             _('this backup will enable you to return to the'),
             _('previous install if needed')
@@ -101,7 +101,7 @@ class SchemaUpdaterPage extends FOGPage
         printf(
             '%s %s?',
             _('Are you sure you wish to'),
-            _('install or update the FOG database')
+            _('install or update the WRAITH database')
         );
         echo '<br/>';
         echo '<br/>';
@@ -114,11 +114,11 @@ class SchemaUpdaterPage extends FOGPage
         // before any user exists. Only emitted when the token already matched,
         // so it is never disclosed to a token-less visitor.
         if (self::validInstallToken()) {
-            echo '<input type="hidden" name="fogtoken" value="'
-                . Initiator::e(FOG_SCHEMA_INSTALL_TOKEN)
+            echo '<input type="hidden" name="wraithtoken" value="'
+                . Initiator::e(WRAITH_SCHEMA_INSTALL_TOKEN)
                 . '"/>';
         }
-        echo '<input type="hidden" name="fogverified"/>';
+        echo '<input type="hidden" name="wraithverified"/>';
         echo '<button type="submit" class="btn btn-primary btn-block" name='
             . '"confirm">';
         echo _('Install/Update Now');
@@ -138,12 +138,12 @@ class SchemaUpdaterPage extends FOGPage
         printf(
             '%s. %s. %s. %s %s%s%s. %s. %s, %s, %s.',
             _('Your database connection appears to be invalid'),
-            _('FOG is unable to communicate with the database'),
+            _('WRAITH is unable to communicate with the database'),
             _('There are many reasons why this could be the case'),
             _('Please check your credentials in'),
             dirname(dirname(__FILE__)),
             DS,
-            'fog' . DS . 'config.class.php',
+            'wraith' . DS . 'config.class.php',
             _('Also confirm that the database is indeed running'),
             _('If credentials are correct'),
             _('and if the Database service is running'),
@@ -160,9 +160,9 @@ class SchemaUpdaterPage extends FOGPage
      */
     public function indexPost()
     {
-        // The schema deploy must work before any FOG user exists, so allow it
+        // The schema deploy must work before any WRAITH user exists, so allow it
         // for a logged-in admin OR a caller holding the per-install token. This
-        // replaces the old confirm/fogverified handshake, which carried no
+        // replaces the old confirm/wraithverified handshake, which carried no
         // secret and could be replayed by anyone.
         if (!self::is_authorized(true) && !self::validInstallToken()) {
             http_response_code(403);

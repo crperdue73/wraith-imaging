@@ -1,4 +1,4 @@
-#  FOG is a computer imaging solution.
+#  WRAITH is a computer imaging solution.
 #  Copyright (C) 2007  Chuck Syperski & Jian Zhang
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -56,10 +56,10 @@ displayOSChoices
 while [[ -z $installtype ]]; do
     installtype="N"
     if [[ -z $autoaccept ]]; then
-        echo "  FOG Server installation modes:"
+        echo "  WRAITH Server installation modes:"
         echo "      * Normal Server: (Choice N) "
         echo "          This is the typical installation type and"
-        echo "          will install all FOG components for you on this"
+        echo "          will install all WRAITH components for you on this"
         echo "          machine.  Pick this option if you are unsure what to pick."
         echo
         echo "      * Storage Node: (Choice S)"
@@ -67,7 +67,7 @@ while [[ -z $installtype ]]; do
         echo "          to make this server act as a node in a storage group"
         echo
         echo "  More information:  "
-        echo "     http://www.fogproject.org/wiki/index.php?title=InstallationModes"
+        echo "     http://www.wraithproject.org/wiki/index.php?title=InstallationModes"
         echo
         echo -n "  What type of installation would you like to do? [N/s (Normal/Storage)] "
         read installtype
@@ -214,7 +214,7 @@ case $installtype in
         while [[ -z $dodhcp ]]; do
             if [[ -z $autoaccept ]]; then
                 echo
-                echo -n "  Would you like to use the FOG server for DHCP service? [y/N] "
+                echo -n "  Would you like to use the WRAITH server for DHCP service? [y/N] "
                 read dodhcp
             fi
             case $dodhcp in
@@ -233,7 +233,7 @@ case $installtype in
         while [[ -z $installlang ]]; do
             if [[ -z $autoaccept ]]; then
                 echo
-                echo "  This version of FOG has internationalization support, would  "
+                echo "  This version of WRAITH has internationalization support, would  "
                 echo -n "  you like to install the additional language packs? [y/N] "
                 read installlang
             fi
@@ -250,27 +250,27 @@ case $installtype in
             esac
         done
         [[ -z $snmysqlhost ]] && snmysqlhost='localhost'
-        [[ -z $snmysqluser ]] && snmysqluser='fogmaster'
+        [[ -z $snmysqluser ]] && snmysqluser='wraithmaster'
         ;;
     [Ss])
         while [[ -z $snmysqlhost ]]; do
             echo
-            echo "  What is the IP address or hostname of the FOG server running "
-            echo "  the fog database?  This is typically the server that also "
+            echo "  What is the IP address or hostname of the WRAITH server running "
+            echo "  the wraith database?  This is typically the server that also "
             echo -n "  runs the web server, dhcp, and tftp.  IP or Hostname: "
             read snmysqlhost
         done
-        strSuggestedSNUser='fogstorage'
+        strSuggestedSNUser='wraithstorage'
         while [[ -z $snmysqluser ]]; do
             snmysqluser=$strSuggestedSNUser
             if [[ -z $autoaccept ]]; then
                 echo
                 echo "  What is the username to access the database?"
                 echo "  This information is storage in the management portal under ";
-                echo "  'FOG Configuration' -> "
-                echo "  'FOG Settings' -> "
-                echo "  'FOG Storage Nodes' -> "
-                echo -n "  'FOG_STORAGENODE_MYSQLUSER'. Username [$strSuggestedSNUser]: "
+                echo "  'WRAITH Configuration' -> "
+                echo "  'WRAITH Settings' -> "
+                echo "  'WRAITH Storage Nodes' -> "
+                echo -n "  'WRAITH_STORAGENODE_MYSQLUSER'. Username [$strSuggestedSNUser]: "
                 read snmysqluser
                 [[ -z $snmysqluser ]] && snmysqluser=$strSuggestedSNUser
             fi
@@ -279,10 +279,10 @@ case $installtype in
             echo
             echo "  What is the password to access the database?  "
             echo "  This information is storage in the management portal under "
-            echo "  'FOG Configuration' -> "
-            echo "  'FOG Settings' -> "
-            echo "  'FOG Storage Nodes' -> "
-            echo  -n "  'FOG_STORAGENODE_MYSQLPASS'.  Password: "
+            echo "  'WRAITH Configuration' -> "
+            echo "  'WRAITH Settings' -> "
+            echo "  'WRAITH Storage Nodes' -> "
+            echo  -n "  'WRAITH_STORAGENODE_MYSQLPASS'.  Password: "
             read -r snmysqlpass
             [[ -z $snmysqlpass ]] && echo "Invalid input, please try again."
         done
@@ -292,10 +292,10 @@ while [[ -z $dohttps ]]; do
     if [[ -z $autoaccept && -z $shttpproto ]]; then
         echo
         echo "  Using encrypted connections is state of the art on the web and we"
-        echo "  encourage you to enable this for your FOG server. But using HTTPS"
-        echo "  has some implications within FOG, PXE and fog-client and you want"
-        echo "  to read https://wiki.fogproject.org/HTTPS before you decide!"
-        echo -n "  Would you like to enable secure HTTPS on your FOG server? [y/N] "
+        echo "  encourage you to enable this for your WRAITH server. But using HTTPS"
+        echo "  has some implications within WRAITH, PXE and wraith-client and you want"
+        echo "  to read https://wiki.wraithproject.org/HTTPS before you decide!"
+        echo -n "  Would you like to enable secure HTTPS on your WRAITH server? [y/N] "
         read dohttps
     fi
     [[ "$shttpproto" == "https" ]] && dohttps="yes"

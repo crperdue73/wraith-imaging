@@ -5,25 +5,25 @@
  * PHP version 5
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Plugin configuration file.
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-$fog_plugin = array();
-$fog_plugin['name'] = 'wolbroadcast';
-$fog_plugin['description'] = 'Allows you to create WOL across '
+$wraith_plugin = array();
+$wraith_plugin['name'] = 'wolbroadcast';
+$wraith_plugin['description'] = 'Allows you to create WOL across '
     . 'separate broadcast addresses. '
     . 'Should only be used if you cannot edit your network switches.';
-$fog_plugin['menuicon'] = 'fa fa-plug fa-fw';
-$fog_plugin['menuicon_hover'] = null;
-$fog_plugin['entrypoint'] = 'html/run.php';
+$wraith_plugin['menuicon'] = 'fa fa-plug fa-fw';
+$wraith_plugin['menuicon_hover'] = null;
+$wraith_plugin['entrypoint'] = 'html/run.php';

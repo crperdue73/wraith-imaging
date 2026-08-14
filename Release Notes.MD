@@ -1,26 +1,26 @@
-FOG Project Release Notes
+WRAITH Release Notes (fork of WRAITH Project)
 =========================
 
-* [FOG 1.5.10](#fog-1510)
-* [FOG 1.5.10 revisions](##fog-1510-revisions)
-* [FOG 1.5.9](#fog-159)
-* [FOG 1.5.8](#fog-158)
+* [WRAITH 1.5.10](#wraith-1510)
+* [WRAITH 1.5.10 revisions](##wraith-1510-revisions)
+* [WRAITH 1.5.9](#wraith-159)
+* [WRAITH 1.5.8](#wraith-158)
 
-# FOG 1.5.10
+# WRAITH 1.5.10
 
-## FOG 1.5.10 revisions
+## WRAITH 1.5.10 revisions
 
-### FOG 1.5.10.48
+### WRAITH 1.5.10.48
 
-https://github.com/FOGProject/fogproject/releases/tag/1.5.10.48
+https://github.com/WRAITHProject/wraithproject/releases/tag/1.5.10.48
 
-### FOG 1.5.10.41
+### WRAITH 1.5.10.41
 
-https://github.com/FOGProject/fogproject/releases/tag/1.5.10.41
+https://github.com/WRAITHProject/wraithproject/releases/tag/1.5.10.41
 
-## FOG 1.5.10 overview
+## WRAITH 1.5.10 overview
 
-FOG 1.5.10 officially released: https://news.fogproject.org/fog-1-5-10-officially-released/
+WRAITH 1.5.10 officially released: https://news.wraithproject.org/wraith-1-5-10-officially-released/
 
 Below is a summary of the many fixes and improvements introduced over the last 2.5 years since the last official release.
 We have squashed bugs, further hardened the security of the system, and introduced new features, improvements, and support for new operating systems.
@@ -41,9 +41,9 @@ We couldn't do this without you!
 
 This version was re-released (re-tagged) not long after the initial release to patch issues with the location plugin that would cause trouble when updating from an earlier version.
 
-## FOG Web UI and Services
+## WRAITH Web UI and Services
 
-To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/FOGProject/fogproject/commits/dev-branch)
+To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/WRAITHProject/wraithproject/commits/dev-branch)
 
 ### Security Fixes
 
@@ -59,7 +59,7 @@ To view the full list of commits with the code changes introducing these fixes a
 * Check download URL and destination filename to prevent from malicious use, thanks @sml
 * Added web login logging
 * Add changes to firewall and SELinux checks
-* Added a defined [security policy](https://github.com/FOGProject/fogproject/blob/8ce090ba82ce22208daa0a20bc5018364e20949a/SECURITY.md)
+* Added a defined [security policy](https://github.com/WRAITHProject/wraithproject/blob/8ce090ba82ce22208daa0a20bc5018364e20949a/SECURITY.md)
 
 ### Improvements
 
@@ -85,7 +85,7 @@ To view the full list of commits with the code changes introducing these fixes a
 * Allow hostname regex for printers as well as IP addresses
 * Add ability to specify additional TFTP server command line options
 * Switch default database engine from MyISAM to InnoDB
-* Point FOG web UI kernel update page to the kernel repo on github.
+* Point WRAITH web UI kernel update page to the kernel repo on github.
 * Switch to snponly.efi for UEFI systems as default
 * Save resources by only enabling systemd tftp.socket
 * Move from xinetd to systemd for TFTP connection handling on redhat
@@ -114,18 +114,18 @@ To view the full list of commits with the code changes introducing these fixes a
 * Prevent from installing package dhcp* when not selected by installer
 * Fixed behavioral issues of replication services
 * Prevent from saving the whole snapin object when only associations need saving
-* Silence warnings when upgrading a FOG install with services being enabled
+* Silence warnings when upgrading a WRAITH install with services being enabled
 * Remove inconsistent excess kernel reporting information, thanks @wayneworkman
 * Make MulticastTask getAllMulticastTasks() function non static as call 
 * Fixes for several parts of the iPXE boot menu like delete and approve hosts
 * Repair installer for RedHat, Alma, Rocky and CentOS
 * Fix snapin deletion causing an undefined variable exception with PHP 8
-* Fix display of name for capone plugin within FOG configuration page
+* Fix display of name for capone plugin within WRAITH configuration page
 * Fix issue where filename got corrupted when uploading a new snapin file
 * Fix bug in iPXE embedded scripts which prevents drive boot method EXIT 
 * Prevent AD fields from being overwritten with default settings even if fields are not empty 
 * Fix typo in snapinjob call that was preventing snapins to run
-* Remove bootfilename from installer and .fogsettings as it's not in use 
+* Remove bootfilename from installer and .wraithsettings as it's not in use 
 * Silence the output in case xinetd is not installed at all 
 * Set image size on server to zero when directory is not found
 * Added missing openssl package dependency
@@ -134,18 +134,18 @@ To view the full list of commits with the code changes introducing these fixes a
 * Fix host edit page load issue when snapin history has entries set to 0000-00-00 00:00:00 timestamp
 * Documented LDAP nested-group limitation on 1.5 installs where the LDAP plugin predates Feb 2026 (no plugin-table migration path in 1.5); resolution is wontfix on 1.5 and upgrade to 1.6 (#892, #884)
 
-## fog-client
+## wraith-client
 
-fog-client 0.13.0 is included with FOG 1.5.10
+wraith-client 0.13.0 is included with WRAITH 1.5.10
 
 To view the full list of commits with the code changes introducing these fixes and features, see 
 
-* [fog client commit history](https://github.com/FOGProject/fog-client/commits/master)
-* [fog zazzles commit history](https://github.com/FOGProject/zazzles/commits/master)
+* [wraith client commit history](https://github.com/WRAITHProject/wraith-client/commits/master)
+* [wraith zazzles commit history](https://github.com/WRAITHProject/zazzles/commits/master)
 
 ### Security Fixes
 
-* Add a break to logging and authentication attempts when the fog client fails to authenticate after 5 attempts, thanks to @Iri5s
+* Add a break to logging and authentication attempts when the wraith client fails to authenticate after 5 attempts, thanks to @Iri5s
 * Update external library SharpZipLib to v1.3.3 to fix security issues
 * Update external library Newtonsoft.Json to v13.0.1
 * Allow using certificate files from local filesystem
@@ -168,7 +168,7 @@ To view the full list of commits with the code changes introducing these fixes a
 * Removed unused dlls
 * Print CA cert subject name instead of friendly name
 
-## FOS (FOG Operating System)
+## FOS (WRAITH Operating System)
 
 FOS is the linux based OS that is booted into from pxe and is used to perform imaging and other tasks.
 
@@ -219,15 +219,15 @@ We have upgraded the versions of its main dependencies, added many improvements 
 * Repair disk enumeration for image type MPA (all disks)
 * Remove support for module loading from the kernel as we don't use modules 
 
-# FOG 1.5.9
+# WRAITH 1.5.9
 
-This release mainly focuses on bug fixes for FOG.
+This release mainly focuses on bug fixes for WRAITH.
 
-https://news.fogproject.org/fog-1-5-9-officially-released/
+https://news.wraithproject.org/wraith-1-5-9-officially-released/
 
-Comparison of 1.5.8 to 1.5.9: https://github.com/FOGProject/fogproject/compare/1.5.8...1.5.9
+Comparison of 1.5.8 to 1.5.9: https://github.com/WRAITHProject/wraithproject/compare/1.5.8...1.5.9
 
-## FOG Web UI and Services
+## WRAITH Web UI and Services
 
 ### Improvements
 
@@ -241,7 +241,7 @@ Comparison of 1.5.8 to 1.5.9: https://github.com/FOGProject/fogproject/compare/1
 ### Bug Fixes
 
 * Add installer check to see if compiling iPXE binaries is needed
-* Fix exec command line in systemd FOGSnapinReplicator file
+* Fix exec command line in systemd WRAITHSnapinReplicator file
 * Force re-compile of rootcert.c in iPXE to prevent from issues when CA changes
 * Update compile check scripts to latest versions on Raspberry Pi
 * Fix IP/interface check on service startup
@@ -250,22 +250,22 @@ Comparison of 1.5.8 to 1.5.9: https://github.com/FOGProject/fogproject/compare/1
 * Improve input check on aesdecrypt in case of unencrypted passwords with pipe characters
 * Handle DB root password more conservative to not lock out people with newer MariaDB versions
 * Re-work the checks and setting up of DB security
-* Prevent FOGMulticastManager from completing a task too early
+* Prevent WRAITHMulticastManager from completing a task too early
 * Fix some bugs in Sites plugin (thanks to Fernando Gietz)
 * Switch to libcurl4 for Raspbian 10 as well
 * Fix Image Manager to consider global setting on image creation
 * Fix installer prompting for DB root password
 * Force correct PHP version on Debian and remove old PHP when found to be still installed
-* Improve check on fogstorage account access granted
-* Prevent FOG services from filling up memory on hook events array
+* Improve check on wraithstorage account access granted
+* Prevent WRAITH services from filling up memory on hook events array
 * Fix interface enumeration on systems with DHCP enabled
 * Using PHP 7.4 on Ubuntu 20.04 as they moved just before the official release
 * Fix installer issue with PPP that is not using a via gateway route
 * Correct snapin list view column showing if it's a pack or not
 
-## fog-client
+## wraith-client
 
-fog-client 0.12.0 is included with FOG 1.5.9
+wraith-client 0.12.0 is included with WRAITH 1.5.9
 
 ### Improvements
 
@@ -275,10 +275,10 @@ fog-client 0.12.0 is included with FOG 1.5.9
 
 ### Bug Fixes
 
-* Repair hang on Linux systems when shutting down FOGService (issue #93)
+* Repair hang on Linux systems when shutting down WRAITHService (issue #93)
 * Fix unzipping subdirectories on Linux/Unix systems (issue #122)
 
-## FOS (FOG Operating System)
+## FOS (WRAITH Operating System)
 
 FOS is the linux based OS that is booted into from pxe and is used to perform imaging and other tasks.
 
@@ -287,13 +287,13 @@ FOS is the linux based OS that is booted into from pxe and is used to perform im
 * Switch to using shred instead of dd for normal wipe to make it faster
 * Update Kernel (4.19.118) and Buildroot (2020.02.1)
 
-# FOG 1.5.8
+# WRAITH 1.5.8
 
-FOG 1.5.8 officially released: https://news.fogproject.org/fog-1-5-8-officially-released/
+WRAITH 1.5.8 officially released: https://news.wraithproject.org/wraith-1-5-8-officially-released/
 
-https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
+https://github.com/WRAITHProject/wraithproject/compare/1.5.7...1.5.8
 
-## FOG Web UI and Services
+## WRAITH Web UI and Services
 
 ### Bug Fixes
 
@@ -308,11 +308,11 @@ https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
 * Only ask for PHP/apache reinstall if PHP 5 was found installed (70078be)
 * Repair building of iPXE binaries for HTTPS setups (296877d, 831d8ea)
 * Fix typo in snapin class (6314aa4 thanks to Quazz)
-* Repair version query in FOG configuration web view (8c69efc, fcfe759)
+* Repair version query in WRAITH configuration web view (8c69efc, fcfe759)
 * Fix storage group failure on task finish updating (3c28f7b)
 * Prevent from setting a MAC address that is in use by another host (88e10d8)
 * Fix issue with double pipes in ad password field (9e70bc2)
-* Fix download of snapins from wrong FOG server in location setups (d0162c8)
+* Fix download of snapins from wrong WRAITH server in location setups (d0162c8)
 * Prevent from adding group associations with zero host or group ID (cf01c7e, c0d8509)
 * Fix interface selection on systems where more than one NICs are up (ca3c2fa)
 * Fix API call to editing host object, #329 (54beb9b)
@@ -324,11 +324,11 @@ https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
 
 ### Improvements
 
-* Update README with current information on downloading and installing FOG (0922112)
+* Update README with current information on downloading and installing WRAITH (0922112)
 * Add username substitution to email field for deployment notification (7f80368)
 * Re-try querying size and hash information via HTTPS (0fd7913, 2e55ba9)
 * Make sure we don't ask for HTTPS again if parameter is given (ac08798)
-* Improve check on fogproject account existing (8af5b3e)
+* Improve check on wraithproject account existing (8af5b3e)
 * Add separate download for ARM platform binary archive and compilation of iPXE (d67a620, 30c4200, 6b1b260, 91fc00a)
 * Remove old pxelinux stuff and ltsp config so people don't use it anymore (50e2995)
 * Change default image definitions to Windows 10 and Zstd compression (45ec9fa)
@@ -354,7 +354,7 @@ https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
 * Added possibilty to queue multicast task when the is not any slot free on the storage node (PR #310, bdbaf33 thanks to @Fernando Gietz)
 
 
-## FOS (FOG Operating System)
+## FOS (WRAITH Operating System)
 
 ### Bug Fixes
 
@@ -376,9 +376,9 @@ https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
 * Add support for APFS filesystem (e151e67, 6c01ce6)
 * Add rsyncable options when calling partclone (3cc47ca)
 
-# FOG 1.x.y
+# WRAITH 1.x.y
 
-FOG 1.x.y officially released: https://news.fogproject.org/...
+WRAITH 1.x.y officially released: https://news.wraithproject.org/...
 
 Below is a summary of the many fixes and improvements introduced. 
 We have squashed bugs, further hardened the security of the system, and introduced new features, improvements, and support for new operating systems.
@@ -390,9 +390,9 @@ Some highlights include:
 Thank you to all that have reported issues and feature requests in the forums and github requests and to all our developers, contributors, and users. 
 We couldn't do this without you!
 
-## FOG Web UI and Services
+## WRAITH Web UI and Services
 
-To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/FOGProject/fogproject/commits/dev-branch)
+To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/WRAITHProject/wraithproject/commits/dev-branch)
 
 ### Security Fixes
 
@@ -406,14 +406,14 @@ To view the full list of commits with the code changes introducing these fixes a
 
 * tbd
 
-## fog-client
+## wraith-client
 
-fog-client 0.a.b is included with FOG 1.x.y
+wraith-client 0.a.b is included with WRAITH 1.x.y
 
 To view the full list of commits with the code changes introducing these fixes and features, see 
 
-* [fog client commit history](https://github.com/FOGProject/fog-client/commits/master)
-* [fog zazzles commit history](https://github.com/FOGProject/zazzles/commits/master)
+* [wraith client commit history](https://github.com/WRAITHProject/wraith-client/commits/master)
+* [wraith zazzles commit history](https://github.com/WRAITHProject/zazzles/commits/master)
 
 ### Security Fixes
 
@@ -427,7 +427,7 @@ To view the full list of commits with the code changes introducing these fixes a
 
 * tbd
 
-## FOS (FOG Operating System)
+## FOS (WRAITH Operating System)
 
 FOS is the linux based OS that is booted into from pxe and is used to perform imaging and other tasks.
 

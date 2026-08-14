@@ -5,19 +5,19 @@
  * PHP Version 5
  *
  * @category Pending_MAC_List
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Pending MAC report.
  *
  * @category Pending_MAC_List
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Pending_MAC_List extends ReportManagementPage
 {
@@ -182,7 +182,7 @@ class Pending_MAC_List extends ReportManagementPage
         }
         echo '</form>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
     /**
      * Approves pending macs

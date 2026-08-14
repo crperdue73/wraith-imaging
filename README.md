@@ -1,12 +1,12 @@
-# FOGProject starting point
+# WRAITHProject starting point
 
 ## Introduction
 
- FOG is a free open-source cloning/imaging/rescue suite/inventory management system. FOG can be used to image Windows XP, Vista, Windows 7, Window 8/8.1, and Windows 10, Windows 11 PCs using PXE, PartClone, and a Web GUI to tie it together. Includes features like memory and disk test, disk wipe, av scan, task scheduling, inventory management, remote deployment of OS's, and remote installation of software packages. Features can be triggered through the web GUI, once the client machine has been registered with FOG.
+ WRAITH is a free open-source cloning/imaging/rescue suite/inventory management system. WRAITH can be used to image Windows XP, Vista, Windows 7, Window 8/8.1, and Windows 10, Windows 11 PCs using PXE, PartClone, and a Web GUI to tie it together. Includes features like memory and disk test, disk wipe, av scan, task scheduling, inventory management, remote deployment of OS's, and remote installation of software packages. Features can be triggered through the web GUI, once the client machine has been registered with WRAITH.
 
 ## Versioning and branches
 
-FOG uses a versioning schema that follows the general principles of semantic versioning with some adjustments to fit the development lifecycle. You can find the automatic release workflows in the [fog-workflows repo](https://github.com/FOGProject/fog-workflows) [![Stable Release](https://github.com/FOGProject/fog-workflows/actions/workflows/stable-releases.yml/badge.svg)](https://github.com/FOGProject/fog-workflows/actions/workflows/stable-releases.yml)
+WRAITH uses a versioning schema that follows the general principles of semantic versioning with some adjustments to fit the development lifecycle. You can find the automatic release workflows in the [wraith-workflows repo](https://github.com/WRAITHProject/wraith-workflows) [![Stable Release](https://github.com/WRAITHProject/wraith-workflows/actions/workflows/stable-releases.yml/badge.svg)](https://github.com/WRAITHProject/wraith-workflows/actions/workflows/stable-releases.yml)
 
 * The default branch of `stable` will always have the latest patch release, for most users this is where you want to install from.
 * The `master` branch has the baseline of the latest Minor release. You should not typically install from here as it won't include security patches released since the baseline was set.
@@ -44,21 +44,21 @@ Our versions are formatted in a x.x.x.x format like so:
 
 * All that is needed to start installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
-  * **ZIP archive** `wget https://github.com/FOGProject/fogproject/archive/stable.zip; unzip stable.zip`
+  * **ZIP archive** `wget https://github.com/WRAITHProject/wraithproject/archive/stable.zip; unzip stable.zip`
 
-  * **TAR/GZ archive** `wget https://github.com/FOGProject/fogproject/archive/stable.tar.gz; tar xzf stable.tar.gz`
+  * **TAR/GZ archive** `wget https://github.com/WRAITHProject/wraithproject/archive/stable.tar.gz; tar xzf stable.tar.gz`
 
-  * **git** `git clone https://github.com/fogproject/fogproject.git fogproject-stable`
+  * **git** `git clone https://github.com/wraithproject/wraithproject.git wraithproject-stable`
 
 2. Run the install script **as root** and follow all prompts accordingly
 
 ```
 sudo -i
-cd /path/to/fogproject-stable/bin
-./installfog.sh
+cd /path/to/wraithproject-stable/bin
+./installwraith.sh
 ```
 
-3. You should now be ready to use FOG
+3. You should now be ready to use WRAITH
 
 ## Install latest development version
 
@@ -68,27 +68,27 @@ cd /path/to/fogproject-stable/bin
 
 * All that is needed to start the installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
-  * **git** `git clone https://github.com/fogproject/fogproject.git fogproject-dev-branch; cd fogproject-dev-branch; git checkout dev-branch` (**recommended if you want to keep up with current developments!**
+  * **git** `git clone https://github.com/wraithproject/wraithproject.git wraithproject-dev-branch; cd wraithproject-dev-branch; git checkout dev-branch` (**recommended if you want to keep up with current developments!**
 
-  * **ZIP archive** `wget https://github.com/FOGProject/fogproject/archive/dev-branch.zip; unzip dev-branch.zip`
+  * **ZIP archive** `wget https://github.com/WRAITHProject/wraithproject/archive/dev-branch.zip; unzip dev-branch.zip`
 
-  * **TAR/GZ archive** `wget https://github.com/FOGProject/fogproject/archive/dev-branch.tar.gz; tar xzf dev-branch.tar.gz`
+  * **TAR/GZ archive** `wget https://github.com/WRAITHProject/wraithproject/archive/dev-branch.tar.gz; tar xzf dev-branch.tar.gz`
 
 2. Run the install script **as root** and follow all prompts accordingly
 
 ```
 sudo -i
-cd /path/to/fogproject-dev-branch/bin
-./installfog.sh
+cd /path/to/wraithproject-dev-branch/bin
+./installwraith.sh
 ```
-3. You should now be ready to use FOG
+3. You should now be ready to use WRAITH
 
-All should now be installed and you can start configuring and registering systems. Please see: http://fogproject.org/wiki/index.php/Managing_FOG to assist you in setting up further.
+All should now be installed and you can start configuring and registering systems. Please see: http://wraithproject.org/wiki/index.php/Managing_WRAITH to assist you in setting up further.
 
 There are many resources for assistance.
- - **docs:** https://docs.fogproject.org for documentation. (New docs, under construction)
- - **Wiki:** http://fogproject.org/wiki for any information. (Legacy docs)
- - **Forum:** http://fogproject.org/forum.
+ - **docs:** https://docs.wraithproject.org for documentation. (New docs, under construction)
+ - **Wiki:** http://wraithproject.org/wiki for any information. (Legacy docs)
+ - **Forum:** http://wraithproject.org/forum.
  - **Email:** A Developer directly. If a dev permits a change, they can have themselves added on the wiki/Credits page.
 
 ## Development

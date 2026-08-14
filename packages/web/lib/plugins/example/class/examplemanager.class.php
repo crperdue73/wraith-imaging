@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ExampleManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The example mass manager class.
  *
  * @category ExampleManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ExampleManager extends FOGManagerController
+class ExampleManager extends WRAITHManagerController
 {
     /**
      * Installs the database for the plugin.
@@ -76,7 +76,7 @@ class ExampleManager extends FOGManagerController
          * }
          * if (self::$DB->query($sql)) {
          *     self::getClass('Service')
-         *         ->set('name', 'FOG_EXAMPLE_ONE')
+         *         ->set('name', 'WRAITH_EXAMPLE_ONE')
          *         ->set('description', 'Example one global description')
          *         ->set('value', 'Some value')
          *         ->set('category', 'Plugin: example')

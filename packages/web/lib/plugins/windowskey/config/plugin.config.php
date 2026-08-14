@@ -5,25 +5,25 @@
  * PHP version 5
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   George Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Plugin configuration file.
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-$fog_plugin = array();
-$fog_plugin['name'] = 'windowskey';
-$fog_plugin['description'] = sprintf(
+$wraith_plugin = array();
+$wraith_plugin['name'] = 'windowskey';
+$wraith_plugin['description'] = sprintf(
     '%s %s. %s %s. %s %s. %s: %s %s.',
     _('Windows keys is a plugin that associates product keys'),
     _('for Microsoft Windows to images'),
@@ -35,6 +35,6 @@ $fog_plugin['description'] = sprintf(
     _('When the plugin is removed, the assigned key will remain'),
     _('with the host')
 );
-$fog_plugin['menuicon'] = 'fa fa-windows fa-fw';
-$fog_plugin['menuicon_hover'] = null;
-$fog_plugin['entrypoint'] = 'html/run.php';
+$wraith_plugin['menuicon'] = 'fa fa-windows fa-fw';
+$wraith_plugin['menuicon_hover'] = null;
+$wraith_plugin['entrypoint'] = 'html/run.php';

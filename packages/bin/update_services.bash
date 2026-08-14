@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FOGROOT="$1"
-FOGSERVICEROOT="$FOGROOT/packages/service"
+WRAITHROOT="$1"
+WRAITHSERVICEROOT="$WRAITHROOT/packages/service"
 SERVICEROOT="$2"
 
 if [ `whoami` != "root" ]; then
@@ -9,13 +9,13 @@ if [ `whoami` != "root" ]; then
     exit 1
 fi
 
-if [ ! -d "$FOGROOT" ]; then
-    echo "usage: $0 fogrootdir servicerootdir"
+if [ ! -d "$WRAITHROOT" ]; then
+    echo "usage: $0 wraithrootdir servicerootdir"
     exit 1
 fi
 
 if [ ! -d "$SERVICEROOT" ]; then
-    echo "usage: $0 fogrootdir servicerootdir"
+    echo "usage: $0 wraithrootdir servicerootdir"
     exit 1
 fi
 
@@ -31,8 +31,8 @@ else
     cp -f "$CONFIG_FILE_SRC" "$BAK_CONFIG_FILE"
 fi
 
-echo "Copying from $FOGSERVICEROOT to $SERVICEROOT"
-tar -cf - -C "$FOGSERVICEROOT" . | tar -xf - -C "$SERVICEROOT"
+echo "Copying from $WRAITHSERVICEROOT to $SERVICEROOT"
+tar -cf - -C "$WRAITHSERVICEROOT" . | tar -xf - -C "$SERVICEROOT"
 
 echo "Restoring $CONFIG_FILE_SRC from $BAK_CONFIG_FILE."
 cp -f "$BAK_CONFIG_FILE" "$CONFIG_FILE_SRC" 

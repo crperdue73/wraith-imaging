@@ -5,24 +5,24 @@
  * PHP version 5
  *
  * @category Access_Control
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access control plugin
  *
  * @category Access_Control
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-$fog_plugin = array();
-$fog_plugin['name'] = 'accesscontrol';
-$fog_plugin['description'] = 'The access control can restrict using'
+$wraith_plugin = array();
+$wraith_plugin['name'] = 'accesscontrol';
+$wraith_plugin['description'] = 'The access control can restrict using'
     . ' different roles and rules. Version 1.5.5';
-$fog_plugin['menuicon'] = 'fa fa-user-secret fa-fw';
-$fog_plugin['menuicon_hover'] = null;
-$fog_plugin['entrypoint'] = 'html/run.php';
+$wraith_plugin['menuicon'] = 'fa fa-user-secret fa-fw';
+$wraith_plugin['menuicon_hover'] = null;
+$wraith_plugin['entrypoint'] = 'html/run.php';

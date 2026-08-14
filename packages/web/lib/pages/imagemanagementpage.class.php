@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ImageManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Image management page
  *
  * @category ImageManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ImageManagementPage extends FOGPage
+class ImageManagementPage extends WRAITHPage
 {
     /**
      * The node this page operates off of.
@@ -39,9 +39,9 @@ class ImageManagementPage extends FOGPage
         /**
          * The real name not using our name passer.
          */
-        $this->name = self::$foglang['Image Management'];
+        $this->name = self::$wraithlang['Image Management'];
         /**
-         * Pull in the FOGPage class items.
+         * Pull in the WRAITHPage class items.
          */
         parent::__construct($this->name);
         /**
@@ -49,13 +49,13 @@ class ImageManagementPage extends FOGPage
          */
         $this->menu['multicast'] = sprintf(
             '%s %s',
-            self::$foglang['Multicast'],
-            self::$foglang['Image']
+            self::$wraithlang['Multicast'],
+            self::$wraithlang['Image']
         );
         /**
          * If we want the Server size taken by the image.
          */
-        $SizeServer = self::getSetting('FOG_FTP_IMAGE_SIZE');
+        $SizeServer = self::getSetting('WRAITH_FTP_IMAGE_SIZE');
         /**
          * Get our nicer names.
          */
@@ -69,30 +69,30 @@ class ImageManagementPage extends FOGPage
              * The other sub menu items.
              */
             $this->subMenu = array(
-                "$this->linkformat#image-gen" => self::$foglang['General'],
+                "$this->linkformat#image-gen" => self::$wraithlang['General'],
                 "$this->linkformat#image-storage" => sprintf(
                     '%s %s',
-                    self::$foglang['Storage'],
-                    self::$foglang['Group']
+                    self::$wraithlang['Storage'],
+                    self::$wraithlang['Group']
                 ),
-                $this->membership => self::$foglang['Membership'],
-                $this->delformat => self::$foglang['Delete'],
+                $this->membership => self::$wraithlang['Membership'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             /**
              * The notes for this item.
              */
             $this->notes = array(
-                self::$foglang['Images'] => $this->obj->get('name'),
-                self::$foglang['LastCaptured'] => $this->obj->get('deployed'),
-                self::$foglang['DeployMethod'] => (
+                self::$wraithlang['Images'] => $this->obj->get('name'),
+                self::$wraithlang['LastCaptured'] => $this->obj->get('deployed'),
+                self::$wraithlang['DeployMethod'] => (
                     $this->obj->get('format') ?
                     _('Partimage') :
                     _('Partclone')
                 ),
-                self::$foglang['ImageType'] => (
+                self::$wraithlang['ImageType'] => (
                     $this->obj->getImageType() ?
                     $this->obj->getImageType() :
-                    self::$foglang['NoAvail']
+                    self::$wraithlang['NoAvail']
                 ),
                 _('Primary Storage Group') => $this->obj->getStorageGroup()->get(
                     'name'
@@ -503,12 +503,12 @@ class ImageManagementPage extends FOGPage
                 '',
                 'id'
             );
-        $compression = self::getSetting('FOG_PIGZ_COMP');
+        $compression = self::getSetting('WRAITH_PIGZ_COMP');
         if ($compress < 0 || $compress > 23) {
             $compression = $compress;
         }
         if (!isset($imagemanage)) {
-            $imagemanage = self::getSetting('FOG_IMAGE_COMPRESSION_FORMAT_DEFAULT');
+            $imagemanage = self::getSetting('WRAITH_IMAGE_COMPRESSION_FORMAT_DEFAULT');
         }
         $format = sprintf(
             '<select name="imagemanage" id="imagemanage" class="form-control">'
@@ -606,7 +606,7 @@ class ImageManagementPage extends FOGPage
             . 'title="Image Type is a very important setting and can have '
             . 'major impact on how your imaging works or fails. Please read '
             . 'more about the different image types and how to use those '
-            . '<a href=\'https://wiki.fogproject.org/wiki/index.php?title=Managing_FOG#Images\' '
+            . '<a href=\'https://wiki.wraithproject.org/wiki/index.php?title=Managing_WRAITH#Images\' '
             . 'target=\'_blank\'>in our wiki</a> before you chose!"></i>' => $ImageTypes,
             '<label for="imagepartitiontype">'
             . _('Partition')
@@ -715,7 +715,7 @@ class ImageManagementPage extends FOGPage
                     sprintf(
                         '%s, %s.',
                         _('Please choose a different name'),
-                        _('this one is reserved for FOG')
+                        _('this one is reserved for WRAITH')
                     )
                 );
             }
@@ -968,7 +968,7 @@ class ImageManagementPage extends FOGPage
             . 'title="Image Type is a very important setting and can have '
             . 'major impact on how your imaging works or fails. Please read '
             . 'more about the different image types and how to use those '
-            . '<a href=\'https://wiki.fogproject.org/wiki/index.php?title=Managing_FOG#Images\' '
+            . '<a href=\'https://wiki.wraithproject.org/wiki/index.php?title=Managing_WRAITH#Images\' '
             . 'target=\'_blank\'>in our wiki</a> before you chose!"></i>' => $ImageTypes,
             '<label for="imagepartitiontype">'
             . _('Partition')
@@ -1367,7 +1367,7 @@ class ImageManagementPage extends FOGPage
                             sprintf(
                                 '%s, %s.',
                                 _('Please choose a different name'),
-                                _('this one is reserved for FOG')
+                                _('this one is reserved for WRAITH')
                             )
                         );
                     }
@@ -1472,7 +1472,7 @@ class ImageManagementPage extends FOGPage
             $this->templates,
             $this->attributes
         );
-        $this->title = self::$foglang['Multicast'];
+        $this->title = self::$wraithlang['Multicast'];
         $this->attributes = array(
             array('class' => 'col-xs-4'),
             array('class' => 'col-xs-8 form-group'),
@@ -1688,7 +1688,7 @@ class ImageManagementPage extends FOGPage
                 );
             }
             if ($timeout > 0) {
-                self::setSetting('FOG_UDPCAST_MAXWAIT', $timeout);
+                self::setSetting('WRAITH_UDPCAST_MAXWAIT', $timeout);
             }
             $countmc = self::getClass('MulticastSessionManager')
                 ->count(
@@ -1699,7 +1699,7 @@ class ImageManagementPage extends FOGPage
                         )
                     )
                 );
-            $countmctot = self::getSetting('FOG_MULTICAST_MAX_SESSIONS');
+            $countmctot = self::getSetting('WRAITH_MULTICAST_MAX_SESSIONS');
             $Image = new Image($image);
             $StorageGroup = $Image->getStorageGroup();
             $StorageNode = $StorageGroup->getMasterStorageNode();
@@ -1718,7 +1718,7 @@ class ImageManagementPage extends FOGPage
             }
             $MulticastSession = self::getClass('MulticastSession')
                 ->set('name', $name)
-                ->set('port', self::getSetting('FOG_UDPCAST_STARTINGPORT'))
+                ->set('port', self::getSetting('WRAITH_UDPCAST_STARTINGPORT'))
                 ->set('image', $Image->get('id'))
                 ->set('stateID', 0)
                 ->set('sessclients', $count)
@@ -1735,7 +1735,7 @@ class ImageManagementPage extends FOGPage
             while ($randomnumber == $MulticastSession->get('port')) {
                 $randomnumber = mt_rand(24576, 32766)*2;
             }
-            self::setSetting('FOG_UDPCAST_STARTINGPORT', $randomnumber);
+            self::setSetting('WRAITH_UDPCAST_STARTINGPORT', $randomnumber);
             self::setMessage(
                 sprintf(
                     '%s<br/>%s %s %s',

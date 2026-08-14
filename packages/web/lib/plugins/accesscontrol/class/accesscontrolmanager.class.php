@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AccessControlManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access Control plugin
  *
  * @category AccessControlManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class AccessControlManager extends FOGManagerController
+class AccessControlManager extends WRAITHManagerController
 {
     /**
      * The table name.
@@ -86,8 +86,8 @@ class AccessControlManager extends FOGManagerController
         } else {
             $sql = sprintf(
                 "INSERT INTO `%s` VALUES"
-                . "(1, 'Administrator', 'FOG Administrator', 'fog', NOW()),"
-                . "(2, 'Technician', 'FOG Technician', 'fog', NOW())",
+                . "(1, 'Administrator', 'WRAITH Administrator', 'wraith', NOW()),"
+                . "(2, 'Technician', 'WRAITH Technician', 'wraith', NOW())",
                 $this->tablename
             );
             self::$DB->query($sql);

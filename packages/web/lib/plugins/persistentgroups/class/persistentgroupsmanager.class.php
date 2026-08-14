@@ -5,10 +5,10 @@
  * PHP version 5
  *
  * @category PersistentGroupsManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The example mass manager class.
@@ -16,12 +16,12 @@
  * Enables persistent groups.
  *
  * @category PersistentGroupsManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PersistentGroupsManager extends FOGManagerController
+class PersistentGroupsManager extends WRAITHManagerController
 {
     /**
      * Installs the database for the plugin.
@@ -51,7 +51,7 @@ class PersistentGroupsManager extends FOGManagerController
             `d`.`hostExitBios`=`s`.`hostExitBios`, `d`.`hostExitEfi`=`s`.`hostExitEfi`, `d`.`hostEnforce`=`s`.`hostEnforce`
             WHERE `d`.`hostID`=@myHostID;
 
-        SET @myDBTest = (SELECT count(`table_name`) FROM information_schema.tables WHERE `table_schema` = 'fog' AND `table_name` = 'locationAssoc' LIMIT 1);
+        SET @myDBTest = (SELECT count(`table_name`) FROM information_schema.tables WHERE `table_schema` = 'wraith' AND `table_name` = 'locationAssoc' LIMIT 1);
         if (@myDBTest > 0) THEN
             INSERT INTO `locationAssoc` (`laHostID`,`laLocationID`)
             SELECT @myHostID as `laHostID`,`laLocationID`

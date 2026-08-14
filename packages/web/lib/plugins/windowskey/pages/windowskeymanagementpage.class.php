@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category WindowsKeyManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Windows Keys management page.
  *
  * @category WindowsKeyManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class WindowsKeyManagementPage extends FOGPage
+class WindowsKeyManagementPage extends WRAITHPage
 {
     /**
      * The node this page operates on.
@@ -53,14 +53,14 @@ class WindowsKeyManagementPage extends FOGPage
         global $node;
         global $sub;
         global $id;
-        self::$foglang['ExportWindowskey'] = _('Export Windows Keys');
-        self::$foglang['ImportWindowskey'] = _('Import Windows Keys');
+        self::$wraithlang['ExportWindowskey'] = _('Export Windows Keys');
+        self::$wraithlang['ImportWindowskey'] = _('Import Windows Keys');
         parent::__construct($this->name);
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#windowskey-gen" => self::$foglang['General'],
-                $this->membership => self::$foglang['Membership'],
-                "$this->delformat" => self::$foglang['Delete'],
+                "$this->linkformat#windowskey-gen" => self::$wraithlang['General'],
+                $this->membership => self::$wraithlang['Membership'],
+                "$this->delformat" => self::$wraithlang['Delete'],
             );
         }
         $this->headerData = array(

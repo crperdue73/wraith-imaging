@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category HostVNCLink
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Displays the vnc link on hosts.
  *
  * @category HostVNCLink
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class HostVNCLink extends Hook
 {

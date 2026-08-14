@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category RemoveIPAddressColumn
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Remove the ip column from host list.
  *
  * @category RemoveIPAddressColumn
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class RemoveIPAddressColumn extends Hook
 {

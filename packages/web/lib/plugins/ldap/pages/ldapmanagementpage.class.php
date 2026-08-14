@@ -5,12 +5,12 @@
  * PHP version 5
  *
  * @category LDAPPluginHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The ldap management page
@@ -18,14 +18,14 @@
  * PHP version 5
  *
  * @category LDAPPluginHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class LDAPManagementPage extends FOGPage
+class LDAPManagementPage extends WRAITHPage
 {
     /**
      * The node that uses this page
@@ -43,8 +43,8 @@ class LDAPManagementPage extends FOGPage
     public function __construct($name = '')
     {
         $this->name = _('LDAP Management');
-        self::$foglang['ExportLdap'] = _('Export LDAPs');
-        self::$foglang['ImportLdap'] = _('Import LDAPs');
+        self::$wraithlang['ExportLdap'] = _('Export LDAPs');
+        self::$wraithlang['ImportLdap'] = _('Import LDAPs');
         parent::__construct($name);
         global $id;
         global $sub;
@@ -57,8 +57,8 @@ class LDAPManagementPage extends FOGPage
         }
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#ldap-gen" => self::$foglang['General'],
-                "$this->delformat" => self::$foglang['Delete'],
+                "$this->linkformat#ldap-gen" => self::$wraithlang['General'],
+                "$this->delformat" => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('LDAP Connection Name') => $this->obj->get('name'),
@@ -1060,7 +1060,7 @@ class LDAPManagementPage extends FOGPage
             '${field}',
             '${input}',
         );
-        $filter = self::getSetting('FOG_USER_FILTER');
+        $filter = self::getSetting('WRAITH_USER_FILTER');
         $filter = preg_replace('#\s+#', '', $filter);
         $ports = self::getSetting('LDAP_PORTS');
         $ports = preg_replace('#\s+#', '', $ports);
@@ -1148,7 +1148,7 @@ class LDAPManagementPage extends FOGPage
                 );
             } else {
                 self::setSetting('LDAP_PORTS', $ports);
-                self::setSetting('FOG_USER_FILTER', $filter);
+                self::setSetting('WRAITH_USER_FILTER', $filter);
                 $msg = json_encode(
                     array(
                                         'msg' => _('Settings successfully stored!'),

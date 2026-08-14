@@ -63,13 +63,13 @@ packages/web/management/languages/*
 ###############
 *config.class.php
 *.well-known
-packages/web/fog
+packages/web/wraith
 packages/web/.vscode
 
 # Erroneous Packages #
 ######################
-packages/FOGService.msi
-packages/web/client/FOGService.msi
+packages/WRAITHService.msi
+packages/web/client/WRAITHService.msi
 packages/web/management/bower_components
 packages/web/management/dist
 packages/web/management/plugins

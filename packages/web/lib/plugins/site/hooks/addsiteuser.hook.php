@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddSiteUSer
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Associate Users to a Site.
  *
  * @category AddSiteUSer
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSiteUser extends Hook
 {

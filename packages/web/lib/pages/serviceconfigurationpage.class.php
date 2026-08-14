@@ -6,22 +6,22 @@
  * PHP version 5
  *
  * @category ServiceConfigurationPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Configure global level module/services.
  * These are things like hostname changer, display, etc...
  *
  * @category ServiceConfigurationPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ServiceConfigurationPage extends FOGPage
+class ServiceConfigurationPage extends WRAITHPage
 {
     /**
      * The node this page works off of.
@@ -49,30 +49,30 @@ class ServiceConfigurationPage extends FOGPage
             sprintf(
                 '?node=%s#home',
                 $this->node
-            ) => self::$foglang['Home'],
+            ) => self::$wraithlang['Home'],
             "$servicelink#autologout" => sprintf(
                 '%s %s',
-                self::$foglang['Auto'],
-                self::$foglang['Logout']
+                self::$wraithlang['Auto'],
+                self::$wraithlang['Logout']
             ),
-            "$servicelink#clientupdater" => self::$foglang['ClientUpdater'],
-            "$servicelink#dircleanup" => self::$foglang['DirectoryCleaner'],
+            "$servicelink#clientupdater" => self::$wraithlang['ClientUpdater'],
+            "$servicelink#dircleanup" => self::$wraithlang['DirectoryCleaner'],
             "$servicelink#displaymanager" => sprintf(
-                self::$foglang['SelManager'],
-                self::$foglang['Display']
+                self::$wraithlang['SelManager'],
+                self::$wraithlang['Display']
             ),
-            "$servicelink#greenfog" => self::$foglang['GreenFOG'],
-            "$servicelink#hostregister" => self::$foglang['HostRegistration'],
-            "$servicelink#hostnamechanger" => self::$foglang['HostnameChanger'],
-            "$servicelink#powermanagement" => self::$foglang['PowerManagement'],
+            "$servicelink#greenwraith" => self::$wraithlang['GreenWRAITH'],
+            "$servicelink#hostregister" => self::$wraithlang['HostRegistration'],
+            "$servicelink#hostnamechanger" => self::$wraithlang['HostnameChanger'],
+            "$servicelink#powermanagement" => self::$wraithlang['PowerManagement'],
             "$servicelink#printermanager" => sprintf(
-                self::$foglang['SelManager'],
-                self::$foglang['Printer']
+                self::$wraithlang['SelManager'],
+                self::$wraithlang['Printer']
             ),
-            "$servicelink#snapinclient" => self::$foglang['SnapinClient'],
-            "$servicelink#taskreboot" => self::$foglang['TaskReboot'],
-            "$servicelink#usercleanup" => self::$foglang['UserCleanup'],
-            "$servicelink#usertracker" => self::$foglang['UserTracker'],
+            "$servicelink#snapinclient" => self::$wraithlang['SnapinClient'],
+            "$servicelink#taskreboot" => self::$wraithlang['TaskReboot'],
+            "$servicelink#usercleanup" => self::$wraithlang['UserCleanup'],
+            "$servicelink#usertracker" => self::$wraithlang['UserTracker'],
         );
         $this->obj = new Service($this->id);
         self::$HookManager
@@ -147,17 +147,17 @@ class ServiceConfigurationPage extends FOGPage
         echo '<div class="panel panel-info">';
         echo '<div class="panel-heading text-center">';
         echo '<h4 class="title">';
-        echo _('FOG Client Download');
+        echo _('WRAITH Client Download');
         echo '</h4>';
         echo '</div>';
         echo '<div class="panel-body">';
         echo _('Use the following link to go to the client page.');
         echo ' ';
-        echo _('There you can download utilities such as FOG Prep');
+        echo _('There you can download utilities such as WRAITH Prep');
         echo ', ';
-        echo _('FOG Crypt');
+        echo _('WRAITH Crypt');
         echo ', ';
-        echo _('and both the legacy and new FOG clients.');
+        echo _('and both the legacy and new WRAITH clients.');
         echo '<br/>';
         echo '<a href="?node=client">';
         echo _('Click Here');
@@ -336,7 +336,7 @@ class ServiceConfigurationPage extends FOGPage
                     echo '<div class="input-group">';
                     echo '<input type="text" name="tme" value='
                         . '"'
-                        . self::getSetting('FOG_CLIENT_AUTOLOGOFF_MIN')
+                        . self::getSetting('WRAITH_CLIENT_AUTOLOGOFF_MIN')
                         . '" class="form-control" id="updatetme"/>';
                     echo '</div>';
                     echo '</div>';
@@ -393,7 +393,7 @@ class ServiceConfigurationPage extends FOGPage
                     echo '</h4>';
                     echo '</div>';
                     echo '<div class="panel-body">';
-                    self::getClass('FOGConfigurationPage')->clientupdater(false);
+                    self::getClass('WRAITHConfigurationPage')->clientupdater(false);
                     echo '</div>';
                     echo '</div>';
                     unset(
@@ -451,7 +451,7 @@ class ServiceConfigurationPage extends FOGPage
                     echo _('This module is only used on the old client.');
                     echo _('The old client iswhat was distributed with');
                     echo ' ';
-                    echo _('FOG 1.2.0 and earlier.');
+                    echo _('WRAITH 1.2.0 and earlier.');
                     echo ' ';
                     echo _('This module did not work past Windows XP');
                     echo ' ';
@@ -527,9 +527,9 @@ class ServiceConfigurationPage extends FOGPage
                         '${input}'
                     );
                     $disps = array(
-                        'FOG_CLIENT_DISPLAYMANAGER_R',
-                        'FOG_CLIENT_DISPLAYMANAGER_X',
-                        'FOG_CLIENT_DISPLAYMANAGER_Y'
+                        'WRAITH_CLIENT_DISPLAYMANAGER_R',
+                        'WRAITH_CLIENT_DISPLAYMANAGER_X',
+                        'WRAITH_CLIENT_DISPLAYMANAGER_Y'
                     );
                     list(
                         $r,
@@ -593,7 +593,7 @@ class ServiceConfigurationPage extends FOGPage
                         $this->attributes
                     );
                     break;
-                case 'greenfog':
+                case 'greenwraith':
                     unset(
                         $this->data,
                         $this->form,
@@ -630,33 +630,33 @@ class ServiceConfigurationPage extends FOGPage
                         $selAction,
                         true
                     );
-                    Route::listem('greenfog');
-                    $GreenFogs = json_decode(
+                    Route::listem('greenwraith');
+                    $GreenWraiths = json_decode(
                         Route::getData()
                     );
-                    $GreenFogs = isset($GreenFogs->greenfogs) ? $GreenFogs->greenfogs : array();
-                    foreach ($GreenFogs as &$GreenFog) {
+                    $GreenWraiths = isset($GreenWraiths->greenwraiths) ? $GreenWraiths->greenwraiths : array();
+                    foreach ($GreenWraiths as &$GreenWraith) {
                         $gftime = self::niceDate(
-                            $GreenFog->hour
+                            $GreenWraith->hour
                             . ':'
-                            . $GreenFog->min
+                            . $GreenWraith->min
                         )->format('H:i');
                         $this->data[] = array(
                             'gf_time' => $gftime,
                             'gf_action' => (
-                                $GreenFog->action == 'r' ?
+                                $GreenWraith->action == 'r' ?
                                 _('Reboot') :
                                 (
-                                    $GreenFog->action == 's' ?
+                                    $GreenWraith->action == 's' ?
                                     _('Shutdown') :
                                     _('N/A')
                                 )
                             ),
-                            'gf_id' => $GreenFog->id
+                            'gf_id' => $GreenWraith->id
                         );
-                        unset($GreenFog);
+                        unset($GreenWraith);
                     }
-                    unset($GreenFogs);
+                    unset($GreenWraiths);
                     echo '<div class="panel panel-info">';
                     echo '<div class="panel-heading text-center">';
                     echo '<h4 class="title">';
@@ -668,7 +668,7 @@ class ServiceConfigurationPage extends FOGPage
                         . ': ';
                     echo _('This module is only used on the old client.');
                     echo ' ';
-                    echo _('The old client was distributed with FOG 1.2.0 and earlier.');
+                    echo _('The old client was distributed with WRAITH 1.2.0 and earlier.');
                     echo ' ';
                     echo _('This module has since been replaced with Power Management.');
                     echo '<hr/>';
@@ -782,7 +782,7 @@ class ServiceConfigurationPage extends FOGPage
                         . ': ';
                     echo _('This module is only used on the old client.');
                     echo ' ';
-                    echo _('The old client was distributed with FOG 1.2.0 and earlier.');
+                    echo _('The old client was distributed with WRAITH 1.2.0 and earlier.');
                     echo ' ';
                     echo _('This module did not work past Windows XP due to UAC.');
                     echo '<hr/>';
@@ -874,7 +874,7 @@ class ServiceConfigurationPage extends FOGPage
                     $tme = (int)filter_input(INPUT_POST, 'tme');
                     if (isset($_POST['updatedefaults'])) {
                         self::getClass('Service')
-                            ->set('name', 'FOG_CLIENT_AUTOLOGOFF_MIN')
+                            ->set('name', 'WRAITH_CLIENT_AUTOLOGOFF_MIN')
                             ->load('name')
                             ->set('value', $tme)
                             ->save();
@@ -916,7 +916,7 @@ class ServiceConfigurationPage extends FOGPage
                         );
                     }
                     break;
-                case 'greenfog':
+                case 'greenwraith':
                     if (isset($_POST['addevent'])) {
                         $h = filter_input(INPUT_POST, 'h');
                         $m = filter_input(INPUT_POST, 'm');
@@ -936,7 +936,7 @@ class ServiceConfigurationPage extends FOGPage
                                 _('Either reboot or shutdown action must be used.')
                             );
                         }
-                        $Service->setGreenFog(
+                        $Service->setGreenWraith(
                             $h,
                             $m,
                             $a
@@ -974,7 +974,7 @@ class ServiceConfigurationPage extends FOGPage
                     }
                     break;
                 case 'clientupdater':
-                    self::getClass('FOGConfigurationPage')->clientupdaterPost();
+                    self::getClass('WRAITHConfigurationPage')->clientupdaterPost();
                     break;
             }
             if (!$Service->save()) {

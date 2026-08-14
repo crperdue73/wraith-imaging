@@ -1,34 +1,34 @@
 <?php
 /**
  * Get version, used for multiple things.
- * The new fog client uses this to tell a client to update.
- * It also is used to return the current running FOG Version.
+ * The new wraith client uses this to tell a client to update.
+ * It also is used to return the current running WRAITH Version.
  * If the client update is disabled, it should return 0.0.0
  * as all clients use a numerical system of which 0.0.0 is below.
  *
  * PHP version 5
  *
  * @category Getversion
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Get version, used for multiple things.
- * The new fog client uses this to tell a client to update.
- * It also is used to return the current running FOG Version.
+ * The new wraith client uses this to tell a client to update.
+ * It also is used to return the current running WRAITH Version.
  * If the client update is disabled, it should return 0.0.0
  * as all clients use a numerical system of which 0.0.0 is below.
  *
  * @category Getversion
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
-$clientUpdate = (bool) FOGCore::getSetting('FOG_CLIENT_AUTOUPDATE');
+$clientUpdate = (bool) WRAITHCore::getSetting('WRAITH_CLIENT_AUTOUPDATE');
 if (isset($_REQUEST['client'])) {
     $ver = (
         $clientUpdate ?
@@ -38,13 +38,13 @@ if (isset($_REQUEST['client'])) {
 } elseif (isset($_REQUEST['clientver'])) {
     $ver = (
         $clientUpdate ?
-        FOG_CLIENT_VERSION :
+        WRAITH_CLIENT_VERSION :
         '0.0.0'
     );
 } elseif (isset($_REQUEST['url'])) {
 
     // Prevent an unauthenticated user from making arbitrary requests.
-    FOGCore::checkAuthAndCSRF();
+    WRAITHCore::checkAuthAndCSRF();
 
     $url = $_REQUEST['url'];
 
@@ -64,7 +64,7 @@ if (isset($_REQUEST['client'])) {
     }
 
     // Only allow other storage nodes:
-    $allowedStorageNodes = FOGCore::getSubObjectIDs('StorageNode', '', 'ip');
+    $allowedStorageNodes = WRAITHCore::getSubObjectIDs('StorageNode', '', 'ip');
     $host = strtolower($parts['host']);
     if (!in_array($host, array_map('strtolower', $allowedStorageNodes), true)) {
         http_response_code(403);
@@ -92,10 +92,10 @@ if (isset($_REQUEST['client'])) {
         }
     }
 
-    $res = $FOGURLRequests->process($_REQUEST['url']);
+    $res = $WRAITHURLRequests->process($_REQUEST['url']);
     $ver = array_shift($res);
 } else {
-    $ver = FOG_VERSION;
+    $ver = WRAITH_VERSION;
 }
 echo $ver;
 exit;

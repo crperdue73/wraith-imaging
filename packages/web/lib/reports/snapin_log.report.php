@@ -5,17 +5,17 @@
  * PHP Version 5
  *
  * @category Snapin_Log
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Snapin_Log extends ReportManagementPage
 {
     public function file()
     {
-        $this->title = _('FOG Snapin - Search');
+        $this->title = _('WRAITH Snapin - Search');
         unset(
             $this->data,
             $this->form,
@@ -343,6 +343,6 @@ class Snapin_Log extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category FileIntegrityManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * FileIntegrityManagementPage
  *
  * @category FileIntegrityManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class FileIntegrityManagementPage extends FOGPage
+class FileIntegrityManagementPage extends WRAITHPage
 {
     /**
      * The node to interact on.
@@ -37,17 +37,17 @@ class FileIntegrityManagementPage extends FOGPage
     public function __construct($name = '')
     {
         $this->name = _('File Integrity Management');
-        self::$foglang['ExportFileintegrity'] = _('Export Checksums');
+        self::$wraithlang['ExportFileintegrity'] = _('Export Checksums');
         parent::__construct($this->name);
         $this->menu['list'] = sprintf(
-            self::$foglang['ListAll'],
+            self::$wraithlang['ListAll'],
             _('Checksums')
         );
         unset($this->menu['add']);
         global $id;
         if ($id) {
             $this->subMenu = array(
-                $this->delformat => self::$foglang['Delete'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('Name') => $this->obj->get('name'),

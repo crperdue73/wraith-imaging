@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Template
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Hook Author <hookemail@email.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Template for others to work from.
  *
  * @category Template
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Hook Author <hookemail@email.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Template extends Hook
 {

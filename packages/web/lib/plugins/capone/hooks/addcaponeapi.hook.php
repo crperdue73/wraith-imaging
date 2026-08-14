@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddCaponeAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects capone stuff into the api system.
  *
  * @category AddCaponeAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddCaponeAPI extends Hook
 {
@@ -123,7 +123,7 @@ class AddCaponeAPI extends Hook
         }
         switch ($arguments['classname']) {
             case 'capone':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'image' => $arguments['class']->get('image')->get(),

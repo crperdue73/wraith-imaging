@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category StorageManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Displays the storage group.node information.
  *
  * @category StorageManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class StorageManagementPage extends FOGPage
+class StorageManagementPage extends WRAITHPage
 {
     /**
      * Node this class works from.
@@ -36,13 +36,13 @@ class StorageManagementPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['Storage Management'];
+        $this->name = self::$wraithlang['Storage Management'];
         parent::__construct($this->name);
         $this->menu = array(
-            'list' => self::$foglang['AllSN'],
-            'addStorageNode' => self::$foglang['AddSN'],
-            'storageGroup' => self::$foglang['AllSG'],
-            'addStorageGroup' => self::$foglang['AddSG'],
+            'list' => self::$wraithlang['AllSN'],
+            'addStorageNode' => self::$wraithlang['AddSN'],
+            'storageGroup' => self::$wraithlang['AllSG'],
+            'addStorageGroup' => self::$wraithlang['AddSG'],
         );
         global $node;
         global $sub;
@@ -69,22 +69,22 @@ class StorageManagementPage extends FOGPage
                             $this->node,
                             $sub,
                             $id
-                        ) => self::$foglang['General'],
+                        ) => self::$wraithlang['General'],
                         sprintf(
                             '?node=%s&sub=%s&id=%s',
                             $this->node,
                             'deleteStorageNode',
                             $id
-                        ) => self::$foglang['Delete']
+                        ) => self::$wraithlang['Delete']
                     );
                     $this->notes = array(
                         sprintf(
                             '%s %s',
-                            self::$foglang['Storage'],
-                            self::$foglang['Node']
+                            self::$wraithlang['Storage'],
+                            self::$wraithlang['Node']
                         ) => $this->obj->get('name'),
-                        self::$foglang['ImagePath'] => $this->obj->get('path'),
-                        self::$foglang['FTPPath'] => $this->obj->get('ftppath'),
+                        self::$wraithlang['ImagePath'] => $this->obj->get('path'),
+                        self::$wraithlang['FTPPath'] => $this->obj->get('ftppath'),
                     );
                 }
                 break;
@@ -113,19 +113,19 @@ class StorageManagementPage extends FOGPage
                             $this->node,
                             $sub,
                             $id
-                        ) => self::$foglang['General'],
+                        ) => self::$wraithlang['General'],
                         sprintf(
                             '?node=%s&sub=%s&id=%s',
                             $this->node,
                             'deleteStorageGroup',
                             $id
-                        ) => self::$foglang['Delete']
+                        ) => self::$wraithlang['Delete']
                     );
                     $this->notes = array(
                         sprintf(
                             '%s %s',
-                            self::$foglang['Storage'],
-                            self::$foglang['Group']
+                            self::$wraithlang['Storage'],
+                            self::$wraithlang['Group']
                         ) => $this->obj->get('name')
                     );
                 }
@@ -191,7 +191,7 @@ class StorageManagementPage extends FOGPage
             $this->templates,
             $this->attributes
         );
-        $this->title = self::$foglang['AllSN'];
+        $this->title = self::$wraithlang['AllSN'];
         Route::listem('storagenode');
         $StorageNodes = json_decode(
             Route::getData()
@@ -221,10 +221,10 @@ class StorageManagementPage extends FOGPage
             '<input type="checkbox" name="toggle-checkbox" class='
             . '"toggle-checkboxAction" id="toggler"/>'
             . '<label for="toggler"></label>',
-            self::$foglang['SN'],
-            self::$foglang['SG'],
-            self::$foglang['Enabled'],
-            self::$foglang['MasterNode'],
+            self::$wraithlang['SN'],
+            self::$wraithlang['SG'],
+            self::$wraithlang['Enabled'],
+            self::$wraithlang['MasterNode'],
             _('Max Clients'),
         );
         $this->templates = array(
@@ -235,7 +235,7 @@ class StorageManagementPage extends FOGPage
                 '<a href="?node=%s&sub=edit&%s=${id}" title="%s">(${id}) - ${name}</a>',
                 $this->node,
                 $this->id,
-                self::$foglang['Edit']
+                self::$wraithlang['Edit']
             ),
             '${storage_group}',
             '${isEnabledText}',
@@ -283,7 +283,7 @@ class StorageManagementPage extends FOGPage
      */
     public function addStorageNode()
     {
-        $this->title = self::$foglang['AddSN'];
+        $this->title = self::$wraithlang['AddSN'];
         unset($this->headerData);
         $this->attributes = array(
             array('class' => 'col-xs-4'),
@@ -296,7 +296,7 @@ class StorageManagementPage extends FOGPage
         $name = filter_input(INPUT_POST, 'name');
         $desc = filter_input(INPUT_POST, 'description');
         $ip = filter_input(INPUT_POST, 'ip');
-        $webroot = filter_input(INPUT_POST, 'webroot') ?: '/fog';
+        $webroot = filter_input(INPUT_POST, 'webroot') ?: '/wraith';
         $maxClients = (int)filter_input(INPUT_POST, 'maxClients');
         $ismaster = isset($_POST['isMaster']) ? ' checked' : '';
         $bandwidth = filter_input(INPUT_POST, 'bandwidth');
@@ -308,8 +308,8 @@ class StorageManagementPage extends FOGPage
         }
         $path = filter_input(INPUT_POST, 'path') ?: '/images/';
         $ftppath = filter_input(INPUT_POST, 'ftppath') ?: '/images/';
-        $snapinpath = filter_input(INPUT_POST, 'snapinpath') ?: '/opt/fog/snapins/';
-        $sslpath = filter_input(INPUT_POST, 'sslpath') ?: '/opt/fog/snapins/ssl/';
+        $snapinpath = filter_input(INPUT_POST, 'snapinpath') ?: '/opt/wraith/snapins/';
+        $sslpath = filter_input(INPUT_POST, 'sslpath') ?: '/opt/wraith/snapins/ssl/';
         $bitrate = filter_input(INPUT_POST, 'bitrate');
         $helloInterval = filter_input(INPUT_POST, 'helloInterval');
         $interface = filter_input(INPUT_POST, 'interface') ?: 'eth0';
@@ -317,14 +317,14 @@ class StorageManagementPage extends FOGPage
         $pass = filter_input(INPUT_POST, 'pass');
         $fields = array(
             '<label for="name">'
-            . self::$foglang['SNName']
+            . self::$wraithlang['SNName']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="name" id="name" value="'
             . Initiator::e($name)
             . '" autocomplete="off" class="form-control" required/>'
             . '</div>',
             '<label for="desc">'
-            . self::$foglang['SNDesc']
+            . self::$wraithlang['SNDesc']
             . '</label>' => '<div class="input-group">'
             . '<textarea name="description" id="desc" autocomplete="off" '
             . 'class="form-control">'
@@ -332,7 +332,7 @@ class StorageManagementPage extends FOGPage
             . '</textarea>'
             . '</div>',
             '<label for="ip">'
-            . self::$foglang['IPAdr']
+            . self::$wraithlang['IPAdr']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="ip" id="ip" value="'
             . Initiator::e($ip)
@@ -346,14 +346,14 @@ class StorageManagementPage extends FOGPage
             . '" class="form-control" autocomplete="off"/>'
             . '</div>',
             '<label for="maxClients">'
-            . self::$foglang['MaxClients']
+            . self::$wraithlang['MaxClients']
             . '</div>' => '<div class="input-group">'
             . '<input type="number" name="maxClients" id="maxClients" value="'
             . Initiator::e($maxClients)
             . '" class="form-control" autocomplete="off" required/>'
             . '</div>',
             '<label for="ismaster">'
-            . self::$foglang['IsMasterNode']
+            . self::$wraithlang['IsMasterNode']
             . '</label>' => '<div class="col-xs-1">'
             . '<input type="checkbox" name="isMaster" '
             . 'id="ismaster"'
@@ -362,15 +362,15 @@ class StorageManagementPage extends FOGPage
             . '</div>'
             . '<div class="col-xs-1">'
             . '<i class="icon fa fa-question hand" title="'
-            . self::$foglang['CautionPhrase']
+            . self::$wraithlang['CautionPhrase']
             . '" data-toggle="tooltip" data-placement="right"></i>'
             . '</div>',
             '<label for="bandwidth">'
-            . self::$foglang['BandwidthReplication']
+            . self::$wraithlang['BandwidthReplication']
             . ' (Kbps)'
             . '</label>' => '<div class="input-group">'
             . '<i class="input-group-addon icon fa fa-question hand" title="'
-            . self::$foglang['BandwidthRepHelp']
+            . self::$wraithlang['BandwidthRepHelp']
             . '" data-toggle="tooltip" data-placement="left"></i>'
             . '<input type="number" name="bandwidth" id="bandwidth" '
             . 'value="'
@@ -378,34 +378,34 @@ class StorageManagementPage extends FOGPage
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="storagegroupID">'
-            . self::$foglang['SG']
+            . self::$wraithlang['SG']
             . '</label>' => self::getClass('StorageGroupManager')->buildSelectBox(
                 $storagegroupID,
                 'storagegroupID'
             ),
             '<label for="path">'
-            . self::$foglang['ImagePath']
+            . self::$wraithlang['ImagePath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="path" id="path" value="'
             . Initiator::e($path)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="ftppath">'
-            . self::$foglang['FTPPath']
+            . self::$wraithlang['FTPPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="ftppath" id="ftppath" value="'
             . Initiator::e($ftppath)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="snapinpath">'
-            . self::$foglang['SnapinPath']
+            . self::$wraithlang['SnapinPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="snapinpath" id="snapinpath" value="'
             . Initiator::e($snapinpath)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="sslpath">'
-            . self::$foglang['SSLPath']
+            . self::$wraithlang['SSLPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="sslpath" id="sslpath" value="'
             . Initiator::e($sslpath)
@@ -426,33 +426,33 @@ class StorageManagementPage extends FOGPage
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="interface">'
-            . self::$foglang['Interface']
+            . self::$wraithlang['Interface']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="interface" id="interface" value="'
             . Initiator::e($interface)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="isen">'
-            . self::$foglang['IsEnabled']
+            . self::$wraithlang['IsEnabled']
             . '</label>' => '<input type="checkbox" name="isEnabled" id="isen" '
             . 'checked/>',
             '<label for="isgren">'
-            . self::$foglang['IsGraphEnabled']
+            . self::$wraithlang['IsGraphEnabled']
             . '<br/>'
             . '('
-            . self::$foglang['OnDash']
+            . self::$wraithlang['OnDash']
             . ')'
             . '</label>' => '<input type="checkbox" name="isGraphEnabled" '
             . 'id="isgren" checked/>',
             '<label for="user">'
-            . self::$foglang['ManUser']
+            . self::$wraithlang['ManUser']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="user" id="user" value="'
             . Initiator::e($user)
             . '" autocomplete="off" class="form-control" required/>'
             . '</div>',
             '<label for="pass">'
-            . self::$foglang['ManPass']
+            . self::$wraithlang['ManPass']
             . '</label>' => '<div class="input-group">'
             . '<input type="password" name="pass" id="pass" value="'
             . Initiator::e($pass)
@@ -525,25 +525,25 @@ class StorageManagementPage extends FOGPage
         self::$HookManager->processEvent('STORAGE_NODE_ADD_POST');
         try {
             if (empty($name)) {
-                throw new Exception(self::$foglang['StorageNameRequired']);
+                throw new Exception(self::$wraithlang['StorageNameRequired']);
             }
             if (self::getClass('StorageNodeManager')->exists($name)) {
-                throw new Exception(self::$foglang['StorageNameExists']);
+                throw new Exception(self::$wraithlang['StorageNameExists']);
             }
             if (empty($ip)) {
-                throw new Exception(self::$foglang['StorageIPRequired']);
+                throw new Exception(self::$wraithlang['StorageIPRequired']);
             }
             if (empty($maxClients)) {
-                throw new Exception(self::$foglang['StorageClientsRequired']);
+                throw new Exception(self::$wraithlang['StorageClientsRequired']);
             }
             if (empty($interface)) {
-                throw new Exception(self::$foglang['StorageIntRequired']);
+                throw new Exception(self::$wraithlang['StorageIntRequired']);
             }
             if (empty($user)) {
-                throw new Exception(self::$foglang['StorageUserRequired']);
+                throw new Exception(self::$wraithlang['StorageUserRequired']);
             }
             if (empty($pass)) {
-                throw new Exception(self::$foglang['StoragePassRequired']);
+                throw new Exception(self::$wraithlang['StoragePassRequired']);
             }
             if (is_numeric($bandwidth)) {
                 if ($bandwidth < 0) {
@@ -694,14 +694,14 @@ class StorageManagementPage extends FOGPage
         );
         $fields = array(
             '<label for="name">'
-            . self::$foglang['SNName']
+            . self::$wraithlang['SNName']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="name" id="name" value="'
             . Initiator::e($name)
             . '" autocomplete="off" class="form-control" required/>'
             . '</div>',
             '<label for="desc">'
-            . self::$foglang['SNDesc']
+            . self::$wraithlang['SNDesc']
             . '</label>' => '<div class="input-group">'
             . '<textarea name="description" id="desc" autocomplete="off" '
             . 'class="form-control">'
@@ -709,7 +709,7 @@ class StorageManagementPage extends FOGPage
             . '</textarea>'
             . '</div>',
             '<label for="ip">'
-            . self::$foglang['IPAdr']
+            . self::$wraithlang['IPAdr']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="ip" id="ip" value="'
             . Initiator::e($ip)
@@ -723,14 +723,14 @@ class StorageManagementPage extends FOGPage
             . '" class="form-control" autocomplete="off"/>'
             . '</div>',
             '<label for="maxClients">'
-            . self::$foglang['MaxClients']
+            . self::$wraithlang['MaxClients']
             . '</div>' => '<div class="input-group">'
             . '<input type="number" name="maxClients" id="maxClients" value="'
             . Initiator::e($maxClients)
             . '" class="form-control" autocomplete="off" required/>'
             . '</div>',
             '<label for="ismaster">'
-            . self::$foglang['IsMasterNode']
+            . self::$wraithlang['IsMasterNode']
             . '</label>' => '<div class="col-xs-1">'
             . '<input type="checkbox" name="isMaster" '
             . 'id="ismaster"'
@@ -739,15 +739,15 @@ class StorageManagementPage extends FOGPage
             . '</div>'
             . '<div class="col-xs-1">'
             . '<i class="icon fa fa-question hand" title="'
-            . self::$foglang['CautionPhrase']
+            . self::$wraithlang['CautionPhrase']
             . '" data-toggle="tooltip" data-placement="right"></i>'
             . '</div>',
             '<label for="bandwidth">'
-            . self::$foglang['BandwidthReplication']
+            . self::$wraithlang['BandwidthReplication']
             . ' (Kbps)'
             . '</label>' => '<div class="input-group">'
             . '<i class="input-group-addon icon fa fa-question hand" title="'
-            . self::$foglang['BandwidthRepHelp']
+            . self::$wraithlang['BandwidthRepHelp']
             . '" data-toggle="tooltip" data-placement="left"></i>'
             . '<input type="number" name="bandwidth" id="bandwidth" '
             . 'value="'
@@ -755,34 +755,34 @@ class StorageManagementPage extends FOGPage
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="storagegroupID">'
-            . self::$foglang['SG']
+            . self::$wraithlang['SG']
             . '</label>' => self::getClass('StorageGroupManager')->buildSelectBox(
                 $storagegroupID,
                 'storagegroupID'
             ),
             '<label for="path">'
-            . self::$foglang['ImagePath']
+            . self::$wraithlang['ImagePath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="path" id="path" value="'
             . Initiator::e($path)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="ftppath">'
-            . self::$foglang['FTPPath']
+            . self::$wraithlang['FTPPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="ftppath" id="ftppath" value="'
             . Initiator::e($ftppath)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="snapinpath">'
-            . self::$foglang['SnapinPath']
+            . self::$wraithlang['SnapinPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="snapinpath" id="snapinpath" value="'
             . Initiator::e($snapinpath)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="sslpath">'
-            . self::$foglang['SSLPath']
+            . self::$wraithlang['SSLPath']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="sslpath" id="sslpath" value="'
             . Initiator::e($sslpath)
@@ -803,36 +803,36 @@ class StorageManagementPage extends FOGPage
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="interface">'
-            . self::$foglang['Interface']
+            . self::$wraithlang['Interface']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="interface" id="interface" value="'
             . Initiator::e($interface)
             . '" autocomplete="off" class="form-control"/>'
             . '</div>',
             '<label for="isen">'
-            . self::$foglang['IsEnabled']
+            . self::$wraithlang['IsEnabled']
             . '</label>' => '<input type="checkbox" name="isEnabled" id="isen" '
             . $isen
             . '/>',
             '<label for="isgren">'
-            . self::$foglang['IsGraphEnabled']
+            . self::$wraithlang['IsGraphEnabled']
             . '<br/>'
             . '('
-            . self::$foglang['OnDash']
+            . self::$wraithlang['OnDash']
             . ')'
             . '</label>' => '<input type="checkbox" name="isGraphEnabled" '
             . 'id="isgren"'
             . $isgren
             . '/>',
             '<label for="user">'
-            . self::$foglang['ManUser']
+            . self::$wraithlang['ManUser']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="user" id="user" value="'
             . Initiator::e($user)
             . '" autocomplete="off" class="form-control" required/>'
             . '</div>',
             '<label for="pass">'
-            . self::$foglang['ManPass']
+            . self::$wraithlang['ManPass']
             . '</label>' => '<div class="input-group">'
             . '<input type="password" name="pass" id="pass" value="'
             . Initiator::e($pass)
@@ -911,29 +911,29 @@ class StorageManagementPage extends FOGPage
             );
         try {
             if (!$name) {
-                throw new Exception(self::$foglang['StorageNameRequired']);
+                throw new Exception(self::$wraithlang['StorageNameRequired']);
             }
             $exists = self::getClass('StorageNodeManager')
                 ->exists($name, $this->obj->get('id'));
             if ($this->obj->get('name') != $name
                 && $exists
             ) {
-                throw new Exception(self::$foglang['StorageNameExists']);
+                throw new Exception(self::$wraithlang['StorageNameExists']);
             }
             if (!$ip) {
-                throw new Exception(self::$foglang['StorageIPRequired']);
+                throw new Exception(self::$wraithlang['StorageIPRequired']);
             }
             if ($maxClients < 0) {
-                throw new Exception(self::$foglang['StorageClientRequired']);
+                throw new Exception(self::$wraithlang['StorageClientRequired']);
             }
             if (!$interface) {
-                throw new Exception(self::$foglang['StorageIntRequired']);
+                throw new Exception(self::$wraithlang['StorageIntRequired']);
             }
             if (!$user) {
-                throw new Exception(self::$foglang['StorageUserRequired']);
+                throw new Exception(self::$wraithlang['StorageUserRequired']);
             }
             if (!$pass) {
-                throw new Exception(self::$foglang['StoragePassRequired']);
+                throw new Exception(self::$wraithlang['StoragePassRequired']);
             }
             if (is_numeric($bandwidth)) {
                 if ($bandwidth < 0) {
@@ -1020,7 +1020,7 @@ class StorageManagementPage extends FOGPage
     {
         $this->title = sprintf(
             '%s: %s',
-            self::$foglang['Remove'],
+            self::$wraithlang['Remove'],
             $this->obj->get('name')
         );
         unset($this->headerData);
@@ -1079,9 +1079,9 @@ class StorageManagementPage extends FOGPage
      */
     public function deleteStorageNodePost()
     {
-        if (self::getSetting('FOG_REAUTH_ON_DELETE')) {
-            $user = filter_input(INPUT_POST, 'fogguiuser');
-            $pass = filter_input(INPUT_POST, 'fogguipass');
+        if (self::getSetting('WRAITH_REAUTH_ON_DELETE')) {
+            $user = filter_input(INPUT_POST, 'wraithguiuser');
+            $pass = filter_input(INPUT_POST, 'wraithguipass');
             $validate = self::getClass('User')
                 ->passwordValidate(
                     $user,
@@ -1091,7 +1091,7 @@ class StorageManagementPage extends FOGPage
             if ($validate) {
                 echo json_encode(
                     array(
-                        'error' => self::$foglang['InvalidLogin']
+                        'error' => self::$wraithlang['InvalidLogin']
                     )
                 );
                 exit;
@@ -1106,12 +1106,12 @@ class StorageManagementPage extends FOGPage
             );
         try {
             if (!$this->obj->destroy()) {
-                throw new Exception(self::$foglang['FailDelSN']);
+                throw new Exception(self::$wraithlang['FailDelSN']);
             }
             $hook = 'STORAGE_NODE_DELETE_SUCCESS';
             $msg = sprintf(
                 '%s: %s',
-                self::$foglang['SNDelSuccess'],
+                self::$wraithlang['SNDelSuccess'],
                 $this->obj->get('name')
             );
             $url = sprintf(
@@ -1147,7 +1147,7 @@ class StorageManagementPage extends FOGPage
             $this->templates,
             $this->attributes
         );
-        $this->title = self::$foglang['AllSG'];
+        $this->title = self::$wraithlang['AllSG'];
         Route::listem('storagegroup');
         $StorageGroups = json_decode(
             Route::getData()
@@ -1165,7 +1165,7 @@ class StorageManagementPage extends FOGPage
             '<input type="checkbox" name="toggle-checkbox" class='
             . '"toggle-checkboxAction" id="toggler2"/>'
             . '<label for="toggler2"></label>',
-            self::$foglang['SG'],
+            self::$wraithlang['SG'],
             _('Max'),
         );
         $this->templates = array(
@@ -1177,7 +1177,7 @@ class StorageManagementPage extends FOGPage
                 . '"%s">(${id}) - ${name}</a>',
                 $this->node,
                 $this->id,
-                self::$foglang['Edit']
+                self::$wraithlang['Edit']
             ),
             '${max_clients}',
         );
@@ -1219,7 +1219,7 @@ class StorageManagementPage extends FOGPage
      */
     public function addStorageGroup()
     {
-        $this->title = self::$foglang['AddSG'];
+        $this->title = self::$wraithlang['AddSG'];
         unset($this->headerData);
         $this->attributes = array(
             array('class' => 'col-xs-4'),
@@ -1233,14 +1233,14 @@ class StorageManagementPage extends FOGPage
         $desc = filter_input(INPUT_POST, 'description');
         $fields = array(
             '<label for="name">'
-            . self::$foglang['SGName']
+            . self::$wraithlang['SGName']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="name" id="name" value="'
             . Initiator::e($name)
             . '" class="form-control" required/>'
             . '</div>',
             '<label for="description">'
-            . self::$foglang['SGDesc']
+            . self::$wraithlang['SGDesc']
             . '</label>' => '<div class="input-group">'
             . '<textarea name="description" id="description" class="form-control">'
             . Initiator::e($desc)
@@ -1293,21 +1293,21 @@ class StorageManagementPage extends FOGPage
         $desc = filter_input(INPUT_POST, 'description');
         try {
             if (empty($name)) {
-                throw new Exception(self::$foglang['SGNameReq']);
+                throw new Exception(self::$wraithlang['SGNameReq']);
             }
             if (self::getClass('StorageGroupManager')->exists($name)) {
-                throw new Exception(self::$foglang['SGExist']);
+                throw new Exception(self::$wraithlang['SGExist']);
             }
             $StorageGroup = self::getClass('StorageGroup')
                 ->set('name', $name)
                 ->set('description', $desc);
             if (!$StorageGroup->save()) {
-                throw new Exception(self::$foglang['DBupfailed']);
+                throw new Exception(self::$wraithlang['DBupfailed']);
             }
             $hook = 'STORAGE_GROUP_ADD_POST_SUCCESS';
             $msg = json_encode(
                 array(
-                    'msg' => self::$foglang['SGCreated'],
+                    'msg' => self::$wraithlang['SGCreated'],
                     'title' => _('Storage Group Create Success')
                 )
             );
@@ -1358,14 +1358,14 @@ class StorageManagementPage extends FOGPage
             $this->obj->get('description');
         $fields = array(
             '<label for="name">'
-            . self::$foglang['SGName']
+            . self::$wraithlang['SGName']
             . '</label>' => '<div class="input-group">'
             . '<input type="text" name="name" id="name" value="'
             . Initiator::e($name)
             . '" class="form-control" autocomplete="off" required/>'
             . '</div>',
             '<label for="description">'
-            . self::$foglang['SGDesc']
+            . self::$wraithlang['SGDesc']
             . '</label>' => '<div class="input-group">'
             . '<textarea name="description" id="description" class="form-control">'
             . Initiator::e($desc)
@@ -1375,7 +1375,7 @@ class StorageManagementPage extends FOGPage
             . _('Make Changes?')
             . '</label>' => '<button type="submit" name="update" id="update" '
             . 'class="btn btn-info btn-block">'
-            . self::$foglang['Update']
+            . self::$wraithlang['Update']
             . '</button>'
         );
         array_walk($fields, $this->fieldsToData);
@@ -1430,12 +1430,12 @@ class StorageManagementPage extends FOGPage
                 $this->obj->get('id')
             );
             if (!$name) {
-                throw new Exception(self::$foglang['SGName']);
+                throw new Exception(self::$wraithlang['SGName']);
             }
             if ($this->obj->get('name') != $name
                 && $exists
             ) {
-                throw new Exception(self::$foglang['SGExist']);
+                throw new Exception(self::$wraithlang['SGExist']);
             }
             $this->obj
                 ->set('name', $name)
@@ -1474,7 +1474,7 @@ class StorageManagementPage extends FOGPage
     {
         $this->title = sprintf(
             '%s: %s',
-            self::$foglang['Remove'],
+            self::$wraithlang['Remove'],
             $this->obj->get('name')
         );
         unset($this->headerData);
@@ -1534,9 +1534,9 @@ class StorageManagementPage extends FOGPage
      */
     public function deleteStorageGroupPost()
     {
-        if (self::getSetting('FOG_REAUTH_ON_DELETE')) {
-            $user = filter_input(INPUT_POST, 'fogguiuser');
-            $pass = filter_input(INPUT_POST, 'fogguipass');
+        if (self::getSetting('WRAITH_REAUTH_ON_DELETE')) {
+            $user = filter_input(INPUT_POST, 'wraithguiuser');
+            $pass = filter_input(INPUT_POST, 'wraithguipass');
             $validate = self::getClass('User')
                 ->passwordValidate(
                     $user,
@@ -1546,7 +1546,7 @@ class StorageManagementPage extends FOGPage
             if ($validate) {
                 echo json_encode(
                     array(
-                        'error' => self::$foglang['InvalidLogin']
+                        'error' => self::$wraithlang['InvalidLogin']
                     )
                 );
                 exit;
@@ -1559,15 +1559,15 @@ class StorageManagementPage extends FOGPage
             );
         try {
             if (self::getClass('StorageGroupManager')->count() == 1) {
-                throw new Exception(self::$foglang['OneSG']);
+                throw new Exception(self::$wraithlang['OneSG']);
             }
             if (!$this->obj->destroy()) {
-                throw new Exception(self::$foglang['FailDelSG']);
+                throw new Exception(self::$wraithlang['FailDelSG']);
             }
             $hook = 'STORAGE_GROUP_DELETE_POST_SUCCESS';
             $msg = sprintf(
                 '%s: %s',
-                self::$foglang['SGDelSuccess'],
+                self::$wraithlang['SGDelSuccess'],
                 $this->obj->get('name')
             );
             $url = sprintf(

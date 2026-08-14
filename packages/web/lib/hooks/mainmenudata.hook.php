@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category MainMenuData
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Sebastian Roth <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Main menu hook changer.
  *
  * @category MainMenuData
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Sebastian Roth <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class MainMenuData extends Hook
 {

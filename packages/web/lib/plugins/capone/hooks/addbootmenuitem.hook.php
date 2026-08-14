@@ -5,19 +5,19 @@
  * PHP Version 5
  *
  * @category AddBootMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Creates the capone menu item.
  *
  * @category AddBootMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddBootMenuItem extends Hook
 {
@@ -72,20 +72,20 @@ class AddBootMenuItem extends Hook
         if (!in_array($this->node, (array)self::$pluginsinstalled)) {
             return;
         }
-        $dmi = self::getSetting('FOG_PLUGIN_CAPONE_DMI');
-        $shutdown = self::getSetting('FOG_PLUGIN_CAPONE_SHUTDOWN');
+        $dmi = self::getSetting('WRAITH_PLUGIN_CAPONE_DMI');
+        $shutdown = self::getSetting('WRAITH_PLUGIN_CAPONE_SHUTDOWN');
         if (!$dmi) {
             return;
         }
         $exists = self::getClass('PXEMenuOptionsManager')
-            ->exists('fog.capone', '', 'name');
+            ->exists('wraith.capone', '', 'name');
         $args = trim("mode=capone shutdown=$shutdown");
         $entry = self::getClass('PXEMenuOptions')
-            ->set('name', 'fog.capone')
+            ->set('name', 'wraith.capone')
             ->load('name');
         if (!$exists) {
             $entry
-                ->set('name', 'fog.capone')
+                ->set('name', 'wraith.capone')
                 ->set('description', _('Capone Deploy'))
                 ->set('args', $args)
                 ->set('params', null)

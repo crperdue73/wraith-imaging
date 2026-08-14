@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category BootItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * How to edit the boot menu via hooks.
  *
  * @category BootItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class BootItem extends Hook
 {
@@ -147,7 +147,7 @@ class BootItem extends Hook
         /**
          * The next subset of information is about the item labels.
          * This is pulled from the db so some common values may be like:
-         * item-<label-name>  so fog.local has item value of: item-fog.local
+         * item-<label-name>  so wraith.local has item value of: item-wraith.local
          * inside of the item label is an arrayed item of value [0] containing
          * the label so to tweak:
          */
@@ -155,21 +155,21 @@ class BootItem extends Hook
             ->find() as $i => &$Menu
         ) {
             if ($arguments['ipxe']['item-'.$Menu->get('name')]
-                && $Menu->get('name') == 'fog.local'
+                && $Menu->get('name') == 'wraith.local'
             ) {
-                $arguments['ipxe']['item-fog.local'][0]
-                    = 'item fog.local THIS BOOTS TO DISK';
+                $arguments['ipxe']['item-wraith.local'][0]
+                    = 'item wraith.local THIS BOOTS TO DISK';
             }
             /**
              * Similar to the item-<label-name>
              * The choices follow similar constructs
              */
             if ($arguments['ipxe']['choice-'.$Menu->get('name')]
-                && $Menu->get('name') == 'fog.local'
+                && $Menu->get('name') == 'wraith.local'
             ) {
-                $arguments['ipxe']['choice-fog.local'][0]
-                    = ':fog.local';
-                $arguments['ipxe']['choice-fog.local'][1]
+                $arguments['ipxe']['choice-wraith.local'][0]
+                    = ':wraith.local';
+                $arguments['ipxe']['choice-wraith.local'][1]
                     = $arguments['bootexittype']
                     . ' || goto MENU';
             }

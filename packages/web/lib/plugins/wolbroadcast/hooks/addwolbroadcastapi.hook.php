@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddWOLBroadcastAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects wol broadcast stuff into the api system.
  *
  * @category AddWOLBroadcastAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddWOLBroadcastAPI extends Hook
 {

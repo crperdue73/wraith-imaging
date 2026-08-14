@@ -1,7 +1,7 @@
 <?php
 /**
  * This is a starter file. It's purpose, in my eyes, is to contain
- * all the text within fog that needs to be translated for other
+ * all the text within wraith that needs to be translated for other
  * languages. The idea is to make the translations needed all
  * in one file. You just call the variable and array you need.
  * The other idea of this is to make one location for multiple
@@ -13,42 +13,42 @@
  * PHP version 5
  *
  * @category Redirect
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 //Singular, status words to translate.
-$foglang['Display'] = _('Display');
-$foglang['Auto'] = _('Auto');
-$foglang['Model'] = _('Model');
-$foglang['Inventory'] = _('Inventory');
-$foglang['OS'] = _('O/S');
-$foglang['Edit'] = _('Edit');
-$foglang['Delete'] = _('Delete');
-$foglang['Deleted'] = _('Deleted');
-$foglang['All'] = _('All');
-$foglang['Add'] = _('Add');
-$foglang['Search'] = _('Search');
-$foglang['Storage'] = _('Storage');
-$foglang['Snapin'] = _('Snapin');
-$foglang['Snapins'] = _('Snapins');
-$foglang['Remove'] = _('Remove');
-$foglang['Removed'] = _('Removed');
-$foglang['Enabled'] = _('Enabled');
-$foglang['Management'] = _('Management');
-$foglang['Update'] = _('Update');
-$foglang['Image'] = _('Image');
-$foglang['Images'] = _('Images');
-$foglang['Node'] = _('Node');
-$foglang['Group'] = _('Group');
-$foglang['Groups'] = _('Groups');
-$foglang['Logout'] = _('Logout');
-$foglang['Host'] = _('Host');
-$foglang['Hosts'] = _('Hosts');
-$foglang['Bandwidth'] = _('Bandwidth');
-$foglang['BandwidthReplication'] = _('Replication Bandwidth');
-$foglang['BandwidthRepHelp'] = sprintf(
+$wraithlang['Display'] = _('Display');
+$wraithlang['Auto'] = _('Auto');
+$wraithlang['Model'] = _('Model');
+$wraithlang['Inventory'] = _('Inventory');
+$wraithlang['OS'] = _('O/S');
+$wraithlang['Edit'] = _('Edit');
+$wraithlang['Delete'] = _('Delete');
+$wraithlang['Deleted'] = _('Deleted');
+$wraithlang['All'] = _('All');
+$wraithlang['Add'] = _('Add');
+$wraithlang['Search'] = _('Search');
+$wraithlang['Storage'] = _('Storage');
+$wraithlang['Snapin'] = _('Snapin');
+$wraithlang['Snapins'] = _('Snapins');
+$wraithlang['Remove'] = _('Remove');
+$wraithlang['Removed'] = _('Removed');
+$wraithlang['Enabled'] = _('Enabled');
+$wraithlang['Management'] = _('Management');
+$wraithlang['Update'] = _('Update');
+$wraithlang['Image'] = _('Image');
+$wraithlang['Images'] = _('Images');
+$wraithlang['Node'] = _('Node');
+$wraithlang['Group'] = _('Group');
+$wraithlang['Groups'] = _('Groups');
+$wraithlang['Logout'] = _('Logout');
+$wraithlang['Host'] = _('Host');
+$wraithlang['Hosts'] = _('Hosts');
+$wraithlang['Bandwidth'] = _('Bandwidth');
+$wraithlang['BandwidthReplication'] = _('Replication Bandwidth');
+$wraithlang['BandwidthRepHelp'] = sprintf(
     '%s. %s %s. %s %s %s, %s.',
     _('This setting limits the bandwidth for replication between nodes'),
     _('It operates by getting the max bandwidth setting of the node'),
@@ -58,270 +58,270 @@ $foglang['BandwidthRepHelp'] = sprintf(
     _('limited to 1Mbps on that node'),
     _('you set the bandwidth field on that node to 1000')
 );
-$foglang['Transmit'] = _('Transmit');
-$foglang['Receive'] = _('Receive');
-$foglang['New'] = _('New');
-$foglang['User'] = _('User');
-$foglang['Users'] = _('Users');
-$foglang['Name'] = _('Name');
-$foglang['Members'] = _('Members');
-$foglang['Advanced'] = _('Advanced');
-$foglang['Hostname'] = _('Hostname');
-$foglang['IP'] = _('IP');
-$foglang['MAC'] = _('MAC');
-$foglang['Version'] = _('Version');
-$foglang['Text'] = _('Text');
-$foglang['Graphical'] = _('Graphical');
-$foglang['File'] = _('File');
-$foglang['Path'] = _('Path');
-$foglang['Shutdown'] = _('Shutdown');
-$foglang['Reboot'] = _('Reboot');
-$foglang['Time'] = _('Time');
-$foglang['Action'] = _('Action');
-$foglang['Printer'] = _('Printer');
-$foglang['PowerManagement'] = _('Power Management');
-$foglang['Client'] = _('Client');
-$foglang['Task'] = _('Task');
-$foglang['Username'] = _('Username');
-$foglang['Service'] = _('Service');
-$foglang['General'] = _('General');
-$foglang['Mode'] = _('Mode');
-$foglang['Date'] = _('Date');
-$foglang['Clear'] = _('Clear');
-$foglang['Desc'] = _('Description');
-$foglang['Here'] = _('here');
-$foglang['NOT'] = _('NOT');
-$foglang['or'] = _('or');
-$foglang['Row'] = _('Row');
-$foglang['Errors'] = _('Errors');
-$foglang['Error'] = _('Error');
-$foglang['Export'] = _('Export');
-$foglang['Schedule'] = _('Schedule');
-$foglang['Deploy'] = _('Deploy');
-$foglang['Capture'] = _('Capture');
-$foglang['Multicast'] = _('Multicast');
-$foglang['Status'] = _('Status');
-$foglang['Actions'] = _('Actions');
-$foglang['Hosts'] = _('Hosts');
-$foglang['State'] = _('State');
-$foglang['Kill'] = _('Kill');
-$foglang['Kernel'] = _('Kernel');
-$foglang['Location'] = _('Location');
-$foglang['N/A'] = _('N/A');
-$foglang['Home'] = _('Home');
-$foglang['Report'] = _('Report');
-$foglang['Reports'] = _('Reports');
-$foglang['Login'] = _('Login');
-$foglang['Queued'] = _('Queued');
-$foglang['Complete'] = _('Complete');
-$foglang['Unknown'] = _('Unknown');
-$foglang['Force'] = _('Force');
-$foglang['Type'] = _('Type');
-$foglang['Settings'] = _('Settings');
-$foglang['FOG'] = _('FOG');
-$foglang['Active'] = _('Active');
-$foglang['Printers'] = _('Printers');
-$foglang['Directory'] = _('Directory');
-$foglang['AD'] = _('Active Directory');
-$foglang['VirusHistory'] = _('Virus History');
-$foglang['LoginHistory'] = _('Login History');
-$foglang['ImageHistory'] = _('Image History');
-$foglang['SnapinHistory'] = _('Snapin History');
-$foglang['Configuration'] = _('Configuration');
-$foglang['Plugin'] = _('Plugin');
-$foglang['Locations'] = _('Locations');
-$foglang['Location'] = _('Location');
-$foglang['License'] = _('License');
-$foglang['KernelUpdate'] = _('Kernel Update');
-$foglang['InitrdUpdate'] = _('Initrd Update');
-$foglang['PXEBootMenu'] = _('iPXE General Configuration');
-$foglang['ClientUpdater'] = _('Client Updater');
-$foglang['HostnameChanger'] = _('Hostname Changer');
-$foglang['HostRegistration'] = _('Host Registration');
-$foglang['SnapinClient'] = _('Snapin Client');
-$foglang['TaskReboot'] = _('Task Reboot');
-$foglang['UserCleanup'] = _('User Cleanup');
-$foglang['UserTracker'] = _('User Tracker');
-$foglang['SelManager'] = _('%s Manager');
-$foglang['GreenFOG'] = _('Green FOG');
-$foglang['DirectoryCleaner'] = _('Directory Cleaner');
-$foglang['MACAddrList'] = _('MAC Address List');
-$foglang['FOGSettings'] = _('FOG Settings');
-$foglang['ServerShell'] = _('Server Shell');
-$foglang['LogViewer'] = _('Log Viewer');
-$foglang['ConfigSave'] = _('Configuration Save');
-$foglang['FOGSFPage'] = _('FOG Sourceforge Page');
-$foglang['FOGWebPage'] = _('FOG Home Page');
-$foglang['NewSearch'] = _('New Search');
-$foglang['ListAll'] = _('List All %s');
-$foglang['CreateNew'] = _('Create New %s');
-$foglang['Tasks'] = _('Tasks');
-$foglang['ClientSettings'] = _('Client Settings');
-$foglang['Plugins'] = _('Plugins');
-$foglang['BasicTasks'] = _('Basic Tasks');
-$foglang['Membership'] = _('Membership');
-$foglang['ImageAssoc'] = _('Image Association');
-$foglang['SelMenu'] = _('%s Menu');
-$foglang['PrimaryGroup'] = _('Primary Group');
-$foglang['AllSN'] = _('All Storage Nodes');
-$foglang['AddSN'] = _('Add Storage Node');
-$foglang['AllSG'] = _('All Storage Groups');
-$foglang['AddSG'] = _('Add Storage Group');
-$foglang['ActiveTasks'] = _('Active Tasks');
-$foglang['ActiveMCTasks'] = _('Active Multicast Tasks');
-$foglang['ActiveSnapins'] = _('Active Snapin Tasks');
-$foglang['ScheduledTasks'] = _('Scheduled Tasks');
-$foglang['InstalledPlugins'] = _('Installed Plugins');
-$foglang['InstallPlugins'] = _('Install Plugins');
-$foglang['ActivatePlugins'] = _('Activate Plugins');
-$foglang['ExportConfig'] = _('Export Configuration');
-$foglang['ImportConfig'] = _('Import Configuration');
-$foglang['Slogan'] = _('Open Source Computer Cloning Solution');
-$foglang['InvalidMAC'] = _('Invalid MAC Address!');
-$foglang['PXEConfiguration'] = _('iPXE Menu Item Settings');
-$foglang['PXEMenuCustomization'] = _('iPXE Menu Customization');
-$foglang['NewMenu'] = _('iPXE New Menu Entry');
-$foglang['Submit'] = _('Save Changes');
-$foglang['RequiredDB'] = _('Required database field is empty');
-$foglang['NoResults'] = _('No results found');
-$foglang['isRequired'] = _('%s is required');
+$wraithlang['Transmit'] = _('Transmit');
+$wraithlang['Receive'] = _('Receive');
+$wraithlang['New'] = _('New');
+$wraithlang['User'] = _('User');
+$wraithlang['Users'] = _('Users');
+$wraithlang['Name'] = _('Name');
+$wraithlang['Members'] = _('Members');
+$wraithlang['Advanced'] = _('Advanced');
+$wraithlang['Hostname'] = _('Hostname');
+$wraithlang['IP'] = _('IP');
+$wraithlang['MAC'] = _('MAC');
+$wraithlang['Version'] = _('Version');
+$wraithlang['Text'] = _('Text');
+$wraithlang['Graphical'] = _('Graphical');
+$wraithlang['File'] = _('File');
+$wraithlang['Path'] = _('Path');
+$wraithlang['Shutdown'] = _('Shutdown');
+$wraithlang['Reboot'] = _('Reboot');
+$wraithlang['Time'] = _('Time');
+$wraithlang['Action'] = _('Action');
+$wraithlang['Printer'] = _('Printer');
+$wraithlang['PowerManagement'] = _('Power Management');
+$wraithlang['Client'] = _('Client');
+$wraithlang['Task'] = _('Task');
+$wraithlang['Username'] = _('Username');
+$wraithlang['Service'] = _('Service');
+$wraithlang['General'] = _('General');
+$wraithlang['Mode'] = _('Mode');
+$wraithlang['Date'] = _('Date');
+$wraithlang['Clear'] = _('Clear');
+$wraithlang['Desc'] = _('Description');
+$wraithlang['Here'] = _('here');
+$wraithlang['NOT'] = _('NOT');
+$wraithlang['or'] = _('or');
+$wraithlang['Row'] = _('Row');
+$wraithlang['Errors'] = _('Errors');
+$wraithlang['Error'] = _('Error');
+$wraithlang['Export'] = _('Export');
+$wraithlang['Schedule'] = _('Schedule');
+$wraithlang['Deploy'] = _('Deploy');
+$wraithlang['Capture'] = _('Capture');
+$wraithlang['Multicast'] = _('Multicast');
+$wraithlang['Status'] = _('Status');
+$wraithlang['Actions'] = _('Actions');
+$wraithlang['Hosts'] = _('Hosts');
+$wraithlang['State'] = _('State');
+$wraithlang['Kill'] = _('Kill');
+$wraithlang['Kernel'] = _('Kernel');
+$wraithlang['Location'] = _('Location');
+$wraithlang['N/A'] = _('N/A');
+$wraithlang['Home'] = _('Home');
+$wraithlang['Report'] = _('Report');
+$wraithlang['Reports'] = _('Reports');
+$wraithlang['Login'] = _('Login');
+$wraithlang['Queued'] = _('Queued');
+$wraithlang['Complete'] = _('Complete');
+$wraithlang['Unknown'] = _('Unknown');
+$wraithlang['Force'] = _('Force');
+$wraithlang['Type'] = _('Type');
+$wraithlang['Settings'] = _('Settings');
+$wraithlang['WRAITH'] = _('WRAITH');
+$wraithlang['Active'] = _('Active');
+$wraithlang['Printers'] = _('Printers');
+$wraithlang['Directory'] = _('Directory');
+$wraithlang['AD'] = _('Active Directory');
+$wraithlang['VirusHistory'] = _('Virus History');
+$wraithlang['LoginHistory'] = _('Login History');
+$wraithlang['ImageHistory'] = _('Image History');
+$wraithlang['SnapinHistory'] = _('Snapin History');
+$wraithlang['Configuration'] = _('Configuration');
+$wraithlang['Plugin'] = _('Plugin');
+$wraithlang['Locations'] = _('Locations');
+$wraithlang['Location'] = _('Location');
+$wraithlang['License'] = _('License');
+$wraithlang['KernelUpdate'] = _('Kernel Update');
+$wraithlang['InitrdUpdate'] = _('Initrd Update');
+$wraithlang['PXEBootMenu'] = _('iPXE General Configuration');
+$wraithlang['ClientUpdater'] = _('Client Updater');
+$wraithlang['HostnameChanger'] = _('Hostname Changer');
+$wraithlang['HostRegistration'] = _('Host Registration');
+$wraithlang['SnapinClient'] = _('Snapin Client');
+$wraithlang['TaskReboot'] = _('Task Reboot');
+$wraithlang['UserCleanup'] = _('User Cleanup');
+$wraithlang['UserTracker'] = _('User Tracker');
+$wraithlang['SelManager'] = _('%s Manager');
+$wraithlang['GreenWRAITH'] = _('Green WRAITH');
+$wraithlang['DirectoryCleaner'] = _('Directory Cleaner');
+$wraithlang['MACAddrList'] = _('MAC Address List');
+$wraithlang['WRAITHSettings'] = _('WRAITH Settings');
+$wraithlang['ServerShell'] = _('Server Shell');
+$wraithlang['LogViewer'] = _('Log Viewer');
+$wraithlang['ConfigSave'] = _('Configuration Save');
+$wraithlang['WRAITHSFPage'] = _('WRAITH Sourceforge Page');
+$wraithlang['WRAITHWebPage'] = _('WRAITH Home Page');
+$wraithlang['NewSearch'] = _('New Search');
+$wraithlang['ListAll'] = _('List All %s');
+$wraithlang['CreateNew'] = _('Create New %s');
+$wraithlang['Tasks'] = _('Tasks');
+$wraithlang['ClientSettings'] = _('Client Settings');
+$wraithlang['Plugins'] = _('Plugins');
+$wraithlang['BasicTasks'] = _('Basic Tasks');
+$wraithlang['Membership'] = _('Membership');
+$wraithlang['ImageAssoc'] = _('Image Association');
+$wraithlang['SelMenu'] = _('%s Menu');
+$wraithlang['PrimaryGroup'] = _('Primary Group');
+$wraithlang['AllSN'] = _('All Storage Nodes');
+$wraithlang['AddSN'] = _('Add Storage Node');
+$wraithlang['AllSG'] = _('All Storage Groups');
+$wraithlang['AddSG'] = _('Add Storage Group');
+$wraithlang['ActiveTasks'] = _('Active Tasks');
+$wraithlang['ActiveMCTasks'] = _('Active Multicast Tasks');
+$wraithlang['ActiveSnapins'] = _('Active Snapin Tasks');
+$wraithlang['ScheduledTasks'] = _('Scheduled Tasks');
+$wraithlang['InstalledPlugins'] = _('Installed Plugins');
+$wraithlang['InstallPlugins'] = _('Install Plugins');
+$wraithlang['ActivatePlugins'] = _('Activate Plugins');
+$wraithlang['ExportConfig'] = _('Export Configuration');
+$wraithlang['ImportConfig'] = _('Import Configuration');
+$wraithlang['Slogan'] = _('Open Source Computer Cloning Solution');
+$wraithlang['InvalidMAC'] = _('Invalid MAC Address!');
+$wraithlang['PXEConfiguration'] = _('iPXE Menu Item Settings');
+$wraithlang['PXEMenuCustomization'] = _('iPXE Menu Customization');
+$wraithlang['NewMenu'] = _('iPXE New Menu Entry');
+$wraithlang['Submit'] = _('Save Changes');
+$wraithlang['RequiredDB'] = _('Required database field is empty');
+$wraithlang['NoResults'] = _('No results found');
+$wraithlang['isRequired'] = _('%s is required');
 // Page Names
-$foglang['Host Management'] = _('Host Management');
-$foglang['Storage Management'] = _('Storage Management');
-$foglang['Task Management'] = _('Task Management');
-$foglang['Client Management'] = _('Client Management');
-$foglang['Dashboard'] = _('Dashboard');
-$foglang['Service Configuration'] = _('Service Configuration');
-$foglang['Report Management'] = _('Report Management');
-$foglang['Printer Management'] = _('Printer Management');
-$foglang['FOG Configuration'] = _('FOG Configuration');
-$foglang['Group Management'] = _('Group Management');
-$foglang['Image Management'] = _('Image Management');
-$foglang['User Management'] = _('User Management');
-$foglang['Hardware Information'] = _('Hardware Information');
-$foglang['Snapin Management'] = _('Snapin Management');
-$foglang['Plugin Management'] = _('Plugin Management');
-$foglang['Location Management'] = _('Location Management');
-$foglang['Access Management'] = _('Access Control Management');
+$wraithlang['Host Management'] = _('Host Management');
+$wraithlang['Storage Management'] = _('Storage Management');
+$wraithlang['Task Management'] = _('Task Management');
+$wraithlang['Client Management'] = _('Client Management');
+$wraithlang['Dashboard'] = _('Dashboard');
+$wraithlang['Service Configuration'] = _('Service Configuration');
+$wraithlang['Report Management'] = _('Report Management');
+$wraithlang['Printer Management'] = _('Printer Management');
+$wraithlang['WRAITH Configuration'] = _('WRAITH Configuration');
+$wraithlang['Group Management'] = _('Group Management');
+$wraithlang['Image Management'] = _('Image Management');
+$wraithlang['User Management'] = _('User Management');
+$wraithlang['Hardware Information'] = _('Hardware Information');
+$wraithlang['Snapin Management'] = _('Snapin Management');
+$wraithlang['Plugin Management'] = _('Plugin Management');
+$wraithlang['Location Management'] = _('Location Management');
+$wraithlang['Access Management'] = _('Access Control Management');
 // Help page translations
-$foglang['GenHelp'] = _('FOG General Help');
+$wraithlang['GenHelp'] = _('WRAITH General Help');
 // Sub Menu translates
-$foglang['PendingHosts'] = _('Pending Hosts');
-$foglang['LastDeployed'] = _('Last Deployed');
-$foglang['LastCaptured'] = _('Last Captured');
-$foglang['DeployMethod'] = _('Deploy Method');
-$foglang['ImageType'] = _('Image Type');
-$foglang['NoAvail'] = _('Not Available');
-$foglang['ExportHost'] = _('Export Hosts');
-$foglang['ImportHost'] = _('Import Hosts');
-$foglang['ExportUser'] = _('Export Users');
-$foglang['ImportUser'] = _('Import Users');
-$foglang['ExportImage'] = _('Export Images');
-$foglang['ImportImage'] = _('Import Images');
-$foglang['ExportGroup'] = _('Export Groups');
-$foglang['ImportGroup'] = _('Import Groups');
-$foglang['ExportSnapin'] = _('Export Snapins');
-$foglang['ImportSnapin'] = _('Import Snapins');
-$foglang['ExportPrinter'] = _('Export Printers');
-$foglang['ImportPrinter'] = _('Import Printers');
-$foglang['EquipLoan'] = _('Equipment Loan');
-$foglang['HostList'] = _('Host List');
-$foglang['ImageLog'] = _('Imaging Log');
-$foglang['PendingMACs'] = _('Pending MACs');
-$foglang['SnapinLog'] = _('Snapin Log');
-$foglang['UploadRprts'] = _('Upload Reports');
-// FOG Sub Menu translates
-$foglang['MainMenu'] = _('Main Menu');
+$wraithlang['PendingHosts'] = _('Pending Hosts');
+$wraithlang['LastDeployed'] = _('Last Deployed');
+$wraithlang['LastCaptured'] = _('Last Captured');
+$wraithlang['DeployMethod'] = _('Deploy Method');
+$wraithlang['ImageType'] = _('Image Type');
+$wraithlang['NoAvail'] = _('Not Available');
+$wraithlang['ExportHost'] = _('Export Hosts');
+$wraithlang['ImportHost'] = _('Import Hosts');
+$wraithlang['ExportUser'] = _('Export Users');
+$wraithlang['ImportUser'] = _('Import Users');
+$wraithlang['ExportImage'] = _('Export Images');
+$wraithlang['ImportImage'] = _('Import Images');
+$wraithlang['ExportGroup'] = _('Export Groups');
+$wraithlang['ImportGroup'] = _('Import Groups');
+$wraithlang['ExportSnapin'] = _('Export Snapins');
+$wraithlang['ImportSnapin'] = _('Import Snapins');
+$wraithlang['ExportPrinter'] = _('Export Printers');
+$wraithlang['ImportPrinter'] = _('Import Printers');
+$wraithlang['EquipLoan'] = _('Equipment Loan');
+$wraithlang['HostList'] = _('Host List');
+$wraithlang['ImageLog'] = _('Imaging Log');
+$wraithlang['PendingMACs'] = _('Pending MACs');
+$wraithlang['SnapinLog'] = _('Snapin Log');
+$wraithlang['UploadRprts'] = _('Upload Reports');
+// WRAITH Sub Menu translates
+$wraithlang['MainMenu'] = _('Main Menu');
 // ProcessLogin
-$foglang['InvalidLogin'] = _('Invalid Login');
-$foglang['NotAllowedHere'] = _('Not allowed here');
-$foglang['ManagementLogin'] = _('Management Login');
-$foglang['Password'] = _('Password');
-$foglang['FOGSites'] = _('Estimated FOG Sites');
-$foglang['LatestVer'] = _('Latest Version');
-$foglang['LatestDevVer'] = _('Latest Development Version');
+$wraithlang['InvalidLogin'] = _('Invalid Login');
+$wraithlang['NotAllowedHere'] = _('Not allowed here');
+$wraithlang['ManagementLogin'] = _('Management Login');
+$wraithlang['Password'] = _('Password');
+$wraithlang['WRAITHSites'] = _('Estimated WRAITH Sites');
+$wraithlang['LatestVer'] = _('Latest Version');
+$wraithlang['LatestDevVer'] = _('Latest Development Version');
 // Image class Translates
-$foglang['ProtectedImage'] = _('Image is protected and cannot be deleted');
-$foglang['ProtectedSnapin'] = _('Snapin is protected and cannot be deleted');
-$foglang['NoMasterNode'] = _('No master nodes are enabled to delete this image');
-$foglang['FailedDeleteImage'] = _('Failed to delete image files');
-$foglang['FailedDelete'] = _('Failed to delete file');
+$wraithlang['ProtectedImage'] = _('Image is protected and cannot be deleted');
+$wraithlang['ProtectedSnapin'] = _('Snapin is protected and cannot be deleted');
+$wraithlang['NoMasterNode'] = _('No master nodes are enabled to delete this image');
+$wraithlang['FailedDeleteImage'] = _('Failed to delete image files');
+$wraithlang['FailedDelete'] = _('Failed to delete file');
 // PXEMenu Translates
-$foglang['NotRegHost'] = _('Not Registered Hosts');
-$foglang['RegHost'] = _('Registered Hosts');
-$foglang['AllHosts'] = _('All Hosts');
-$foglang['DebugOpts'] = _('Debug Options');
-$foglang['AdvancedOpts'] = _('Advanced Options');
-$foglang['AdvancedLogOpts'] = _('Advanced Login Required');
-$foglang['PendRegHost'] = _('Pending Registered Hosts');
-// FOGCore Translates
-$foglang['n/a'] = _('n/a');
+$wraithlang['NotRegHost'] = _('Not Registered Hosts');
+$wraithlang['RegHost'] = _('Registered Hosts');
+$wraithlang['AllHosts'] = _('All Hosts');
+$wraithlang['DebugOpts'] = _('Debug Options');
+$wraithlang['AdvancedOpts'] = _('Advanced Options');
+$wraithlang['AdvancedLogOpts'] = _('Advanced Login Required');
+$wraithlang['PendRegHost'] = _('Pending Registered Hosts');
+// WRAITHCore Translates
+$wraithlang['n/a'] = _('n/a');
 // Service Translates
-$foglang['DirExists'] = _('Directory Already Exists');
-$foglang['TimeExists'] = _('Time Already Exists');
-$foglang['UserExists'] = _('User Already Exists');
+$wraithlang['DirExists'] = _('Directory Already Exists');
+$wraithlang['TimeExists'] = _('Time Already Exists');
+$wraithlang['UserExists'] = _('User Already Exists');
 // Host class translates
-$foglang['NoActSnapJobs'] = _('No Active Snapin Jobs Found For Host');
-$foglang['FailedTask'] = _('Failed to create task');
-$foglang['InTask'] = _('Host is already a member of an active task');
-$foglang['HostNotValid'] = _('Host is not valid');
-$foglang['GroupNotValid'] = _('Group is not valid');
-$foglang['TaskTypeNotValid'] = _('Task Type is not valid');
-$foglang['ImageNotValid'] = _('Image is not valid');
-$foglang['ImageGroupNotValid'] = _('The image storage group assigned is not valid');
-$foglang['SnapNoAssoc'] = _('There are no snapins associated with this host');
-$foglang['SnapDeploy'] = _('Snapins Are already deployed to this host');
-$foglang['NoFoundSG'] = sprintf(
+$wraithlang['NoActSnapJobs'] = _('No Active Snapin Jobs Found For Host');
+$wraithlang['FailedTask'] = _('Failed to create task');
+$wraithlang['InTask'] = _('Host is already a member of an active task');
+$wraithlang['HostNotValid'] = _('Host is not valid');
+$wraithlang['GroupNotValid'] = _('Group is not valid');
+$wraithlang['TaskTypeNotValid'] = _('Task Type is not valid');
+$wraithlang['ImageNotValid'] = _('Image is not valid');
+$wraithlang['ImageGroupNotValid'] = _('The image storage group assigned is not valid');
+$wraithlang['SnapNoAssoc'] = _('There are no snapins associated with this host');
+$wraithlang['SnapDeploy'] = _('Snapins Are already deployed to this host');
+$wraithlang['NoFoundSG'] = sprintf(
     '%s %s.',
     _('Could not find a Storage Node is'),
     _('there one enabled within this Storage Group')
 );
-$foglang['SGNotValid'] = sprintf(
+$wraithlang['SGNotValid'] = sprintf(
     '%s',
     _('The storage groups associated storage node is not valid')
 );
-$foglang['InPast'] = _('Scheduled date is in the past');
-$foglang['TaskSchExists'] = sprintf(
+$wraithlang['InPast'] = _('Scheduled date is in the past');
+$wraithlang['TaskSchExists'] = sprintf(
     '%s',
     _('A task already exists for this host at the scheduled tasking')
 );
-$foglang['MinNotValid'] = _('Minute value is not valid');
-$foglang['HourNotValid'] = _('Hour value is not valid');
-$foglang['DOMNotValid'] = _('Day of month value is not valid');
-$foglang['MonthNotValid'] = _('Month value is not valid');
-$foglang['DOWNotValid'] = _('Day of week value is not valid');
+$wraithlang['MinNotValid'] = _('Minute value is not valid');
+$wraithlang['HourNotValid'] = _('Hour value is not valid');
+$wraithlang['DOMNotValid'] = _('Day of month value is not valid');
+$wraithlang['MonthNotValid'] = _('Month value is not valid');
+$wraithlang['DOWNotValid'] = _('Day of week value is not valid');
 // MAC Address class translates
-$foglang['NoHostFound'] = _('No Host found for MAC Address');
+$wraithlang['NoHostFound'] = _('No Host found for MAC Address');
 // ManagerController class translates
-$foglang['PleaseSelect'] = _('Please select an option');
+$wraithlang['PleaseSelect'] = _('Please select an option');
 // HostManager Class translates
-$foglang['ErrorMultipleHosts'] = sprintf(
+$wraithlang['ErrorMultipleHosts'] = sprintf(
     '%s',
     _('Error multiple hosts returned for list of mac addresses')
 );
 // User class translates
-$foglang['SessionTimeout'] = _('Session timeout');
+$wraithlang['SessionTimeout'] = _('Session timeout');
 // Storage Page translates
-$foglang['SN'] = _('Storage Node');
-$foglang['SG'] = _('Storage Group');
-$foglang['GraphEnabled'] = _('Graph Enabled');
-$foglang['MasterNode'] = _('Master Node');
-$foglang['IsMasterNode'] = _('Is Master Node');
-$foglang['SNName'] = _('Storage Node Name');
-$foglang['SNDesc'] = _('Storage Node Description');
-$foglang['IPAdr'] = _('IP Address');
-$foglang['MaxClients'] = _('Max Clients');
-$foglang['ImagePath'] = _('Image Path');
-$foglang['FTPPath'] = _('FTP Path');
-$foglang['SnapinPath'] = _('Snapin Path');
-$foglang['SSLPath'] = _('SSL Path');
-$foglang['Interface'] = _('Interface');
-$foglang['IsEnabled'] = _('Is Enabled');
-$foglang['IsGraphEnabled'] = _('Is Graph Enabled');
-$foglang['OnDash'] = _('On Dashboard');
-$foglang['ManUser'] = _('Management Username');
-$foglang['ManPass'] = _('Management Password');
-$foglang['CautionPhrase'] = sprintf(
+$wraithlang['SN'] = _('Storage Node');
+$wraithlang['SG'] = _('Storage Group');
+$wraithlang['GraphEnabled'] = _('Graph Enabled');
+$wraithlang['MasterNode'] = _('Master Node');
+$wraithlang['IsMasterNode'] = _('Is Master Node');
+$wraithlang['SNName'] = _('Storage Node Name');
+$wraithlang['SNDesc'] = _('Storage Node Description');
+$wraithlang['IPAdr'] = _('IP Address');
+$wraithlang['MaxClients'] = _('Max Clients');
+$wraithlang['ImagePath'] = _('Image Path');
+$wraithlang['FTPPath'] = _('FTP Path');
+$wraithlang['SnapinPath'] = _('Snapin Path');
+$wraithlang['SSLPath'] = _('SSL Path');
+$wraithlang['Interface'] = _('Interface');
+$wraithlang['IsEnabled'] = _('Is Enabled');
+$wraithlang['IsGraphEnabled'] = _('Is Graph Enabled');
+$wraithlang['OnDash'] = _('On Dashboard');
+$wraithlang['ManUser'] = _('Management Username');
+$wraithlang['ManPass'] = _('Management Password');
+$wraithlang['CautionPhrase'] = sprintf(
     '%s! %s, %s %s %s. %s %s. %s, %s, %s, %s, %s, %s.',
     _('Use extreme caution with this setting'),
     _('This setting'),
@@ -337,58 +337,58 @@ $foglang['CautionPhrase'] = sprintf(
     _('which is empty'),
     _('to all nodes in the group')
 );
-$foglang['StorageNameRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StorageNameRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node Name')
 );
-$foglang['StorageNameExists'] = _('Storage Node already exists');
-$foglang['StorageIPRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StorageNameExists'] = _('Storage Node already exists');
+$wraithlang['StorageIPRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node IP')
 );
-$foglang['StorageClientsRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StorageClientsRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node Max Clients')
 );
-$foglang['StorageIntRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StorageIntRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node Interface')
 );
-$foglang['StorageUserRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StorageUserRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node Username')
 );
-$foglang['StoragePassRequired'] = sprintf(
-    $foglang['isRequired'],
+$wraithlang['StoragePassRequired'] = sprintf(
+    $wraithlang['isRequired'],
     _('Storage Node Password')
 );
-$foglang['SNCreated'] = _('Storage Node Created');
-$foglang['SNUpdated'] = _('Storage Node Updated');
-$foglang['DBupfailed'] = _('Database Update Failed');
-$foglang['ConfirmDel'] = _('Please confirm you want to delete');
-$foglang['FailDelSN'] = _('Failed to destroy Storage Node');
-$foglang['SNDelSuccess'] = _('Storage Node deleted');
-$foglang['SGName'] = _('Storage Group Name');
-$foglang['SGDesc'] = _('Storage Group Description');
-$foglang['SGNameReq'] = sprintf(
-    $foglang['isRequired'],
-    $foglang['SGName']
+$wraithlang['SNCreated'] = _('Storage Node Created');
+$wraithlang['SNUpdated'] = _('Storage Node Updated');
+$wraithlang['DBupfailed'] = _('Database Update Failed');
+$wraithlang['ConfirmDel'] = _('Please confirm you want to delete');
+$wraithlang['FailDelSN'] = _('Failed to destroy Storage Node');
+$wraithlang['SNDelSuccess'] = _('Storage Node deleted');
+$wraithlang['SGName'] = _('Storage Group Name');
+$wraithlang['SGDesc'] = _('Storage Group Description');
+$wraithlang['SGNameReq'] = sprintf(
+    $wraithlang['isRequired'],
+    $wraithlang['SGName']
 );
-$foglang['SGExist'] = _('Storage Group Already Exists');
-$foglang['SGCreated'] = _('Storage Group Created');
-$foglang['SGUpdated'] = _('Storage Group Updated');
-$foglang['OneSG'] = _('You must have at least one Storage Group');
-$foglang['SGDelSuccess'] = _('Storage Group deleted');
-$foglang['FailDelSG'] = _('Failed to destroy Storage Group');
-$foglang['InvalidClass'] = _('Invalid Class');
-$foglang['NotExtended'] = _('Class is not extended from FOGPage');
-$foglang['DoNotList'] = _('Do not list on menu');
+$wraithlang['SGExist'] = _('Storage Group Already Exists');
+$wraithlang['SGCreated'] = _('Storage Group Created');
+$wraithlang['SGUpdated'] = _('Storage Group Updated');
+$wraithlang['OneSG'] = _('You must have at least one Storage Group');
+$wraithlang['SGDelSuccess'] = _('Storage Group deleted');
+$wraithlang['FailDelSG'] = _('Failed to destroy Storage Group');
+$wraithlang['InvalidClass'] = _('Invalid Class');
+$wraithlang['NotExtended'] = _('Class is not extended from WRAITHPage');
+$wraithlang['DoNotList'] = _('Do not list on menu');
 // Language menu options.
-$foglang['LanguagePhrase'] = _('Language');
-$foglangt['Language']['zh'] = '中文';
-$foglangt['Language']['en'] = 'English';
-$foglangt['Language']['es'] = 'Español';
-$foglangt['Language']['fr'] = 'Français';
-$foglangt['Language']['de'] = 'Deutsch';
-$foglangt['Language']['it'] = 'Italiano';
-$foglangt['Language']['pt'] = 'Português';
+$wraithlang['LanguagePhrase'] = _('Language');
+$wraithlangt['Language']['zh'] = '中文';
+$wraithlangt['Language']['en'] = 'English';
+$wraithlangt['Language']['es'] = 'Español';
+$wraithlangt['Language']['fr'] = 'Français';
+$wraithlangt['Language']['de'] = 'Deutsch';
+$wraithlangt['Language']['it'] = 'Italiano';
+$wraithlangt['Language']['pt'] = 'Português';

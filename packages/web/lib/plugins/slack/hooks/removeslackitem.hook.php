@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category RemoveSlackItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Removes slack account.
  *
  * @category RemoveSlackItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class RemoveSlackItem extends Hook
 {
@@ -89,8 +89,8 @@ class RemoveSlackItem extends Hook
                         '',
                         $Token->get('name')
                     ),
-                    _('Account removed from FOG GUI at'),
-                    self::getSetting('FOG_WEB_HOST')
+                    _('Account removed from WRAITH GUI at'),
+                    self::getSetting('WRAITH_WEB_HOST')
                 )
             );
             $Token->call('chat.postMessage', $args);
@@ -118,8 +118,8 @@ class RemoveSlackItem extends Hook
                     '',
                     $arguments['Slack']->get('name')
                 ),
-                _('Account removed from FOG GUI at'),
-                self::getSetting('FOG_WEB_HOST')
+                _('Account removed from WRAITH GUI at'),
+                self::getSetting('WRAITH_WEB_HOST')
             )
         );
         $arguments['Slack']->call('chat.postMessage', $args);

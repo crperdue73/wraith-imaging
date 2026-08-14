@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category DisplayManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Handles display manager
  *
  * @category DisplayManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class DisplayManager extends FOGClient implements FOGClientSend
+class DisplayManager extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Function returns data that will be translated to json

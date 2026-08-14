@@ -2,16 +2,16 @@
 declare(strict_types=1);
 
 /**
- * Initiator and FOG Autoloader
+ * Initiator and WRAITH Autoloader
  *
- * Establishes the FOG GUI and system autoloader functionality while ensuring
+ * Establishes the WRAITH GUI and system autoloader functionality while ensuring
  * input sanitization and system initialization for performance and security.
  *
  * @category Initiator
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Initiator
 {
@@ -84,7 +84,7 @@ class Initiator
         $validLangs = ['de' => 'DE', 'en' => 'US', 'es' => 'ES', 'eu' => 'ES', 'fr' => 'FR', 'it' => 'IT', 'pt' => 'BR', 'zh' => 'CN'];
         $lang = array_key_exists($lang, $validLangs) ? $lang : 'en';
         if (session_status() === PHP_SESSION_ACTIVE) {
-            $_SESSION['FOG_LANG'] = $lang;
+            $_SESSION['WRAITH_LANG'] = $lang;
         }
         $lang = "{$lang}_{$validLangs[$lang]}";
         $domain = 'messages';
@@ -112,7 +112,7 @@ class Initiator
         }
         new System();
         new Config();
-        self::language($_SESSION['FOG_LANG'] ?? 'en');
+        self::language($_SESSION['WRAITH_LANG'] ?? 'en');
     }
 
     public static function sanitizeItems(&$value = '')
@@ -126,7 +126,7 @@ class Initiator
     private static function _verCheck(): void
     {
         if (version_compare(phpversion(), '7.4', '<')) {
-            throw new Exception('FOG Requires PHP v7.4 or higher. You have PHP v' . phpversion());
+            throw new Exception('WRAITH Requires PHP v7.4 or higher. You have PHP v' . phpversion());
         }
     }
 

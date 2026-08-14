@@ -6,22 +6,22 @@
  * PHP version 5
  *
  * @category ALOGB
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Sends the auto logout background image
  * NOTE: Only used on legacy client
  *
  * @category ALOGB
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ALOBG extends FOGClient implements FOGClientSend
+class ALOBG extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname
@@ -42,6 +42,6 @@ class ALOBG extends FOGClient implements FOGClientSend
      */
     public function send()
     {
-        $this->send = self::getSetting('FOG_CLIENT_AUTOLOGOFF_BGIMAGE');
+        $this->send = self::getSetting('WRAITH_CLIENT_AUTOLOGOFF_BGIMAGE');
     }
 }

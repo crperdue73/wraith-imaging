@@ -5,19 +5,19 @@
  * PHP Version 5
  *
  * @category Virus_History
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Virus report.
  *
  * @category Virus_History
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Virus_History extends ReportManagementPage
 {
@@ -28,7 +28,7 @@ class Virus_History extends ReportManagementPage
      */
     public function file()
     {
-        $this->title = _('FOG Virus Summary');
+        $this->title = _('WRAITH Virus Summary');
         $csvHead = array(
             _('Host Name') => 'name',
             _('Virus Name') => 'name',
@@ -149,6 +149,6 @@ class Virus_History extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

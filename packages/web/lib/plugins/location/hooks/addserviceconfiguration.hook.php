@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AddServiceConfiguration
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Adds service configuration with locations.
  *
  * @category AddServiceConfiguration
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddServiceConfiguration extends Hook
 {
@@ -111,7 +111,7 @@ class AddServiceConfiguration extends Hook
                     isset($_REQUEST['snapinsend']) ?
                     ' checked' :
                     (
-                        self::getSetting('FOG_SNAPIN_LOCATION_SEND_ENABLED') ?
+                        self::getSetting('WRAITH_SNAPIN_LOCATION_SEND_ENABLED') ?
                         ' checked' :
                         ''
                     )
@@ -165,7 +165,7 @@ class AddServiceConfiguration extends Hook
             return;
         }
         $Service = self::getClass('Service')
-            ->set('name', 'FOG_SNAPIN_LOCATION_SEND_ENABLED')
+            ->set('name', 'WRAITH_SNAPIN_LOCATION_SEND_ENABLED')
             ->load('name');
         if (!$Service->isValid()) {
             return;
@@ -195,6 +195,6 @@ class AddServiceConfiguration extends Hook
         if ($sub != 'settings') {
             return;
         }
-        $arguments['ServiceNames'][] = 'FOG_SNAPIN_LOCATION_SEND_ENABLED';
+        $arguments['ServiceNames'][] = 'WRAITH_SNAPIN_LOCATION_SEND_ENABLED';
     }
 }

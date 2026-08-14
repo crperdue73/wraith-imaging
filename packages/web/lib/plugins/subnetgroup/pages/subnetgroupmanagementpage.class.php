@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category SubnetGroupManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The wol broadcast page.
  *
  * @category SubnetGroupManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SubnetgroupManagementPage extends FOGPage
+class SubnetgroupManagementPage extends WRAITHPage
 {
     /**
      * The node this page displays with.
@@ -45,15 +45,15 @@ class SubnetgroupManagementPage extends FOGPage
             array('PagesWithObjects' => &$this->PagesWithObjects)
         );
 
-        self::$foglang['ExportSubnetgroup'] = _('Export Subnetgroups');
-        self::$foglang['ImportSubnetgroup'] = _('Import Subnetgroups');
+        self::$wraithlang['ExportSubnetgroup'] = _('Export Subnetgroups');
+        self::$wraithlang['ImportSubnetgroup'] = _('Import Subnetgroups');
 
         parent::__construct($this->name);
         global $id;
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#subnetgroup-general" => self::$foglang['General'],
-                $this->delformat => self::$foglang['Delete'],
+                "$this->linkformat#subnetgroup-general" => self::$wraithlang['General'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('Name') => $this->obj->get('name'),

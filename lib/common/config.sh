@@ -1,4 +1,4 @@
-#  FOG is a computer imaging solution.
+#  WRAITH is a computer imaging solution.
 #  Copyright (C) 2007  Chuck Syperski & Jian Zhang
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -13,16 +13,16 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-[[ -z $username || "x$username" = "xfog" ]] && username="fogproject"
+[[ -z $username || "x$username" = "xwraith" ]] && username="wraithproject"
 [[ -z $webdirsrc ]] && webdirsrc="../packages/web"
 [[ -z $tftpdirsrc ]] && tftpdirsrc="../packages/tftp"
-[[ -z $buildipxesrc ]] && buildipxesrc="../utils/FOGiPXE"
+[[ -z $buildipxesrc ]] && buildipxesrc="../utils/WRAITHiPXE"
 [[ -z $udpcastsrc ]] && udpcastsrc="../packages/udpcast-20250223.tar.gz"
 [[ -z $udpcastout ]] && udpcastout="udpcast-20250223"
 [[ -z $servicesrc ]] && servicesrc="../packages/service"
-[[ -z $servicedst ]] && servicedst="/opt/fog/service"
-[[ -z $servicelogs ]] && servicelogs="/opt/fog/log"
-[[ -z $fogprogramdir ]] && fogprogramdir="/opt/fog"
+[[ -z $servicedst ]] && servicedst="/opt/wraith/service"
+[[ -z $servicelogs ]] && servicelogs="/opt/wraith/log"
+[[ -z $wraithprogramdir ]] && wraithprogramdir="/opt/wraith"
 [[ -z $nfsconfig ]] && nfsconfig="/etc/exports"
 [[ -z $nfsservice ]] && nfsservice="nfs-server nfs-kernel-server nfs"
 [[ -z $sqlclientlist ]] && sqlclientlist="mariadb-client mariadb MariaDB-client mysql"
@@ -34,13 +34,13 @@ bootcode=$?
 [[ $exitcode -eq 0 && $bootcode -eq 0 && -z $systemctl ]] && systemctl="yes"
 if [[ $systemctl == yes ]]; then
     initdsrc="../packages/systemd"
-    initdMCfullname="FOGMulticastManager.service"
-    initdIRfullname="FOGImageReplicator.service"
-    initdSDfullname="FOGScheduler.service"
-    initdSRfullname="FOGSnapinReplicator.service"
-    initdSHfullname="FOGSnapinHash.service"
-    initdPHfullname="FOGPingHosts.service"
-    initdISfullname="FOGImageSize.service"
+    initdMCfullname="WRAITHMulticastManager.service"
+    initdIRfullname="WRAITHImageReplicator.service"
+    initdSDfullname="WRAITHScheduler.service"
+    initdSRfullname="WRAITHSnapinReplicator.service"
+    initdSHfullname="WRAITHSnapinHash.service"
+    initdPHfullname="WRAITHPingHosts.service"
+    initdISfullname="WRAITHImageSize.service"
     case $linuxReleaseName_lower in
         *ubuntu*|*bian*|*mint*)
             initdpath="/lib/systemd/system"
@@ -60,13 +60,13 @@ if [[ $systemctl == yes ]]; then
     fi
 else
     initdpath="/etc/init.d"
-    initdMCfullname="FOGMulticastManager"
-    initdIRfullname="FOGImageReplicator"
-    initdSDfullname="FOGScheduler"
-    initdSRfullname="FOGSnapinReplicator"
-    initdSHfullname="FOGSnapinHash"
-    initdPHfullname="FOGPingHosts"
-    initdISfullname="FOGImageSize"
+    initdMCfullname="WRAITHMulticastManager"
+    initdIRfullname="WRAITHImageReplicator"
+    initdSDfullname="WRAITHScheduler"
+    initdSRfullname="WRAITHSnapinReplicator"
+    initdSHfullname="WRAITHSnapinHash"
+    initdPHfullname="WRAITHPingHosts"
+    initdISfullname="WRAITHImageSize"
     case $linuxReleaseName_lower in
         *ubuntu*|*bian*|*mint*)
             initdsrc="../packages/init.d/ubuntu"

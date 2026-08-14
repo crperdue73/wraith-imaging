@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Advanced
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * This presents the advanced menu
  *
  * @category Advanced
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../../commons/base.inc.php';
 header('Content-type: text/plain');
@@ -52,7 +52,7 @@ if ($login) {
     unset($_REQUEST['login']);
 }
 if (!empty($user)) {
-    $tmp = FOGCore::attemptLogin($user, $pass);
+    $tmp = WRAITHCore::attemptLogin($user, $pass);
     if ($tmp) {
         $Send['loginsuccess'] = array(
             '#!ipxe',
@@ -74,5 +74,5 @@ if (!empty($user)) {
 }
 printf(
     "#!ipxe\n%s",
-    FOGCore::getSetting('FOG_PXE_ADVANCED')
+    WRAITHCore::getSetting('WRAITH_PXE_ADVANCED')
 );

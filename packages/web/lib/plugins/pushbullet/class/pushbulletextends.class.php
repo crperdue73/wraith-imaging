@@ -7,11 +7,11 @@
  * PHP version 5
  *
  * @category PushbulletExtends
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/license/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The base class of pushbullet elements
@@ -19,11 +19,11 @@
  * Extends the pushbullet elements into the event class.
  *
  * @category PushbulletExtends
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/license/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 abstract class PushbulletExtends extends Event
 {

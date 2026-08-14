@@ -4,7 +4,7 @@ BEGIN {
     dow = int(rand() * (0-6) + 6);
     hod = int(rand() * (0-23) + 23);
     moh = int(rand() * (0-59) + 59);
-    reporting_log = "/var/log/fog/reporting.log";
+    reporting_log = "/var/log/wraith/reporting.log";
     print "day_of_week="dow;
     print "hour_of_day="hod;
     print "minute_of_hour="moh;

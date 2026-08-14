@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AccessControlAssociationManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access Control plugin
  *
  * @category AccessControlAssociationManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class AccessControlAssociationManager extends FOGManagerController
+class AccessControlAssociationManager extends WRAITHManagerController
 {
     /**
      * The base table name.
@@ -74,15 +74,15 @@ class AccessControlAssociationManager extends FOGManagerController
         if (!self::$DB->query($sql)) {
             return false;
         } else {
-            $fogUserID = self::getSubObjectIDs(
+            $wraithUserID = self::getSubObjectIDs(
                 'User',
-                array('name' => 'fog')
+                array('name' => 'wraith')
             );
             $sql = sprintf(
                 "INSERT INTO `%s` VALUES (1, '%s', 1, %d)",
                 $this->tablename,
-                'Administrator-fog',
-                intval($fogUserID[0])
+                'Administrator-wraith',
+                intval($wraithUserID[0])
             );
             self::$DB->query($sql);
         }

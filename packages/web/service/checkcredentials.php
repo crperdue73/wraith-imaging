@@ -5,26 +5,26 @@
  * PHP version 5
  *
  * @category CheckCredentials
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Checks credentials for init based calls
  *
  * @category CheckCredentials
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 
 $remoteIP = filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 $remoteIP = filter_var($remoteIP, FILTER_VALIDATE_IP) ? $remoteIP : '0.0.0.0';
 
-$lockoutFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'fog_auth_ratelimit_' . md5($remoteIP);
+$lockoutFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'wraith_auth_ratelimit_' . md5($remoteIP);
 $maxAttempts = 5;
 $lockoutDuration = 300; // 5 minutes in seconds
 
@@ -81,7 +81,7 @@ try {
         throw new Exception('#!il');
     }
     $password = trim($password);
-    $userTest = FOGCore::getClass('User')
+    $userTest = WRAITHCore::getClass('User')
         ->passwordValidate($username, $password);
     if (!$userTest) {
         $recordBadAttempt();

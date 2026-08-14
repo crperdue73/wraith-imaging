@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category Pushbullet
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The pushbullet database and object definer
  *
  * @category Pushbullet
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Pushbullet extends FOGController
+class Pushbullet extends WRAITHController
 {
     /**
      * The pushbullet table

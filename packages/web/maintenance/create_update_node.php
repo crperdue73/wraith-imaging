@@ -5,10 +5,10 @@
  * PHP version 5
  *
  * @category Create_Update_Node
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Creates or updates nodes.
@@ -16,10 +16,10 @@
  * PHP version 5
  *
  * @category Create_Update_Node
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 foreach ((array)$_POST as $key => &$val) {
@@ -31,16 +31,16 @@ foreach ((array)$_POST as $key => &$val) {
     );
     unset($val);
 }
-if (!isset($_POST['fogverified'])) {
+if (!isset($_POST['wraithverified'])) {
     return;
 }
 if (isset($_POST['newNode'])) {
-    $exists = FOGCore::getClass('StorageNodeManager')
+    $exists = WRAITHCore::getClass('StorageNodeManager')
         ->exists($_POST['ip'], '', 'ip');
     if ($exists) {
         return;
     }
-    FOGCore::getClass('StorageNode')
+    WRAITHCore::getClass('StorageNode')
         ->set('name', trim($_POST['name']))
         ->set('path', trim($_POST['path']))
         ->set('ftppath', trim($_POST['ftppath']))
@@ -56,7 +56,7 @@ if (isset($_POST['newNode'])) {
         ->set('isEnabled', '1')
         ->save();
 } elseif (isset($_POST['nodePass'])) {
-    foreach ((array)FOGCore::getClass('StorageNodeManager')
+    foreach ((array)WRAITHCore::getClass('StorageNodeManager')
         ->find(array('ip' => $_POST['ip'])) as &$Node
     ) {
         if (($Node->get('pass') === trim($_POST['pass'])) &&

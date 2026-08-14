@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Logtoview
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Logtoview handles reading files
  *
  * @category Logtoview
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require_once '../commons/base.inc.php';
 session_write_close();
@@ -25,7 +25,7 @@ ignore_user_abort(true);
 set_time_limit(0);
 header('Content-Type: text/event-stream');
 header('Connection: close');
-FOGCore::checkAuthAndCSRF();
+WRAITHCore::checkAuthAndCSRF();
 if (!(isset($_POST['ip'])
     && is_string($_POST['ip']))
 ) {
@@ -67,8 +67,8 @@ function vals($reverse, $HookManager, $lines, $file)
         $folder
     );
     $folders = array(
-        '/var/log/fog/',
-        '/opt/fog/log/',
+        '/var/log/wraith/',
+        '/opt/wraith/log/',
         '/var/log/httpd/',
         '/var/log/apache2/',
         '/var/log/nginx/',
@@ -157,7 +157,7 @@ $file = sprintf(
 $lines = $_POST['lines'];
 $reverse = $_POST['reverse'];
 $ip = base64_decode($ip);
-$ip = FOGCore::resolveHostname($ip);
+$ip = WRAITHCore::resolveHostname($ip);
 $ip = trim($ip);
 if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
     return print json_encode(_('IP Passed is incorrect'));
@@ -173,8 +173,8 @@ if (false !== strpos(filter_input(INPUT_SERVER, 'HTTP_HOST'), $ip)) {
     exit;
 }
 $url = sprintf(
-    '%s://%s/fog/status/logtoview.php',
-    FOGCore::$httpproto,
+    '%s://%s/wraith/status/logtoview.php',
+    WRAITHCore::$httpproto,
     $ip
 );
 $process = array(
@@ -183,7 +183,7 @@ $process = array(
     'lines' => $lines,
     'reverse' => $reverse
 );
-$response = $FOGURLRequests->process(
+$response = $WRAITHURLRequests->process(
     $url,
     'POST',
     $process

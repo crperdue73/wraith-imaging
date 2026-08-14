@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SiteManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Site plugin
  *
  * @category SiteManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SiteManagementPage extends FOGPage
+class SiteManagementPage extends WRAITHPage
 {
     public $node = 'site';
     /**
@@ -49,20 +49,20 @@ class SiteManagementPage extends FOGPage
         global $node;
         global $sub;
         global $id;
-        self::$foglang['ExportSite'] = _('Export Sites');
-        self::$foglang['ImportSite'] = _('Import Sites');
+        self::$wraithlang['ExportSite'] = _('Export Sites');
+        self::$wraithlang['ImportSite'] = _('Import Sites');
         parent::__construct($this->name);
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat" => self::$foglang['General'],
-                $this->membership => self::$foglang['Membership'],
+                "$this->linkformat" => self::$wraithlang['General'],
+                $this->membership => self::$wraithlang['Membership'],
                 sprintf(
                     '?node=%s&sub=%s&id=%s',
                     $this->node,
                     'membershipHost',
                     $id
                 ) => _('Hosts Associated'),
-                    "$this->delformat" => self::$foglang['Delete'],
+                    "$this->delformat" => self::$wraithlang['Delete'],
                 );
             $this->notes = array(
                 _('Site') => $this->obj->get('name'),

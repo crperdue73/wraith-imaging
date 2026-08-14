@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category Wolbroadcast
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Wolbroadcast Class handler.
  *
  * @category Wolbroadcast
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Wolbroadcast extends FOGController
+class Wolbroadcast extends WRAITHController
 {
     /**
      * The wolbroadcast table

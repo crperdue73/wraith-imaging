@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category MulticastManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The multicast manager service
  *
  * @category MulticastManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class MulticastManager extends FOGService
+class MulticastManager extends WRAITHService
 {
     /**
      * Is the host lookup/ping enabled
@@ -72,7 +72,7 @@ class MulticastManager extends FOGService
             (
                 self::$logpath ?
                 self::$logpath :
-                '/opt/fog/log/'
+                '/opt/wraith/log/'
             ),
             (
                 $log ?

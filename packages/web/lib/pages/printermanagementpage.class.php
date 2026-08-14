@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category PrinterManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Printer management page.
  *
  * @category PrinterManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PrinterManagementPage extends FOGPage
+class PrinterManagementPage extends WRAITHPage
 {
     /**
      * The node this page operates from.
@@ -43,7 +43,7 @@ class PrinterManagementPage extends FOGPage
     public function __construct($name = '')
     {
         global $id;
-        $this->name = self::$foglang['Printer Management'];
+        $this->name = self::$wraithlang['Printer Management'];
         parent::__construct($this->name);
         if ($id) {
             $this->_config = _('TCP/IP');
@@ -51,13 +51,13 @@ class PrinterManagementPage extends FOGPage
                 $this->_config = $this->obj->get('config');
             }
             $this->subMenu = array(
-                "$this->linkformat#$this->node-gen" => self::$foglang['General'],
-                $this->membership => self::$foglang['Membership'],
-                $this->delformat => self::$foglang['Delete'],
+                "$this->linkformat#$this->node-gen" => self::$wraithlang['General'],
+                $this->membership => self::$wraithlang['Membership'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
-                self::$foglang['Printer'] => $this->obj->get('name'),
-                self::$foglang['Type'] => $this->_config,
+                self::$wraithlang['Printer'] => $this->obj->get('name'),
+                self::$wraithlang['Type'] => $this->_config,
             );
         }
         self::$HookManager

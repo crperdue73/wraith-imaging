@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SetSnapinTaskState
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nah@nah.nah>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Sets snapin task states
  *
  * @category SetSnapinTaskState
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nah@nah.nah>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class SetSnapinTaskState extends Hook
 {

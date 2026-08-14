@@ -5,25 +5,25 @@
  * PHP version 5
  *
  * @category LDAP
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * LDAP Authentication plugin
  *
  * @category LDAP
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class LDAP extends FOGController
+class LDAP extends WRAITHController
 {
     /**
      * Ldap connection itself

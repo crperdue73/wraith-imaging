@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category PushbulletManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Page presenter for pushbullet plugin
  *
  * @category PushbulletManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PushbulletManagementPage extends FOGPage
+class PushbulletManagementPage extends WRAITHPage
 {
     /**
      * The node name
@@ -40,7 +40,7 @@ class PushbulletManagementPage extends FOGPage
         parent::__construct($this->name);
         $this->menu = array(
             'list' => sprintf(
-                self::$foglang['ListAll'],
+                self::$wraithlang['ListAll'],
                 _('Pushbullet Accounts')
             ),
             'add' => _('Link Pushbullet Account'),
@@ -205,7 +205,7 @@ class PushbulletManagementPage extends FOGPage
                 $token
             )->pushNote(
                 '',
-                'FOG',
+                'WRAITH',
                 'Account linked'
             );
             $msg = json_encode(

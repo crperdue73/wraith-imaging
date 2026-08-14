@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Software (please complete the following information):**
- - FOG version [e.g. 1.5.9.222]
+ - WRAITH version [e.g. 1.5.9.222]
  - FOS kernel [e.g. 5.15.68]
  - OS: [e.g. Ubuntu 22.04]
 

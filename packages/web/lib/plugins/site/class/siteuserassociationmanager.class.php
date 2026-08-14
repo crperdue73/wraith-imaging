@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SiteAssocManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Site plugin
  *
  * @category SiteAssocManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SiteUserAssociationManager extends FOGManagerController
+class SiteUserAssociationManager extends WRAITHManagerController
 {
     /**
      * The table name.

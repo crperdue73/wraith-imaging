@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SiteHostAssocManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Site plugin
  *
  * @category SiteHostAssocManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SiteHostAssociationManager extends FOGManagerController
+class SiteHostAssociationManager extends WRAITHManagerController
 {
     /**
      * The table name.

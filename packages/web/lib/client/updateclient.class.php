@@ -6,22 +6,22 @@
  * PHP version 5
  *
  * @category UpdateClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Updates client files
  * NOTE: Only for legacy client relations
  *
  * @category UpdateClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class UpdateClient extends FOGClient implements FOGClientSend
+class UpdateClient extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

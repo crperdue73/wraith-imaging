@@ -1,27 +1,27 @@
 <?php
 /**
- * Database Manager Handles communication from fog to db class.
+ * Database Manager Handles communication from wraith to db class.
  *
  * PHP version 5
  *
- * This is what communicates with fog to the db class.
+ * This is what communicates with wraith to the db class.
  *
  * @category DatabaseManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * Database Manager Handles communication from fog to db class.
+ * Database Manager Handles communication from wraith to db class.
  *
  * @category DatabaseManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class DatabaseManager extends FOGCore
+class DatabaseManager extends WRAITHCore
 {
     /**
      * Initiate the connection to the database.
@@ -88,7 +88,7 @@ class DatabaseManager extends FOGCore
          * If the installed schema is greater than or equal to the
          * installed version, return immediately.
          */
-        if (self::$mySchema >= FOG_SCHEMA) {
+        if (self::$mySchema >= WRAITH_SCHEMA) {
             return new self;
         }
         /**

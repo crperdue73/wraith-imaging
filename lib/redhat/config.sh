@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  FOG is a computer imaging solution.
+#  WRAITH is a computer imaging solution.
 #  Copyright (C) 2007  Chuck Syperski & Jian Zhang
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -27,10 +27,10 @@ case $linuxReleaseName_lower in
         [[ -z $dhcpname ]] && dhcpname="dhcp-server"
         [[ -z $tftpdirdst ]] && tftpdirdst="/var/lib/tftpboot"
         [[ -z $nfsexportsopts ]] && nfsexportsopts="subtree_check"
-        [[ -z $etcconf ]] && etcconf="/etc/httpd/conf/conf.d/fog.conf"
+        [[ -z $etcconf ]] && etcconf="/etc/httpd/conf/conf.d/wraith.conf"
         ;;
     *)
-        [[ -z $etcconf ]] && etcconf="/etc/httpd/conf.d/fog.conf"
+        [[ -z $etcconf ]] && etcconf="/etc/httpd/conf.d/wraith.conf"
         [[ -z $packages ]] && {
             if [[ $OSVersion -gt 7 ]]; then
                 packages="curl dhcp-server gcc gcc-aarch64-linux-gnu gcc-c++ genisoimage git gzip httpd lftp m4 make mod_fastcgi mod_ssl mtools mysql mysql-server net-tools nfs-utils openssl php php-cli php-common php-fpm php-gd php-json php-ldap php-mbstring php-mysqlnd php-process syslinux tar tftp-server util-linux-user vsftpd wget xz-devel"
@@ -63,9 +63,9 @@ esac
 if [[ -z $webdirdest ]]; then
     if [[ -z $docroot ]]; then
         docroot="/var/www/html/"
-        webdirdest="${docroot}fog/"
-    elif [[ $docroot != *'fog'* ]]; then
-        webdirdest="${docroot}fog/"
+        webdirdest="${docroot}wraith/"
+    elif [[ $docroot != *'wraith'* ]]; then
+        webdirdest="${docroot}wraith/"
     else
         webdirdest="${docroot}/"
     fi
@@ -87,4 +87,4 @@ fi
 [[ -z $iscservice ]] && iscservice="dhcpd"
 [[ -z $keapackage ]] && keapackage="kea"
 [[ -z $keaservice ]] && keaservice="kea-dhcp4"
-[[ -z $snapindir ]] && snapindir="/opt/fog/snapins"
+[[ -z $snapindir ]] && snapindir="/opt/wraith/snapins"

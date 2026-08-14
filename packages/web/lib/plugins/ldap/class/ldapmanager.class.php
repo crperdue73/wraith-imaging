@@ -5,25 +5,25 @@
  * PHP version 5
  *
  * @category LDAPManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * LDAPManager
  *
  * @category LDAP
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class LDAPManager extends FOGManagerController
+class LDAPManager extends WRAITHManagerController
 {
     /**
      * The base table name.
@@ -147,7 +147,7 @@ class LDAPManager extends FOGManagerController
                 "INSERT INTO `%s`"
         . " (settingKey,settingDesc,settingValue,settingCategory)"
         . " VALUES"
-                . " ('FOG_USER_FILTER','Insert the uType codes comma separated. If you want to list all users, empty the textbox', '990,991','Plugin: LDAP'),"
+                . " ('WRAITH_USER_FILTER','Insert the uType codes comma separated. If you want to list all users, empty the textbox', '990,991','Plugin: LDAP'),"
                 . " ('LDAP_PORTS','Insert the different ports comma separated.', '389,636','Plugin: LDAP')",
                 'globalSettings'
             );

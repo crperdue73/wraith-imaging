@@ -44,10 +44,10 @@ branchon=$(echo "$gitbranch" | awk -F'-' '{print $1}')
 branchend=$(echo "$gitbranch" | awk -F'-' '{print $2}')
 
 # Define the path to the system file
-system_file="$project_dir/packages/web/lib/fog/system.class.php"
+system_file="$project_dir/packages/web/lib/wraith/system.class.php"
 
-current_version=$(grep "define('FOG_VERSION'" "$system_file" | sed "s/.*FOG_VERSION', '\([^']*\)');/\1/")
-current_channel=$(grep "define('FOG_CHANNEL'" "$system_file" | sed "s/.*FOG_CHANNEL', '\([^']*\)');/\1/")
+current_version=$(grep "define('WRAITH_VERSION'" "$system_file" | sed "s/.*WRAITH_VERSION', '\([^']*\)');/\1/")
+current_channel=$(grep "define('WRAITH_CHANNEL'" "$system_file" | sed "s/.*WRAITH_CHANNEL', '\([^']*\)');/\1/")
 
 verbegin=""
 channel="$current_channel"
@@ -96,8 +96,8 @@ case "$branchon" in
 esac
 
 # Update the version and channel in the system file
-sed -i "s/define('FOG_VERSION',.*);/define('FOG_VERSION', '$trunkversion');/g" "$system_file"
-sed -i "s/define('FOG_CHANNEL',.*);/define('FOG_CHANNEL', '$channel');/g" "$system_file"
+sed -i "s/define('WRAITH_VERSION',.*);/define('WRAITH_VERSION', '$trunkversion');/g" "$system_file"
+sed -i "s/define('WRAITH_CHANNEL',.*);/define('WRAITH_CHANNEL', '$channel');/g" "$system_file"
 
 # Add the modified system file to the staging area
 git add "$system_file"

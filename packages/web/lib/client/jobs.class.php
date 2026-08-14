@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category Jobs
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Tells the client if there's a task waiting for the host
  *
  * @category Jobs
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Jobs extends FOGClient implements FOGClientSend
+class Jobs extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

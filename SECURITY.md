@@ -1,7 +1,7 @@
 # Security Policy
 
 ## Security Release Process
-Deploy and manage any desktop operating system, anywhere. FOG Project can 
+Deploy and manage any desktop operating system, anywhere. WRAITH Project can 
 capture, deploy, and manage Windows, Mac OSX, and various Linux distributions. 
 The community has adopted this security disclosure and response policy to 
 ensure responsible handling of critical issues.
@@ -18,24 +18,24 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability - Private Disclosure Process
 Security is of high importance and all security vulnerabilities or suspected 
-security vulnerabilities should be reported to FOG Project privately, to 
-minimize attacks against current users of FOG Project before they are fixed. 
+security vulnerabilities should be reported to WRAITH Project privately, to 
+minimize attacks against current users of WRAITH Project before they are fixed. 
 Vulnerabilities will be investigated and patched on the next patch (or minor) 
 release as soon as possible.
 
-If you know of a publicly disclosed security vulnerability for FOG Project, 
-please open a **private security advisory** to inform the FOG Project Security
-Team: https://github.com/FOGProject/fogproject/security/advisories/new
+If you know of a publicly disclosed security vulnerability for WRAITH Project, 
+please open a **private security advisory** to inform the WRAITH Project Security
+Team: https://github.com/WRAITHProject/wraithproject/security/advisories/new
  
 **IMPORTANT: Do not file public issues on GitHub for security 
 vulnerabilities**
 
-The request will be handled by the FOG Project Security Team. Requests will be 
+The request will be handled by the WRAITH Project Security Team. Requests will be 
 addressed within 7 business days, including a detailed plan to investigate 
 the issue and any potential workarounds to perform in the meantime.
 
 Do not report non-security-impacting bugs through this channel. Use 
-[GitHub issues](https://github.com/FOGProject/fogproject/issues/new/choose) 
+[GitHub issues](https://github.com/WRAITHProject/wraithproject/issues/new/choose) 
 instead.
 
 ### Proposed Content
@@ -45,24 +45,24 @@ following information:
 company.
 * Detailed steps to reproduce the vulnerability  (POC scripts, screenshots, 
 and compressed packet captures are all helpful to us).
-* Description of the effects of the vulnerability on FOG Project and the 
-related hardware and software configurations, so that the FOG Project 
+* Description of the effects of the vulnerability on WRAITH Project and the 
+related hardware and software configurations, so that the WRAITH Project 
 Security Team can reproduce it.
-* How the vulnerability affects FOG Project usage and an estimation of the 
+* How the vulnerability affects WRAITH Project usage and an estimation of the 
 attack surface, if there is one.
 * List other projects or dependencies that were used in conjunction with 
-FOG Project to produce the vulnerability.
+WRAITH Project to produce the vulnerability.
  
 ## When to report a vulnerability
-* When you think FOG Project has a potential security vulnerability.
+* When you think WRAITH Project has a potential security vulnerability.
 * When you suspect a potential vulnerability but you are unsure that it 
-impacts FOG Project.
+impacts WRAITH Project.
 * When you know of or suspect a potential vulnerability on another project 
-that is used by FOG Project. For example FOG Project has a dependency on 
+that is used by WRAITH Project. For example WRAITH Project has a dependency on 
 PHP, MariaDB/MySQL, Apache, Linux kernel, buildroot, etc.
   
 ## Patch, Release, and Disclosure
-The FOG Project Security Team will respond to vulnerability reports as 
+The WRAITH Project Security Team will respond to vulnerability reports as 
 follows:
  
 1.  The Security Team will investigate the vulnerability and determine 
@@ -85,7 +85,7 @@ quickly than making the CVSS perfect. Issues may also be reported to
 The CVE will initially be set to private.
 6.  The Security Team will work on fixing the vulnerability and perform 
 internal testing before preparing to roll out the fix.
-7.  A public disclosure date is negotiated by the FOG Project Security 
+7.  A public disclosure date is negotiated by the WRAITH Project Security 
 Team, the bug submitter, and the distributors list. We prefer to fully 
 disclose the bug as soon as possible once a user mitigation or patch is 
 available. It is reasonable to delay disclosure when the bug or the fix 
@@ -94,23 +94,23 @@ distributor coordination. The timeframe for disclosure is from immediate
 (especially if it’s already publicly known) to a few weeks. For a 
 critical vulnerability with a straightforward mitigation, we expect 
 report date to public disclosure date to be on the order of 14 business 
-days. The FOG Project Security Team holds the final say when setting a 
+days. The WRAITH Project Security Team holds the final say when setting a 
 public disclosure date.
 8.  Once the fix is confirmed, the Security Team will patch the 
 vulnerability in the next patch or minor release, and backport a patch 
 release into all earlier supported releases. Upon release of the patched 
-version of FOG Project, we will follow the **Public Disclosure Process**.
+version of WRAITH Project, we will follow the **Public Disclosure Process**.
 
 ### Public Disclosure Process
 The Security Team publishes a public 
-[advisory](https://github.com/FOGProject/fogproject/security/advisories) 
-to the FOG Project community via GitHub. In most cases, additional 
+[advisory](https://github.com/WRAITHProject/wraithproject/security/advisories) 
+to the WRAITH Project community via GitHub. In most cases, additional 
 communication via forums, website and other channels will assist in 
-educating FOG Project users and rolling out the patched release to 
+educating WRAITH Project users and rolling out the patched release to 
 affected users. 
 
 The Security Team will also publish any mitigating steps users can take 
-until the fix can be applied to their FOG Project instances. FOG Project 
+until the fix can be applied to their WRAITH Project instances. WRAITH Project 
 distributors will handle creating and publishing their own security 
 advisories.
  
@@ -119,10 +119,10 @@ of this mailing list. A request for membership represents your
 acceptance to the terms and conditions of the Embargo Policy**
 
 ### Embargo Policy
-The information that members receive on noreply@fogproject.org must not 
+The information that members receive on noreply@wraithproject.org must not 
 be made public, shared, or even hinted at anywhere beyond those who need 
 to know within your specific team, unless you receive explicit approval 
-to do so from the FOG Project Security Team. This remains true until the 
+to do so from the WRAITH Project Security Team. This remains true until the 
 public disclosure date/time agreed upon by the list. Members of the list 
 and others cannot use the information for any reason other than to get 
 the issue fixed for your respective distribution's users.
@@ -132,12 +132,12 @@ same terms, and only be provided with information on a need-to-know basis.
 
 In the unfortunate event that you share information beyond what is 
 permitted by this policy, you must urgently inform the 
-noreply@fogproject.org mailing list of exactly what information was leaked 
+noreply@wraithproject.org mailing list of exactly what information was leaked 
 and to whom. If you continue to leak information and break the policy 
 outlined here, you will be permanently removed from the list.
  
 ### Requesting to Join
-Send new membership requests to security@fogproject.org.
+Send new membership requests to security@wraithproject.org.
 In the body of your request please specify how you qualify for membership 
 and fulfill each criterion listed in the Membership Criteria section above.
 
@@ -145,15 +145,15 @@ and fulfill each criterion listed in the Membership Criteria section above.
 We consider vulnerabilities leading to the compromise of data 
 confidentiality, elevation of privilege, or integrity to be our highest 
 priority concerns. Availability, in particular in areas relating to DoS 
-and resource exhaustion, is also a serious security concern. The FOG 
+and resource exhaustion, is also a serious security concern. The WRAITH 
 Project Security Team takes all vulnerabilities, potential 
 vulnerabilities, and suspected vulnerabilities seriously and will 
 investigate them in an urgent and expeditious manner.
 
-Note that we do not currently consider the default settings for FOG 
+Note that we do not currently consider the default settings for WRAITH 
 Project to be secure-by-default. It is necessary for operators to 
 explicitly configure settings, role based access control, and other 
-resource related features in FOG Project to provide a hardened FOG 
+resource related features in WRAITH Project to provide a hardened WRAITH 
 Project environment. We will not act on any security disclosure that 
 relates to a lack of safe defaults. Over time, we will work towards 
 improved safe-by-default configuration, taking into account backwards 

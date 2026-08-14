@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category HookDebugger
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Change host name hook.
  *
  * @category HookDebugger
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class HookDebugger extends Hook
 {
@@ -66,7 +66,7 @@ class HookDebugger extends Hook
     {
         parent::__construct();
         foreach (
-            FOGCore::getSubObjectIDs(
+            WRAITHCore::getSubObjectIDs(
                 'HookEvent',
                 '',
                 'name'

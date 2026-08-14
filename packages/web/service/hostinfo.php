@@ -5,26 +5,26 @@
  * PHP version 5
  *
  * @category Hostinfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Hostinfo returns the host information
  *
  * @category Hostinfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 header('Content-Type: text/plain');
 try {
-    FOGCore::getHostItem(false);
-    $Task = FOGCore::$Host->get('task');
-    if (FOGCore::$useragent) {
+    WRAITHCore::getHostItem(false);
+    $Task = WRAITHCore::$Host->get('task');
+    if (WRAITHCore::$useragent) {
         throw new Exception(_('Cannot view from browser'));
     }
     if (!$Task->isValid()) {
@@ -37,23 +37,23 @@ try {
     if (!$hosttoken) {
         throw new Exception(_('No token passed to authenticate this host'));
     }
-    if (!FOGCore::$Host->get('tokenlock')) {
+    if (!WRAITHCore::$Host->get('tokenlock')) {
         throw new Exception(_('Have not locked the host for access'));
     }
-    if ($hosttoken != FOGCore::$Host->get('token')) {
+    if ($hosttoken != WRAITHCore::$Host->get('token')) {
         throw new Exception(_('Invalid token passed for host'));
     }
-    $TaskType = FOGCore::getClass(
+    $TaskType = WRAITHCore::getClass(
         'TaskType',
         $Task->get('typeID')
     );
     $Image = $Task->getImage();
     if ($TaskType->isInitNeededTasking()) {
         if ($TaskType->isMulticast()) {
-            $MulticastSession = FOGCore::getClass(
+            $MulticastSession = WRAITHCore::getClass(
                 'MulticastSession',
                 @max(
-                    FOGCore::getSubObjectIDs(
+                    WRAITHCore::getSubObjectIDs(
                         'MulticastSessionAssociation',
                         array('taskID' => $Task->get('id')),
                         'msID'
@@ -66,7 +66,7 @@ try {
                 $Task
                     ->set('imageID', $mcImgID)
                     ->save();
-                FOGCore::$Host
+                WRAITHCore::$Host
                     ->set('imageID', $mcImgID);
                 $Image = new Image($mcImgID);
             }
@@ -76,7 +76,7 @@ try {
         $HookManager->processEvent(
             'BOOT_TASK_NEW_SETTINGS',
             array(
-                'Host' => &FOGCore::$Host,
+                'Host' => &WRAITHCore::$Host,
                 'StorageNode' => &$StorageNode,
                 'StorageGroup' => &$StorageGroup
             )
@@ -98,7 +98,7 @@ try {
                 ''
             )
         );
-        $storageip = FOGCore::resolveHostname(
+        $storageip = WRAITHCore::resolveHostname(
             $StorageNode
             ->get('ip')
         );
@@ -125,14 +125,14 @@ try {
             $pct,
             $hostearly,
             $ftp
-        ) = FOGCore::getSubObjectIDs(
+        ) = WRAITHCore::getSubObjectIDs(
             'Service',
             array(
                 'name' => array(
-                    'FOG_CAPTUREIGNOREPAGEHIBER',
-                    'FOG_CAPTURERESIZEPCT',
-                    'FOG_CHANGE_HOSTNAME_EARLY',
-                    'FOG_TFTP_HOST'
+                    'WRAITH_CAPTUREIGNOREPAGEHIBER',
+                    'WRAITH_CAPTURERESIZEPCT',
+                    'WRAITH_CHANGE_HOSTNAME_EARLY',
+                    'WRAITH_TFTP_HOST'
                 )
             ),
             'value',
@@ -157,22 +157,22 @@ try {
                 ->get('passreset');
         }
     }
-    $fdrive = FOGCore::$Host
+    $fdrive = WRAITHCore::$Host
         ->get('kernelDevice');
-    $Inventory = FOGCore::$Host
+    $Inventory = WRAITHCore::$Host
         ->get('inventory');
     $mac = $_REQUEST['mac'];
-    $MACs = FOGCore::$Host
+    $MACs = WRAITHCore::$Host
         ->getMyMacs();
     $clientMacs = array_filter(
-        (array)FOGCore::parseMacList(
+        (array)WRAITHCore::parseMacList(
             implode('|', (array)$MACs),
             false,
             true
         )
     );
-    $pass = FOGCore::$Host->get('ADPass');
-    $passtest = FOGCore::aesdecrypt($pass);
+    $pass = WRAITHCore::$Host->get('ADPass');
+    $passtest = WRAITHCore::aesdecrypt($pass);
     if ($test_base64 = base64_decode($passtest)) {
         if (mb_detect_encoding($test_base64, 'utf-8', true)) {
             $pass = $test_base64;
@@ -180,8 +180,8 @@ try {
             $pass = $passtest;
         }
     }
-    $productKey = FOGCore::$Host->get('productKey');
-    $productKeytest = FOGCore::aesdecrypt($productKey);
+    $productKey = WRAITHCore::$Host->get('productKey');
+    $productKeytest = WRAITHCore::aesdecrypt($productKey);
     if ($test_base64 = base64_decode($productKeytest)) {
         if (mb_detect_encoding($test_base64, 'utf-8', true)) {
             $productKey = $test_base64;
@@ -215,16 +215,16 @@ try {
         // Implicit device to use
         'fdrive' => $fdrive,
         // Exposed other elements
-        'hostname' => FOGCore::$Host->get('name'),
-        'hostdesc' => FOGCore::$Host->get('description'),
-        'hostip' => FOGCore::$Host->get('ip'),
-        'hostimageid' => FOGCore::$Host->get('imageID'),
-        'hostbuilding' => FOGCore::$Host->get('building'),
-        'hostusead' => FOGCore::$Host->get('useAD'),
-        'hostaddomain' => FOGCore::$Host->get('ADDomain'),
-        'hostaduser' => FOGCore::$Host->get('ADUser'),
+        'hostname' => WRAITHCore::$Host->get('name'),
+        'hostdesc' => WRAITHCore::$Host->get('description'),
+        'hostip' => WRAITHCore::$Host->get('ip'),
+        'hostimageid' => WRAITHCore::$Host->get('imageID'),
+        'hostbuilding' => WRAITHCore::$Host->get('building'),
+        'hostusead' => WRAITHCore::$Host->get('useAD'),
+        'hostaddomain' => WRAITHCore::$Host->get('ADDomain'),
+        'hostaduser' => WRAITHCore::$Host->get('ADUser'),
         'hostadpass' => trim($pass),
-        'hostadou' => str_replace(';', '', FOGCore::$Host->get('ADOU')),
+        'hostadou' => str_replace(';', '', WRAITHCore::$Host->get('ADOU')),
         'hostproductkey' => trim($productKey),
         'imagename' => $Image->get('name'),
         'imagedesc' => $Image->get('description'),
@@ -263,7 +263,7 @@ try {
         'HOST_INFO_EXPOSE',
         array(
             'repFields' => &$repFields,
-            'Host'=>&FOGCore::$Host
+            'Host'=>&WRAITHCore::$Host
         )
     );
     foreach ((array)$repFields as $key => &$val) {
@@ -276,9 +276,9 @@ try {
         unset($val);
     }
     // Unset lock and update token
-    $new_tok = FOGCore::createSecToken();
-    FOGCore::$Host->getManager()->update(
-        ['id' => FOGCore::$Host->get('id')],
+    $new_tok = WRAITHCore::createSecToken();
+    WRAITHCore::$Host->getManager()->update(
+        ['id' => WRAITHCore::$Host->get('id')],
         '',
         [
             'token' => $new_tok,

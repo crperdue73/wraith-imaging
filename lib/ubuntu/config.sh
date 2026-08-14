@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  FOG is a computer imaging solution.
+#  WRAITH is a computer imaging solution.
 #  Copyright (C) 2007  Chuck Syperski & Jian Zhang
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -38,15 +38,15 @@ esac
 if [[ -z $webdirdest ]]; then
     if [[ -z $docroot ]]; then
         docroot="/var/www/html/"
-        webdirdest="${docroot}fog/"
-    elif [[ "$docroot" != *'fog'* ]]; then
-        webdirdest="${docroot}fog/"
+        webdirdest="${docroot}wraith/"
+    elif [[ "$docroot" != *'wraith'* ]]; then
+        webdirdest="${docroot}wraith/"
     else
         webdirdest="${docroot}/"
     fi
     if [[ $docroot == /var/www/html/ && ! -d $docroot ]]; then
         docroot="/var/www/"
-        webdirdest="${docroot}fog/"
+        webdirdest="${docroot}wraith/"
     fi
 fi
 [[ -z $webredirect ]] && webredirect="$docroot/index.php"
@@ -54,7 +54,7 @@ fi
 [[ -z $apachelogdir ]] && apachelogdir="/var/log/apache2"
 [[ -z $apacheerrlog ]] && apacheerrlog="$apachelogdir/error.log"
 [[ -z $apacheacclog ]] && apacheacclog="$apachelogdir/access.log"
-[[ -z $etcconf ]] && etcconf="/etc/apache2/sites-available/001-fog.conf"
+[[ -z $etcconf ]] && etcconf="/etc/apache2/sites-available/001-wraith.conf"
 [[ -z $storageLocation ]] && storageLocation="/images"
 [[ -z $storageLocationCapture ]] && storageLocationCapture="${storageLocation}/dev"
 [[ -z $dhcpconfig ]] && dhcpconfig="/etc/dhcp3/dhcpd.conf"
@@ -62,7 +62,7 @@ fi
 [[ -z $tftpdirdst ]] && tftpdirdst="/tftpboot"
 [[ -z $tftpconfigupstartdefaults ]] && tftpconfigupstartdefaults="/etc/default/tftpd-hpa"
 [[ -z $ftpconfig ]] && ftpconfig="/etc/vsftpd.conf"
-[[ -z $snapindir ]] && snapindir="/opt/fog/snapins"
+[[ -z $snapindir ]] && snapindir="/opt/wraith/snapins"
 [[ -z $dhcpd ]] && dhcpd="isc-dhcp-server"
 [[ -z $dhcpname ]] && dhcpname="isc-dhcp-server"
 [[ -z $iscservice ]] && iscservice="isc-dhcp-server"

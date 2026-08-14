@@ -1,41 +1,41 @@
 <?php
 /**
- * Downloads fog client and utilitie files.
+ * Downloads wraith client and utilitie files.
  *
  * PHP version 5
  *
  * @category Download
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * Downloads fog client and utilitie files.
+ * Downloads wraith client and utilitie files.
  *
  * @category Download
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * If new client is clicked, prep variable as the new client MSI.
  */
 if (isset($_REQUEST['newclient'])) {
-    $filename = 'FOGService.msi';
+    $filename = 'WRAITHService.msi';
 }
 /**
- * If fog prep is clicked, prep variable as the fogprep file.
+ * If wraith prep is clicked, prep variable as the wraithprep file.
  */
-if (isset($_REQUEST['fogprep'])) {
-    $filename = 'FogPrep.zip';
+if (isset($_REQUEST['wraithprep'])) {
+    $filename = 'WraithPrep.zip';
 }
 /**
- * If fog crypt is clicked, prep variable as the fogcrypt file.
+ * If wraith crypt is clicked, prep variable as the wraithcrypt file.
  */
-if (isset($_REQUEST['fogcrypt'])) {
-    $filename = 'FOGCrypt.zip';
+if (isset($_REQUEST['wraithcrypt'])) {
+    $filename = 'WRAITHCrypt.zip';
 }
 /**
  * If smart installer is clicked, prep variable as smartinstaller file.

@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddWindowskeyAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects windows key stuff into the api system.
  *
  * @category AddWindowskeyAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddWindowskeyAPI extends Hook
 {
@@ -169,7 +169,7 @@ class AddWindowskeyAPI extends Hook
         }
         switch ($arguments['classname']) {
             case 'windowskeyassoc':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'key' => $arguments['class']->get('key')->get(),

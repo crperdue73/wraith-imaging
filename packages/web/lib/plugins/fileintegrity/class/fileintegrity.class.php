@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category FileIntegrity
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Fileintegrity class handling file integrity.
  *
  * @category FileIntegrity
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class FileIntegrity extends FOGController
+class FileIntegrity extends WRAITHController
 {
     /**
      * The database table.

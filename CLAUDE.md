@@ -7,7 +7,7 @@
 
 ---
 
-# FOG Project — Claude Context (dev-branch / 1.5.x)
+# WRAITH Project — Claude Context (dev-branch / 1.5.x)
 
 > **Branch note:** This is `dev-branch`, the **1.5.x stable/patches line** (currently `1.5.10`).
 > It is a *different codebase* from `working-1.6` — file naming, layout, and some conventions
@@ -16,12 +16,12 @@
 
 ## What This Is
 
-FOG Project is an open-source network imaging and endpoint management system. It allows IT administrators to deploy OS images to computers over PXE boot, manage client hosts, schedule tasks, push snapins (software packages), manage printers, track users, and run background replication/multicast services.
+WRAITH Project is an open-source network imaging and endpoint management system. It allows IT administrators to deploy OS images to computers over PXE boot, manage client hosts, schedule tasks, push snapins (software packages), manage printers, track users, and run background replication/multicast services.
 
 - Primary language: **PHP** (the codebase runs on PHP 8; `commons/init.php` uses typed signatures like `Initiator::e(mixed $value): string`)
 - Frontend: **jQuery + Bootstrap + AdminLTE** (no build step — plain JS served directly)
 - Background services: **PHP CLI daemons**
-- ~128 core `*.class.php` files under `lib/fog/`
+- ~128 core `*.class.php` files under `lib/wraith/`
 - Version line: **1.5.10** (the pre-commit hook stamps `dev`/`stable` branches with the `Patches` channel)
 
 ---
@@ -33,9 +33,9 @@ FOG Project is an open-source network imaging and endpoint management system. It
 | Page file names | `imagemanagementpage.class.php` (one word, `.class.php`) | `ImageManagement.page.php` |
 | Page class names | `ImageManagementPage` (with `Page` suffix) | `ImageManagement` (no suffix) |
 | ORM array syntax | older `array(...)` in many files | `[...]` short syntax |
-| `declare(strict_types=1)` | **none** in `lib/fog/` | present in newer files |
+| `declare(strict_types=1)` | **none** in `lib/wraith/` | present in newer files |
 | Node routing | `$nodes` allowlist array in `management/index.php` | node→class mapping |
-| Service daemons | no `FOGFileDeleter` | adds `FOGFileDeleter` |
+| Service daemons | no `WRAITHFileDeleter` | adds `WRAITHFileDeleter` |
 | `lib/` extra dirs | has `client/`, `reg-task/`, `service/` | reorganized |
 
 When porting a fix from 1.6, expect the target file to have a **different name and class name** here, and the surrounding code to use `array()` and other older idioms.
@@ -45,29 +45,29 @@ When porting a fix from 1.6, expect the target file to have a **different name a
 ## Directory Structure
 
 ```
-fogproject/                     (dev-branch)
-├── bin/                        # installfog.sh installer
+wraithproject/                     (dev-branch)
+├── bin/                        # installwraith.sh installer
 ├── lib/                        # Shell library scripts (per-distro functions)
 ├── packages/
 │   ├── service/                # PHP CLI background daemons
-│   │   ├── FOGTaskScheduler/
-│   │   ├── FOGImageReplicator/
-│   │   ├── FOGSnapinReplicator/
-│   │   ├── FOGMulticastManager/
-│   │   ├── FOGPingHosts/
-│   │   ├── FOGImageSize/
-│   │   ├── FOGSnapinHash/
+│   │   ├── WRAITHTaskScheduler/
+│   │   ├── WRAITHImageReplicator/
+│   │   ├── WRAITHSnapinReplicator/
+│   │   ├── WRAITHMulticastManager/
+│   │   ├── WRAITHPingHosts/
+│   │   ├── WRAITHImageSize/
+│   │   ├── WRAITHSnapinHash/
 │   │   └── lib/service_lib.php
 │   └── web/                    # The web application
 │       ├── api/                # REST API
-│       ├── client/             # fog-client related files
+│       ├── client/             # wraith-client related files
 │       ├── commons/            # Boot/init files (loaded by ALL entry points)
 │       │   ├── base.inc.php    # Security headers, starts output buffering
 │       │   ├── init.php        # Initiator class: autoloader, session, sanitization
 │       │   ├── schema.php      # DB schema (CREATE TABLE as PHP arrays)
-│       │   └── text.php        # $foglang[] translation strings
+│       │   └── text.php        # $wraithlang[] translation strings
 │       ├── lib/
-│       │   ├── fog/            # ~128 core *.class.php files (models, managers, utilities)
+│       │   ├── wraith/            # ~128 core *.class.php files (models, managers, utilities)
 │       │   ├── pages/          # *page.class.php UI page classes (e.g. hostmanagementpage.class.php)
 │       │   ├── hooks/          # *.hook.php hook classes
 │       │   ├── events/         # *.event.php event classes
@@ -80,7 +80,7 @@ fogproject/                     (dev-branch)
 │       │   └── plugins/        # plugin directories
 │       └── management/         # Apache/Nginx document root
 │           ├── index.php       # Main UI entry point ($nodes allowlist lives here)
-│           ├── js/fog/         # FOG-specific JS
+│           ├── js/wraith/         # WRAITH-specific JS
 │           ├── css/            # Stylesheets + LESS source
 │           └── languages/      # gettext .po/.mo files
 └── src/                        # iPXE / binaries source
@@ -113,13 +113,13 @@ spl_autoload_extensions('.class.php,.page.php,.event.php,.hook.php,.report.php')
 ### Class Hierarchy
 
 ```
-FOGBase (abstract)
-├── FOGCore              — static utility methods (getSetting, getClass, etc.)
-├── FOGController        — single-entity ORM base
+WRAITHBase (abstract)
+├── WRAITHCore              — static utility methods (getSetting, getClass, etc.)
+├── WRAITHController        — single-entity ORM base
 │   └── Host, Image, Snapin, StorageNode, etc.
-├── FOGManagerController — collection/query base
+├── WRAITHManagerController — collection/query base
 │   └── HostManager, ImageManager, etc.
-├── FOGPage              — UI page base
+├── WRAITHPage              — UI page base
 │   └── HostManagementPage, ImageManagementPage, etc.
 ├── Page                 — HTML shell renderer
 ├── Hook                 — base for all hooks
@@ -147,8 +147,8 @@ Driven by `?node=host&sub=list&id=42`. Allowed `node` values are whitelisted in 
 ### Settings
 
 All app config lives in the `globalSettings` MySQL table:
-- Read: `FOGBase::getSetting('FOG_SETTING_NAME')`
-- Write: `FOGBase::setSetting('FOG_SETTING_NAME', $value)`
+- Read: `WRAITHBase::getSetting('WRAITH_SETTING_NAME')`
+- Write: `WRAITHBase::setSetting('WRAITH_SETTING_NAME', $value)`
 
 ### Hook/Event System
 
@@ -174,10 +174,10 @@ self::$HookManager->processEvent('EVENT_NAME', array('data' => &$data));
 
 - **Private methods**: single underscore prefix (`_init()`, `_verCheck()`)
 - **PHPDoc**: present on classes and methods
-- **Static globals**: `FOGBase::$HookManager`, `FOGBase::$DB`, etc.
-- **Class instantiation**: prefer `FOGBase::getClass('ClassName')` factory
-- **Translation**: `_('string')` for inline gettext; `$foglang['Key']` for pre-defined strings from `text.php`
-- **Do NOT add `declare(strict_types=1)`** — no file in `lib/fog/` uses it on this branch
+- **Static globals**: `WRAITHBase::$HookManager`, `WRAITHBase::$DB`, etc.
+- **Class instantiation**: prefer `WRAITHBase::getClass('ClassName')` factory
+- **Translation**: `_('string')` for inline gettext; `$wraithlang['Key']` for pre-defined strings from `text.php`
+- **Do NOT add `declare(strict_types=1)`** — no file in `lib/wraith/` uses it on this branch
 - Match the existing `array()` style in the file you are editing; don't mass-convert to `[]`
 
 ---
@@ -188,7 +188,7 @@ self::$HookManager->processEvent('EVENT_NAME', array('data' => &$data));
 
 1. **`updateLanguage()`** — regenerates `management/languages/messages.pot` via `xgettext`, sorts with `msgcat`, then `msgmerge`-updates every `.po`. Adds the whole `languages/` dir. Skipped if those tools aren't installed.
 2. **`psrfix()`** — runs `php-cs-fixer fix packages/web --rules=@PSR2` and **`git add packages/web`** unconditionally. Two consequences: your code may be auto-reformatted to PSR-2, and **any other dirty file under `packages/web/` gets swept into your commit** regardless of what you staged. Commit files outside `packages/web/` (like this `CLAUDE.md`) separately if you need them isolated.
-3. **Version bump** — derives a version from the branch name + commit count and rewrites `FOG_VERSION`/`FOG_CHANNEL` in `packages/web/lib/fog/system.class.php`. On `dev`/`stable` branches the channel is `Patches`. This step also tends to leave a **dangling staged `system.class.php`** bump after the commit; discard it with `git checkout -- packages/web/lib/fog/system.class.php` if you don't want it in the next commit.
+3. **Version bump** — derives a version from the branch name + commit count and rewrites `WRAITH_VERSION`/`WRAITH_CHANNEL` in `packages/web/lib/wraith/system.class.php`. On `dev`/`stable` branches the channel is `Patches`. This step also tends to leave a **dangling staged `system.class.php`** bump after the commit; discard it with `git checkout -- packages/web/lib/wraith/system.class.php` if you don't want it in the next commit.
 
 ---
 

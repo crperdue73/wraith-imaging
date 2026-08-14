@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category UserCleaner
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Legacy client use only just returns the users to cleanup
  *
  * @category UserCleaner
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class UserCleaner extends FOGClient implements FOGClientSend
+class UserCleaner extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

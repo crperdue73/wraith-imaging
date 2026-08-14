@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddSiteHost
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Associate Hosts to a Site.
  *
  * @category AddSiteHost
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSiteHost extends Hook
 {
@@ -261,7 +261,7 @@ class AddSiteHost extends Hook
         }
         $UserIsRestricted = self::getSubObjectIDs(
             'SiteUserRestriction',
-            array('userID' => self::$FOGUser->get('id')),
+            array('userID' => self::$WRAITHUser->get('id')),
             'isRestricted'
         )[0];
         if ($UserIsRestricted == 1) {
@@ -273,7 +273,7 @@ class AddSiteHost extends Hook
                 ),
                 self::getSubObjectIDs(
                     'SiteUserAssociation',
-                    array('userID' => self::$FOGUser->get('id')),
+                    array('userID' => self::$WRAITHUser->get('id')),
                     'siteID'
                 )
             );

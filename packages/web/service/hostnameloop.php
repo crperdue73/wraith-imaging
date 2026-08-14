@@ -6,20 +6,20 @@
  * PHP version 5
  *
  * @category Hostnameloop
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Hostname loop simply checks the host doesn't
  * already exist.
  *
  * @category Hostnameloop
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
@@ -27,7 +27,7 @@ try {
     $host = trim($host);
     $host = base64_decode($host);
     $host = trim($host);
-    $Host = FOGCore::getClass('Host')
+    $Host = WRAITHCore::getClass('Host')
         ->set('name', $host)
         ->load('name');
     if ($Host->isValid()) {

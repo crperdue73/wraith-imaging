@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AccessControlAssociation
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access Control plugin
  *
  * @category AccessControlAssociation
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class AccessControlAssociation extends FOGController
+class AccessControlAssociation extends WRAITHController
 {
     /**
      * Table name.

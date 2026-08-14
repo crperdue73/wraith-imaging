@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category Slack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Slack plugin
  *
  * @category Slack
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-$fog_plugin = array();
-$fog_plugin["name"] = "slack";
-$fog_plugin["description"] = "Adds slack-api integration.";
-$fog_plugin["menuicon"] = "fa fa-slack fa-fw";
-$fog_plugin["menuicon_hover"] = null;
-$fog_plugin["entrypoint"] = "html/run.php";
+$wraith_plugin = array();
+$wraith_plugin["name"] = "slack";
+$wraith_plugin["description"] = "Adds slack-api integration.";
+$wraith_plugin["menuicon"] = "fa fa-slack fa-fw";
+$wraith_plugin["menuicon_hover"] = null;
+$wraith_plugin["entrypoint"] = "html/run.php";

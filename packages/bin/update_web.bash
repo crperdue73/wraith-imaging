@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FOGROOT="$1"
-FOGWEBROOT="$FOGROOT/packages/web"
+WRAITHROOT="$1"
+WRAITHWEBROOT="$WRAITHROOT/packages/web"
 WEBROOT="$2"
 
 if [ `whoami` != "root" ]; then
@@ -9,18 +9,18 @@ if [ `whoami` != "root" ]; then
     exit 1
 fi
 
-if [ ! -d "$FOGROOT" ]; then
-    echo "usage: $0 fogrootdir webrootdir"
+if [ ! -d "$WRAITHROOT" ]; then
+    echo "usage: $0 wraithrootdir webrootdir"
     exit 1
 fi
 
 if [ ! -d "$WEBROOT" ]; then
-    echo "usage: $0 fogrootdir webrootdir"
+    echo "usage: $0 wraithrootdir webrootdir"
     exit 1
 fi
 
 CONFIG_FILE="Config.class.php"
-CONFIG_FILE_SRC="${WEBROOT}/lib/fog/${CONFIG_FILE}"
+CONFIG_FILE_SRC="${WEBROOT}/lib/wraith/${CONFIG_FILE}"
 BAK_CONFIG_FILE="/tmp/${CONFIG_FILE}"
 
 if [ ! -e "$CONFIG_FILE_SRC" ]; then
@@ -31,8 +31,8 @@ else
     cp -f "$CONFIG_FILE_SRC" "$BAK_CONFIG_FILE"
 fi
 
-echo "Copying from $FOGWEBROOT to $WEBROOT"
-tar -cf - -C "$FOGWEBROOT" . | tar -xf - -C "$WEBROOT"
+echo "Copying from $WRAITHWEBROOT to $WEBROOT"
+tar -cf - -C "$WRAITHWEBROOT" . | tar -xf - -C "$WEBROOT"
 
 echo "Restoring $CONFIG_FILE_SRC from $BAK_CONFIG_FILE."
 cp -f "$BAK_CONFIG_FILE" "$CONFIG_FILE_SRC" 

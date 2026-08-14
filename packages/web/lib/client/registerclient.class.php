@@ -7,10 +7,10 @@
  * PHP version 5
  *
  * @category RegisterClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Registers mac's to the host.
@@ -18,12 +18,12 @@
  * into a pending status.
  *
  * @category RegisterClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class RegisterClient extends FOGClient implements FOGClientSend
+class RegisterClient extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname
@@ -52,8 +52,8 @@ class RegisterClient extends FOGClient implements FOGClientSend
             'Service',
             array(
                 'name' => array(
-                    'FOG_ENFORCE_HOST_CHANGES',
-                    'FOG_QUICKREG_MAX_PENDING_MACS'
+                    'WRAITH_ENFORCE_HOST_CHANGES',
+                    'WRAITH_QUICKREG_MAX_PENDING_MACS'
                 )
             ),
             'value',
@@ -84,7 +84,7 @@ class RegisterClient extends FOGClient implements FOGClientSend
                     ->set('name', $hostname)
                     ->set(
                         'description',
-                        _('Pending Registration created by FOG_CLIENT')
+                        _('Pending Registration created by WRAITH_CLIENT')
                     )
                     ->set('imageID', 0)
                     ->set('pending', (string)1)
@@ -165,8 +165,8 @@ class RegisterClient extends FOGClient implements FOGClientSend
             'Service',
             array(
                 'name' => array(
-                    'FOG_ENFORCE_HOST_CHANGES',
-                    'FOG_QUICKREG_MAX_PENDING_MACS'
+                    'WRAITH_ENFORCE_HOST_CHANGES',
+                    'WRAITH_QUICKREG_MAX_PENDING_MACS'
                 )
             ),
             'value',

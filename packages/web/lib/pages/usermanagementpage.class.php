@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category UserManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * User management page.
  *
  * @category UserManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class UserManagementPage extends FOGPage
+class UserManagementPage extends WRAITHPage
 {
     /**
      * The node this works off of.
@@ -36,7 +36,7 @@ class UserManagementPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['User Management'];
+        $this->name = self::$wraithlang['User Management'];
         parent::__construct($this->name);
         global $id;
         if ($id) {
@@ -45,7 +45,7 @@ class UserManagementPage extends FOGPage
                 sprintf(
                     $linkstr,
                     'general'
-                ) => self::$foglang['General'],
+                ) => self::$wraithlang['General'],
                 sprintf(
                     $linkstr,
                     'changepw'
@@ -54,7 +54,7 @@ class UserManagementPage extends FOGPage
                     $linkstr,
                     'api'
                 ) => _('API Settings'),
-                $this->delformat => self::$foglang['Delete'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('Friendly Name') => (
@@ -62,7 +62,7 @@ class UserManagementPage extends FOGPage
                     Initiator::e($this->obj->get('display')) :
                     _('No friendly name defined')
                 ),
-                self::$foglang['User'] => $this->obj->get('name'),
+                self::$wraithlang['User'] => $this->obj->get('name'),
             );
         }
         self::$HookManager

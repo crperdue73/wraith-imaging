@@ -8,19 +8,19 @@
  * PHP version 5
  *
  * @category Bandwidth
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Gets bandwidth usage of requested interface
  *
  * @category Bandwidth
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 header('Content-Type: application/json');
 /**
@@ -85,13 +85,13 @@ if (count($interface) < 1) {
     session_write_close();
     ignore_user_abort(true);
     set_time_limit(0);
-    FOGCore::checkAuthAndCSRF();
+    WRAITHCore::checkAuthAndCSRF();
     // Find our server address
     $srvAddr = $_SERVER['SERVER_ADDR'];
     // If accessed by hostname resolve to ip
-    $resName = FOGCore::resolveHostname($srvAddr);
+    $resName = WRAITHCore::resolveHostname($srvAddr);
     // Use the resolved name to find our interface
-    $dev = FOGCore::getMasterInterface($resName);
+    $dev = WRAITHCore::getMasterInterface($resName);
 }
 // Trim the device
 $dev = trim($dev);

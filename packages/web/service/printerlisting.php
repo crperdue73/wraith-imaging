@@ -5,30 +5,30 @@
  * PHP version 5
  *
  * @category Printerlisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Returns a listing of all printers in the system.
  *
  * @category Printerlisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    $printerCount = FOGCore::getClass('PrinterManager')
+    $printerCount = WRAITHCore::getClass('PrinterManager')
         ->count();
     if ($printerCount < 1) {
         throw new Exception("#!np\n");
     }
     echo "#!ok\n";
-    $printerids = FOGCore::getSubObjectIDs('Printer');
-    $printernames = FOGCore::getSubObjectIDs(
+    $printerids = WRAITHCore::getSubObjectIDs('Printer');
+    $printernames = WRAITHCore::getSubObjectIDs(
         'Printer',
         array('id' => $printerids),
         'name'

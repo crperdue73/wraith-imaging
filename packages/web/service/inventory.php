@@ -5,39 +5,39 @@
  * PHP version 5
  *
  * @category Inventory
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Inventory, stores the host inventory.
  *
  * @category Inventory
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 header('Content-Type: text/plain');
 // The client base64-encodes every value, so decode (and sanitize) the
 // request up front before any field is read.
-FOGCore::stripAndDecode($_REQUEST);
+WRAITHCore::stripAndDecode($_REQUEST);
 try {
     // Authenticate by host/MAC the same way the other FOS-facing service
     // endpoints do; getHostItem() reads the mac itself and throws on an
     // unknown/invalid host.
-    FOGCore::getHostItem(false);
-    if (!FOGCore::$Host->isValid()) {
+    WRAITHCore::getHostItem(false);
+    if (!WRAITHCore::$Host->isValid()) {
         throw new Exception(_('Invalid Host'));
     }
-    $Inventory = FOGCore::$Host->get('inventory');
+    $Inventory = WRAITHCore::$Host->get('inventory');
     if (!$Inventory instanceof Inventory
         || !$Inventory->isValid()
     ) {
-        $Inventory = FOGCore::getClass('Inventory')
-            ->set('hostID', FOGCore::$Host->get('id'));
+        $Inventory = WRAITHCore::getClass('Inventory')
+            ->set('hostID', WRAITHCore::$Host->get('id'));
     }
     // Explicit allowlist of fields a client is permitted to write. Server
     // managed fields (id, hostID, createdTime, deleteDate) are intentionally

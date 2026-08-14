@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ServerInfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Presents server information when clicked.
  *
  * @category ServerInfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ServerInfo extends FOGPage
+class ServerInfo extends WRAITHPage
 {
     /**
      * The node this works off of.
@@ -46,12 +46,12 @@ class ServerInfo extends FOGPage
         $this->notes = array(
             sprintf(
                 '%s %s',
-                self::$foglang['Storage'],
-                self::$foglang['Node']
+                self::$wraithlang['Storage'],
+                self::$wraithlang['Node']
             ) => $this->obj->get('name'),
                 _('Hostname / IP') => $this->obj->get('ip'),
-                self::$foglang['ImagePath'] => $this->obj->get('path'),
-                self::$foglang['FTPPath'] => $this->obj->get('ftppath')
+                self::$wraithlang['ImagePath'] => $this->obj->get('path'),
+                self::$wraithlang['FTPPath'] => $this->obj->get('ftppath')
             );
     }
     /**
@@ -84,11 +84,11 @@ class ServerInfo extends FOGPage
             return;
         }
         $url = sprintf(
-            '%s://%s/fog/status/hw.php',
+            '%s://%s/wraith/status/hw.php',
             self::$httpproto,
             $this->obj->get('ip')
         );
-        $ret = self::$FOGURLRequests->process($url);
+        $ret = self::$WRAITHURLRequests->process($url);
         $ret = trim($ret[0]);
         if (!$ret) {
             echo _('Unable to get server information!');

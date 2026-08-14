@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddAccessControlMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Adds the Access control menu item.
  *
  * @category AddAccessControlMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class DelAccessControlMenuItem extends Hook
 {
@@ -84,7 +84,7 @@ class DelAccessControlMenuItem extends Hook
         $userID = self::getSubObjectIDs(
             'User',
             array(
-                'name' => self::$FOGUser->get('name')
+                'name' => self::$WRAITHUser->get('name')
             ),
             'id'
         );
@@ -131,7 +131,7 @@ class DelAccessControlMenuItem extends Hook
         $userID = self::getSubObjectIDs(
             'User',
             array(
-                'name' => self::$FOGUser->get('name')
+                'name' => self::$WRAITHUser->get('name')
             ),
             'id'
         );

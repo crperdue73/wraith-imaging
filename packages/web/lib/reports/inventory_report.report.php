@@ -5,11 +5,11 @@
  * PHP Version 5
  *
  * @category Inventory_Report
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Inventory_Report extends ReportManagementPage
 {
@@ -21,7 +21,7 @@ class Inventory_Report extends ReportManagementPage
 
     public function file()
     {
-        $this->title = _('FOG Host Inventory - Search');
+        $this->title = _('WRAITH Host Inventory - Search');
         unset(
             $this->data,
             $this->form,
@@ -349,6 +349,6 @@ class Inventory_Report extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

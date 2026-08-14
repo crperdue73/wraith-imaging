@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category TaskingElement
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The tasking element base class.
  *
  * @category TaskingElement
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-abstract class TaskingElement extends FOGBase
+abstract class TaskingElement extends WRAITHBase
 {
     /**
      * The task object.

@@ -7,10 +7,10 @@
  * The host represented to the GUI
  *
  * @category HostManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Host management page
@@ -18,12 +18,12 @@
  * The host represented to the GUI
  *
  * @category HostManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class HostManagementPage extends FOGPage
+class HostManagementPage extends WRAITHPage
 {
     /**
      * The node that uses this class.
@@ -40,10 +40,10 @@ class HostManagementPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['Host Management'];
+        $this->name = self::$wraithlang['Host Management'];
         parent::__construct($this->name);
         if (self::$pendingHosts > 0) {
-            $this->menu['pending'] = self::$foglang['PendingHosts'];
+            $this->menu['pending'] = self::$wraithlang['PendingHosts'];
         }
         global $id;
         if ($id) {
@@ -52,7 +52,7 @@ class HostManagementPage extends FOGPage
                 sprintf(
                     $linkstr,
                     'general'
-                ) => self::$foglang['General'],
+                ) => self::$wraithlang['General'],
             );
             if (!$this->obj->get('pending')) {
                 $this->subMenu = self::fastmerge(
@@ -61,7 +61,7 @@ class HostManagementPage extends FOGPage
                         sprintf(
                             $linkstr,
                             'tasks'
-                        ) => self::$foglang['BasicTasks'],
+                        ) => self::$wraithlang['BasicTasks'],
                     )
                 );
             }
@@ -71,56 +71,56 @@ class HostManagementPage extends FOGPage
                     sprintf(
                         $linkstr,
                         'active-directory'
-                    ) => self::$foglang['AD'],
+                    ) => self::$wraithlang['AD'],
                     sprintf(
                         $linkstr,
                         'printers'
-                    ) => self::$foglang['Printers'],
+                    ) => self::$wraithlang['Printers'],
                     sprintf(
                         $linkstr,
                         'snapins'
-                    ) => self::$foglang['Snapins'],
+                    ) => self::$wraithlang['Snapins'],
                     sprintf(
                         $linkstr,
                         'service'
                     ) => sprintf(
                         '%s %s',
-                        self::$foglang['Service'],
-                        self::$foglang['Settings']
+                        self::$wraithlang['Service'],
+                        self::$wraithlang['Settings']
                     ),
                     sprintf(
                         $linkstr,
                         'powermanagement'
-                    ) => self::$foglang['PowerManagement'],
+                    ) => self::$wraithlang['PowerManagement'],
                     sprintf(
                         $linkstr,
                         'hardware-inventory'
-                    ) => self::$foglang['Inventory'],
+                    ) => self::$wraithlang['Inventory'],
                     sprintf(
                         $linkstr,
                         'virus-history'
-                    ) => self::$foglang['VirusHistory'],
+                    ) => self::$wraithlang['VirusHistory'],
                     sprintf(
                         $linkstr,
                         'login-history'
-                    ) => self::$foglang['LoginHistory'],
+                    ) => self::$wraithlang['LoginHistory'],
                     sprintf(
                         $linkstr,
                         'image-history'
-                    ) => self::$foglang['ImageHistory'],
+                    ) => self::$wraithlang['ImageHistory'],
                     sprintf(
                         $linkstr,
                         'snapin-history'
-                    ) => self::$foglang['SnapinHistory'],
-                    $this->membership => self::$foglang['Membership'],
-                    $this->delformat => self::$foglang['Delete'],
+                    ) => self::$wraithlang['SnapinHistory'],
+                    $this->membership => self::$wraithlang['Membership'],
+                    $this->delformat => self::$wraithlang['Delete'],
                 )
             );
             $this->notes = array(
-                self::$foglang['Host'] => $this->obj->get('name'),
-                self::$foglang['MAC'] => $this->obj->get('mac'),
-                self::$foglang['Image'] => $this->obj->getImageName(),
-                self::$foglang['LastDeployed'] => $this->obj->get('deployed'),
+                self::$wraithlang['Host'] => $this->obj->get('name'),
+                self::$wraithlang['MAC'] => $this->obj->get('mac'),
+                self::$wraithlang['Image'] => $this->obj->getImageName(),
+                self::$wraithlang['LastDeployed'] => $this->obj->get('deployed'),
             );
             $primaryGroup = $this->obj->get('groups');
             if (is_array($primaryGroup) && count($primaryGroup) > 0) {
@@ -130,7 +130,7 @@ class HostManagementPage extends FOGPage
             }
             $Group = new Group($primaryGroup);
             if ($Group->isValid()) {
-                $this->notes[self::$foglang['PrimaryGroup']] = $Group->get('name');
+                $this->notes[self::$wraithlang['PrimaryGroup']] = $Group->get('name');
                 unset($Group);
             }
         }
@@ -194,7 +194,7 @@ class HostManagementPage extends FOGPage
             . 'class="toggle-checkboxAction" id="toggler"/>'
             . '</label>',
         );
-        self::$fogpingactive ? array_push($this->headerData, '') : null;
+        self::$wraithpingactive ? array_push($this->headerData, '') : null;
         array_push(
             $this->headerData,
             _('Host'),
@@ -209,7 +209,7 @@ class HostManagementPage extends FOGPage
             . 'value="${id}" class="toggle-action" id="host-${id}"/>'
             . '</label>',
         );
-        if (self::$fogpingactive) {
+        if (self::$wraithpingactive) {
             array_push(
                 $this->templates,
                 '${pingstatus}'
@@ -265,7 +265,7 @@ class HostManagementPage extends FOGPage
                 'width' => 16
             ),
         );
-        if (self::$fogpingactive) {
+        if (self::$wraithpingactive) {
             array_push(
                 $this->attributes,
                 array(
@@ -549,7 +549,7 @@ class HostManagementPage extends FOGPage
         echo '</div>';
         echo '<div class="panel-body">';
         if (!isset($_POST['enforcesel'])) {
-            $_POST['enforcesel'] = self::getSetting('FOG_ENFORCE_HOST_CHANGES');
+            $_POST['enforcesel'] = self::getSetting('WRAITH_ENFORCE_HOST_CHANGES');
         }
         echo '<!-- Host General -->';
         $this->render(12);
@@ -762,7 +762,7 @@ class HostManagementPage extends FOGPage
             . 'class="rempoweritems" value="${id}" id="rmpm-${id}"/>'
             . '<label for="rmpm-${id}"></label>',
             '<div class="cronOptions input-group">'
-            . FOGCron::buildSpecialCron()
+            . WRAITHCron::buildSpecialCron()
             . '</div>'
             . '<div class="col-xs-12">'
             . '<div class="cronInputs">'
@@ -1530,7 +1530,7 @@ class HostManagementPage extends FOGPage
         echo '<div class="radio">';
         echo '<label for="nolevel" data-toggle="tooltip" data-placement="left" '
             . 'title="'
-            . _('This setting turns off all FOG Printer Management')
+            . _('This setting turns off all WRAITH Printer Management')
             . '. '
             . _('Although there are multiple levels already')
             . ' '
@@ -1554,7 +1554,7 @@ class HostManagementPage extends FOGPage
             . 'title="'
             . _(
                 'This setting only adds and removes '
-                . 'printers that are managed by FOG. '
+                . 'printers that are managed by WRAITH. '
                 . 'If the printer exists in printer '
                 . 'management but is not assigned to a '
                 . 'host, it will remove the printer if '
@@ -1571,17 +1571,17 @@ class HostManagementPage extends FOGPage
                 ''
             )
             . '/>';
-        echo _('FOG Managed Printers');
+        echo _('WRAITH Managed Printers');
         echo '</label>';
         echo '</div>';
         echo '<div class="radio">';
         echo '<label for="alllevel" data-toggle="tooltip" data-placement="left" '
             . 'title="'
             . _(
-                'This setting will only allow FOG Assigned '
+                'This setting will only allow WRAITH Assigned '
                 . 'printers to be added to the host. Any '
                 . 'printer that is not assigned will be '
-                . 'removed including non-FOG managed printers.'
+                . 'removed including non-WRAITH managed printers.'
             )
             . '">';
         echo '<input type="radio" name="level" value="2" '
@@ -1984,7 +1984,7 @@ class HostManagementPage extends FOGPage
         $dcnote = sprintf(
             '%s. %s. %s %s.',
             _('This module is only used on the old client'),
-            _('The old client is what was distributed with FOG 1.2.0 and earlier'),
+            _('The old client is what was distributed with WRAITH 1.2.0 and earlier'),
             _('This module did not work past Windows XP due to'),
             _('UAC introduced in Vista and up')
         );
@@ -1992,17 +1992,17 @@ class HostManagementPage extends FOGPage
             '%s. %s %s. %s %s %s. %s.',
             _('This module is only used on the old client'),
             _('The old client is what was distributed with'),
-            _('FOG 1.2.0 and earlier'),
+            _('WRAITH 1.2.0 and earlier'),
             _('This module has been replaced in the new client'),
             _('and the equivalent module for what Green'),
-            _('FOG did is now called Power Management'),
+            _('WRAITH did is now called Power Management'),
             _('This is only here to maintain old client operations')
         );
         $ucnote = sprintf(
             '%s. %s %s. %s %s.',
             _('This module is only used on the old client'),
             _('The old client is what was distributed with'),
-            _('FOG 1.2.0 and earlier'),
+            _('WRAITH 1.2.0 and earlier'),
             _('This module did not work past Windows XP due'),
             _('to UAC introduced in Vista and up')
         );
@@ -2050,7 +2050,7 @@ class HostManagementPage extends FOGPage
                         $dcnote
                     );
                     break;
-                case 'greenfog':
+                case 'greenwraith':
                     $note = sprintf(
                         '<i class="icon fa fa-exclamation-triangle '
                         . 'fa-1x hand" '
@@ -2149,7 +2149,7 @@ class HostManagementPage extends FOGPage
         echo '<div class="panel panel-info">';
         echo '<div class="panel-heading text-center">';
         echo '<h4 class="title">';
-        echo _('Host FOG Client Module configuration');
+        echo _('Host WRAITH Client Module configuration');
         echo '</h4>';
         echo '</div>';
         echo '<div class="panel-body">';
@@ -2208,9 +2208,9 @@ class HostManagementPage extends FOGPage
             'Service',
             array(
                 'name' => array(
-                    'FOG_CLIENT_DISPLAYMANAGER_R',
-                    'FOG_CLIENT_DISPLAYMANAGER_X',
-                    'FOG_CLIENT_DISPLAYMANAGER_Y',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_R',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_X',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_Y',
                 )
             ),
             'description',
@@ -2316,7 +2316,7 @@ class HostManagementPage extends FOGPage
             '${desc}',
         );
         $alodesc = self::getClass('Service')
-            ->set('name', 'FOG_CLIENT_AUTOLOGOFF_MIN')
+            ->set('name', 'WRAITH_CLIENT_AUTOLOGOFF_MIN')
             ->load('name')
             ->get('description');
         $this->data[] = array(
@@ -3004,7 +3004,7 @@ class HostManagementPage extends FOGPage
             unset($Task);
             $createdBy = (
                 $Log->createdBy ?:
-                self::$FOGUser->get('name')
+                self::$WRAITHUser->get('name')
             );
             $Image = $Log->image;
             if (!isset($Image->id) || !$Image->id) {
@@ -3411,11 +3411,11 @@ class HostManagementPage extends FOGPage
                 $items[] = array(
                     $pm,
                     $this->obj->get('id'),
-                    FOGCron::_sanitizeCronField($scheduleCronMin[$index]),
-                    FOGCron::_sanitizeCronField($scheduleCronHour[$index]),
-                    FOGCron::_sanitizeCronField($scheduleCronDOM[$index]),
-                    FOGCron::_sanitizeCronField($scheduleCronMonth[$index]),
-                    FOGCron::_sanitizeCronField($scheduleCronDOW[$index]),
+                    WRAITHCron::_sanitizeCronField($scheduleCronMin[$index]),
+                    WRAITHCron::_sanitizeCronField($scheduleCronHour[$index]),
+                    WRAITHCron::_sanitizeCronField($scheduleCronDOM[$index]),
+                    WRAITHCron::_sanitizeCronField($scheduleCronMonth[$index]),
+                    WRAITHCron::_sanitizeCronField($scheduleCronDOW[$index]),
                     0,
                     $action[$index]
                 );
@@ -3478,11 +3478,11 @@ class HostManagementPage extends FOGPage
                 $this->obj->wakeOnLAN();
                 return;
             }
-            $min = FOGCron::_sanitizeCronField($min);
-            $hour = FOGCron::_sanitizeCronField($hour);
-            $dom = FOGCron::_sanitizeCronField($dom);
-            $month = FOGCron::_sanitizeCronField($month);
-            $dow = FOGCron::_sanitizeCronField($dow);
+            $min = WRAITHCron::_sanitizeCronField($min);
+            $hour = WRAITHCron::_sanitizeCronField($hour);
+            $dom = WRAITHCron::_sanitizeCronField($dom);
+            $month = WRAITHCron::_sanitizeCronField($month);
+            $dow = WRAITHCron::_sanitizeCronField($dow);
             self::getClass('PowerManagement')
                 ->set('hostID', $this->obj->get('id'))
                 ->set('min', $min)

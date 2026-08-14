@@ -5,30 +5,30 @@
  * PHP version 5
  *
  * @category Service_Lib
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Service library
  *
  * @category Service_Lib
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require WEBROOT.'/commons/base.inc.php';
 $service_logpath = sprintf(
     '/%s/%s',
-    trim(FOGCore::getSetting('SERVICE_LOG_PATH'), '/'),
-    FOGCore::getSetting('SERVICEMASTERLOGFILENAME')
+    trim(WRAITHCore::getSetting('SERVICE_LOG_PATH'), '/'),
+    WRAITHCore::getSetting('SERVICEMASTERLOGFILENAME')
 );
 if (!is_file($service_logpath)) {
-    $service_logpath = '/opt/fog/log/servicemaster.log';
+    $service_logpath = '/opt/wraith/log/servicemaster.log';
 }
-$service_sleep_time = (int)FOGCore::getSetting('SERVICESLEEPTIME');
+$service_sleep_time = (int)WRAITHCore::getSetting('SERVICESLEEPTIME');
 if (!$service_sleep_time) {
     $service_sleep_time = 10;
 }
@@ -47,7 +47,7 @@ function Service_Log_message($logpath, $name, $msg)
     $logfile = fopen($logpath, "a");
     $msg = sprintf(
         "[%s] %s %s\n",
-        FOGCore::formatTime('now', 'm-d-y g:i:s a'),
+        WRAITHCore::formatTime('now', 'm-d-y g:i:s a'),
         $name,
         $msg
     );

@@ -5,10 +5,10 @@
  * PHP Version 5
  *
  * @category NewToken
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
 /**
  * Generates a new token on ajax request.
@@ -16,10 +16,10 @@
  * PHP Version 5
  *
  * @category NewToken
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
 /**
  * Lambda to create random data.
@@ -29,6 +29,6 @@
 require '../commons/base.inc.php';
 return print json_encode(
     base64_encode(
-        FOGCore::createSecToken()
+        WRAITHCore::createSecToken()
     )
 );

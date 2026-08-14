@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category MulticastTask
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Multicast task generator/finder
  *
  * @category MulticastTask
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class MulticastTask extends FOGService
+class MulticastTask extends WRAITHService
 {
     /**
      * Gets all the multicast tasks
@@ -46,7 +46,7 @@ class MulticastTask extends FOGService
             'CHECK_NODE_MASTER',
             array(
                 'StorageNode' => &$StorageNode,
-                'FOGServiceClass' => __CLASS__
+                'WRAITHServiceClass' => __CLASS__
             )
         );
         if (!$StorageNode->isMaster) {
@@ -227,7 +227,7 @@ class MulticastTask extends FOGService
         $taskIDs = ''
     ) {
         parent::__construct();
-        $overridePort = self::getSetting('FOG_MULTICAST_PORT_OVERRIDE');
+        $overridePort = self::getSetting('WRAITH_MULTICAST_PORT_OVERRIDE');
         $this->_intID = $id;
         $this->_strName = $name;
         if ($overridePort) {
@@ -444,10 +444,10 @@ class MulticastTask extends FOGService
             'Service',
             array(
                 'name' => array(
-                    'FOG_MULTICAST_ADDRESS',
-                    'FOG_MULTICAST_DUPLEX',
-                    'FOG_MULTICAST_RENDEZVOUS',
-                    'FOG_UDPCAST_MAXWAIT'
+                    'WRAITH_MULTICAST_ADDRESS',
+                    'WRAITH_MULTICAST_DUPLEX',
+                    'WRAITH_MULTICAST_RENDEZVOUS',
+                    'WRAITH_UDPCAST_MAXWAIT'
                 )
             ),
             'value',
@@ -466,7 +466,7 @@ class MulticastTask extends FOGService
                 ip2long($address) + (
                     (
                         $this->getPortBase() / 2 + 1
-                    ) % self::getSetting('FOG_MULTICAST_MAX_SESSIONS')
+                    ) % self::getSetting('WRAITH_MULTICAST_MAX_SESSIONS')
                 )
             );
         }

@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ImageSize
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Image size service for images.
  *
  * @category ImageSize
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ImageSize extends FOGService
+class ImageSize extends WRAITHService
 {
     /**
      * Is the service globally enabled.
@@ -66,12 +66,12 @@ class ImageSize extends FOGService
             (
                 self::$logpath ?
                 self::$logpath :
-                '/opt/fog/log/'
+                '/opt/wraith/log/'
             ),
             (
                 $log ?
                 $log :
-                'fogimagesize.log'
+                'wraithimagesize.log'
             )
         );
         if (file_exists(static::$log)) {

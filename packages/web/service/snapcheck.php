@@ -5,57 +5,57 @@
  * PHP version 5
  *
  * @category SnapinCheck
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Checks the snapin.
  *
  * @category SnapinCheck
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    FOGCore::getHostItem(false);
-    if (!FOGCore::$Host->isValid()) {
+    WRAITHCore::getHostItem(false);
+    if (!WRAITHCore::$Host->isValid()) {
         throw new Exception('#!ih');
     }
-    $SnapinJob = FOGCore::$Host
+    $SnapinJob = WRAITHCore::$Host
         ->get('snapinjob');
     if (!$SnapinJob->isValid()) {
         throw new Exception(0);
     }
-    $snapinids = FOGCore::getSubObjectIDs(
+    $snapinids = WRAITHCore::getSubObjectIDs(
         'SnapinTask',
         array(
-            'stateID' => $FOGCore->getQUeuedStates(),
+            'stateID' => $WRAITHCore->getQUeuedStates(),
             'jobID' => $SnapinJob->get('id')
         ),
         'snapinID'
     );
     if (isset($_REQUEST['getSnapnames'])) {
-        $snapins = FOGCore::getSubObjectIDs(
+        $snapins = WRAITHCore::getSubObjectIDs(
             'Snapin',
             array('id' => $snapinids),
             'name'
         );
     } elseif (isset($_REQUEST['getSnapargs'])) {
-        $snapins = FOGCore::getSubObjectIDs(
+        $snapins = WRAITHCore::getSubObjectIDs(
             'Snapin',
             array('id' => $snapinids),
             'args'
         );
     } else {
         $snapins = (
-            FOGCore::getClass('SnapinTaskManager')
+            WRAITHCore::getClass('SnapinTaskManager')
             ->count(
                 array(
-                    'stateID' => FOGCore::getQueuedStates(),
+                    'stateID' => WRAITHCore::getQueuedStates(),
                     'jobID' => $SnapinJob->get('id')
                 )
             ) ?

@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddFileintegrityAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects fileintegrity stuff into the api system.
  *
  * @category AddFileintegrityAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddFileintegrityAPI extends Hook
 {
@@ -143,7 +143,7 @@ class AddFileintegrityAPI extends Hook
         }
         switch ($arguments['classname']) {
             case 'location':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'storagenode' => $arguments['class']->get('storagenode')->get()

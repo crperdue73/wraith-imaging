@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category AddLDAPMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Adds the menu item for this plugin
  *
  * @category AddLDAPMenuItem
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <nah@nah.com>
  * @author   george1421 <nah@nah.com>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddLDAPMenuItem extends Hook
 {

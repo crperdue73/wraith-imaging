@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category HardwareInfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Presents Hardware/Software information of the server.
  *
  * @category HardwareInfo
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 ignore_user_abort(true);
@@ -25,7 +25,7 @@ set_time_limit(0);
 header('Content-Type: text/event-stream');
 
 // Allow local authenticated users and trusted node-to-node requests.
-$isAuthorizedUser = FOGCore::is_authorized(true);
+$isAuthorizedUser = WRAITHCore::is_authorized(true);
 $remoteIP = filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 Route::ids('storagenode', [], 'ip');
 $storageNodeIPs = json_decode(Route::getData(), true) ?: [];
@@ -41,7 +41,7 @@ if (!$isAuthorizedUser && !$isTrustedCaller) {
     exit;
 }
 
-$hwinfo = FOGCore::getHWInfo();
+$hwinfo = WRAITHCore::getHWInfo();
 foreach ((array)$hwinfo as $index => $val) {
     echo "$val\n";
 }

@@ -4,28 +4,28 @@
  *
  * PHP version 5
  *
- * Presents the client page where users can download the FOG Client and
+ * Presents the client page where users can download the WRAITH Client and
  * related utilities as needed.
  *
  * @category ClientManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Client Management Page
  *
- * Presents the client page where users can download the FOG Client and
+ * Presents the client page where users can download the WRAITH Client and
  * related utilities as needed.
  *
  * @category ClientManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ClientManagementPage extends FOGPage
+class ClientManagementPage extends WRAITHPage
 {
     /**
      * The node that's related to this class
@@ -54,10 +54,10 @@ class ClientManagementPage extends FOGPage
      */
     public function index()
     {
-        $this->title = _('FOG Client Installer');
+        $this->title = _('WRAITH Client Installer');
         $webArr = array(
             'name' => array(
-                'FOG_WEB_HOST'
+                'WRAITH_WEB_HOST'
             )
         );
         list($ip) = self::getSubObjectIDs(
@@ -66,7 +66,7 @@ class ClientManagementPage extends FOGPage
             'value'
         );
         $url = sprintf(
-            '%s://%s/fog/client/download.php',
+            '%s://%s/wraith/client/download.php',
             self::$httpproto,
             $ip
         );
@@ -84,11 +84,11 @@ class ClientManagementPage extends FOGPage
         echo _('New Client and Utilities');
         echo '</h4>';
         echo '<p class="category">';
-        echo _('The installers for the fog client');
+        echo _('The installers for the wraith client');
         echo '<br/>';
         echo _('Client Version');
         echo ': ';
-        echo FOG_CLIENT_VERSION;
+        echo WRAITH_CLIENT_VERSION;
         echo '</p>';
         echo '</div>';
         echo '<div class="panel-body">';
@@ -150,21 +150,21 @@ class ClientManagementPage extends FOGPage
             _('Use the links below if you need assistance'),
             _('NOTE'),
             _('Forums are the most common and fastest method of getting'),
-            _('help with any aspect of FOG')
+            _('help with any aspect of WRAITH')
         );
         echo '<br/>';
         printf(
             '<a href="'
-            . 'https://wiki.fogproject.org/wiki/index.php?title=FOG_client'
+            . 'https://wiki.wraithproject.org/wiki/index.php?title=WRAITH_client'
             . '" data-toggle="tooltip" data-placement="right" '
             . 'title="%s. %s">%s</a><br/>',
             _('Detailed documentation'),
             _('It is primarily geared for the smart installer methodology now'),
-            _('FOG Client Wiki')
+            _('WRAITH Client Wiki')
         );
         printf(
             '<a href="'
-            . 'https://forums.fogproject.org'
+            . 'https://forums.wraithproject.org'
             . '" data-toggle="tooltip" data-placement="right" '
             . 'title="%s? %s. %s %s. %s.">%s</a>',
             _('Need more support'),
@@ -172,7 +172,7 @@ class ClientManagementPage extends FOGPage
             _('Use the forums to post issues so others'),
             _('may see the issue and help and/or use the solutions'),
             _('Chat is also available on the forums for more realtime help'),
-            _('FOG Forums')
+            _('WRAITH Forums')
         );
         echo '</div>';
         echo '</div>';

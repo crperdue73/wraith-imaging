@@ -1,6 +1,6 @@
 ---
 name: Issue
-about: Talk about other FOGProject related things.
+about: Talk about other WRAITHProject related things.
 title: ''
 labels: ''
 assignees: ''

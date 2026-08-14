@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AccessControlRuleManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access Control plugin
  *
  * @category AccessControlRuleManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class AccessControlRuleManager extends FOGManagerController
+class AccessControlRuleManager extends WRAITHManagerController
 {
     /**
      * Table name
@@ -96,83 +96,83 @@ class AccessControlRuleManager extends FOGManagerController
             . $this->tablename
             . ' VALUES '
             . '(2, "MAIN_MENU-user", "MAIN_MENU", "user", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(3, "MAIN_MENU-host", "MAIN_MENU", "host", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(4, "MAIN_MENU-group", "MAIN_MENU", "group", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(5, "MAIN_MENU-image", "MAIN_MENU", "image", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(6, "MAIN_MENU-storage", "MAIN_MENU", "storage", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(7, "MAIN_MENU-snapin", "MAIN_MENU", "snapin", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(8, "MAIN_MENU-printer", "MAIN_MENU", "printer", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(9, "MAIN_MENU-service", "MAIN_MENU", "service", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(10, "MAIN_MENU-task", "MAIN_MENU", "task", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(11, "MAIN_MENU-report", "MAIN_MENU", "report", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(12, "MAIN_MENU-plugin", "MAIN_MENU", "plugin", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(13, "MAIN_MENU-about", "MAIN_MENU", "about", '
-            . '"main", "fog", NOW(), NULL), '
+            . '"main", "wraith", NOW(), NULL), '
             . '(14, "SUB_MENULINK-list", "SUB_MENULINK", "list", '
-            . '"menu", "fog", NOW(), NULL), '
+            . '"menu", "wraith", NOW(), NULL), '
             . '(15, "SUB_MENULINK-search", "SUB_MENULINK", "search", '
-            . '"menu", "fog", NOW(), NULL), '
+            . '"menu", "wraith", NOW(), NULL), '
             . '(16, "SUB_MENULINK-import", "SUB_MENULINK", "import", '
-            . '"menu", "fog", NOW(), NULL), '
+            . '"menu", "wraith", NOW(), NULL), '
             . '(17, "SUB_MENULINK-export", "SUB_MENULINK", "export", '
-            . '"menu", "fog", NOW(), NULL), '
+            . '"menu", "wraith", NOW(), NULL), '
             . '(18, "SUB_MENULINK-add", "SUB_MENULINK", "add", '
-            . '"menu", "fog", NOW(), NULL), '
+            . '"menu", "wraith", NOW(), NULL), '
             . '(19, "SUB_MENULINK-multicast", "SUB_MENULINK", "multicast", '
-            . '"menu", "fog", NOW(), "image"), '
+            . '"menu", "wraith", NOW(), "image"), '
             . '(20, "SUB_MENULINK-storageGroup", "SUB_MENULINK", "storageGroup", '
-            . '"menu", "fog", NOW(), "storage"), '
+            . '"menu", "wraith", NOW(), "storage"), '
             . '(21, "SUB_MENULINK-addStorageNode", "SUB_MENULINK", '
-            . '"addStorageNode", "menu", "fog", NOW(), "storage"), '
+            . '"addStorageNode", "menu", "wraith", NOW(), "storage"), '
             . '(22, "SUB_MENULINK-addStorageGroup", "SUB_MENULINK", '
-            . '"addStorageGroup", "menu", "fog", NOW(), "storage"), '
+            . '"addStorageGroup", "menu", "wraith", NOW(), "storage"), '
             . '(23, "SUB_MENULINK-actice", "SUB_MENULINK", '
-            . '"active", "menu", "fog", NOW(), "task"), '
+            . '"active", "menu", "wraith", NOW(), "task"), '
             . '(24, "SUB_MENULINK-listhosts", "SUB_MENULINK", "listhosts", '
-            . '"menu", "fog", NOW(), "task"), '
+            . '"menu", "wraith", NOW(), "task"), '
             . '(25, "SUB_MENULINK-listgroups", "SUB_MENULINK", '
-            . '"listgroups", "menu", "fog", NOW(), "task"), '
+            . '"listgroups", "menu", "wraith", NOW(), "task"), '
             . '(26, "SUB_MENULINK-activemulticast", "SUB_MENULINK", '
-            . '"activemulticast", "menu", "fog", NOW(), "task"), '
+            . '"activemulticast", "menu", "wraith", NOW(), "task"), '
             . '(27, "SUB_MENULINK-activesnapins", "SUB_MENULINK", '
-            . '"activesnapins", "menu", "fog", NOW(), "task"), '
+            . '"activesnapins", "menu", "wraith", NOW(), "task"), '
             . '(28, "SUB_MENULINK-activescheduled", "SUB_MENULINK", '
-            . '"activescheduled", "menu", "fog", NOW(), "task"), '
+            . '"activescheduled", "menu", "wraith", NOW(), "task"), '
             . '(29, "SUB_MENULINK-home", "SUB_MENULINK", "home", '
-            . '"menu", "fog", NOW(), "about"), '
+            . '"menu", "wraith", NOW(), "about"), '
             . '(30, "SUB_MENULINK-license", "SUB_MENULINK", '
-            . '"license", "menu", "fog", NOW(), "about"), '
+            . '"license", "menu", "wraith", NOW(), "about"), '
             . '(31, "SUB_MENULINK-kernelUpdate", "SUB_MENULINK", '
-            . '"kernelUpdate", "menu", "fog", NOW(), "about"), '
+            . '"kernelUpdate", "menu", "wraith", NOW(), "about"), '
             . '(32, "SUB_MENULINK-pxemenu", "SUB_MENULINK", '
-            . '"pxemenu", "menu", "fog", NOW(), "about"), '
+            . '"pxemenu", "menu", "wraith", NOW(), "about"), '
             . '(33, "SUB_MENULINK-customizepxe", "SUB_MENULINK", '
-            . '"customizepxe", "menu", "fog", NOW(), "about"), '
+            . '"customizepxe", "menu", "wraith", NOW(), "about"), '
             . '(34,"SUB_MENULINK-newmenu","SUB_MENULINK", '
-            . '"newmenu", "menu", "fog", NOW(), "about"), '
+            . '"newmenu", "menu", "wraith", NOW(), "about"), '
             . '(35, "SUB_MENULINK-clientupdater", "SUB_MENULINK", '
-            . '"clientupdater", "menu", "fog", NOW(), "about"), '
+            . '"clientupdater", "menu", "wraith", NOW(), "about"), '
             . '(36, "SUB_MENULINK-maclist", "SUB_MENULINK", '
-            . '"maclist", "menu", "fog", NOW(), "about"), '
+            . '"maclist", "menu", "wraith", NOW(), "about"), '
             . '(37, "SUB_MENULINK-settings", "SUB_MENULINK", '
-            . '"settings", "menu", "fog", NOW(), "about"), '
+            . '"settings", "menu", "wraith", NOW(), "about"), '
             . '(38, "SUB_MENULINK-logviewer", "SUB_MENULINK", '
-            . '"logviewer", "menu", "fog", NOW(), "about"), '
+            . '"logviewer", "menu", "wraith", NOW(), "about"), '
             . '(39, "SUB_MENULINK-config", "SUB_MENULINK", '
-            . '"config", "menu", "fog", NOW(), "about"), '
+            . '"config", "menu", "wraith", NOW(), "about"), '
             . '(40, "MAIN_MENU-accesscontrol", "MAIN_MENU", "accesscontrol", '
-            . '"main", "fog", NOW(), NULL)';
+            . '"main", "wraith", NOW(), NULL)';
         if (self::$DB->query($sql)) {
             $sql = "CREATE UNIQUE INDEX `indexmul` "
                     . "`rules` (`ruleValue`, `ruleNode`)";

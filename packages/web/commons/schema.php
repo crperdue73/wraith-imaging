@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Redirect
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Schema layout for creating the database.
  *
  * @category Redirect
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 $tmpSchema = self::getClass('Schema');
 self::$DB->query(Schema::useDatabaseQuery());
@@ -124,7 +124,7 @@ $this->schema[] = array(
     . 'KEY `new_index` (`uName`),'
     . 'KEY `new_index1` (`uPass`)'
     . ') ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC',
-    "INSERT IGNORE INTO `users` VALUES ('','fog', MD5('password'), NOW(), '')",
+    "INSERT IGNORE INTO `users` VALUES ('','wraith', MD5('password'), NOW(), '')",
     "INSERT IGNORE INTO `supportedOS` VALUES ('', 'Windows XP', '1')",
     "INSERT IGNORE INTO `schemaVersion` VALUES ('', '1')"
 );
@@ -367,144 +367,144 @@ $this->schema[] = array(
     'INSERT IGNORE INTO `globalSettings`'
     . '(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`)'
     . 'VALUES'
-    . "('FOG_TFTP_HOST','Hostname or IP address of the TFTP Server.','"
+    . "('WRAITH_TFTP_HOST','Hostname or IP address of the TFTP Server.','"
     . TFTP_HOST
     . "','TFTP Server'),"
-    . "('FOG_TFTP_FTP_USERNAME','Username used to access the tftp server via ftp.','"
+    . "('WRAITH_TFTP_FTP_USERNAME','Username used to access the tftp server via ftp.','"
     . TFTP_FTP_USERNAME
     . "','TFTP Server'),"
-    . "('FOG_TFTP_FTP_PASSWORD','Password used to access the tftp server via ftp.','"
+    . "('WRAITH_TFTP_FTP_PASSWORD','Password used to access the tftp server via ftp.','"
     . TFTP_FTP_PASSWORD
     . "','TFTP Server'),"
-    . "('FOG_TFTP_PXE_KERNEL_DIR','Location of kernel files on the PXE server.','"
+    . "('WRAITH_TFTP_PXE_KERNEL_DIR','Location of kernel files on the PXE server.','"
     . TFTP_PXE_KERNEL_DIR
     . "','TFTP Server'),"
-    . "('FOG_TFTP_PXE_KERNEL','Location of kernel file on the PXE server,"
+    . "('WRAITH_TFTP_PXE_KERNEL','Location of kernel file on the PXE server,"
     . "this should point to the kernel itself.','"
     . PXE_KERNEL
     . "','TFTP Server'),"
-    . "('FOG_KERNEL_RAMDISK_SIZE','This setting defines the amount of physical "
+    . "('WRAITH_KERNEL_RAMDISK_SIZE','This setting defines the amount of physical "
     . "memory (in KB) you want to use for the boot image. This setting needs "
     . "to be larger than the boot image and smaller that the total physical "
     . "memory on the client.','"
     . PXE_KERNEL_RAMDISK
     . "','TFTP Server'),"
-    . "('FOG_USE_SLOPPY_NAME_LOOKUPS','The settings was added to workaround "
+    . "('WRAITH_USE_SLOPPY_NAME_LOOKUPS','The settings was added to workaround "
     . "a partial implementation of DHCP in the boot image. The boot image "
     . "is unable to obtain a DNS server address from the DHCP server, "
     . "so what this setting will do is resolve any hostnames to IP "
-    . "address on the FOG server before writing the config files.','"
+    . "address on the WRAITH server before writing the config files.','"
     . USE_SLOPPY_NAME_LOOKUPS
     . "','General Settings'),"
-    . "('FOG_MEMTEST_KERNEL', 'The settings defines where the memtest boot "
+    . "('WRAITH_MEMTEST_KERNEL', 'The settings defines where the memtest boot "
     . "image/kernel is located.','"
     . MEMTEST_KERNEL
     . "','General Settings'),"
-    . "('FOG_PXE_BOOT_IMAGE','The settings defines where the fog boot file "
+    . "('WRAITH_PXE_BOOT_IMAGE','The settings defines where the wraith boot file "
     . "system image is located.','"
     . PXE_IMAGE
     . "','TFTP Server'),"
-    . "('FOG_NFS_HOST','This setting defines the hostname or ip address "
-    . "of the NFS server used with FOG.','"
+    . "('WRAITH_NFS_HOST','This setting defines the hostname or ip address "
+    . "of the NFS server used with WRAITH.','"
     . STORAGE_HOST
     . "','NFS Server'),"
-    . "('FOG_NFS_FTP_USERNAME','This setting defines the username "
-    . "used to access files on the nfs server used with FOG.','"
+    . "('WRAITH_NFS_FTP_USERNAME','This setting defines the username "
+    . "used to access files on the nfs server used with WRAITH.','"
     . STORAGE_FTP_USERNAME
     . "','NFS Server'),"
-    . "('FOG_NFS_FTP_PASSWORD','This setting defines the password "
-    . "used to access flies on the nfs server used with FOG.','"
+    . "('WRAITH_NFS_FTP_PASSWORD','This setting defines the password "
+    . "used to access flies on the nfs server used with WRAITH.','"
     . STORAGE_FTP_PASSWORD
     . "','NFS Server'),"
-    . "('FOG_NFS_DATADIR','This setting defines the directory on "
+    . "('WRAITH_NFS_DATADIR','This setting defines the directory on "
     . "the NFS server where images are stored.','"
     . STORAGE_DATADIR
     . "','NFS Server'),"
-    . "('FOG_NFS_DATADIR_CAPTURE','This setting defines the directory "
+    . "('WRAITH_NFS_DATADIR_CAPTURE','This setting defines the directory "
     . "on the NFS server where images are captured too.','"
     . STORAGE_DATADIR_CAPTURE
     . "','NFS Server'),"
-    . "('FOG_NFS_BANDWIDTHPATH','This setting defines the web page "
+    . "('WRAITH_NFS_BANDWIDTHPATH','This setting defines the web page "
     . "used to acquire the bandwidth used by the nfs server.','"
     . STORAGE_BANDWIDTHPATH
     . "','NFS Server'),"
-    . "('FOG_CAPTURERESIZEPCT','This setting defines the amount of "
+    . "('WRAITH_CAPTURERESIZEPCT','This setting defines the amount of "
     . "padding applied to a partition before attempting resize the "
     . "ntfs volume and capturing it.','"
     . CAPTURERESIZEPCT
     . "','General Settings'),"
-    . "('FOG_WEB_HOST','This setting defines the hostname or ip "
-    . "address of the web server used with fog.','"
+    . "('WRAITH_WEB_HOST','This setting defines the hostname or ip "
+    . "address of the web server used with wraith.','"
     . WEB_HOST
     . "','Web Server'),"
-    . "('FOG_WEB_ROOT','This setting defines the path to the "
-    . "fog webserver\'s root directory.','"
-    . '/fog/'
+    . "('WRAITH_WEB_ROOT','This setting defines the path to the "
+    . "wraith webserver\'s root directory.','"
+    . '/wraith/'
     . "','Web Server'),"
-    . "('FOG_WOL_HOST','This setting defines the ip address "
+    . "('WRAITH_WOL_HOST','This setting defines the ip address "
     . "of hostname for the server hosting the Wake-on-lan service.','"
     . WOL_HOST
     . "','General Settings'),"
-    . "('FOG_WOL_PATH','This setting defines the path to the files "
+    . "('WRAITH_WOL_PATH','This setting defines the path to the files "
     . "performing the WOL tasks.','"
     . WOL_PATH
     . "','General Settings'),"
-    . "('FOG_WOL_INTERFACE','This setting defines the network interface "
+    . "('WRAITH_WOL_INTERFACE','This setting defines the network interface "
     . "used in the WOL process.','"
     . WOL_INTERFACE
     . "','General Settings'),"
-    . "('FOG_SNAPINDIR','This setting defines the location of the "
+    . "('WRAITH_SNAPINDIR','This setting defines the location of the "
     . "snapin files. These files must be hosted on the web server.','"
     . SNAPINDIR
     . "','Web Server'),"
-    . "('FOG_CHECKIN_TIMEOUT','This setting defines the amount "
+    . "('WRAITH_CHECKIN_TIMEOUT','This setting defines the amount "
     . "of time between client checks to determine if they are "
     . "active clients.','"
     . CHECKIN_TIMEOUT
     . "','General Settings'),"
-    . "('FOG_USER_MINPASSLENGTH','This setting defines the "
+    . "('WRAITH_USER_MINPASSLENGTH','This setting defines the "
     . "minimum number of characters in a user\'s password.','"
     . USER_MINPASSLENGTH
     . "','User Management'),"
-    . "('FOG_NFS_ETH_MONITOR','This setting defines which "
+    . "('WRAITH_NFS_ETH_MONITOR','This setting defines which "
     . "interface is monitored for traffic summaries.','"
     . NFS_ETH_MONITOR
     . "','NFS Server'),"
-    . "('FOG_UDPCAST_INTERFACE', 'This setting defines the "
+    . "('WRAITH_UDPCAST_INTERFACE', 'This setting defines the "
     . "interface used in multicast communications.','"
     . UDPCAST_INTERFACE
     . "','Multicast Settings'),"
-    . "('FOG_UDPCAST_STARTINGPORT','This setting defines the "
+    . "('WRAITH_UDPCAST_STARTINGPORT','This setting defines the "
     . "starting port number used in multicast communications. "
     . "This starting port number must be an even number.','"
     . UDPCAST_STARTINGPORT
     . "','Multicast Settings'),"
-    . "('FOG_MULTICAST_MAX_SESSIONS','This setting defines "
+    . "('WRAITH_MULTICAST_MAX_SESSIONS','This setting defines "
     . "the maximum number of multicast sessions that can be "
     . "running at one time.','"
-    . FOG_MULTICAST_MAX_SESSIONS
+    . WRAITH_MULTICAST_MAX_SESSIONS
     . "', 'Multicast Settings'),"
-    . "('FOG_JPGRAPH_VERSION','This setting defines jpgraph version to use.','"
-    . FOG_JPGRAPH_VERSION
+    . "('WRAITH_JPGRAPH_VERSION','This setting defines jpgraph version to use.','"
+    . WRAITH_JPGRAPH_VERSION
     . "', 'Web Server'),"
-    . "('FOG_REPORT_DIR','This setting defines the location on the "
-    . "web server of the FOG reports.','"
-    . FOG_REPORT_DIR
+    . "('WRAITH_REPORT_DIR','This setting defines the location on the "
+    . "web server of the WRAITH reports.','"
+    . WRAITH_REPORT_DIR
     . "','Web Server'),"
-    . "('FOG_THEME','This setting defines what css style "
-    . "sheet and theme to use for FOG.','"
-    . FOG_THEME
+    . "('WRAITH_THEME','This setting defines what css style "
+    . "sheet and theme to use for WRAITH.','"
+    . WRAITH_THEME
     . "','Web Server'),"
-    . "('FOG_CAPTUREIGNOREPAGEHIBER','This setting defines if you would "
+    . "('WRAITH_CAPTUREIGNOREPAGEHIBER','This setting defines if you would "
     . "like to remove hibernate and swap files before capturing a "
     . "Windows image.','"
-    . FOG_CAPTUREIGNOREPAGEHIBER
+    . WRAITH_CAPTUREIGNOREPAGEHIBER
     . "','General Settings'),"
-    . "('FOG_CLIENT_DIRECTORYCLEANER_ENABLED','This setting defines if "
+    . "('WRAITH_CLIENT_DIRECTORYCLEANER_ENABLED','This setting defines if "
     . "the Windows Service module directory cleaner should be enabled "
     . "on client computers. This service is clean out the contents of "
     . "a directory on when a user logs out of the workstation. "
-    . "(Valid values: 0 or 1).','1', 'FOG Client - Directory Cleaner')",
+    . "(Valid values: 0 or 1).','1', 'WRAITH Client - Directory Cleaner')",
     'CREATE TABLE `moduleStatusByHost` ('
     . '`msID` INTEGER NOT NULL AUTO_INCREMENT,'
     . '`msHostID` integer NOT NULL,'
@@ -522,14 +522,14 @@ $this->schema[] = array(
     'INSERT IGNORE INTO `globalSettings`'
     . '(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`)'
     . 'VALUES'
-    . "('FOG_USE_ANIMATION_EFFECTS','This setting defines if the "
-    . "FOG management portal uses animation effects on it. "
+    . "('WRAITH_USE_ANIMATION_EFFECTS','This setting defines if the "
+    . "WRAITH management portal uses animation effects on it. "
     . "Valid values are 0 or 1', '1', 'General Settings'),"
-    . "('FOG_CLIENT_USERCLEANUP_ENABLED','This setting defines if "
+    . "('WRAITH_CLIENT_USERCLEANUP_ENABLED','This setting defines if "
     . "user cleanup should be enabled. The User Cleanup module "
     . "will remove all local windows users from the workstation "
     . "on log off accept for users that are whitelisted. (Valid "
-    . "values are 0 or 1)','0','FOG Client - User Cleanup')",
+    . "values are 0 or 1)','0','WRAITH Client - User Cleanup')",
     'CREATE TABLE `userCleanup` ('
     . '`ucID` INTEGER NOT NULL AUTO_INCREMENT,'
     . '`ucName` VARCHAR(254) NOT NULL,'
@@ -546,39 +546,39 @@ $this->schema[] = array(
     'INSERT IGNORE INTO `globalSettings`'
     . ' (`settingKey`,`settingDesc`,`settingValue`,`settingCategory`)'
     . 'VALUES'
-    . " ('FOG_CLIENT_GREENFOG_ENABLED','This setting defines if the green "
-    . "fog module should be enabled. The green fog module will shutdown "
+    . " ('WRAITH_CLIENT_GREENWRAITH_ENABLED','This setting defines if the green "
+    . "wraith module should be enabled. The green wraith module will shutdown "
     . "or restart a computer at a set time. (Valid values are 0 or 1)'"
-    . ",'1','FOG Client - Green Fog'),"
-    . "('FOG_CLIENT_AUTOLOGOFF_ENABLED','This setting defines if the "
+    . ",'1','WRAITH Client - Green Wraith'),"
+    . "('WRAITH_CLIENT_AUTOLOGOFF_ENABLED','This setting defines if the "
     . "auto log off module should be enabled. This module will log "
     . "off any active user after X minutes of inactivity."
-    . "(Valid values are 0 or 1)','1','FOG Client - Auto Log Off'),"
-    . "('FOG_CLIENT_DISPLAYMANAGER_ENABLED','This setting defines "
-    . "if the fog display manager should be active. The fog display "
+    . "(Valid values are 0 or 1)','1','WRAITH Client - Auto Log Off'),"
+    . "('WRAITH_CLIENT_DISPLAYMANAGER_ENABLED','This setting defines "
+    . "if the wraith display manager should be active. The wraith display "
     . "manager will reset the clients screen resolution to a fixed "
     . "size on log off and on computer start up."
-    . "(Valid values are 0 or 1)','0','FOG Client - Display Manager'),"
-    . "('FOG_CLIENT_DISPLAYMANAGER_X','This setting defines the default "
-    . "width in pixels to reset the computer display to with the fog "
-    . "display manager service.','1024','FOG Client - Display Manager'),"
-    . "('FOG_CLIENT_DISPLAYMANAGER_Y','This setting defines the "
+    . "(Valid values are 0 or 1)','0','WRAITH Client - Display Manager'),"
+    . "('WRAITH_CLIENT_DISPLAYMANAGER_X','This setting defines the default "
+    . "width in pixels to reset the computer display to with the wraith "
+    . "display manager service.','1024','WRAITH Client - Display Manager'),"
+    . "('WRAITH_CLIENT_DISPLAYMANAGER_Y','This setting defines the "
     . "default height in pixels to reset the computer display to "
-    . "with the fog display manager service.','768','FOG Client - Display Manager'),"
-    . "('FOG_CLIENT_DISPLAYMANAGER_R','This setting defines the "
+    . "with the wraith display manager service.','768','WRAITH Client - Display Manager'),"
+    . "('WRAITH_CLIENT_DISPLAYMANAGER_R','This setting defines the "
     . "default refresh rate to reset the computer display to with "
-    . "the fog display manager service.','60','FOG Client - Display Manager'),"
-    . "('FOG_CLIENT_AUTOLOGOFF_BGIMAGE','This setting defines the "
+    . "the wraith display manager service.','60','WRAITH Client - Display Manager'),"
+    . "('WRAITH_CLIENT_AUTOLOGOFF_BGIMAGE','This setting defines the "
     . "location of the background image used in the auto log off "
     . "module. The image should be 300px x 300px. This image can "
     . "be located locally (such as c:\\\\images\\\\myimage.jpg) "
     . "or on a web server (such as http://freeghost.sf.net/images/image.jpg)',"
-    . "'c:\\\\program files\\\\fog\\\\images\\\\alo-bg.jpg',"
-    . "'FOG Client - Auto Log Off'),"
-    . "('FOG_CLIENT_AUTOLOGOFF_MIN','This setting defines the number of "
+    . "'c:\\\\program files\\\\wraith\\\\images\\\\alo-bg.jpg',"
+    . "'WRAITH Client - Auto Log Off'),"
+    . "('WRAITH_CLIENT_AUTOLOGOFF_MIN','This setting defines the number of "
     . "minutes to wait before logging a user off of a PC."
-    . "(Value of 0 will disable this module.)','0', 'FOG Client - Auto Log Off'),"
-    . "('FOG_KEYMAP','This setting defines the keymap used on "
+    . "(Value of 0 will disable this module.)','0', 'WRAITH Client - Auto Log Off'),"
+    . "('WRAITH_KEYMAP','This setting defines the keymap used on "
     . "the client boot image.','','General Settings')",
     "CREATE TABLE `hostScreenSettings` ("
     . '`hssID` INTEGER NOT NULL AUTO_INCREMENT,'
@@ -599,7 +599,7 @@ $this->schema[] = array(
     . 'PRIMARY KEY (`haloID`),'
     . 'INDEX `new_index`(`haloHostID`)'
     . ') ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC',
-    'CREATE TABLE `greenFog` ('
+    'CREATE TABLE `greenWraith` ('
     . '`gfID` INTEGER NOT NULL AUTO_INCREMENT,'
     . '`gfHostID` INTEGER NOT NULL,'
     . '`gfHour` INTEGER NOT NULL,'
@@ -612,9 +612,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_HOSTNAMECHANGER_ENABLED','This setting defines if the fog "
+    . "('WRAITH_CLIENT_HOSTNAMECHANGER_ENABLED','This setting defines if the wraith "
     . "hostname changer should be globally active. (Valid values are 0 or 1)',"
-    . "'1', 'FOG Client - Hostname Changer')",
+    . "'1', 'WRAITH Client - Hostname Changer')",
     "CREATE TABLE `aloLog` ("
     . "`alID` INTEGER  NOT NULL AUTO_INCREMENT,"
     . "`alUserName` VARCHAR(254) NOT NULL,"
@@ -644,9 +644,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_SNAPIN_ENABLED','This setting defines if the "
-    . "fog snapin installer should be globally active. (Valid values are 0 or 1)'"
-    . ",'1', 'FOG Client - Snapins')",
+    . "('WRAITH_CLIENT_SNAPIN_ENABLED','This setting defines if the "
+    . "wraith snapin installer should be globally active. (Valid values are 0 or 1)'"
+    . ",'1', 'WRAITH Client - Snapins')",
     "ALTER TABLE `snapins` CHANGE `sAnon1` `sRunWith` VARCHAR(245) NOT NULL",
     "ALTER TABLE `snapinTasks` ADD COLUMN `stReturnCode` "
     . "INTEGER NOT NULL AFTER `stSnapinID`,ADD COLUMN "
@@ -663,7 +663,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_KERNEL_ARGS', 'This setting allows you to add additional "
+    . "('WRAITH_KERNEL_ARGS', 'This setting allows you to add additional "
     . "kernel arguments to the client boot image. This setting is global "
     . "for all hosts.','', 'General Settings')",
     "UPDATE `schemaVersion` set vValue = '11'",
@@ -673,21 +673,21 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_CLIENTUPDATER_ENABLED','This setting defines if "
-    . "the fog client updater should be globally active. "
-    . "(Valid values are 0 or 1)','1','FOG Client - Client Updater'),"
-    . "('FOG_CLIENT_HOSTREGISTER_ENABLED','This setting defines if the "
-    . "fog host register should be globally active. "
-    . "(Valid values are 0 or 1)','1','FOG Client - Host Register'),"
-    . "('FOG_CLIENT_PRINTERMANAGER_ENABLED','This setting defines if the "
-    . "fog printer manager should be globally active. "
-    . "(Valid values are 0 or 1)','1','FOG Client - Printer Manager'),"
-    . "('FOG_CLIENT_TASKREBOOT_ENABLED','This setting defines if the fog "
+    . "('WRAITH_CLIENT_CLIENTUPDATER_ENABLED','This setting defines if "
+    . "the wraith client updater should be globally active. "
+    . "(Valid values are 0 or 1)','1','WRAITH Client - Client Updater'),"
+    . "('WRAITH_CLIENT_HOSTREGISTER_ENABLED','This setting defines if the "
+    . "wraith host register should be globally active. "
+    . "(Valid values are 0 or 1)','1','WRAITH Client - Host Register'),"
+    . "('WRAITH_CLIENT_PRINTERMANAGER_ENABLED','This setting defines if the "
+    . "wraith printer manager should be globally active. "
+    . "(Valid values are 0 or 1)','1','WRAITH Client - Printer Manager'),"
+    . "('WRAITH_CLIENT_TASKREBOOT_ENABLED','This setting defines if the wraith "
     . "task reboot should be globally active. "
-    . "(Valid values are 0 or 1)','1','FOG Client - Task Reboot'),"
-    . "('FOG_CLIENT_USERTRACKER_ENABLED','This setting defines if the fog "
+    . "(Valid values are 0 or 1)','1','WRAITH Client - Task Reboot'),"
+    . "('WRAITH_CLIENT_USERTRACKER_ENABLED','This setting defines if the wraith "
     . "user tracker should be globally active. "
-    . "(Valid values are 0 or 1)','1','FOG Client - User Tracker')",
+    . "(Valid values are 0 or 1)','1','WRAITH Client - User Tracker')",
     "UPDATE `schemaVersion` set vValue = '12'",
 );
 // 13
@@ -695,16 +695,16 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_AD_DEFAULT_DOMAINNAME','This setting defines the default "
+    . "('WRAITH_AD_DEFAULT_DOMAINNAME','This setting defines the default "
     . "value to populate the host\'s Active Directory domain name value.',"
     . "'','Active Directory Defaults'),"
-    . "('FOG_AD_DEFAULT_OU','This setting defines the default value to "
+    . "('WRAITH_AD_DEFAULT_OU','This setting defines the default value to "
     . "populate the host\'s Active Directory OU value.',"
     . "'','Active Directory Defaults'),"
-    . "('FOG_AD_DEFAULT_USER','This setting defines the default value to "
+    . "('WRAITH_AD_DEFAULT_USER','This setting defines the default value to "
     . "populate the host\'s Active Directory user name value.',"
     . "'', 'Active Directory Defaults'),"
-    . "('FOG_AD_DEFAULT_PASSWORD','This setting defines the default value "
+    . "('WRAITH_AD_DEFAULT_PASSWORD','This setting defines the default value "
     . "to populate the host\'s Active Directory password value. This "
     . "settings must be encrypted.','','Active Directory Defaults')",
     "UPDATE `schemaVersion` set vValue = '13'",
@@ -713,8 +713,8 @@ $this->schema[] = array(
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) VALUES "
-    . "('FOG_UTIL_DIR','This setting defines the location of the fog "
-    . "utility directory.','/opt/fog/utils','FOG Utils')",
+    . "('WRAITH_UTIL_DIR','This setting defines the location of the wraith "
+    . "utility directory.','/opt/wraith/utils','WRAITH Utils')",
     "ALTER TABLE `users` ADD COLUMN `uType` VARCHAR(2) NOT NULL AFTER `uCreateBy`",
     "UPDATE `schemaVersion` set vValue = '14'",
 );
@@ -723,10 +723,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_PLUGINSYS_ENABLED', 'This setting defines if the fog plugin "
+    . "('WRAITH_PLUGINSYS_ENABLED', 'This setting defines if the wraith plugin "
     . "system should be enabled.','0','Plugin System'),"
-    . "('FOG_PLUGINSYS_DIR','This setting defines the base location "
-    . "of fog plugins.','./plugins','Plugin System')",
+    . "('WRAITH_PLUGINSYS_DIR','This setting defines the base location "
+    . "of wraith plugins.','./plugins','Plugin System')",
     "CREATE TABLE `plugins` ("
     . "`pID` INTEGER  NOT NULL AUTO_INCREMENT,"
     . "`pName` VARCHAR(100) NOT NULL,"
@@ -816,13 +816,13 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `nfsGroups` "
     . "(`ngName`,`ngDesc`) "
     . "VALUES "
-    . "('default','Auto generated fog nfs group')",
+    . "('default','Auto generated wraith nfs group')",
     "INSERT IGNORE INTO `nfsGroupMembers` "
     . "(`ngmMemberName`,`ngmMemberDescription`,`ngmIsMasterNode`,"
     . "`ngmGroupID`,`ngmRootPath`,`ngmIsEnabled`,`ngmHostname`,"
     . "`ngmMaxClients`,`ngmUser`,`ngmPass`) "
     . "VALUES "
-    . "('DefaultMember','Auto generated fog nfs group member','1',"
+    . "('DefaultMember','Auto generated wraith nfs group member','1',"
     . "'1','/images','1','"
     . STORAGE_HOST
     . "','10','"
@@ -832,14 +832,14 @@ $this->schema[] = array(
     . "')",
     "UPDATE `images` set imageNFSGroupID = '1'",
     "DELETE FROM `globalSettings` WHERE `settingKey` IN "
-    . "('FOG_NFS_HOST','FOG_NFS_FTP_USERNAME','FOG_NFS_FTP_PASSWORD',"
-    . "'FOG_NFS_DATADIR','FOG_NFS_DATADIR_CAPTURE')",
+    . "('WRAITH_NFS_HOST','WRAITH_NFS_FTP_USERNAME','WRAITH_NFS_FTP_PASSWORD',"
+    . "'WRAITH_NFS_DATADIR','WRAITH_NFS_DATADIR_CAPTURE')",
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_STORAGENODE_MYSQLUSER','This setting defines the username "
-    . "the storage nodes should use to connect to the fog server.',"
-    . "'fogstorage','FOG Storage Nodes')",
+    . "('WRAITH_STORAGENODE_MYSQLUSER','This setting defines the username "
+    . "the storage nodes should use to connect to the wraith server.',"
+    . "'wraithstorage','WRAITH Storage Nodes')",
     "UPDATE `schemaVersion` set `vValue`='16'",
 );
 // 17
@@ -847,13 +847,13 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_SSH_USERNAME','This setting defines the username used "
+    . "('WRAITH_SSH_USERNAME','This setting defines the username used "
     . "for the ssh client.','root','SSH Client'),"
-    . "('FOG_SSH_PORT','This setting defines the port to use for the ssh client.',"
+    . "('WRAITH_SSH_PORT','This setting defines the port to use for the ssh client.',"
     . "'22','SSH Client'),"
-    . "('FOG_VIEW_DEFAULT_SCREEN','This setting defines which page is "
+    . "('WRAITH_VIEW_DEFAULT_SCREEN','This setting defines which page is "
     . "displayed in each section, valid settings includes <b>LIST</b> "
-    . "and <b>SEARCH</b>.','SEARCH','FOG View Settings')",
+    . "and <b>SEARCH</b>.','SEARCH','WRAITH View Settings')",
     "UPDATE `schemaVersion` set vValue = '17'",
 );
 // 18
@@ -870,11 +870,11 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_PXE_MENU_TIMEOUT','This setting defines the default value "
-    . "for the pxe menu timeout.','3','FOG PXE Settings'),"
-    . "('FOG_PROXY_IP','This setting defines the proxy ip address to use.',"
+    . "('WRAITH_PXE_MENU_TIMEOUT','This setting defines the default value "
+    . "for the pxe menu timeout.','3','WRAITH PXE Settings'),"
+    . "('WRAITH_PROXY_IP','This setting defines the proxy ip address to use.',"
     . "'','General Settings'),"
-    . "('FOG_PROXY_PORT','This setting defines the proxy port address to use.',"
+    . "('WRAITH_PROXY_PORT','This setting defines the proxy port address to use.',"
     . "'','General Settings')",
     "CREATE TABLE `scheduledTasks` ("
     . "`stID` integer NOT NULL AUTO_INCREMENT,"
@@ -902,8 +902,8 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_UTIL_BASE','This setting defines the location of util base, "
-    . "which is typically /opt/fog/','/opt/fog/','FOG Utils')",
+    . "('WRAITH_UTIL_BASE','This setting defines the location of util base, "
+    . "which is typically /opt/wraith/','/opt/wraith/','WRAITH Utils')",
     "UPDATE `schemaVersion` set vValue = '19'",
 );
 // 20
@@ -911,12 +911,12 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_PXE_MENU_HIDDEN','This setting defines if you would like the "
-    . "FOG pxe menu hidden or displayed','0','FOG PXE Settings'),"
-    . "('FOG_PXE_ADVANCED','This setting defines if you would like to "
+    . "('WRAITH_PXE_MENU_HIDDEN','This setting defines if you would like the "
+    . "WRAITH pxe menu hidden or displayed','0','WRAITH PXE Settings'),"
+    . "('WRAITH_PXE_ADVANCED','This setting defines if you would like to "
     . "append any settings to the end of your PXE default file.','',"
-    . "'FOG PXE Settings'),"
-    . "('FOG_USE_LEGACY_TASKLIST','This setting defines if you would like to "
+    . "'WRAITH PXE Settings'),"
+    . "('WRAITH_USE_LEGACY_TASKLIST','This setting defines if you would like to "
     . "use the legacy active tasks window. Note: The legacy screen will no "
     . "longer be updated.','0','General Settings')",
     "ALTER TABLE `globalSettings` MODIFY COLUMN `settingValue` LONGTEXT "
@@ -944,24 +944,24 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_QUICKREG_AUTOPOP','Enable FOG Quick Registration auto "
+    . "('WRAITH_QUICKREG_AUTOPOP','Enable WRAITH Quick Registration auto "
     . "population feature (0 = disabled, 1=enabled). If this feature "
-    . "is enabled, FOG will auto populate the host settings and "
+    . "is enabled, WRAITH will auto populate the host settings and "
     . "automatically image the computer without any user intervention.',"
-    . "'0','FOG Quick Registration'),"
-    . "('FOG_QUICKREG_IMG_ID','FOG Quick Registration Image ID.',"
-    . "'-1', 'FOG Quick Registration'),"
-    . "('FOG_QUICKREG_OS_ID','FOG Quick Registration OS ID.',"
-    . "'-1', 'FOG Quick Registration'),"
-    . "('FOG_QUICKREG_SYS_NAME','FOG Quick Registration system name template. "
-    . "Use * for the autonumber feature.', 'PC-*', 'FOG Quick Registration'),"
-    . "('FOG_QUICKREG_SYS_NUMBER','FOG Quick Registration system name auto number.',"
-    . "'1','FOG Quick Registration'),"
-    . "('FOG_DEFAULT_LOCALE','Default language code to use for FOG.',"
+    . "'0','WRAITH Quick Registration'),"
+    . "('WRAITH_QUICKREG_IMG_ID','WRAITH Quick Registration Image ID.',"
+    . "'-1', 'WRAITH Quick Registration'),"
+    . "('WRAITH_QUICKREG_OS_ID','WRAITH Quick Registration OS ID.',"
+    . "'-1', 'WRAITH Quick Registration'),"
+    . "('WRAITH_QUICKREG_SYS_NAME','WRAITH Quick Registration system name template. "
+    . "Use * for the autonumber feature.', 'PC-*', 'WRAITH Quick Registration'),"
+    . "('WRAITH_QUICKREG_SYS_NUMBER','WRAITH Quick Registration system name auto number.',"
+    . "'1','WRAITH Quick Registration'),"
+    . "('WRAITH_DEFAULT_LOCALE','Default language code to use for WRAITH.',"
     . "'en', 'General Settings'),"
-    . "('FOG_HOST_LOCKUP','Should FOG attempt to see if a host is active "
+    . "('WRAITH_HOST_LOCKUP','Should WRAITH attempt to see if a host is active "
     . "and display it as part of the UI?','1','General Settings'),"
-    . "('FOG_UUID','This is a unique ID that is used to identify your "
+    . "('WRAITH_UUID','This is a unique ID that is used to identify your "
     . "installation. In most cases you do not want to change this value.',"
     . "'"
     . uniqid("", true)
@@ -977,21 +977,21 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_QUICKREG_MAX_PENDING_MACS','This setting defines how many mac "
+    . "('WRAITH_QUICKREG_MAX_PENDING_MACS','This setting defines how many mac "
     . "addresses will be stored in the pending mac address table for each host.',"
-    . "'4', 'FOG Client - Host Register'),"
-    . "('FOG_QUICKREG_PENDING_MAC_FILTER','This is a list of MAC address "
+    . "'4', 'WRAITH Client - Host Register'),"
+    . "('WRAITH_QUICKREG_PENDING_MAC_FILTER','This is a list of MAC address "
     . "fragments that is used to filter out pending mac address requests. "
     . "For example, if you don\'t want to see pending mac address requests "
     . "for VMWare NICs then you could filter by 00:05:69. This filter is "
     . "comma separated, and is used like a *starts with* filter.',"
-    . "'','FOG Client - Host Register'),"
-    . "('FOG_ADVANCED_STATISTICS','Enable the collection and display of "
+    . "'','WRAITH Client - Host Register'),"
+    . "('WRAITH_ADVANCED_STATISTICS','Enable the collection and display of "
     . "advanced statistics. This information WILL be sent to a remote "
-    . "server! This information is used by the FOG team to see how "
-    . "FOG is being used. The information that will be sent includes "
-    . "the server\'s UUID value, the number of hosts present in FOG, "
-    . "and number of images on your FOG server and well as total "
+    . "server! This information is used by the WRAITH team to see how "
+    . "WRAITH is being used. The information that will be sent includes "
+    . "the server\'s UUID value, the number of hosts present in WRAITH, "
+    . "and number of images on your WRAITH server and well as total "
     . "image space used. (0 = disabled, 1 = enabled).',"
     . "'0', 'General Settings')",
     "UPDATE `schemaVersion` set vValue = '21'",
@@ -999,8 +999,8 @@ $this->schema[] = array(
 // 22
 $this->schema[] = array(
     "ALTER TABLE `inventory` ADD INDEX (`iHostID`)",
-    "UPDATE `globalSettings` set `settingKey`='FOG_HOST_LOOKUP' "
-    . "WHERE `settingKey`='FOG_HOST_LOCKUP'",
+    "UPDATE `globalSettings` set `settingKey`='WRAITH_HOST_LOOKUP' "
+    . "WHERE `settingKey`='WRAITH_HOST_LOCKUP'",
     "UPDATE `schemaVersion` set `vValue`='22'",
 );
 // 23
@@ -1008,13 +1008,13 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_DISABLE_CHKDSK','This is an experimental feature that will "
+    . "('WRAITH_DISABLE_CHKDSK','This is an experimental feature that will "
     . "can be used to not set the dirty flag on a NTFS partition after "
     . "resizing it. It is recommended to you run chkdsk. "
     . "(0 = runs chkdsk, 1 = disables chkdsk).','1','General Settings'),"
-    . "('FOG_CHANGE_HOSTNAME_EARLY','This is an experimental feature that "
+    . "('WRAITH_CHANGE_HOSTNAME_EARLY','This is an experimental feature that "
     . "will can be used to change the computers hostname right after "
-    . "imaging the box, without the need for the FOG service. "
+    . "imaging the box, without the need for the WRAITH service. "
     . "(1 = enabled, 0 = disabled).','1','General Settings')",
     "UPDATE `schemaVersion` set `vValue`='23'",
 );
@@ -1106,7 +1106,7 @@ $this->schema[] = array(
     "UPDATE `schemaVersion` set `vValue`='28'",
 );
 // 29
-if (FOG_SCHEMA < $tmpSchema->get('value')) {
+if (WRAITH_SCHEMA < $tmpSchema->get('value')) {
     self::$DB->query(
         "SELECT DISTINCT `hostImage`,`hostOS` FROM `hosts` WHERE hostImage > 0"
     );
@@ -1170,7 +1170,7 @@ $this->schema[] = array(
     . ') ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC',
     "INSERT IGNORE INTO `taskStates` "
     . "(`tsID`, `tsName`, `tsDescription`, `tsOrder`) VALUES "
-    . "(1,'Queued','Task has been created and FOG is "
+    . "(1,'Queued','Task has been created and WRAITH is "
     . "waiting for the Host to check-in.', '1'),"
     . "(2, 'In-Progress', 'Host is currently Imaging.', '2'),"
     . "(3, 'Complete', 'Imaging has been completed.', '3')",
@@ -1196,7 +1196,7 @@ $this->schema[] = array(
     . "`ttDescription` text NOT NULL,"
     . "`ttIcon` varchar(30) NOT NULL,"
     . "`ttKernelTemplate` text NOT NULL,"
-    . "`ttType` enum('fog','user') NOT NULL DEFAULT 'user',"
+    . "`ttType` enum('wraith','user') NOT NULL DEFAULT 'user',"
     . "`ttIsAdvanced` enum('0','1') NOT NULL DEFAULT '0',"
     . "`ttIsAccess` enum('both','host','group') NOT NULL DEFAULT 'both',"
     . "PRIMARY KEY (`ttID`)"
@@ -1206,86 +1206,86 @@ $this->schema[] = array(
     . "`ttKernelTemplate`,`ttType`,`ttIsAdvanced`,`ttIsAccess`) "
     . "VALUES "
     . "(1,'Deploy','Deploy action will send an image saved on the "
-    . "FOG server to the client computer with all included snapins.',"
-    . "'senddebug.png', 'type=down', 'fog', '0', 'both'),"
+    . "WRAITH server to the client computer with all included snapins.',"
+    . "'senddebug.png', 'type=down', 'wraith', '0', 'both'),"
     . "(2,'Capture','Capture will pull an image from a client computer "
     . "that will be saved on the server.','restoredebug.png',"
-    . "'type=up','fog','0','host'),"
+    . "'type=up','wraith','0','host'),"
     . "(3,'Debug','Debug mode will load the boot image and load a prompt "
     . "so you can run any commands you wish. When you are done, you must "
     . "remember to remove the PXE file, by clicking on \"Active Tasks\" "
     . "and clicking on the \"Kill Task\" button.', 'debug.png',"
-    . "'type=down mode=debug', 'fog', '1', 'host'),"
+    . "'type=down mode=debug', 'wraith', '1', 'host'),"
     . "(5, 'Memtest86+', 'Memtest86+ loads Memtest86+ on the client computer "
     . "and will have it continue to run until stopped. When you are done, "
     . "you must remember to remove the PXE file, by clicking on "
     . "\"Active Tasks\" and clicking on the \"Kill Task\" button.', "
-    . "'memtest.png', '', 'fog', '1', 'both'),"
+    . "'memtest.png', '', 'wraith', '1', 'both'),"
     . "(6, 'Disk Surface Test', 'Disk Surface Test checks the hard "
     . "drives surface sector by sector for any errors and reports "
     . "back if errors are present.', 'surfacetest.png', '',"
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(7, 'Recover', 'Recover loads the photorec utility that can "
     . "be used to recover lost files from a hard disk. When "
     . "recovering files, make sure you save them to your "
     . "NFS volume (ie: /images).', 'recover.png', '', "
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(8, 'Multi-Cast', 'Deploy action will send an image saved on the "
-    . "FOG server to the client computer with all included snapins.', "
-    . "'senddebug.png', '', 'fog', '0', 'group'),"
+    . "WRAITH server to the client computer with all included snapins.', "
+    . "'senddebug.png', '', 'wraith', '0', 'group'),"
     . "(9, 'Virus Scan', 'Anti-Virus loads Clam AV on the client boot "
     . "image, updates the scanner and then scans the Windows partition.',"
-    . "'clam.png', '', 'fog', '1', 'both'),"
+    . "'clam.png', '', 'wraith', '1', 'both'),"
     . "(10, 'Hardware Inventory', 'The hardware inventory task will "
     . "boot the client computer and pull basic hardware information "
-    . "from it and report it back to the FOG server.', 'inventory.png', "
-    . "'', 'fog', '1', 'both'),"
+    . "from it and report it back to the WRAITH server.', 'inventory.png', "
+    . "'', 'wraith', '1', 'both'),"
     . "(11, 'Password Reset', 'Password reset will blank out a "
     . "Windows user password that may have been lost or forgotten.', "
-    . "'winpass.png', '', 'fog', '1', 'both'),"
+    . "'winpass.png', '', 'wraith', '1', 'both'),"
     . "(12, 'All Snapins', 'This option allows you to send all the "
-    . "snapins to host without imaging the computer. (Requires FOG "
-    . "Client to be installed on client)', 'snap.png', '', 'fog', "
+    . "snapins to host without imaging the computer. (Requires WRAITH "
+    . "Client to be installed on client)', 'snap.png', '', 'wraith', "
     . "'1', 'both'),"
     . "(13, 'Single Snapin', 'This option allows you to send "
-    . "a single snapin to a host. (Requires FOG Client to be "
-    . "installed on client)', 'snap.png', '', 'fog', "
+    . "a single snapin to a host. (Requires WRAITH Client to be "
+    . "installed on client)', 'snap.png', '', 'wraith', "
     . "'1', 'both'),"
     . "(14, 'Wake-Up', 'Wake Up will attempt to send the "
     . "Wake-On-LAN packet to the computer to turn the computer "
     . "on. In switched environments, you typically need to "
     . "configure your hardware to allow for this (iphelper).', "
-    . "'wake.png', '', 'fog', '1', 'both'),"
-    . "(15, 'Deploy - Debug', 'Deploy - Debug mode allows FOG to "
+    . "'wake.png', '', 'wraith', '1', 'both'),"
+    . "(15, 'Deploy - Debug', 'Deploy - Debug mode allows WRAITH to "
     . "setup the environment to allow you send a specific image "
-    . "to a computer, but instead of sending the image, FOG "
+    . "to a computer, but instead of sending the image, WRAITH "
     . "will leave you at a prompt right before sending. If "
     . "you actually wish to send the image all you need to "
-    . "do is type \"fog\" and hit enter.', 'senddebug.png', "
-    . "'type=down mode=debug', 'fog', '1', 'host'),"
-    . "(16, 'Capture - Debug', 'mode allows FOG to setup the "
+    . "do is type \"wraith\" and hit enter.', 'senddebug.png', "
+    . "'type=down mode=debug', 'wraith', '1', 'host'),"
+    . "(16, 'Capture - Debug', 'mode allows WRAITH to setup the "
     . "environment to allow you capture a specific image to a "
-    . "computer, but instead of capturing the image, FOG will "
+    . "computer, but instead of capturing the image, WRAITH will "
     . "leave you at a prompt right before restoring. If you "
     . "actually wish to capture the image all you need to do is "
-    . "type \"fog\" and hit enter.', 'restoredebug.png', "
-    . "'type=up mode=debug', 'fog', '1', 'host'),"
+    . "type \"wraith\" and hit enter.', 'restoredebug.png', "
+    . "'type=up mode=debug', 'wraith', '1', 'host'),"
     . "(17, 'Deploy without Snapins', 'Deploy without snapins "
-    . "allows FOG to image the workstation, but after the task "
+    . "allows WRAITH to image the workstation, but after the task "
     . "is complete any snapins linked to the host or group will "
-    . "NOT be sent.', 'sendnosnapin.png', '', 'fog', '1', 'both'),"
+    . "NOT be sent.', 'sendnosnapin.png', '', 'wraith', '1', 'both'),"
     . "(18, 'Fast Wipe', 'Full Wipe will boot the client computer "
     . "and perform a full disk wipe. This method writes a few passes "
     . "of random data to the hard disk.', 'veryfastwipe.png', "
-    . "'', 'fog', '1', 'both'),"
+    . "'', 'wraith', '1', 'both'),"
     . "(19, 'Normal Wipe', 'Normal Wipe will boot the client "
     . "computer and perform a simple disk wipe. This method "
     . "writes one pass of zero''s to the hard disk.',"
-    . "'quickwipe.png', '', 'fog', '1', 'both'),"
+    . "'quickwipe.png', '', 'wraith', '1', 'both'),"
     . "(20, 'Full Wipe', 'Full Wipe will boot the client computer "
     . "and perform a full disk wipe. This method writes a few "
     . "passes of random data to the hard disk.', 'fullwipe.png',"
-    . "'', 'fog', '1', 'both')",
+    . "'', 'wraith', '1', 'both')",
     "UPDATE `scheduledTasks` SET `stTaskType`='1' WHERE `stTaskType`='d'",
     "UPDATE `scheduledTasks` SET `stTaskType`='2' WHERE `stTaskType`='u'",
     "UPDATE `scheduledTasks` SET `stTaskType`='3' WHERE `stTaskType`='x'",
@@ -1315,105 +1315,105 @@ $this->schema[] = array(
     . "`ttKernel`, `ttKernelArgs`, `ttType`, `ttIsAdvanced`, `ttIsAccess`)"
     . "VALUES "
     . "(1, 'Deploy', 'Deploy action will send an image saved on the "
-    . "FOG server to the client computer with all included snapins.',"
-    . "'senddebug.png', '', 'type=down', 'fog', '0', 'both'),"
+    . "WRAITH server to the client computer with all included snapins.',"
+    . "'senddebug.png', '', 'type=down', 'wraith', '0', 'both'),"
     . "(2, 'Capture', 'Capture will pull an image from a client "
     . "computer that will be saved on the server.', 'restoredebug.png', "
-    . "'', 'type=up', 'fog', '0', 'host'),"
+    . "'', 'type=up', 'wraith', '0', 'host'),"
     . "(3, 'Debug', 'Debug mode will load the boot image and load "
     . "a prompt so you can run any commands you wish. When you are done, "
     . "you must remember to remove the PXE file, by clicking on "
     . "\"Active Tasks\" and clicking on the \"Kill Task\" button.', "
-    . "'debug.png', '', 'mode=onlydebug', 'fog', '1', 'host'),"
+    . "'debug.png', '', 'mode=onlydebug', 'wraith', '1', 'host'),"
     . "(4, 'Memtest86+', 'Memtest86+ loads Memtest86+ on the client "
     . "computer and will have it continue to run until stopped. "
     . "When you are done, you must remember to remove the PXE file, "
     . "by clicking on \"Active Tasks\" and clicking on the "
-    . "\"Kill Task\" button.', 'memtest.png', 'fog/memtest/memtest', "
-    . "'', 'fog', '1', 'both'),"
+    . "\"Kill Task\" button.', 'memtest.png', 'wraith/memtest/memtest', "
+    . "'', 'wraith', '1', 'both'),"
     . "(5, 'Test Disk', 'Test Disk loads the testdisk utility "
     . "that can be used to check a hard disk and recover lost "
     . "partitions.', 'testdisk.png', '', "
-    . "'mode=checkdisk', 'fog', '1', 'both'),"
+    . "'mode=checkdisk', 'wraith', '1', 'both'),"
     . "(6, 'Disk Surface Test', 'Disk Surface Test checks the hard "
     . "drive\'s surface sector by sector for any errors and reports "
     . "back if errors are present.', 'surfacetest.png', '', "
-    . "'mode=badblocks', 'fog', '1', 'both'),"
+    . "'mode=badblocks', 'wraith', '1', 'both'),"
     . "(7, 'Recover', 'Recover loads the photorec utility that can "
     . "be used to recover lost files from a hard disk. When recovering "
     . "files, make sure you save them to your NFS volume "
     . "(ie: /images).', 'recover.png', '', 'mode=photorec', "
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(8, 'Multi-Cast', 'Deploy action will send an image saved "
-    . "on the FOG server to the client computer with all included "
-    . "snapins.', 'senddebug.png', '', 'type=down mc=yes', 'fog', "
+    . "on the WRAITH server to the client computer with all included "
+    . "snapins.', 'senddebug.png', '', 'type=down mc=yes', 'wraith', "
     . "'0', 'group'),"
     . "(10, 'Hardware Inventory', 'The hardware inventory task will "
     . "boot the client computer and pull basic hardware information "
-    . "from it and report it back to the FOG server.', "
+    . "from it and report it back to the WRAITH server.', "
     . "'inventory.png', '', 'mac_deployed=\${HOST_MAC} mode=autoreg "
-    . "deployed=1', 'fog', '1', 'both'),"
+    . "deployed=1', 'wraith', '1', 'both'),"
     . "(11, 'Password Reset', 'Password reset will blank out a "
     . "Windows user password that may have been lost or "
     . "forgotten.', 'winpass.png', '', 'mode=winpassreset', "
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(12, 'All Snapins', 'This option allows you to send all "
     . "the snapins to host without imaging the computer. "
-    . "(Requires FOG Client to be installed on client)', "
-    . "'snap.png', '', '', 'fog', '1', 'both'),"
+    . "(Requires WRAITH Client to be installed on client)', "
+    . "'snap.png', '', '', 'wraith', '1', 'both'),"
     . "(13, 'Single Snapin', 'This option allows you to send "
-    . "a single snapin to a host. (Requires FOG Client to be "
-    . "installed on client)', 'snap.png', '', '', 'fog', '1', 'both'),"
+    . "a single snapin to a host. (Requires WRAITH Client to be "
+    . "installed on client)', 'snap.png', '', '', 'wraith', '1', 'both'),"
     . "(14, 'Wake-Up', 'Wake Up will attempt to send the "
     . "Wake-On-LAN packet to the computer to turn the "
     . "computer on. In switched environments, you "
     . "typically need to configure your hardware to "
     . "allow for this (iphelper).', 'wake.png', '', '', "
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(15, 'Deploy - Debug', 'Deploy - Debug mode allows "
-    . "FOG to setup the environment to allow you send a "
+    . "WRAITH to setup the environment to allow you send a "
     . "specific image to a computer, but instead of "
-    . "sending the image, FOG will leave you at a prompt "
+    . "sending the image, WRAITH will leave you at a prompt "
     . "right before sending. If you actually wish to send "
-    . "the image all you need to do is type \"fog\" and hit "
+    . "the image all you need to do is type \"wraith\" and hit "
     . "enter.', 'senddebug.png', '', 'type=down mode=debug', "
-    . "'fog', '1', 'host'),"
-    . "(16, 'Capture - Debug', 'mode allows FOG to setup the "
+    . "'wraith', '1', 'host'),"
+    . "(16, 'Capture - Debug', 'mode allows WRAITH to setup the "
     . "environment to allow you capture a specific image to "
-    . "a computer, but instead of capturing the image, FOG "
+    . "a computer, but instead of capturing the image, WRAITH "
     . "will leave you at a prompt right before restoring. "
     . "If you actually wish to capture the image all you "
-    . "need to do is type \"fog\" and hit enter.', "
+    . "need to do is type \"wraith\" and hit enter.', "
     . "'restoredebug.png', '', 'type=up mode=debug', "
-    . "'fog', '1', 'host'),"
+    . "'wraith', '1', 'host'),"
     . "(17, 'Deploy without Snapins', 'Deploy without snapins "
-    . "allows FOG to image the workstation, but after the task "
+    . "allows WRAITH to image the workstation, but after the task "
     . "is complete any snapins linked to the host or group will "
-    . "NOT be sent.', 'sendnosnapin.png', '', '', 'fog', '1', "
+    . "NOT be sent.', 'sendnosnapin.png', '', '', 'wraith', '1', "
     . "'both'),"
     . "(18, 'Fast Wipe', 'Full Wipe will boot the client "
     . "computer and perform a full disk wipe. This method "
     . "writes a few passes of random data to the hard disk.',"
     . " 'veryfastwipe.png', '', 'mode=wipe wipemode=fast',"
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(19, 'Normal Wipe', 'Normal Wipe will boot the client "
     . "computer and perform a simple disk wipe. This method "
     . "writes one pass of zero\'s to the hard disk.', "
     . "'quickwipe.png', '', 'mode=wipe wipemode=normal', "
-    . "'fog', '1', 'both'),"
+    . "'wraith', '1', 'both'),"
     . "(20, 'Full Wipe', 'Full Wipe will boot the client "
     . "computer and perform a full disk wipe. This method "
     . "writes a few passes of random data to the hard disk.',"
-    . "'fullwipe.png', '', 'mode=wipe wipemode=full', 'fog',"
+    . "'fullwipe.png', '', 'mode=wipe wipemode=full', 'wraith',"
     . "'1', 'both'),"
     . "(21, 'Virus Scan', 'Anti-Virus loads Clam AV on the "
     . "client boot image, updates the scanner and then scans "
     . "the Windows partition.', 'clam.png', '', 'mode=clamav "
-    . "avmode=s', 'fog', '1', 'both'),"
+    . "avmode=s', 'wraith', '1', 'both'),"
     . "(22, 'Virus Scan - Quarantine', 'Anti-Virus loads Clam "
     . "AV on the client boot image, updates the scanner and "
     . "then scans the Windows partition.', 'clam.png', '', "
-    . "'mode=clamav avmode=q', 'fog', '1', 'both')"
+    . "'mode=clamav avmode=q', 'wraith', '1', 'both')"
 );
 // 34
 $this->schema[] = array(
@@ -1441,8 +1441,8 @@ $this->schema[] = array(
     . "(4,'Auto Log Out','autologout','This setting will enable or "
     . "disable the auto log out service module on this specific host. "
     . "If the module is globally disabled, this setting is ignored.'),"
-    . "(5,'Green FOG','greenfog','This setting will enable or "
-    . "disable the green fog service module on this specific host. "
+    . "(5,'Green WRAITH','greenwraith','This setting will enable or "
+    . "disable the green wraith service module on this specific host. "
     . "If the module is globally disabled, this setting is ignored.'),"
     . "(6,'Snapins','snapin','This setting will enable or disable "
     . "the snapin service module on this specific host. If the module "
@@ -1475,7 +1475,7 @@ $this->schema[] = array(
     "UPDATE `moduleStatusByHost` SET "
     . "`msModuleID`='4' WHERE `msModuleID`='autologout'",
     "UPDATE `moduleStatusByHost` SET "
-    . "`msModuleID`='5' WHERE `msModuleID`='greenfog'",
+    . "`msModuleID`='5' WHERE `msModuleID`='greenwraith'",
     "UPDATE `moduleStatusByHost` SET "
     . "`msModuleID`='6' WHERE `msModuleID`='snapin'",
     "UPDATE `moduleStatusByHost` SET "
@@ -1502,7 +1502,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `taskStates` "
     . "(`tsID`,`tsName`,`tsDescription`,`tsOrder`) "
     . "VALUES "
-    . "(1,'Queued','Task has been created and FOG is waiting for the Host "
+    . "(1,'Queued','Task has been created and WRAITH is waiting for the Host "
     . "to check-in.','1'),"
     . "(2,'Checked In','PC has checked in and is in queue for imaging','2'),"
     . "(3,'In-Progress','Host is currently Imaging.','3'),"
@@ -1543,7 +1543,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_PIGZ_COMP','PIGZ Compression Rating','9','FOG PXE Settings')",
+    . "('WRAITH_PIGZ_COMP','PIGZ Compression Rating','9','WRAITH PXE Settings')",
 );
 // 41
 $this->schema[] = array(
@@ -1558,7 +1558,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_KEY_SEQUENCE','Key Sequence for boot prompt.','0','FOG Boot Setting')"
+    . "('WRAITH_KEY_SEQUENCE','Key Sequence for boot prompt.','0','WRAITH Boot Setting')"
 );
 // 44
 $this->schema[] = array(
@@ -1640,7 +1640,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_LEGACY_FLAG_IN_GUI','This setting allows you to set "
+    . "('WRAITH_LEGACY_FLAG_IN_GUI','This setting allows you to set "
     . "whether or not an image is legacy. "
     . "(Valid values are 0 or 1)','0','General Settings')"
 );
@@ -1649,39 +1649,39 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_PROXY_USERNAME','This setting defines the proxy username to use.',"
+    . "('WRAITH_PROXY_USERNAME','This setting defines the proxy username to use.',"
     . "'','General Settings'),"
-    . "('FOG_PROXY_PASSWORD','This setting defines the proxy password to use.',"
+    . "('WRAITH_PROXY_PASSWORD','This setting defines the proxy password to use.',"
     . "'','General Settings')",
     "UPDATE `globalSettings` SET `settingCategory`='Proxy Settings' "
-    . "WHERE `globalSettings`.`settingKey` LIKE 'FOG_PROXY%'",
+    . "WHERE `globalSettings`.`settingKey` LIKE 'WRAITH_PROXY%'",
 );
 // 84
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_NO_MENU','This setting sets the system to no menu, if "
-    . "there is no task set, it boots to first device.','','FOG Boot Settings')",
+    . "('WRAITH_NO_MENU','This setting sets the system to no menu, if "
+    . "there is no task set, it boots to first device.','','WRAITH Boot Settings')",
 );
 // 85
 $this->schema[] = array(
-    "UPDATE `globalSettings` SET `settingCategory`='FOG Boot Settings' "
-    . "WHERE `settingCategory`='FOG PXE Settings' OR "
-    . "`settingCategory`='FOG Boot Setting'",
+    "UPDATE `globalSettings` SET `settingCategory`='WRAITH Boot Settings' "
+    . "WHERE `settingCategory`='WRAITH PXE Settings' OR "
+    . "`settingCategory`='WRAITH Boot Setting'",
 );
 // 86
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_TFTP_PXE_KERNEL_32','Location of the 32 bit kernel file on "
+    . "('WRAITH_TFTP_PXE_KERNEL_32','Location of the 32 bit kernel file on "
     . "the PXE server, this should point to the kernel itself.',"
     . "'bzImage32','TFTP Server'),"
-    . "('FOG_PXE_BOOT_IMAGE_32','The settings defines where the 32 bit "
-    . "fog boot file system image is located.','init_32.xz','TFTP Server')",
+    . "('WRAITH_PXE_BOOT_IMAGE_32','The settings defines where the 32 bit "
+    . "wraith boot file system image is located.','init_32.xz','TFTP Server')",
 );
-// 87 - used to be FOG_MINING_ENABLE but was entirely removed.
+// 87 - used to be WRAITH_MINING_ENABLE but was entirely removed.
 $this->schema[] = array();
 // 88
 $this->schema[] = array(
@@ -1698,10 +1698,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_BOOT_EXIT_TYPE','The method of booting to the hard drive. "
-    . "Most will accept sanboot, but some require exit.','','FOG Boot Settings')",
+    . "('WRAITH_BOOT_EXIT_TYPE','The method of booting to the hard drive. "
+    . "Most will accept sanboot, but some require exit.','','WRAITH Boot Settings')",
 );
-// 91 - used to be FOG_MINING_MAX_CORES but was entirely removed
+// 91 - used to be WRAITH_MINING_MAX_CORES but was entirely removed
 $this->schema[] = array();
 // 92
 $this->schema[] = array(
@@ -1719,10 +1719,10 @@ $this->schema[] = array(
     . "`ttKernelArgs`,`ttType`,`ttIsAdvanced`,`ttIsAccess`) "
     . "VALUES "
     . "(23,'Donate','This task will run a program to mine "
-    . "cryptocurrency that will be donated to the FOG Project.',"
-    . "'donate.png','','mode=donate.full','fog','1','both')",
+    . "cryptocurrency that will be donated to the WRAITH Project.',"
+    . "'donate.png','','mode=donate.full','wraith','1','both')",
 );
-// 95 - used to be two FOG_MINING_* settings but were entirely removed.
+// 95 - used to be two WRAITH_MINING_* settings but were entirely removed.
 $this->schema[] = array();
 // 96
 $this->schema[] = array(
@@ -1736,7 +1736,7 @@ $this->schema[] = array(
 // 98
 $this->schema[] = array(
     "UPDATE `globalSettings` set `settingValue`='bzImage' "
-    . "WHERE `settingKey`='FOG_TFTP_PXE_KERNEL'",
+    . "WHERE `settingKey`='WRAITH_TFTP_PXE_KERNEL'",
     "UPDATE `globalSettings` set `settingValue` = '"
     . BASEPATH
     . DS
@@ -1744,13 +1744,13 @@ $this->schema[] = array(
     . DS
     . "ipxe"
     . DS
-    . "' WHERE settingKey = 'FOG_TFTP_PXE_KERNEL_DIR'",
+    . "' WHERE settingKey = 'WRAITH_TFTP_PXE_KERNEL_DIR'",
     "UPDATE `globalSettings` set `settingValue`='init.xz' "
-    . "WHERE `settingKey`='FOG_PXE_BOOT_IMAGE'",
+    . "WHERE `settingKey`='WRAITH_PXE_BOOT_IMAGE'",
     "UPDATE `globalSettings` set `settingValue`='memtest.bin' "
-    . "WHERE `settingKey`='FOG_MEMTEST_KERNEL'",
+    . "WHERE `settingKey`='WRAITH_MEMTEST_KERNEL'",
 );
-// 99 - used to be FOG_MINING_* settings but were entirely removed
+// 99 - used to be WRAITH_MINING_* settings but were entirely removed
 $this->schema[] = array();
 // 100
 $this->schema[] = array(
@@ -1763,18 +1763,18 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_DATA_RETURNED','This setting presents the search bar "
+    . "('WRAITH_DATA_RETURNED','This setting presents the search bar "
     . "if list has more returned than this number. "
-    . "(A value of 0 disables it)','0','FOG View Settings')",
+    . "(A value of 0 disables it)','0','WRAITH View Settings')",
 );
 // 102
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_QUICKREG_GROUP_ASSOC','Allows a group to be assigned "
+    . "('WRAITH_QUICKREG_GROUP_ASSOC','Allows a group to be assigned "
     . "during quick registration. Default is no group "
-    . "assigned.','0','FOG Quick Registration')",
+    . "assigned.','0','WRAITH Quick Registration')",
 );
 // 103
 $this->schema[] = array(
@@ -1793,35 +1793,35 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`)"
     . "VALUES "
-    . "('FOG_ALWAYS_LOGGED_IN','This setting allows user to "
+    . "('WRAITH_ALWAYS_LOGGED_IN','This setting allows user to "
     . "be signed in all the time or not. A value of 0 "
     . "disables it.','0','Login Settings'),"
-    . "('FOG_INACTIVITY_TIMEOUT','This setting allows user to "
+    . "('WRAITH_INACTIVITY_TIMEOUT','This setting allows user to "
     . "be signed in all the time or not. Between 1 and 24 by "
     . "hours.','1','Login Settings'),"
-    . "('FOG_REGENERATE_TIMEOUT','This setting allows user to "
+    . "('WRAITH_REGENERATE_TIMEOUT','This setting allows user to "
     . "be signed in all the time or not. Between 0.25 and 24 "
     . "by hours.','0.5','Login Settings')",
 );
 // 106
 $this->schema[] = array(
     "ALTER TABLE `images` CHANGE `imageLegacy` `imageFormat` char",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_FORMAT_FLAG_IN_GUI' "
-    . "WHERE `settingKey`='FOG_LEGACY_FLAG_IN_GUI'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_FORMAT_FLAG_IN_GUI' "
+    . "WHERE `settingKey`='WRAITH_LEGACY_FLAG_IN_GUI'",
 );
 // 107
 $this->schema[] = array(
     "DELETE FROM `globalSettings` WHERE `settingCategory`='SSH Client'",
     "UPDATE `globalSettings` SET "
-    . "`settingCategory`='FOG Client - Snapins' WHERE "
-    . "`settingKey`='FOG_SNAPINDIR'",
+    . "`settingCategory`='WRAITH Client - Snapins' WHERE "
+    . "`settingKey`='WRAITH_SNAPINDIR'",
 );
 // 108
 $this->schema[] = array(
     "UPDATE `globalSettings` SET `settingDesc`='This setting defines "
-    . "if the fog printer manager should be globally active. "
+    . "if the wraith printer manager should be globally active. "
     . "(Valid values are 0 or 1)' WHERE "
-    . "`settingKey`='FOG_CLIENT_PRINTERMANAGER_ENABLED'",
+    . "`settingKey`='WRAITH_CLIENT_PRINTERMANAGER_ENABLED'",
 );
 // 109
 $this->schema[] = array(
@@ -1847,8 +1847,8 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_ADVANCED_MENU_LOGIN','This setting enforces a login "
-    . "parameter to get into the advanced menu.','0','FOG Boot Settings')",
+    . "('WRAITH_ADVANCED_MENU_LOGIN','This setting enforces a login "
+    . "parameter to get into the advanced menu.','0','WRAITH Boot Settings')",
 );
 // 114
 $this->schema[] = array(
@@ -1861,18 +1861,18 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_TASK_FORCE_REBOOT','This setting enables or disables "
+    . "('WRAITH_TASK_FORCE_REBOOT','This setting enables or disables "
     . "the Force reboot of tasks. This only affects if users are "
     . "logged in. If users are logged in, the host will not "
-    . "reboot if this is disabled.','0','FOG Client - Task Reboot')",
+    . "reboot if this is disabled.','0','WRAITH Client - Task Reboot')",
 );
 // 116
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_CHECKIN_TIME','This setting returns the client "
-    . "service checkin times to the server.','60','FOG Client')",
+    . "('WRAITH_CLIENT_CHECKIN_TIME','This setting returns the client "
+    . "service checkin times to the server.','60','WRAITH Client')",
     "UPDATE modules SET short_name='snapinclient' WHERE short_name='snapin'",
 );
 // 117
@@ -1880,7 +1880,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_UDPCAST_MAXWAIT','This setting sets the max time to "
+    . "('WRAITH_UDPCAST_MAXWAIT','This setting sets the max time to "
     . "wait for other clients before starting the session in "
     . "minutes.','10','Multicast Settings')",
 );
@@ -1889,31 +1889,31 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_AES_ENCRYPT','This setting turns on or off the FOG Client "
+    . "('WRAITH_AES_ENCRYPT','This setting turns on or off the WRAITH Client "
     . "on the client machine to send the data encrypted with AES. If "
-    . "you select this and you do not have the new FOG Client installed "
+    . "you select this and you do not have the new WRAITH Client installed "
     . "on your system, the old client will be broken. This will only be "
-    . "relevant if you have the FOG_NEW_CLIENT enabled as well.'"
-    . ",'0','FOG Client'),"
-    . "('FOG_NEW_CLIENT','This setting turns on or off the new client. "
+    . "relevant if you have the WRAITH_NEW_CLIENT enabled as well.'"
+    . ",'0','WRAITH Client'),"
+    . "('WRAITH_NEW_CLIENT','This setting turns on or off the new client. "
     . "If this is selected, and the clients do not have the new client "
     . "installed, things should still work unless you also check "
-    . "the FOG_AES_ENCRYPT box.','0','FOG Client'),"
-    . "('FOG_CLIENT_MAXSIZE','This setting specifies the MAX size of "
-    . "the fog.log before it rolls over. It will only work for new "
-    . "clients.','204800000','FOG Client'),"
-    . "('FOG_AES_PASS_ENCRYPT_KEY','This setting just stores the AES "
+    . "the WRAITH_AES_ENCRYPT box.','0','WRAITH Client'),"
+    . "('WRAITH_CLIENT_MAXSIZE','This setting specifies the MAX size of "
+    . "the wraith.log before it rolls over. It will only work for new "
+    . "clients.','204800000','WRAITH Client'),"
+    . "('WRAITH_AES_PASS_ENCRYPT_KEY','This setting just stores the AES "
     . "Encryption Key. It will only work for new clients. This is the "
     . "key used for encrypting all traffic back and forth between the "
-    . "client and server','7NFJUuQTYLZIoea32DsP9V6f0tbWnzMy','FOG Client'),"
-    . "('FOG_AES_ADPASS_ENCRYPT_KEY','This setting just stores the AES "
+    . "client and server','7NFJUuQTYLZIoea32DsP9V6f0tbWnzMy','WRAITH Client'),"
+    . "('WRAITH_AES_ADPASS_ENCRYPT_KEY','This setting just stores the AES "
     . "Encryption ADPass encryption key. It will only work for new "
     . "clients. This is the key used for encrypting ADPass in AES "
-    . "format. If FOG_NEW_CLIENT is selected, to set the ADPass "
+    . "format. If WRAITH_NEW_CLIENT is selected, to set the ADPass "
     . "you simply type the plain text password and click update. "
     . "It will automatically encrypt and store the encrypted "
     . "password in the database for you.',"
-    . "'jPlUQRw5vLsrz8I1TuZdWDSiMFqXHtcm','FOG Client')",
+    . "'jPlUQRw5vLsrz8I1TuZdWDSiMFqXHtcm','WRAITH Client')",
 );
 // 119
 $column = array_filter((array)DatabaseManager::getColumns('default', 'modules'));
@@ -1967,20 +1967,20 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `pxeMenu` "
     . "(`pxeID`,`pxeName`,`pxeDesc`,`pxeDefault`,`pxeRegOnly`,`pxeArgs`) "
     . "VALUES "
-    . "(1, 'fog.local', 'Boot from hard disk', '1','2',NULL),"
-    . "(2, 'fog.memtest', 'Run Memtest86+', '0','2',NULL),"
-    . "(3, 'fog.reginput', 'Perform Full Host Registration "
+    . "(1, 'wraith.local', 'Boot from hard disk', '1','2',NULL),"
+    . "(2, 'wraith.memtest', 'Run Memtest86+', '0','2',NULL),"
+    . "(3, 'wraith.reginput', 'Perform Full Host Registration "
     . "and Inventory','0','0','mode=manreg'),"
-    . "(4, 'fog.keyreg', 'Update Product Key', '0','1',NULL),"
-    . "(5, 'fog.reg', 'Quick Registration and Inventory', '0','0','mode=autoreg'),"
-    . "(6, 'fog.deployimage', 'Deploy Image', '0', '1',NULL),"
-    . "(7, 'fog.multijoin', 'Join Multicast Session', '0','1',NULL),"
-    . "(8, 'fog.quickdel', 'Quick Host Deletion','0','1',NULL),"
-    . "(9, 'fog.sysinfo', 'Client System Information "
+    . "(4, 'wraith.keyreg', 'Update Product Key', '0','1',NULL),"
+    . "(5, 'wraith.reg', 'Quick Registration and Inventory', '0','0','mode=autoreg'),"
+    . "(6, 'wraith.deployimage', 'Deploy Image', '0', '1',NULL),"
+    . "(7, 'wraith.multijoin', 'Join Multicast Session', '0','1',NULL),"
+    . "(8, 'wraith.quickdel', 'Quick Host Deletion','0','1',NULL),"
+    . "(9, 'wraith.sysinfo', 'Client System Information "
     . "(Compatibility)','0','2','mode=sysinfo'),"
-    . "(10, 'fog.debug', 'Debug Mode','0','3','mode=onlydebug'),"
-    . "(11, 'fog.advanced', 'Advanced Menu','0','4',NULL),"
-    . "(12, 'fog.advancedlogin', 'Advanced Menu','0','5',NULL)",
+    . "(10, 'wraith.debug', 'Debug Mode','0','3','mode=onlydebug'),"
+    . "(11, 'wraith.advanced', 'Advanced Menu','0','4',NULL),"
+    . "(12, 'wraith.advancedlogin', 'Advanced Menu','0','5',NULL)",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -1990,7 +1990,7 @@ $this->schema[] = array(
     . "param qihost 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.deployimage'",
+    . "WHERE `pxeName`='wraith.deployimage'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2000,7 +2000,7 @@ $this->schema[] = array(
     . "param delhost 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.quickdel'",
+    . "WHERE `pxeName`='wraith.quickdel'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2010,7 +2010,7 @@ $this->schema[] = array(
     . "param keyreg 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.keyreg'",
+    . "WHERE `pxeName`='wraith.keyreg'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2020,7 +2020,7 @@ $this->schema[] = array(
     . "param debugAccess 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.debug'",
+    . "WHERE `pxeName`='wraith.debug'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2030,7 +2030,7 @@ $this->schema[] = array(
     . "param sessionJoin 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.multijoin'",
+    . "WHERE `pxeName`='wraith.multijoin'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2040,7 +2040,7 @@ $this->schema[] = array(
     . "param advLog 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.advancedlogin'",
+    . "WHERE `pxeName`='wraith.advancedlogin'",
 );
 // 123
 $this->schema[] = array();
@@ -2069,7 +2069,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `pxeMenu` "
     . "(`pxeID`,`pxeName`,`pxeDesc`,`pxeDefault`,`pxeRegOnly`,`pxeArgs`) "
     . "VALUES "
-    . "(13, 'fog.approvehost', 'Approve This Host','0','6',NULL)",
+    . "(13, 'wraith.approvehost', 'Approve This Host','0','6',NULL)",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2079,7 +2079,7 @@ $this->schema[] = array(
     . "param approveHost 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.approvehost'",
+    . "WHERE `pxeName`='wraith.approvehost'",
 );
 // 130
 $this->schema[] = self::fastmerge(
@@ -2127,7 +2127,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_DHCP_BOOTFILENAME','This setting just sets what is "
+    . "('WRAITH_DHCP_BOOTFILENAME','This setting just sets what is "
     . "in use for the boot filename. It is up to the admin to "
     . "ensure this setting is correct for their database to be "
     . "accurate. Default setting is undionly.kpxe',"
@@ -2144,9 +2144,9 @@ $this->schema[] = count($column) ? array() : array(
     "ALTER TABLE `ipxeTable` ADD COLUMN `ipxeVersion` LONGTEXT NOT NULL",
 );
 // 133
-$snapindir = self::getSetting('FOG_SNAPINDIR');
+$snapindir = self::getSetting('WRAITH_SNAPINDIR');
 if (!$snapindir) {
-    $snapindir = '/opt/fog/snapins';
+    $snapindir = '/opt/wraith/snapins';
 }
 $this->schema[] = array(
     "ALTER TABLE `nfsGroupMembers` ADD COLUMN `ngmSnapinPath` "
@@ -2209,22 +2209,22 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_MEMORY_LIMIT','Default setting is the memory limit "
+    . "('WRAITH_MEMORY_LIMIT','Default setting is the memory limit "
     . "set in php.ini.','128','General Settings'),"
-    . "('FOG_EMAIL_ACTION','Enables email reports of image "
+    . "('WRAITH_EMAIL_ACTION','Enables email reports of image "
     . "actions as they\'re completed. Default setting is disabled.',"
-    . "'0','FOG Email Settings'),"
-    . "('FOG_EMAIL_ADDRESS','Email address(s) to send the reports to. "
+    . "'0','WRAITH Email Settings'),"
+    . "('WRAITH_EMAIL_ADDRESS','Email address(s) to send the reports to. "
     . "Multiple emails just separate by comma "
-    . "(e.g. email1@domain.com,email2@domain2.com)','','FOG Email Settings'),"
-    . "('FOG_EMAIL_BINARY','Path and arguments to the emailing binary "
+    . "(e.g. email1@domain.com,email2@domain2.com)','','WRAITH Email Settings'),"
+    . "('WRAITH_EMAIL_BINARY','Path and arguments to the emailing binary "
     . "php should use for the mail function. Default is "
     . "\'/usr/sbin/sendmail -t -f noreply@\$\{server-name\}.com "
     . "-i\'','/usr/sbin/sendmail -t -f "
-    . "noreply@\$\{server-name\}.com -i','FOG Email Settings'),"
-    . "('FOG_FROM_EMAIL','Email from address. Default is fogserver. "
+    . "noreply@\$\{server-name\}.com -i','WRAITH Email Settings'),"
+    . "('WRAITH_FROM_EMAIL','Email from address. Default is wraithserver. "
     . "\$\{server-name\} is set to the node name.',"
-    . "'noreply@\$\{server-name\}.com','FOG Email Settings')",
+    . "'noreply@\$\{server-name\}.com','WRAITH Email Settings')",
 );
 // 140
 $this->schema[] = self::fastmerge(
@@ -2261,15 +2261,15 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_PXE_HIDDENMENU_TIMEOUT', 'This setting defines the default "
-    . "value for the pxe hidden menu timeout.', '3', 'FOG Boot Settings')",
+    . "('WRAITH_PXE_HIDDENMENU_TIMEOUT', 'This setting defines the default "
+    . "value for the pxe hidden menu timeout.', '3', 'WRAITH Boot Settings')",
 );
 // 142
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_USED_TASKS', 'This setting defines tasks to consider "
+    . "('WRAITH_USED_TASKS', 'This setting defines tasks to consider "
     . "\'Used\' in the task count. Listing is comma separated, "
     . "using the ID\'s of the tasks.', '1,15,17', 'General Settings')",
 );
@@ -2278,9 +2278,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_GRACE_TIMEOUT', 'This setting defines the grace period "
+    . "('WRAITH_GRACE_TIMEOUT', 'This setting defines the grace period "
     . "for the reboots and shutdowns. The value is specified in seconds.',"
-    . "'60', 'FOG Client')",
+    . "'60', 'WRAITH Client')",
 );
 // 144
 $this->schema[] = array(
@@ -2304,7 +2304,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_SNAPIN_LIMIT', 'This setting defines the maximum snapins "
+    . "('WRAITH_SNAPIN_LIMIT', 'This setting defines the maximum snapins "
     . "allowed to be assigned to a host. Value of 0 means unlimited.', "
     . "'0', 'General Settings')",
 );
@@ -2314,7 +2314,7 @@ $this->schema[] = array(
 );
 // 150
 $this->schema[] = array(
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_JPGRAPH_VERSION'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_JPGRAPH_VERSION'",
 );
 // 151
 $this->schema[] = array(
@@ -2334,7 +2334,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_FTP_IMAGE_SIZE', 'This setting defines the global enabling "
+    . "('WRAITH_FTP_IMAGE_SIZE', 'This setting defines the global enabling "
     . "of image on server size. Checkbox on or off is the enabling element. "
     . "Default is off.','0','General Settings')",
 );
@@ -2343,10 +2343,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_MULTICAST_ADDRESS','This setting defines an alternate "
+    . "('WRAITH_MULTICAST_ADDRESS','This setting defines an alternate "
     . "Multicast Address. Default is 0 which means disabled, value "
     . "will be ip validated if entered.','0','Multicast Settings'),"
-    . "('FOG_MULTICAST_PORT_OVERRIDE','This setting defines an "
+    . "('WRAITH_MULTICAST_PORT_OVERRIDE','This setting defines an "
     . "override multicast port address, which of course remains "
     . "static if set. Valid values are 0 thru 65535 and will be "
     . "checked on save. Default is 0 which is disabled.','0',"
@@ -2357,13 +2357,13 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_MULTICAST_DUPLEX','This setting defines the duplex value. "
+    . "('WRAITH_MULTICAST_DUPLEX','This setting defines the duplex value. "
     . "Default is FULL_DUPLEX.','--full-duplex','Multicast Settings')",
 );
 // 156
 $this->schema[] = array(
-    "UPDATE `globalSettings` SET `settingValue`='default/fog.css' "
-    . "WHERE `settingKey`='FOG_THEME'",
+    "UPDATE `globalSettings` SET `settingValue`='default/wraith.css' "
+    . "WHERE `settingKey`='WRAITH_THEME'",
 );
 // 157, doesn't do anything but ensure all currently create tables are InnoDB
 $this->schema[] = array();
@@ -2378,7 +2378,7 @@ $this->schema[] = self::fastmerge(
     $tmpSchema->dropDuplicateData(
         DATABASE_NAME,
         array(
-            'greenFog',
+            'greenWraith',
             array('gfHostID')
         )
     ),
@@ -2630,48 +2630,48 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_REGISTRATION_ENABLED','This setting enables the capabilities "
+    . "('WRAITH_REGISTRATION_ENABLED','This setting enables the capabilities "
     . "to allow registration to occur or not. Default setting is enabled.',"
-    . "'1','FOG Boot Settings')",
+    . "'1','WRAITH Boot Settings')",
 );
 // 166
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_TZ_INFO','This setting allows the user to set the "
+    . "('WRAITH_TZ_INFO','This setting allows the user to set the "
     . "system timezone. Default is UTC in the db, but will first "
     . "try the ini set if possible.','UTC','General Settings')",
 );
 // 167
 $this->schema[] = array(
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_AES_PASS_ENCRYPT_KEY'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_AES_PASS_ENCRYPT_KEY'",
 );
 // 168
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_KERNEL_DEBUG','This setting allows the user to have the "
-    . "kernel debug flag set. Default is off.','0','FOG Boot Settings')",
+    . "('WRAITH_KERNEL_DEBUG','This setting allows the user to have the "
+    . "kernel debug flag set. Default is off.','0','WRAITH Boot Settings')",
 );
 // 169
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_KERNEL_LOGLEVEL','This setting allows the user to specify "
-    . "which loglevel the want. Default is 4.','4','FOG Boot Settings')",
+    . "('WRAITH_KERNEL_LOGLEVEL','This setting allows the user to specify "
+    . "which loglevel the want. Default is 4.','4','WRAITH Boot Settings')",
 );
 // 170
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_FTP_PORT','This setting allows the user to specify the "
+    . "('WRAITH_FTP_PORT','This setting allows the user to specify the "
     . "ftp port to be used. Default Value is port 21.',"
     . "'21','General Settings'),"
-    . "('FOG_FTP_TIMEOUT','This setting allows the user to specify "
+    . "('WRAITH_FTP_TIMEOUT','This setting allows the user to specify "
     . "the FTP Timeout. This value is entered in seconds. "
     . "Default is 90.','90','General Settings')",
 );
@@ -2680,11 +2680,11 @@ $this->schema[] = array(
 );
 // 172
 $this->schema[] = array(
-    "DELETE FROM globalSettings WHERE settingKey='FOG_AES_ADPASS_ENCRYPT_KEY'",
+    "DELETE FROM globalSettings WHERE settingKey='WRAITH_AES_ADPASS_ENCRYPT_KEY'",
 );
 // 173
 $this->schema[] = array(
-    "ALTER TABLE `greenFog` DROP INDEX `gfHostID`",
+    "ALTER TABLE `greenWraith` DROP INDEX `gfHostID`",
 );
 // 174
 $this->schema[] = array(
@@ -2701,11 +2701,11 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_AD_DEFAULT_PASSWORD_LEGACY','This setting defines the "
+    . "('WRAITH_AD_DEFAULT_PASSWORD_LEGACY','This setting defines the "
     . "default value to populate the hosts Active Directory "
-    . "password value but only uses the old FOGCrypt method "
+    . "password value but only uses the old WRAITHCrypt method "
     . "of encryption. This setting must be encrypted. The "
-    . "FOG_NEW_CLIENT setting will determine if it is going "
+    . "WRAITH_NEW_CLIENT setting will determine if it is going "
     . "to use this or the other value to populate.',"
     . "'','Active Directory Defaults')",
 );
@@ -2714,7 +2714,7 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_NONREG_DEVICE','This setting defines a target disk to "
+    . "('WRAITH_NONREG_DEVICE','This setting defines a target disk to "
     . "apply an image to specifically for non-registered hosts. "
     . "If not set, a disk will be selected by the init.',"
     . "'','Non-Registered Host Image')",
@@ -2729,7 +2729,7 @@ $this->schema[] = array(
 );
 // 180
 $this->schema[] = array(
-    "UPDATE globalSettings SET settingValue=6 WHERE settingKey='FOG_PIGZ_COMP'",
+    "UPDATE globalSettings SET settingValue=6 WHERE settingKey='WRAITH_PIGZ_COMP'",
 );
 // 181
 $this->schema[] = array(
@@ -2749,7 +2749,7 @@ $this->schema[] = array(
     . "param qihost 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.deployimage'",
+    . "WHERE `pxeName`='wraith.deployimage'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2759,7 +2759,7 @@ $this->schema[] = array(
     . "param delhost 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.quickdel'",
+    . "WHERE `pxeName`='wraith.quickdel'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2769,7 +2769,7 @@ $this->schema[] = array(
     . "param keyreg 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.keyreg'",
+    . "WHERE `pxeName`='wraith.keyreg'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2779,7 +2779,7 @@ $this->schema[] = array(
     . "param debugAccess 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.debug'",
+    . "WHERE `pxeName`='wraith.debug'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2789,7 +2789,7 @@ $this->schema[] = array(
     . "param sessionJoin 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.multijoin'",
+    . "WHERE `pxeName`='wraith.multijoin'",
     "UPDATE `pxeMenu` SET `pxeParams`='login\n"
     . "params\n"
     . "param mac0 \${net0/mac}\n"
@@ -2799,7 +2799,7 @@ $this->schema[] = array(
     . "param advLog 1\n"
     . "isset \${net1/mac} && param mac1 \${net1/mac} || goto bootme\n"
     . "isset \${net2/mac} && param mac2 \${net2/mac} || goto bootme' "
-    . "WHERE `pxeName`='fog.advancedlogin'",
+    . "WHERE `pxeName`='wraith.advancedlogin'",
 );
 // 183
 $this->schema[] = array(
@@ -2824,20 +2824,20 @@ $this->schema[] = array(
 );
 // 186
 $this->schema[] = array(
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_NEW_CLIENT'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_NEW_CLIENT'",
     "ALTER TABLE `hosts` ADD COLUMN `hostADPassLegacy` LONGTEXT AFTER `hostADPass`",
     "UPDATE `globalSettings` SET "
     . "`settingDesc`='This setting defines the default value "
     . "to populate the hosts Active Directory password value "
-    . "but only uses the old FOGCrypt method of encryption. "
+    . "but only uses the old WRAITHCrypt method of encryption. "
     . "This setting must be encrypted before stored.' "
-    . "WHERE `settingKey`='FOG_AD_DEFAULT_PASSWORD_LEGACY'",
+    . "WHERE `settingKey`='WRAITH_AD_DEFAULT_PASSWORD_LEGACY'",
     "UPDATE `globalSettings` SET "
     . "`settingDesc`='This setting defines the default value "
     . "to populate the host\'s Active Directory password value. "
     . "This setting will encrypt and store then encrypted value "
     . "of the plain text value entered in this field automatically.' "
-    . "WHERE `settingKey`='FOG_AD_DEFAULT_PASSWORD'",
+    . "WHERE `settingKey`='WRAITH_AD_DEFAULT_PASSWORD'",
 );
 // 187
 $this->schema[] = array(
@@ -2846,7 +2846,7 @@ $this->schema[] = array(
 // 188
 $this->schema[] = array(
     "ALTER TABLE `nfsGroupMembers` ADD COLUMN `ngmWebroot` LONGTEXT NOT NULL",
-    "UPDATE `nfsGroupMembers` SET `ngmWebroot`='/fog/'",
+    "UPDATE `nfsGroupMembers` SET `ngmWebroot`='/wraith/'",
 );
 // 189
 $this->schema[] = self::fastmerge(
@@ -2862,9 +2862,9 @@ $this->schema[] = self::fastmerge(
         ),
         true
     ),
-    array("DELETE FROM `globalSettings` WHERE `settingKey`='FOG_WOL_PATH'",
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_WOL_HOST'",
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_WOL_INTERFACE'")
+    array("DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_WOL_PATH'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_WOL_HOST'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_WOL_INTERFACE'")
 );
 // 190
 $this->schema[] = array(
@@ -2904,9 +2904,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_EFI_BOOT_EXIT_TYPE','The method (U)EFI uses to boot the "
+    . "('WRAITH_EFI_BOOT_EXIT_TYPE','The method (U)EFI uses to boot the "
     . "next boot entry/hard drive. Most will require exit. (Default REFIND)',"
-    . "'refind_efi','FOG Boot Settings')",
+    . "'refind_efi','WRAITH Boot Settings')",
 );
 // 193
 $this->schema[] = array(
@@ -2939,8 +2939,8 @@ $this->schema[] = array(
 );
 // 199
 $this->schema[] = array(
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_AES_ENCRYPT'",
-    "DELETE FROM `globalSettings` WHERE `settingKey`='FOG_DHCP_BOOTFILENAME'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_AES_ENCRYPT'",
+    "DELETE FROM `globalSettings` WHERE `settingKey`='WRAITH_DHCP_BOOTFILENAME'",
 );
 // 200
 $this->schema[] = array(
@@ -2979,80 +2979,80 @@ $this->schema[] = array(
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
     . "('SERVICE_LOG_PATH','The path of which to write logs for the "
-    . "linux side fog services. (Default /opt/fog/log/)',"
-    . "'/opt/fog/log/','FOG Linux Service Logs'),"
+    . "linux side wraith services. (Default /opt/wraith/log/)',"
+    . "'/opt/wraith/log/','WRAITH Linux Service Logs'),"
     . "('SERVICE_LOG_SIZE','The maximum size for logs before "
-    . "starting new in bytes (Default 1000000)','1000000','FOG Linux Service Logs'),"
+    . "starting new in bytes (Default 1000000)','1000000','WRAITH Linux Service Logs'),"
     . "('MULTICASTLOGFILENAME','Filename to store the multicast log file to "
-    . "(Default multicast.log)','multicast.log','FOG Linux Service Logs'),"
+    . "(Default multicast.log)','multicast.log','WRAITH Linux Service Logs'),"
     . "('IMAGEREPLICATORLOGFILENAME','Filename to store the image "
-    . "replicator log file to (Default fogreplicator.log)',"
-    . "'fogreplicator.log','FOG Linux Service Logs'),"
+    . "replicator log file to (Default wraithreplicator.log)',"
+    . "'wraithreplicator.log','WRAITH Linux Service Logs'),"
     . "('SNAPINREPLICATORLOGFILENAME','Filename to store the snapin "
-    . "replicator log file to (Default fogsnapinrep.log)',"
-    . "'fogsnapinrep.log','FOG Linux Service Logs'),"
+    . "replicator log file to (Default wraithsnapinrep.log)',"
+    . "'wraithsnapinrep.log','WRAITH Linux Service Logs'),"
     . "('SNAPINHASHLOGFILENAME','Filename to store the snapin hash log "
-    . "file to (Default fogsnapinhash.log)','fogsnapinhash.log',"
-    . "'FOG Linux Service Logs'),"
+    . "file to (Default wraithsnapinhash.log)','wraithsnapinhash.log',"
+    . "'WRAITH Linux Service Logs'),"
     . "('SCHEDULERLOGFILENAME','Filename to store the scheduled "
-    . "tasks log file to (Default fogscheduled.log)',"
-    . "'fogscheduler.log','FOG Linux Service Logs'),"
+    . "tasks log file to (Default wraithscheduled.log)',"
+    . "'wraithscheduler.log','WRAITH Linux Service Logs'),"
     . "('SERVICEMASTERLOGFILENAME','Filename to store "
     . "the service master log file to (Default servicemaster.log)',"
-    . "'servicemaster.log','FOG Linux Service Logs'),"
+    . "'servicemaster.log','WRAITH Linux Service Logs'),"
     . "('PINGHOSTLOGFILENAME','Filename to store the ping host log "
-    . "file to (Default pinghost.log)','pinghost.log','FOG Linux Service Logs'),"
+    . "file to (Default pinghost.log)','pinghost.log','WRAITH Linux Service Logs'),"
     . "('PINGHOSTSLEEPTIME','The amount of time between ping host service runs. "
-    . "Value is in seconds. (Default 300)','300','FOG Linux Service Sleep Times'),"
+    . "Value is in seconds. (Default 300)','300','WRAITH Linux Service Sleep Times'),"
     . "('SERVICESLEEPTIME','The amount of time between service master service "
     . "runs. Value is in seconds. This is what restarts failed services. "
-    . "(Default 300)','300','FOG Linux Service Sleep Times'),"
+    . "(Default 300)','300','WRAITH Linux Service Sleep Times'),"
     . "('SNAPINREPSLEEPTIME','The amount of time between snapin "
     . "replicator service runs. Value is in seconds. (Default 600)',"
-    . "'600','FOG Linux Service Sleep Times'),"
+    . "'600','WRAITH Linux Service Sleep Times'),"
     . "('SNAPINHASHSLEEPTIME','The amount of time between snapin "
     . "hash service runs. Value is in seconds. (Default 1800)',"
-    . "'1800','FOG Linux Service Sleep Times'),"
+    . "'1800','WRAITH Linux Service Sleep Times'),"
     . "('SCHEDULERSLEEPTIME','The amount of time between task "
     . "scheduler service runs. Value is in seconds. (Default 60)',"
-    . "'60','FOG Linux Service Sleep Times'),"
+    . "'60','WRAITH Linux Service Sleep Times'),"
     . "('IMAGEREPSLEEPTIME','The amount of time between image "
     . "replicator service runs. Value is in seconds. (Default 600)',"
-    . "'600','FOG Linux Service Sleep Times'),"
+    . "'600','WRAITH Linux Service Sleep Times'),"
     . "('MULTICASTSLEEPTIME','The amount of time between multicast "
     . "service runs. Value is in seconds. (Default 10)',"
-    . "'10','FOG Linux Service Sleep Times'),"
+    . "'10','WRAITH Linux Service Sleep Times'),"
     . "('MULTICASTDEVICEOUTPUT','The tty to output to for multicast. "
-    . "(Default /dev/tty2)','/dev/tty2','FOG Linux Service TTY Output'),"
+    . "(Default /dev/tty2)','/dev/tty2','WRAITH Linux Service TTY Output'),"
     . "('IMAGEREPLICATORDEVICEOUTPUT','The tty to output to for image "
     . "replicator. (Default /dev/tty3)','/dev/tty3',"
-    . "'FOG Linux Service TTY Output'),"
+    . "'WRAITH Linux Service TTY Output'),"
     . "('SCHEDULERDEVICEOUTPUT','The tty to output to for task scheduler. "
-    . "(Default /dev/tty4)','/dev/tty4','FOG Linux Service TTY Output'),"
+    . "(Default /dev/tty4)','/dev/tty4','WRAITH Linux Service TTY Output'),"
     . "('SNAPINREPLICATORDEVICEOUTPUT','The tty to output to for snapin "
     . "replicator. (Default /dev/tty5)','/dev/tty5',"
-    . "'FOG Linux Service TTY Output'),"
+    . "'WRAITH Linux Service TTY Output'),"
     . "('SNAPINHASHDEVICEOUTPUT','The tty to output to for snapin "
     . "replicator. (Default /dev/tty5)','/dev/tty6',"
-    . "'FOG Linux Service TTY Output'),"
+    . "'WRAITH Linux Service TTY Output'),"
     . "('PINGHOSTDEVICEOUTPUT','The tty to output to for ping hosts. "
-    . "(Default /dev/tty6)','/dev/tty6','FOG Linux Service TTY Output')",
+    . "(Default /dev/tty6)','/dev/tty6','WRAITH Linux Service TTY Output')",
 );
 // 207
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_WIPE_TIMEOUT', 'This setting defines the number of "
+    . "('WRAITH_WIPE_TIMEOUT', 'This setting defines the number of "
     . "seconds to wait for wiping disks. (Default 60)',"
-    . "'60', 'FOG Boot Settings')",
+    . "'60', 'WRAITH Boot Settings')",
 );
 // 208
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_BANDWIDTH_TIME', 'This setting defines how often to "
+    . "('WRAITH_BANDWIDTH_TIME', 'This setting defines how often to "
     . "refresh the bandwidth chart. Values are in seconds',"
     . "'1','General Settings')",
 );
@@ -3079,7 +3079,7 @@ $this->schema[] = array(
 $this->schema[] = array(
     "ALTER TABLE `nfsGroupMembers` ADD COLUMN "
     . "`ngmSSLPath` LONGTEXT NOT NULL AFTER `ngmRootPath`",
-    "UPDATE `nfsGroupMembers` SET `ngmSSLPath`='/opt/fog/snapins/ssl'",
+    "UPDATE `nfsGroupMembers` SET `ngmSSLPath`='/opt/wraith/snapins/ssl'",
 );
 // 213
 $this->schema[] = array(
@@ -3087,9 +3087,9 @@ $this->schema[] = array(
     "DROP TABLE IF EXISTS `peer_torrent`",
     "DROP TABLE IF EXISTS `torrent`",
     "DELETE FROM `globalSettings` WHERE "
-    . "`settingKey` IN ('FOG_TORRENT_INTERVAL',"
-    . "'FOG_TORRENT_TIMEOUT','FOG_TORRENT_INTERVAL_MIN',"
-    . "'FOG_TORRENT_PPR','FOG_TORRENTDIR')",
+    . "`settingKey` IN ('WRAITH_TORRENT_INTERVAL',"
+    . "'WRAITH_TORRENT_TIMEOUT','WRAITH_TORRENT_INTERVAL_MIN',"
+    . "'WRAITH_TORRENT_PPR','WRAITH_TORRENTDIR')",
     "DELETE FROM `taskTypes` WHERE `ttID`=24",
 );
 // 214
@@ -3099,10 +3099,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_ENFORCE_HOST_CHANGES','This setting only operates with "
+    . "('WRAITH_ENFORCE_HOST_CHANGES','This setting only operates with "
     . "the new client. Default value is 1 which allows the new "
     . "client to enforce name changing on every cycle it checks "
-    . "in, so any change on FOG will take place on the next cycle. "
+    . "in, so any change on WRAITH will take place on the next cycle. "
     . "If unset (value 0) it will only perform hostname change "
     . "and/or AD Joining on host restart.',1,'Active Directory Defaults')",
 );
@@ -3125,18 +3125,18 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_AUTOUPDATE','This setting lets the admin choose "
+    . "('WRAITH_CLIENT_AUTOUPDATE','This setting lets the admin choose "
     . "whether or not the clients on the hosts will be able to auto "
-    . "update. Default is enabled.',1,'FOG Client')",
+    . "update. Default is enabled.',1,'WRAITH Client')",
     "UPDATE `globalSettings` SET "
-    . "`settingCategory`=REPLACE(`settingCategory`,'FOG Service','FOG Client') "
-    . "WHERE `settingCategory` LIKE '%FOG Service%'",
+    . "`settingCategory`=REPLACE(`settingCategory`,'WRAITH Service','WRAITH Client') "
+    . "WHERE `settingCategory` LIKE '%WRAITH Service%'",
     "UPDATE `globalSettings` SET "
-    . "`settingCategory`=REPLACE(`settingCategory`,'FOG Linux Service',"
-    . "'FOG Service') WHERE `settingCategory` LIKE '%FOG Linux Service%'",
+    . "`settingCategory`=REPLACE(`settingCategory`,'WRAITH Linux Service',"
+    . "'WRAITH Service') WHERE `settingCategory` LIKE '%WRAITH Linux Service%'",
     "UPDATE `globalSettings` SET "
-    . "`settingKey`=REPLACE(`settingKey`,'FOG_SERVICE','FOG_CLIENT') "
-    . "WHERE `settingKey` LIKE '%FOG_SERVICE%'",
+    . "`settingKey`=REPLACE(`settingKey`,'WRAITH_SERVICE','WRAITH_CLIENT') "
+    . "WHERE `settingKey` LIKE '%WRAITH_SERVICE%'",
 );
 // 219
 $this->schema[] = array(
@@ -3190,60 +3190,60 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_POWERMANAGEMENT_ENABLED', 'This setting defines if "
+    . "('WRAITH_CLIENT_POWERMANAGEMENT_ENABLED', 'This setting defines if "
     . "the Windows Service module power management should be enabled "
     . "on client computers. This service allows an on demand "
     . "shutdown/reboot/wol of hosts. It also operates in a "
     . "cron style setup to allow many different schedules of "
     . "shutdowns, restarts, and/or wol. (Valid values: 0 or 1).',"
-    . "'1','FOG Client - Power Management')",
+    . "'1','WRAITH Client - Power Management')",
 );
 // 224
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_IPXE_MAIN_COLOURS','This setting allows the admin to "
+    . "('WRAITH_IPXE_MAIN_COLOURS','This setting allows the admin to "
     . "define their own color (colour) elements for the iPXE "
     . "Boot Menu. Each element must have a new line as a "
     . "separator for multiple items.','colour --rgb 0x00567a 1 "
     . "||\ncolour --rgb 0x00567a 2 ||\ncolour --rgb 0x00567a 4 "
-    . "||','FOG Boot Settings'),"
-    . "('FOG_IPXE_MAIN_CPAIRS','This setting allows the admin "
+    . "||','WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_MAIN_CPAIRS','This setting allows the admin "
     . "to define their own cpair elements for the iPXE Boot Menu. "
     . "Each element must have a new line as a separator for "
     . "multiple items. Fallback will use "
-    . "FOG_IPXE_MAIN_FALLBACK_CPAIRS','cpair --foreground 7 "
-    . "--background 2 2 ||','FOG Boot Settings'),"
-    . "('FOG_IPXE_MAIN_FALLBACK_CPAIRS','This setting allows "
+    . "WRAITH_IPXE_MAIN_FALLBACK_CPAIRS','cpair --foreground 7 "
+    . "--background 2 2 ||','WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_MAIN_FALLBACK_CPAIRS','This setting allows "
     . "the admin to define their own cpair elements for the "
     . "iPXE Boot Menu. Each element must have a new line as "
     . "a separator for multiple items. This is only called "
     . "in case of failure to load menu with picture.',"
     . "'cpair --background 0 1 ||\ncpair --background 1 2 ||',"
-    . "'FOG Boot Settings'),"
-    . "('FOG_IPXE_VALID_HOST_COLOURS','This setting allows the "
+    . "'WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_VALID_HOST_COLOURS','This setting allows the "
     . "admin to define their own color (colour) elements "
     . "for the iPXE Boot Menu on how the host text will "
     . "display if the host is registered. Each element "
     . "must have a new line as a separator for multiple "
-    . "items.','colour --rgb 0x00567a 0 ||','FOG Boot Settings'),"
-    . "('FOG_IPXE_INVALID_HOST_COLOURS','This setting allows the "
+    . "items.','colour --rgb 0x00567a 0 ||','WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_INVALID_HOST_COLOURS','This setting allows the "
     . "admin to define their own color (colour) elements for "
     . "the iPXE Boot Menu on how the host text will display "
     . "if the host is not registered. Each element must have "
     . "a new line as a separator for multiple items.',"
-    . "'colour --rgb 0xff0000 0 ||','FOG Boot Settings'),"
-    . "('FOG_IPXE_HOST_CPAIRS','This setting allows the admin "
+    . "'colour --rgb 0xff0000 0 ||','WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_HOST_CPAIRS','This setting allows the admin "
     . "to define their own cpair elements for the iPXE Boot "
     . "Menu of the host information. Each element must have "
     . "a new line as a separator for multiple items.',"
     . "'cpair --foreground 1 1 ||\ncpair --foreground 0 3 "
-    . "||\ncpair --foreground 4 4 ||','FOG Boot Settings'),"
-    . "('FOG_IPXE_BG_FILE','This setting allows the admin to "
+    . "||\ncpair --foreground 4 4 ||','WRAITH Boot Settings'),"
+    . "('WRAITH_IPXE_BG_FILE','This setting allows the admin to "
     . "define their own background file. Files will need to "
-    . "be in the fog web root under service/ipxe. Default "
-    . "file is bg.png.','bg.png','FOG Boot Settings')",
+    . "be in the wraith web root under service/ipxe. Default "
+    . "file is bg.png.','bg.png','WRAITH Boot Settings')",
 );
 // 225
 $this->schema[] = array(
@@ -3289,31 +3289,31 @@ $this->schema[] = array(
 $this->schema[] = array(
     "UPDATE `taskTypes` SET "
     . "`ttDescription`='Deploy action will send an image "
-    . "saved on the FOG server to the client computer with "
+    . "saved on the WRAITH server to the client computer with "
     . "all included snapins.' WHERE `ttID`=1",
     "UPDATE `taskTypes` SET "
     . "`ttDescription`='Capture will pull an image from a "
     . "client computer that will be saved on the server.' WHERE `ttID`=2",
     "UPDATE `taskTypes` SET "
-    . "`ttDescription`='Deploy - Debug mode allows FOG to "
+    . "`ttDescription`='Deploy - Debug mode allows WRAITH to "
     . "setup the environment to allow you send a specific "
     . "image to a computer, but instead of sending the "
-    . "image, FOG will leave you at a prompt right before "
+    . "image, WRAITH will leave you at a prompt right before "
     . "sending. If you actually wish to send the image all "
-    . "you need to do is type \"fog\" and hit enter.' WHERE `ttID`=15",
+    . "you need to do is type \"wraith\" and hit enter.' WHERE `ttID`=15",
     "UPDATE `taskTypes` SET "
-    . "`ttDescription`='Capture - Debug mode allows FOG to "
+    . "`ttDescription`='Capture - Debug mode allows WRAITH to "
     . "setup the environment to allow you capture a specific "
     . "image from a computer, but instead of capturing the image, "
-    . "FOG will leave you at a prompt right before restoring. "
+    . "WRAITH will leave you at a prompt right before restoring. "
     . "If you actually wish to capture the image all you need "
-    . "to do is type \"fog\" and hit enter.' WHERE `ttID`=16",
+    . "to do is type \"wraith\" and hit enter.' WHERE `ttID`=16",
     "UPDATE `taskTypes` SET `ttDescription`='Deploy without "
-    . "snapins allows FOG to image the workstation, but after "
+    . "snapins allows WRAITH to image the workstation, but after "
     . "the task is complete any snapins linked to the host or "
     . "group will NOT be sent.' WHERE `ttID`=17",
-    "UPDATE `pxeMenu` SET `pxeName`='fog.deployimage',"
-    . "`pxeDesc`='Deploy Image' WHERE `pxeName`='fog.quickimage'"
+    "UPDATE `pxeMenu` SET `pxeName`='wraith.deployimage',"
+    . "`pxeDesc`='Deploy Image' WHERE `pxeName`='wraith.quickimage'"
 );
 // 231
 $this->schema[] = array(
@@ -3327,7 +3327,7 @@ $this->schema[] = array(
     "UPDATE `moduleStatusByHost` SET "
     . "`msModuleID`='4' WHERE `msModuleID`='autologout'",
     "UPDATE `moduleStatusByHost` SET "
-    . "`msModuleID`='5' WHERE `msModuleID`='greenfog'",
+    . "`msModuleID`='5' WHERE `msModuleID`='greenwraith'",
     "UPDATE `moduleStatusByHost` SET "
     . "`msModuleID`='6' WHERE `msModuleID`='snapin'",
     "UPDATE `moduleStatusByHost` SET "
@@ -3352,10 +3352,10 @@ $this->schema[] = array(
 // 233
 $this->schema[] = array(
     "UPDATE `globalSettings` SET "
-    . "`settingKey`='FOG_CAPTUREIGNOREPAGEHIBER' "
-    . "WHERE `settingKey`='FOG_UPLOADIGNOREPAGEHIBER'",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_CAPTURERESIZEPCT' "
-    . "WHERE `settingKey`='FOG_UPLOADRESIZEPCT'",
+    . "`settingKey`='WRAITH_CAPTUREIGNOREPAGEHIBER' "
+    . "WHERE `settingKey`='WRAITH_UPLOADIGNOREPAGEHIBER'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_CAPTURERESIZEPCT' "
+    . "WHERE `settingKey`='WRAITH_UPLOADRESIZEPCT'",
 );
 // 234
 $this->schema[] = array(
@@ -3394,13 +3394,13 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_URL_AVAILABLE_TIMEOUT', 'This setting defines the available timeout in "
+    . "('WRAITH_URL_AVAILABLE_TIMEOUT', 'This setting defines the available timeout in "
     . "thousandths of a second. (Default is 2000 milliseconds)',"
     . "'2000','General Settings'),"
-    . "('FOG_URL_BASE_CONNECT_TIMEOUT', 'This setting defines the available timeout "
+    . "('WRAITH_URL_BASE_CONNECT_TIMEOUT', 'This setting defines the available timeout "
     . "to connect to a server to perform real actions.  This is set in seconds. "
     . "(Default is 15 seconds)','15','General Settings'),"
-    . "('FOG_URL_BASE_TIMEOUT', 'This setting defines the total timeout to perform "
+    . "('WRAITH_URL_BASE_TIMEOUT', 'This setting defines the total timeout to perform "
     . "url based actions, such as download, getting data, etc... This is set in "
     . "seconds. (Default is 86400 seconds -- 1 day)','86400','General Settings')",
 );
@@ -3414,36 +3414,36 @@ $this->schema[] = array(
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
     . "('SNAPINHASHLOGFILENAME','Filename to store the snapin hash log "
-    . "file to (Default fogsnapinhash.log)','fogsnapinhash.log',"
-    . "'FOG Linux Service Logs'),"
+    . "file to (Default wraithsnapinhash.log)','wraithsnapinhash.log',"
+    . "'WRAITH Linux Service Logs'),"
     . "('SNAPINHASHSLEEPTIME','The amount of time between snapin "
     . "hash service runs. Value is in seconds. (Default 1800)',"
-    . "'1800','FOG Linux Service Sleep Times'),"
+    . "'1800','WRAITH Linux Service Sleep Times'),"
     . "('SNAPINHASHDEVICEOUTPUT','The tty to output to for snapin "
     . "replicator. (Default /dev/tty5)','/dev/tty6',"
-    . "'FOG Linux Service TTY Output')",
+    . "'WRAITH Linux Service TTY Output')",
     "UPDATE `globalSettings` SET `settingCategory`="
-    . "'FOG Linux Service Logs' WHERE `settingCategory`="
-    . "'FOG Service Logs'",
+    . "'WRAITH Linux Service Logs' WHERE `settingCategory`="
+    . "'WRAITH Service Logs'",
     "UPDATE `globalSettings` SET `settingCategory`="
-    . "'FOG Linux Service Sleep Times' WHERE `settingCategory`="
-    . "'FOG Service Sleep Times'",
+    . "'WRAITH Linux Service Sleep Times' WHERE `settingCategory`="
+    . "'WRAITH Service Sleep Times'",
     "UPDATE `globalSettings` SET `settingCategory`="
-    . "'FOG Linux Service TTY Output' WHERE `settingCategory`="
-    . "'FOG Service TTY Output'"
+    . "'WRAITH Linux Service TTY Output' WHERE `settingCategory`="
+    . "'WRAITH Service TTY Output'"
 );
 // 240
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_BANNER_IMAGE', 'This setting defines an image for"
-    . " the banner on the fog client.','','Rebranding'),"
-    . "('FOG_CLIENT_BANNER_SHA', 'This setting stores the sha value of"
+    . "('WRAITH_CLIENT_BANNER_IMAGE', 'This setting defines an image for"
+    . " the banner on the wraith client.','','Rebranding'),"
+    . "('WRAITH_CLIENT_BANNER_SHA', 'This setting stores the sha value of"
     . " the banner to be applied.','','Rebranding'),"
-    . "('FOG_COMPANY_NAME', 'This setting defines the name you"
+    . "('WRAITH_COMPANY_NAME', 'This setting defines the name you"
     . " would like presented on the client.','','Rebranding'),"
-    . "('FOG_COMPANY_COLOR', 'This setting is the hex color code"
+    . "('WRAITH_COMPANY_COLOR', 'This setting is the hex color code"
     . " you want progress bar colors to display as.','','Rebranding')"
 );
 // 241
@@ -3451,62 +3451,62 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_COMPANY_TOS','This allows setting the company terms of service.',"
+    . "('WRAITH_COMPANY_TOS','This allows setting the company terms of service.',"
     . "'', 'Rebranding'),"
-    . "('FOG_COMPANY_SUBNAME','This allows setting the company sub unit.',"
+    . "('WRAITH_COMPANY_SUBNAME','This allows setting the company sub unit.',"
     . "'', 'Rebranding')",
     "UPDATE `globalSettings` SET `settingCategory`='Rebranding' WHERE "
-    . "`settingKey` IN ('FOG_CLIENT_BANNER_IMAGE','FOG_CLIENT_BANNER_SHA',"
-    . "'FOG_COMPANY_NAME','FOG_COMPANY_COLOR')"
+    . "`settingKey` IN ('WRAITH_CLIENT_BANNER_IMAGE','WRAITH_CLIENT_BANNER_SHA',"
+    . "'WRAITH_COMPANY_NAME','WRAITH_COMPANY_COLOR')"
 );
 // 242
 $this->schema[] = array(
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_NAME' WHERE "
-    . "`settingKey`='FOG_COMPANY_NAME'",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_SUBNAME',"
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_NAME' WHERE "
+    . "`settingKey`='WRAITH_COMPANY_NAME'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_SUBNAME',"
     . "`settingDesc`='This allows setting the sub unit, and is only used "
     . " on the Equipment loan report for tracking.' WHERE "
-    . "`settingKey`='FOG_COMPANY_SUBNAME'",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_COLOR' WHERE "
-    . "`settingKey`='FOG_COMPANY_COLOR'",
+    . "`settingKey`='WRAITH_COMPANY_SUBNAME'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_COLOR' WHERE "
+    . "`settingKey`='WRAITH_COMPANY_COLOR'",
     "UPDATE `globalSettings` SET `settingDesc`='This setting defines an image "
-    . "for the banner on the fog client. The width must be 650 pixels, and "
-    . "the height must be 120 pixels.' WHERE `settingKey`='FOG_CLIENT_BANNER_IMAGE'"
+    . "for the banner on the wraith client. The width must be 650 pixels, and "
+    . "the height must be 120 pixels.' WHERE `settingKey`='WRAITH_CLIENT_BANNER_IMAGE'"
 );
 // 243
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_CLIENT_BANNER_IMAGE', 'This setting defines an image for"
-    . " the banner on the fog client.','','Rebranding'),"
-    . "('FOG_CLIENT_BANNER_SHA', 'This setting stores the sha value of"
+    . "('WRAITH_CLIENT_BANNER_IMAGE', 'This setting defines an image for"
+    . " the banner on the wraith client.','','Rebranding'),"
+    . "('WRAITH_CLIENT_BANNER_SHA', 'This setting stores the sha value of"
     . " the banner to be applied.','','Rebranding'),"
-    . "('FOG_COMPANY_NAME', 'This setting defines the name you"
+    . "('WRAITH_COMPANY_NAME', 'This setting defines the name you"
     . " would like presented on the client.','','Rebranding'),"
-    . "('FOG_COMPANY_COLOR', 'This setting is the hex color code"
+    . "('WRAITH_COMPANY_COLOR', 'This setting is the hex color code"
     . " you want progress bar colors to display as.','','Rebranding')",
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_COMPANY_TOS','This allows setting the company terms of service.',"
+    . "('WRAITH_COMPANY_TOS','This allows setting the company terms of service.',"
     . "'', 'Rebranding'),"
-    . "('FOG_COMPANY_SUBNAME','This allows setting the company sub unit.',"
+    . "('WRAITH_COMPANY_SUBNAME','This allows setting the company sub unit.',"
     . "'', 'Rebranding')",
     "UPDATE `globalSettings` SET `settingCategory`='Rebranding' WHERE "
-    . "`settingKey` IN ('FOG_CLIENT_BANNER_IMAGE','FOG_CLIENT_BANNER_SHA',"
-    . "'FOG_COMPANY_NAME','FOG_COMPANY_COLOR')",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_NAME' WHERE "
-    . "`settingKey`='FOG_COMPANY_NAME'",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_SUBNAME',"
+    . "`settingKey` IN ('WRAITH_CLIENT_BANNER_IMAGE','WRAITH_CLIENT_BANNER_SHA',"
+    . "'WRAITH_COMPANY_NAME','WRAITH_COMPANY_COLOR')",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_NAME' WHERE "
+    . "`settingKey`='WRAITH_COMPANY_NAME'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_SUBNAME',"
     . "`settingDesc`='This allows setting the sub unit, and is only used "
     . " on the Equipment loan report for tracking.' WHERE "
-    . "`settingKey`='FOG_COMPANY_SUBNAME'",
-    "UPDATE `globalSettings` SET `settingKey`='FOG_COMPANY_COLOR' WHERE "
-    . "`settingKey`='FOG_COMPANY_COLOR'",
+    . "`settingKey`='WRAITH_COMPANY_SUBNAME'",
+    "UPDATE `globalSettings` SET `settingKey`='WRAITH_COMPANY_COLOR' WHERE "
+    . "`settingKey`='WRAITH_COMPANY_COLOR'",
     "UPDATE `globalSettings` SET `settingDesc`='This setting defines an image "
-    . "for the banner on the fog client. The width must be 650 pixels, and "
-    . "the height must be 120 pixels.' WHERE `settingKey`='FOG_CLIENT_BANNER_IMAGE'"
+    . "for the banner on the wraith client. The width must be 650 pixels, and "
+    . "the height must be 120 pixels.' WHERE `settingKey`='WRAITH_CLIENT_BANNER_IMAGE'"
 );
 // 244
 $this->schema[] = $tmpSchema->dropDuplicateData(
@@ -3524,8 +3524,8 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_LOGIN_INFO_DISPLAY', 'This setting defines if the login page"
-    . " should or should not display fog version information. (Default is "
+    . "('WRAITH_LOGIN_INFO_DISPLAY', 'This setting defines if the login page"
+    . " should or should not display wraith version information. (Default is "
     . "on)','1','General Settings')"
 );
 // 246
@@ -3543,29 +3543,29 @@ $this->schema[] = array(
     . "VALUES "
     . "('IMAGEREPLICATORGLOBALENABLED','This setting defines if replication "
     . "of images should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled'),"
+    . "'1','WRAITH Linux Service Enabled'),"
     . "('SNAPINREPLICATORGLOBALENABLED','This setting defines if replication "
     . "of snapins should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled'),"
+    . "'1','WRAITH Linux Service Enabled'),"
     . "('SNAPINHASHGLOBALENABLED','This setting defines if hashing "
     . "of snapins should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled'),"
+    . "'1','WRAITH Linux Service Enabled'),"
     . "('PINGHOSTGLOBALENABLED','This setting defines if ping hosts "
     . "should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled'),"
+    . "'1','WRAITH Linux Service Enabled'),"
     . "('SCHEDULERGLOBALENABLED','This setting defines if scheduler "
     . "service should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled'),"
+    . "'1','WRAITH Linux Service Enabled'),"
     . "('MULTICASTGLOBALENABLED','This setting defines if multicast "
     . "service should occur (Default is enabled)',"
-    . "'1','FOG Linux Service Enabled')"
+    . "'1','WRAITH Linux Service Enabled')"
 );
 // 248
 $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_MULTICAST_RENDEZVOUS', 'This setting defines a rendez-vous"
+    . "('WRAITH_MULTICAST_RENDEZVOUS', 'This setting defines a rendez-vous"
     . " for multicast tasks. (Default is empty)','','Multicast Settings')"
 );
 // 249
@@ -3573,10 +3573,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_QUICKREG_IMG_WHEN_REG','Image upon completion"
+    . "('WRAITH_QUICKREG_IMG_WHEN_REG','Image upon completion"
     . " of registration. Values are 0 or 1, default is 1."
     . " This will only image clients if the image value is"
-    . " defined as well.','0', 'FOG Quick Registration')"
+    . " defined as well.','0', 'WRAITH Quick Registration')"
 );
 // 250
 $this->schema[] = array(
@@ -3586,16 +3586,16 @@ $this->schema[] = array(
     . "VALUES "
     . "('IMAGESIZEGLOBALENABLED','This setting defines if image size should be "
     . "enabled or not. (Default is enabled)',"
-    . "'1', 'FOG Linux Service Enabled'),"
+    . "'1', 'WRAITH Linux Service Enabled'),"
     . "('IMAGESIZESLEEPTIME','The amount of time between image "
     . "size service runs. Value is in seconds. (Default 3600)',"
-    . "'3600','FOG Linux Service Sleep Times'),"
+    . "'3600','WRAITH Linux Service Sleep Times'),"
     . "('IMAGESIZELOGFILENAME','Filename to store the image size log "
-    . "file to (Default fogimagesize.log)','fogimagesize.log',"
-    . "'FOG Linux Service Logs'),"
+    . "file to (Default wraithimagesize.log)','wraithimagesize.log',"
+    . "'WRAITH Linux Service Logs'),"
     . "('IMAGESIZEDEVICEOUTPUT','The tty to output to for image "
     . "size service. (Default /dev/tty3)','/dev/tty3',"
-    . "'FOG Linux Service TTY Output')"
+    . "'WRAITH Linux Service TTY Output')"
 );
 // 251
 $this->schema[] = $tmpSchema->dropDuplicateData(
@@ -3610,16 +3610,16 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_IMAGE_COMPRESSION_FORMAT_DEFAULT',"
+    . "('WRAITH_IMAGE_COMPRESSION_FORMAT_DEFAULT',"
     . "'Compression Format Setting (Default to Partclone Gzip)',"
     . "'0','General Settings'),"
-    . "('FOG_TASKING_ADV_SHUTDOWN_ENABLED',"
+    . "('WRAITH_TASKING_ADV_SHUTDOWN_ENABLED',"
     . "'Tasking shutdown element checked (Default is off)',"
     . "'0','General Settings'),"
-    . "('FOG_TASKING_ADV_WOL_ENABLED',"
+    . "('WRAITH_TASKING_ADV_WOL_ENABLED',"
     . "'Tasking wake on lan element checked (Default is on)',"
     . "'1','General Settings'),"
-    . "('FOG_TASKING_ADV_DEBUG_ENABLED',"
+    . "('WRAITH_TASKING_ADV_DEBUG_ENABLED',"
     . "'Tasking debug element checked (Default is off)',"
     . "'0','General Settings')"
 );
@@ -3653,10 +3653,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_API_ENABLED',"
+    . "('WRAITH_API_ENABLED',"
     . "'Enables API Access (Defaults to off)',"
     . "'0','API System'),"
-    . "('FOG_API_TOKEN',"
+    . "('WRAITH_API_TOKEN',"
     . "'The API Token to use (Randomly generated at install)',"
     . "'"
     . self::createSecToken()
@@ -3667,9 +3667,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_IMAGE_LIST_MENU',"
+    . "('WRAITH_IMAGE_LIST_MENU',"
     . "'Enables Image list on boot menu deploy image (Defaults to on)',"
-    . "'1','FOG Boot Settings')"
+    . "'1','WRAITH Boot Settings')"
 );
 // 258
 $this->schema[] = array(
@@ -3687,10 +3687,10 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_REAUTH_ON_DELETE',"
+    . "('WRAITH_REAUTH_ON_DELETE',"
     . "'If deleting an item, require authentication or not. (Defaults to on)',"
     . "'1','General Settings'),"
-    . "('FOG_REAUTH_ON_EXPORT',"
+    . "('WRAITH_REAUTH_ON_EXPORT',"
     . "'If exporting, require authentication or not. (Defaults to on)',"
     . "'1','General Settings')"
 );
@@ -3707,9 +3707,9 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`, `settingDesc`, `settingValue`, `settingCategory`) "
     . "VALUES "
-    . "('FOG_QUICKREG_PROD_KEY_BIOS','Try pulling systems SLIC product key."
+    . "('WRAITH_QUICKREG_PROD_KEY_BIOS','Try pulling systems SLIC product key."
     . " Values are 0 or 1, default is 0.'"
-    . " ,'0', 'FOG Quick Registration')"
+    . " ,'0', 'WRAITH Quick Registration')"
 );
 // 264
 $this->schema[] = array(
@@ -3726,7 +3726,7 @@ $this->schema[] = array(
 $this->schema[] = array(
     "UPDATE `globalSettings` SET `settingValue`='"
     . STORAGE_FTP_USERNAME
-    . "' WHERE settingKey='FOG_TFTP_FTP_USERNAME'",
+    . "' WHERE settingKey='WRAITH_TFTP_FTP_USERNAME'",
     "UPDATE `nfsGroupMembers` SET `ngmUser`='"
     . STORAGE_FTP_USERNAME
     . "' WHERE ngmHostname='"
@@ -3735,7 +3735,7 @@ $this->schema[] = array(
 );
 // 267
 $this->schema[] = array(
-    "UPDATE `globalSettings` SET `settingValue`=275000 WHERE settingKey='FOG_KERNEL_RAMDISK_SIZE'"
+    "UPDATE `globalSettings` SET `settingValue`=275000 WHERE settingKey='WRAITH_KERNEL_RAMDISK_SIZE'"
 );
 // 268
 $this->schema[] = array(
@@ -3743,7 +3743,7 @@ $this->schema[] = array(
     . "`settingDesc`='Email address(s) to send the reports to. Separate "
     . "multiple emails by comma (e.g. user_a@domain.com, user_b@domain2.com). "
     . "Token \$\{user-name\} is replaced by the task creators username.'"
-    . "WHERE `settingKey`='FOG_EMAIL_ADDRESS'"
+    . "WHERE `settingKey`='WRAITH_EMAIL_ADDRESS'"
 );
 // 269
 $this->schema[] = array(
@@ -3756,7 +3756,7 @@ $this->schema[] = array(
 $this->schema[] = array(
     "UPDATE `globalSettings` SET "
     . "`settingDesc`='Compression Format Setting (Default to Partclone Zstd)', `settingValue`=5 "
-    . "WHERE `settingKey`='FOG_IMAGE_COMPRESSION_FORMAT_DEFAULT' AND `settingValue`=0"
+    . "WHERE `settingKey`='WRAITH_IMAGE_COMPRESSION_FORMAT_DEFAULT' AND `settingValue`=0"
 );
 // 271
 $this->schema[] = array(
@@ -3773,11 +3773,11 @@ $this->schema[] = array(
     "INSERT IGNORE INTO `globalSettings` "
     . "(`settingKey`,`settingDesc`,`settingValue`,`settingCategory`) "
     . "VALUES "
-    . "('FOG_TFTP_PXE_KERNEL_ARM','Location of the ARM kernel file on "
+    . "('WRAITH_TFTP_PXE_KERNEL_ARM','Location of the ARM kernel file on "
     . "the PXE server, this should point to the kernel itself.',"
     . "'arm_Image','TFTP Server'),"
-    . "('FOG_PXE_BOOT_IMAGE_ARM','The settings defines where the ARM "
-    . "fog boot file system image is located.','arm_init.cpio.gz','TFTP Server')",
+    . "('WRAITH_PXE_BOOT_IMAGE_ARM','The settings defines where the ARM "
+    . "wraith boot file system image is located.','arm_init.cpio.gz','TFTP Server')",
 );
 // 274
 $this->schema[] = array(

@@ -4,24 +4,24 @@
  *
  * PHP version 5
  *
- * This is what communicates between FOG and the Database.
+ * This is what communicates between WRAITH and the Database.
  *
  * @category PDODB
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * PDODB, the database connector.
  *
- * This is what communicates between FOG and the Database.
+ * This is what communicates between WRAITH and the Database.
  *
  * @category PDODB
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class PDODB extends DatabaseManager
 {

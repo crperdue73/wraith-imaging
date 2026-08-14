@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Equipment_Loan
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Prints equipment loan.
  *
  * @category Equipment_Loan
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Equipment_Loan extends ReportManagementPage
 {
@@ -28,7 +28,7 @@ class Equipment_Loan extends ReportManagementPage
      */
     public function file()
     {
-        $this->title = _('FOG Equipment Loan Form');
+        $this->title = _('WRAITH Equipment Loan Form');
         unset($this->headerData);
         $this->templates = array(
             '${field}',
@@ -100,7 +100,7 @@ class Equipment_Loan extends ReportManagementPage
         if (!$Inventory->isValid()) {
             return;
         }
-        $this->title = _('FOG Equipment Loan Form');
+        $this->title = _('WRAITH Equipment Loan Form');
         list(
             $coname,
             $subname,
@@ -109,9 +109,9 @@ class Equipment_Loan extends ReportManagementPage
             'Service',
             array(
                 'name' => array(
-                    'FOG_COMPANY_NAME',
-                    'FOG_COMPANY_SUBNAME',
-                    'FOG_COMPANY_TOS'
+                    'WRAITH_COMPANY_NAME',
+                    'WRAITH_COMPANY_SUBNAME',
+                    'WRAITH_COMPANY_TOS'
                 )
             ),
             'value',
@@ -280,6 +280,6 @@ class Equipment_Loan extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

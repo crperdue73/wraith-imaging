@@ -5,25 +5,25 @@
  * PHP version 5
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Wayne Workman <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Plugin configuration file.
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Wayne Workman <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-$fog_plugin = array();
-$fog_plugin['name'] = 'fileintegrity';
-$fog_plugin['description'] = sprintf(
+$wraith_plugin = array();
+$wraith_plugin['name'] = 'fileintegrity';
+$wraith_plugin['description'] = sprintf(
     '%s %s, %s, %s %s.',
     _('Associates the files on nodes'),
     _('and stores their respective checksums'),
@@ -31,6 +31,6 @@ $fog_plugin['description'] = sprintf(
     _('and the location of the file on that'),
     _('particular node')
 );
-$fog_plugin['menuicon'] = 'fa fa-list-ol fa-fw';
-$fog_plugin['menuicon_hover'] = null;
-$fog_plugin['entrypoint'] = 'html/run.php';
+$wraith_plugin['menuicon'] = 'fa fa-list-ol fa-fw';
+$wraith_plugin['menuicon_hover'] = null;
+$wraith_plugin['entrypoint'] = 'html/run.php';

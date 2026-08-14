@@ -5,19 +5,19 @@
  * PHP version 7
  *
  * @category AddSiteGroup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Associate host of a group to a Site.
  *
  * @category AddSiteGroup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSiteGroup extends Hook
 {
@@ -121,11 +121,11 @@ class AddSiteGroup extends Hook
         }
         $restricted = self::getClass('AddSiteFilterSearch')
             ->isRestricted(
-                self::$FOGUser->get('id')
+                self::$WRAITHUser->get('id')
             );
         if (!$restricted) {
             $siteID = self::getClass('AddSiteFilterSearch')
-                ->getSiteIDbyUser(self::$FOGUser->get('id'));
+                ->getSiteIDbyUser(self::$WRAITHUser->get('id'));
         } else {
             $siteID = '';
         }

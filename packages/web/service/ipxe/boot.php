@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Boot
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Boot page for pxe/iPXE
  *
  * @category Boot
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../../commons/base.inc.php';
 header("Content-type: text/plain");
@@ -27,7 +27,7 @@ $items = array(
     'mac1' => filter_input(INPUT_POST, 'mac1'),
     'mac2' => filter_input(INPUT_POST, 'mac2')
 );
-$mac = FOGCore::fastmerge(
+$mac = WRAITHCore::fastmerge(
     explode('|', $items['mac']),
     explode('|', $items['mac0']),
     explode('|', $items['mac1']),
@@ -41,7 +41,7 @@ $mac = implode(
         )
     )
 );
-FOGCore::getHostItem(
+WRAITHCore::getHostItem(
     false,
     false,
     true,

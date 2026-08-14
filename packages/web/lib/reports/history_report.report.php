@@ -5,25 +5,25 @@
  * PHP Version 5
  *
  * @category History_Report
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Prints the history of all items.
  *
  * @category History_Report
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class History_Report extends ReportManagementPage
 {
     public function file()
     {
-        $this->title = _('FOG History - Search');
+        $this->title = _('WRAITH History - Search');
         unset(
             $this->data,
             $this->form,
@@ -213,6 +213,6 @@ class History_Report extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

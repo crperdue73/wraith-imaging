@@ -3,12 +3,12 @@
  * The HostStatus class.
  *
  * @category HostStatus
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@ehu.eus>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class HostStatus extends FOGController
+class HostStatus extends WRAITHController
 {
     /**
      * The hoststatus table

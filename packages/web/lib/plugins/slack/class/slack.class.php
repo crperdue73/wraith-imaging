@@ -1,5 +1,5 @@
 <?php
-class Slack extends FOGController
+class Slack extends WRAITHController
 {
     protected $databaseTable = 'slack';
     protected $databaseFields = array(

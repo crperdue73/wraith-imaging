@@ -5,19 +5,19 @@
  * PHP Version 5
  *
  * @category HTTPResponseCodes
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.com/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
 /**
  * Builds the response codes.
  *
  * @category HTTPResponseCodes
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.com/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
 class HTTPResponseCodes
 {

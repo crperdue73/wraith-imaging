@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category PushbulletHandler
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Pushbullet handler
  *
  * @category PushbulletHandler
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class PushbulletHandler extends Pushbullet
 {
@@ -621,7 +621,7 @@ class PushbulletHandler extends Pushbullet
         $sendAsJSON = false,
         $auth = true
     ) {
-        $data = self::$FOGURLRequests->process(
+        $data = self::$WRAITHURLRequests->process(
             $url,
             $method,
             $data,

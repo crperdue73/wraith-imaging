@@ -262,13 +262,13 @@ msgstr ""
 
 #, fuzzy
 msgid "API Settings"
-msgstr "Configuración de FOG"
+msgstr "Configuración de WRAITH"
 
 msgid "API?"
 msgstr ""
 
 #, fuzzy
-msgid "About FOG Reports"
+msgid "About WRAITH Reports"
 msgstr "Informes"
 
 msgid "Accepted"
@@ -316,13 +316,13 @@ msgstr ""
 msgid "Account already linked"
 msgstr "El directorio ya existe"
 
-msgid "Account linked to FOG GUI at"
+msgid "Account linked to WRAITH GUI at"
 msgstr ""
 
 msgid "Account name to reset"
 msgstr ""
 
-msgid "Account removed from FOG GUI at"
+msgid "Account removed from WRAITH GUI at"
 msgstr ""
 
 #, fuzzy
@@ -521,7 +521,7 @@ msgid "Add user failed!"
 msgstr "¡Error al añadir un rol!"
 
 #, php-format
-msgid "Adding FOGPage: %s, Node: %s"
+msgid "Adding WRAITHPage: %s, Node: %s"
 msgstr ""
 
 msgid "Adding Key"
@@ -601,10 +601,10 @@ msgstr ""
 msgid "All snapins"
 msgstr "Exportar snapin"
 
-msgid "Allows editing/creating of Task States fog currently has."
+msgid "Allows editing/creating of Task States wraith currently has."
 msgstr ""
 
-msgid "Allows editing/creating of Task Types fog currently has."
+msgid "Allows editing/creating of Task Types wraith currently has."
 msgstr ""
 
 #, fuzzy
@@ -972,7 +972,7 @@ msgstr "Estado"
 msgid "Class"
 msgstr ""
 
-msgid "Class is not extended from FOGPage"
+msgid "Class is not extended from WRAITHPage"
 msgstr ""
 
 msgid "Class must extend event"
@@ -1196,7 +1196,7 @@ msgid "Created Tasks For"
 msgstr ""
 
 #, fuzzy
-msgid "Created by FOG Reg on"
+msgid "Created by WRAITH Reg on"
 msgstr "Creado por"
 
 msgid "Credits"
@@ -1461,7 +1461,7 @@ msgstr "Usuario de dominio"
 msgid "Domain name"
 msgstr "Nombre de dominio"
 
-msgid "Donate to FOG"
+msgid "Donate to WRAITH"
 msgstr ""
 
 msgid "Done"
@@ -1643,7 +1643,7 @@ msgstr "Errores"
 msgid "Especially when your organization has many hosts"
 msgstr ""
 
-msgid "Estimated FOG Sites"
+msgid "Estimated WRAITH Sites"
 msgstr ""
 
 msgid "Event"
@@ -1755,156 +1755,156 @@ msgstr "Exportar configuración"
 msgid "Extension"
 msgstr ""
 
-msgid "FOG"
-msgstr "FOG"
+msgid "WRAITH"
+msgstr "WRAITH"
 
 #, fuzzy
-msgid "FOG 1.2.0 and earlier"
-msgstr "Configuración de FOG"
+msgid "WRAITH 1.2.0 and earlier"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG 1.2.0 and earlier."
-msgstr "Configuración de FOG"
+msgid "WRAITH 1.2.0 and earlier."
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Client"
+msgid "WRAITH Client"
 msgstr "Cliente"
 
 #, fuzzy
-msgid "FOG Client Download"
-msgstr "Configuración de FOG"
+msgid "WRAITH Client Download"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Client Installer"
-msgstr "Configuración de FOG"
+msgid "WRAITH Client Installer"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG Client Service Updater"
+msgid "WRAITH Client Service Updater"
 msgstr ""
 
 #, fuzzy
-msgid "FOG Client Wiki"
-msgstr "Configuración de FOG"
+msgid "WRAITH Client Wiki"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Client on Github"
-msgstr "Configuración de FOG"
+msgid "WRAITH Client on Github"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG Configuration"
-msgstr "Configuración de FOG"
+msgid "WRAITH Configuration"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Crypt"
-msgstr "Configuración de FOG"
+msgid "WRAITH Crypt"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG Equipment Loan Form"
+msgid "WRAITH Equipment Loan Form"
 msgstr ""
 
 #, fuzzy
-msgid "FOG Forums"
-msgstr "Configuración de FOG"
+msgid "WRAITH Forums"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG General Help"
-msgstr "FOG Ayuda General"
+msgid "WRAITH General Help"
+msgstr "WRAITH Ayuda General"
 
 #, fuzzy
-msgid "FOG History - Search"
+msgid "WRAITH History - Search"
 msgstr "Usuario"
 
-msgid "FOG Home Page"
+msgid "WRAITH Home Page"
 msgstr ""
 
-msgid "FOG Host - Search"
+msgid "WRAITH Host - Search"
 msgstr ""
 
-msgid "FOG Host Inventory - Search"
+msgid "WRAITH Host Inventory - Search"
 msgstr ""
 
-msgid "FOG Host and Users - Search"
+msgid "WRAITH Host and Users - Search"
 msgstr ""
 
-msgid "FOG Hosts and Users Login"
+msgid "WRAITH Hosts and Users Login"
 msgstr ""
 
 #, fuzzy
-msgid "FOG Imaging - Search"
-msgstr "Configuración de FOG"
+msgid "WRAITH Imaging - Search"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Imaging Log"
-msgstr "Configuración de FOG"
+msgid "WRAITH Imaging Log"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG License Information"
+msgid "WRAITH License Information"
 msgstr "Licencia"
 
 #, fuzzy
-msgid "FOG Log Viewer"
+msgid "WRAITH Log Viewer"
 msgstr "Visor de logs"
 
 #, fuzzy
-msgid "FOG Managed Printers"
-msgstr "Configuración de FOG"
+msgid "WRAITH Managed Printers"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG PXE Boot Menu Configuration"
+msgid "WRAITH PXE Boot Menu Configuration"
 msgstr ""
 
 #, fuzzy
-msgid "FOG Project"
-msgstr "Configuración de FOG"
+msgid "WRAITH Project"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Project on Github"
-msgstr "Configuración de FOG"
+msgid "WRAITH Project on Github"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG Reports exist to give you information about what"
+msgid "WRAITH Reports exist to give you information about what"
 msgstr ""
 
-msgid "FOG Settings"
-msgstr "Configuración de FOG"
+msgid "WRAITH Settings"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Snapin - Search"
-msgstr "Configuración de FOG"
+msgid "WRAITH Snapin - Search"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG Sourceforge Page"
-msgstr ""
-
-#, fuzzy
-msgid "FOG System Settings"
-msgstr "Configuración de FOG"
-
-msgid "FOG User tracking - Search"
-msgstr ""
-
-msgid "FOG User tracking history"
+msgid "WRAITH Sourceforge Page"
 msgstr ""
 
 #, fuzzy
-msgid "FOG Version"
+msgid "WRAITH System Settings"
+msgstr "Configuración de WRAITH"
+
+msgid "WRAITH User tracking - Search"
+msgstr ""
+
+msgid "WRAITH User tracking history"
+msgstr ""
+
+#, fuzzy
+msgid "WRAITH Version"
 msgstr "Versión"
 
 #, fuzzy
-msgid "FOG Version Information"
+msgid "WRAITH Version Information"
 msgstr "Información de hardware"
 
 #, fuzzy
-msgid "FOG Virus Summary"
-msgstr "Configuración de FOG"
+msgid "WRAITH Virus Summary"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
-msgid "FOG Wiki"
-msgstr "Configuración de FOG"
+msgid "WRAITH Wiki"
+msgstr "Configuración de WRAITH"
 
-msgid "FOG database you can do so using"
+msgid "WRAITH database you can do so using"
 msgstr ""
 
-msgid "FOG did is now called Power Management"
+msgid "WRAITH did is now called Power Management"
 msgstr ""
 
-msgid "FOG is unable to communicate with the database"
+msgid "WRAITH is unable to communicate with the database"
 msgstr ""
 
-msgid "FOG server defaulting under the folder"
+msgid "WRAITH server defaulting under the folder"
 msgstr ""
 
 msgid "FTP Connection has failed"
@@ -2226,7 +2226,7 @@ msgstr "Gráfico habilitado"
 msgid "Graphical"
 msgstr "Gráfico"
 
-msgid "Green FOG"
+msgid "Green WRAITH"
 msgstr ""
 
 msgid "Group"
@@ -2257,7 +2257,7 @@ msgstr "Descripción"
 msgid "Group EFI Exit Type"
 msgstr ""
 
-msgid "Group FOG Client Module configuration"
+msgid "Group WRAITH Client Module configuration"
 msgstr ""
 
 #, fuzzy
@@ -2502,7 +2502,7 @@ msgstr "Descripción"
 msgid "Host EFI Exit Type"
 msgstr ""
 
-msgid "Host FOG Client Module configuration"
+msgid "Host WRAITH Client Module configuration"
 msgstr ""
 
 #, fuzzy
@@ -2738,7 +2738,7 @@ msgstr "El campo hora no es válido"
 msgid "Hourly"
 msgstr ""
 
-msgid "I am not the fog web server"
+msgid "I am not the wraith web server"
 msgstr ""
 
 msgid "I am the group manager"
@@ -3016,7 +3016,7 @@ msgid "Import Database?"
 msgstr "Fallo al actualziar la base de datos"
 
 #, fuzzy
-msgid "Import FOG Reports"
+msgid "Import WRAITH Reports"
 msgstr "Informes"
 
 #, fuzzy
@@ -3088,8 +3088,8 @@ msgid "In"
 msgstr ""
 
 #, fuzzy
-msgid "In FOG"
-msgstr "Configuración de FOG"
+msgid "In WRAITH"
+msgstr "Configuración de WRAITH"
 
 msgid "Included Items"
 msgstr "Elementos incluidos"
@@ -3657,7 +3657,7 @@ msgstr "¡Rol añadido!"
 msgid "Location already Exists, please try again."
 msgstr ""
 
-msgid "Location is a plugin that allows your FOG Server"
+msgid "Location is a plugin that allows your WRAITH Server"
 msgstr ""
 
 msgid "Location update failed!"
@@ -3697,7 +3697,7 @@ msgstr "Error al cargar"
 msgid "Login time"
 msgstr "Fecha de login"
 
-msgid "Login with the FOG credentials and you will see the menu"
+msgid "Login with the WRAITH credentials and you will see the menu"
 msgstr ""
 
 msgid "Logout"
@@ -4129,7 +4129,7 @@ msgstr ""
 msgid "No Data Available"
 msgstr "No disponible"
 
-msgid "No FOGPage Class found for this node"
+msgid "No WRAITHPage Class found for this node"
 msgstr ""
 
 msgid "No Host found for MAC Address"
@@ -4394,7 +4394,7 @@ msgstr "Nombre"
 msgid "Object"
 msgstr ""
 
-msgid "Old clients are the clients that came with FOG"
+msgid "Old clients are the clients that came with WRAITH"
 msgstr ""
 
 msgid "Old key must be a string"
@@ -4594,7 +4594,7 @@ msgstr "Lista de equipos"
 msgid "Pending Registered Hosts"
 msgstr "Equipos pendientes"
 
-msgid "Pending Registration created by FOG_CLIENT"
+msgid "Pending Registration created by WRAITH_CLIENT"
 msgstr ""
 
 #, fuzzy
@@ -4722,7 +4722,7 @@ msgstr ""
 msgid "Please select the storage group this location relates to."
 msgstr ""
 
-msgid "Please update your FOG Client, this is old and insecure"
+msgid "Please update your WRAITH Client, this is old and insecure"
 msgstr ""
 
 msgid "Please use another hostname"
@@ -5462,7 +5462,7 @@ msgstr "Rol actualizado con éxito"
 
 #, fuzzy
 msgid "Settings successfully stored!"
-msgstr "Configuración de FOG"
+msgstr "Configuración de WRAITH"
 
 msgid "Should anything go wrong"
 msgstr ""
@@ -6271,8 +6271,8 @@ msgid "The image storage group assigned is not valid"
 msgstr "El grupo de almacenamiento asignado no es válido"
 
 #, fuzzy
-msgid "The installers for the fog client"
-msgstr "Configuración de FOG"
+msgid "The installers for the wraith client"
+msgstr "Configuración de WRAITH"
 
 msgid "The key will be assigned to registered hosts when a"
 msgstr ""
@@ -6284,13 +6284,13 @@ msgstr "Si estás intentando transmitir a un nodo remoto A"
 msgid "The old client is what was distributed with"
 msgstr ""
 
-msgid "The old client is what was distributed with FOG 1.2.0 and earlier"
+msgid "The old client is what was distributed with WRAITH 1.2.0 and earlier"
 msgstr ""
 
 msgid "The old client iswhat was distributed with"
 msgstr ""
 
-msgid "The old client was distributed with FOG 1.2.0 and earlier."
+msgid "The old client was distributed with WRAITH 1.2.0 and earlier."
 msgstr ""
 
 #, fuzzy
@@ -6357,7 +6357,7 @@ msgstr ""
 msgid "There were errors during import!"
 msgstr ""
 
-msgid "There you can download utilities such as FOG Prep"
+msgid "There you can download utilities such as WRAITH Prep"
 msgstr ""
 
 msgid "This MAC Belongs to another host"
@@ -6445,7 +6445,7 @@ msgstr ""
 msgid "This node does not appear to be online"
 msgstr ""
 
-msgid "This page allows you to upload a CSV file into FOG to ease"
+msgid "This page allows you to upload a CSV file into WRAITH to ease"
 msgstr ""
 
 #, fuzzy
@@ -6456,7 +6456,7 @@ msgid "This section allows you to customize or alter"
 msgstr ""
 
 msgid ""
-"This section allows you to import known mac address makers into the FOG "
+"This section allows you to import known mac address makers into the WRAITH "
 "database for easier identification"
 msgstr ""
 
@@ -6483,18 +6483,18 @@ msgid "This setting limits the bandwidth for replication between nodes"
 msgstr "Esta configuración limita el ancho de banda de replicación entre nodos"
 
 msgid ""
-"This setting only adds and removes printers that are managed by FOG. If the "
+"This setting only adds and removes printers that are managed by WRAITH. If the "
 "printer exists in printer management but is not assigned to a host, it will "
 "remove the printer if it exists on the unassigned host. It will add printers "
 "to the host that are assigned."
 msgstr ""
 
-msgid "This setting turns off all FOG Printer Management"
+msgid "This setting turns off all WRAITH Printer Management"
 msgstr ""
 
 msgid ""
-"This setting will only allow FOG Assigned printers to be added to the host. "
-"Any printer that is not assigned will be removed including non-FOG managed "
+"This setting will only allow WRAITH Assigned printers to be added to the host. "
+"Any printer that is not assigned will be removed including non-WRAITH managed "
 "printers."
 msgstr ""
 
@@ -6739,7 +6739,7 @@ msgstr "Habilitado"
 
 #, fuzzy
 msgid "User API Settings"
-msgstr "Configuración de FOG"
+msgstr "Configuración de WRAITH"
 
 #, fuzzy
 msgid "User API Token"
@@ -7049,7 +7049,7 @@ msgstr "Debe de haber por lo menos un grupo de almacenamiento"
 msgid "You must select an action to perform"
 msgstr ""
 
-msgid "Your FOG database schema is not up to date"
+msgid "Your WRAITH database schema is not up to date"
 msgstr ""
 
 #, fuzzy
@@ -7092,7 +7092,7 @@ msgstr ""
 msgid "and agree to all the"
 msgstr ""
 
-msgid "and both the legacy and new FOG clients."
+msgid "and both the legacy and new WRAITH clients."
 msgstr ""
 
 #, fuzzy
@@ -7121,7 +7121,7 @@ msgstr ""
 msgid "and the location of the file on that"
 msgstr ""
 
-msgid "as FOG will attempt to go out to the internet"
+msgid "as WRAITH will attempt to go out to the internet"
 msgstr ""
 
 #, fuzzy
@@ -7329,7 +7329,7 @@ msgstr "Guardar Configuración"
 msgid "has started"
 msgstr ""
 
-msgid "help with any aspect of FOG"
+msgid "help with any aspect of WRAITH"
 msgstr ""
 
 msgid "here"
@@ -7442,14 +7442,14 @@ msgid "in seconds"
 msgstr ""
 
 #, fuzzy
-msgid "install or update the FOG database"
+msgid "install or update the WRAITH database"
 msgstr "Fallo al actualziar la base de datos"
 
 #, fuzzy
 msgid "is already running with pid: "
 msgstr "El grupo de almacenamiento ya existe"
 
-msgid "is going on with your FOG System"
+msgid "is going on with your WRAITH System"
 msgstr ""
 
 #, fuzzy
@@ -7610,7 +7610,7 @@ msgid "or start to operate"
 msgstr ""
 
 #, fuzzy
-msgid "or this is a new FOG installation"
+msgid "or this is a new WRAITH installation"
 msgstr "Nuevo"
 
 msgid "particular node"
@@ -7717,7 +7717,7 @@ msgid "the advanced menu to use"
 msgstr "Avanzadas"
 
 #, fuzzy
-msgid "the base FOG install"
+msgid "the base WRAITH install"
 msgstr "Instalar plugins"
 
 msgid "the following command in a terminal"
@@ -7729,7 +7729,7 @@ msgstr ""
 msgid "the main and the host"
 msgstr ""
 
-msgid "the way in which FOG operates"
+msgid "the way in which WRAITH operates"
 msgstr ""
 
 msgid "there one enabled within this Storage Group"
@@ -7751,8 +7751,8 @@ msgid "this one is already in use by another image"
 msgstr ""
 
 #, fuzzy
-msgid "this one is reserved for FOG"
-msgstr "Configuración de FOG"
+msgid "this one is reserved for WRAITH"
+msgstr "Configuración de WRAITH"
 
 msgid "this will save the backup in your home"
 msgstr ""
@@ -7896,8 +7896,8 @@ msgstr "has configurado el campo de ancho de banda en ese nodo a 1000"
 #~ msgstr "Exportar equipos"
 
 #, fuzzy
-#~ msgid "Hello FOG Client"
-#~ msgstr "Configuración de FOG"
+#~ msgid "Hello WRAITH Client"
+#~ msgstr "Configuración de WRAITH"
 
 #, fuzzy
 #~ msgid "Host Ext"
@@ -7973,8 +7973,8 @@ msgstr "has configurado el campo de ancho de banda en ese nodo a 1000"
 #~ msgstr "Configuración del cliente"
 
 #, fuzzy
-#~ msgid "Legacy FOG Client"
-#~ msgstr "Configuración de FOG"
+#~ msgid "Legacy WRAITH Client"
+#~ msgstr "Configuración de WRAITH"
 
 #, fuzzy
 #~ msgid "as they have been removed"

@@ -5,24 +5,24 @@
  * PHP version 5
  *
  * @category CaponeTasking
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * This is only used for capone plugin.
  *
  * @category CaponeTasking
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class CaponeTasking extends FOGBase
+class CaponeTasking extends WRAITHBase
 {
     /**
-     * The actions supported fog capone.
+     * The actions supported wraith capone.
      *
      * @var array
      */
@@ -51,7 +51,7 @@ class CaponeTasking extends FOGBase
         parent::__construct();
         switch (strtolower($_REQUEST['action'])) {
             case 'dmi':
-                echo self::getSetting('FOG_PLUGIN_CAPONE_DMI');
+                echo self::getSetting('WRAITH_PLUGIN_CAPONE_DMI');
                 break;
             case 'imagelookup':
                 if (!isset($_REQUEST['key'])

@@ -5,11 +5,11 @@
  * PHP version 5
  *
  * @category Hosts_And_Users
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Fernando Gietz <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Hosts_And_Users extends ReportManagementPage
 {
@@ -21,7 +21,7 @@ class Hosts_And_Users extends ReportManagementPage
 
     public function file()
     {
-        $this->title = _('FOG Host and Users - Search');
+        $this->title = _('WRAITH Host and Users - Search');
         unset(
             $this->data,
             $this->form,
@@ -136,7 +136,7 @@ class Hosts_And_Users extends ReportManagementPage
      */
     public function filePost()
     {
-        $this->title =_('FOG Hosts and Users Login');
+        $this->title =_('WRAITH Hosts and Users Login');
         $groupsearch = filter_input(
             INPUT_POST,
             'groupsearch'
@@ -349,6 +349,6 @@ class Hosts_And_Users extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

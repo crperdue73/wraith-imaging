@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category Subnetgroup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Subnetgroup Class handler.
  *
  * @category Subnetgroup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   sctt <none@none>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Subnetgroup extends FOGController
+class Subnetgroup extends WRAITHController
 {
     /**
      * The subnetgroup table

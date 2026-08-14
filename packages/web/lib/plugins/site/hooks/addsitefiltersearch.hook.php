@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddSiteFilterSearch
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Modifies Site filter searches.
  *
  * @category AddSiteFilterSearch
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSiteFilterSearch extends Hook
 {
@@ -72,10 +72,10 @@ class AddSiteFilterSearch extends Hook
         } else {
             $isLocation = true;
         }
-        if (!$this->isRestricted(self::$FOGUser->get('id'))) {
+        if (!$this->isRestricted(self::$WRAITHUser->get('id'))) {
             return;
         }
-        $siteIDbyUser = $this->getSiteIDbyUser(self::$FOGUser->get('id'));
+        $siteIDbyUser = $this->getSiteIDbyUser(self::$WRAITHUser->get('id'));
         if (empty($siteIDbyUser)) {
             $arguments['data']=[];
             return;
@@ -172,10 +172,10 @@ class AddSiteFilterSearch extends Hook
             return;
         }
 
-        if (!$this->isRestricted(self::$FOGUser->get('id'))) {
+        if (!$this->isRestricted(self::$WRAITHUser->get('id'))) {
             return;
         }
-        $siteIDbyUser = $this->getSiteIDbyUser(self::$FOGUser->get('id'));
+        $siteIDbyUser = $this->getSiteIDbyUser(self::$WRAITHUser->get('id'));
         if (empty($siteIDbyUser)) {
             $arguments['data']=[];
             return;

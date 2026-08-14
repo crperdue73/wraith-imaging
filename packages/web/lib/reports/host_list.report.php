@@ -5,20 +5,20 @@
  * PHP version 5
  *
  * @category Host_List
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Reports hosts within.
  *
  * @category Host_List
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Host_List extends ReportManagementPage
 {
@@ -30,7 +30,7 @@ class Host_List extends ReportManagementPage
 
     public function file()
     {
-        $this->title = _('FOG Host - Search');
+        $this->title = _('WRAITH Host - Search');
         unset(
             $this->data,
             $this->form,
@@ -328,6 +328,6 @@ class Host_List extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

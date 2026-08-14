@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ChangeItems
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Changes the elements we need.
  *
  * @category ChangeItems
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class ChangeItems extends Hook
 {
@@ -173,7 +173,7 @@ class ChangeItems extends Hook
             if ($StorageGroup->isValid()) {
                 if (!isset($arguments['snapin'])
                     || ($arguments['snapin'] === true
-                    && self::getSetting('FOG_SNAPIN_LOCATION_SEND_ENABLED') > 0)
+                    && self::getSetting('WRAITH_SNAPIN_LOCATION_SEND_ENABLED') > 0)
                 ) {
                     if (empty($Location->get('protocol'))) {
                         if (isset($_SERVER['HTTPS']) &&
@@ -298,10 +298,10 @@ class ChangeItems extends Hook
                 $initrd = $arguments['initrd'];
             }
             $arguments['webserver'] = $ip;
-            $arguments['memdisk'] = "http://${ip}/fog/service/ipxe/$memdisk";
-            $arguments['memtest'] = "http://${ip}/fog/service/ipxe/$memtest";
-            $arguments['bzImage'] = "http://${ip}/fog/service/ipxe/$bzImage";
-            $arguments['imagefile'] = "http://${ip}/fog/service/ipxe/$initrd";
+            $arguments['memdisk'] = "http://${ip}/wraith/service/ipxe/$memdisk";
+            $arguments['memtest'] = "http://${ip}/wraith/service/ipxe/$memtest";
+            $arguments['bzImage'] = "http://${ip}/wraith/service/ipxe/$bzImage";
+            $arguments['imagefile'] = "http://${ip}/wraith/service/ipxe/$initrd";
             unset($Location);
         }
     }
@@ -317,7 +317,7 @@ class ChangeItems extends Hook
         if (!in_array($this->node, (array)self::$pluginsinstalled)) {
             return;
         }
-        if (!$arguments['FOGServiceClass'] instanceof MulticastManager) {
+        if (!$arguments['WRAITHServiceClass'] instanceof MulticastManager) {
             return;
         }
         $storagenodeIDs = self::getSubObjectIDs(
@@ -359,7 +359,7 @@ class ChangeItems extends Hook
         if (!in_array($this->node, (array)self::$pluginsinstalled)) {
             return;
         }
-        if (!$arguments['FOGServiceClass'] instanceof MulticastTask) {
+        if (!$arguments['WRAITHServiceClass'] instanceof MulticastTask) {
             return;
         }
         $arguments['StorageNode']->isMaster = 1;

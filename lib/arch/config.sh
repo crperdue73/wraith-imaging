@@ -24,9 +24,9 @@
 if [[ -z $webdirdest ]]; then
     if [[ -z $docroot ]]; then
         docroot="/srv/http/"
-        webdirdest="${docroot}fog/"
-    elif [[ "$docroot" != *'fog'* ]]; then
-        webdirdest="${docroot}fog/"
+        webdirdest="${docroot}wraith/"
+    elif [[ "$docroot" != *'wraith'* ]]; then
+        webdirdest="${docroot}wraith/"
     else
         webdirdest="${docroot}/"
     fi
@@ -37,7 +37,7 @@ fi
 [[ -z $apacheerrlog ]] && apacheerrlog="$apachelogdir/error_log"
 [[ -z $apacheacclog ]] && apacheacclog="$apachelogdir/access_log"
 [[ -z $httpdconf ]] && httpdconf="/etc/httpd/conf/httpd.conf"
-[[ -z $etcconf ]] && etcconf="/etc/httpd/conf/extra/fog.conf"
+[[ -z $etcconf ]] && etcconf="/etc/httpd/conf/extra/wraith.conf"
 [[ -z $phpini ]] && phpini="/etc/php/php.ini"
 [[ -z $storageLocation ]] && storageLocation="/images"
 [[ -z $storageLocationCapture ]] && storageLocationCapture="${storageLocation}/dev"
@@ -51,4 +51,4 @@ fi
 [[ -z $iscservice ]] && iscservice="dhcpd4"
 [[ -z $keapackage ]] && keapackage="kea"
 [[ -z $keaservice ]] && keaservice="kea-dhcp4"
-[[ -z $snapindir ]] && snapindir="/opt/fog/snapins"
+[[ -z $snapindir ]] && snapindir="/opt/wraith/snapins"

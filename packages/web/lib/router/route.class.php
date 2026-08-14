@@ -5,21 +5,21 @@
  * PHP Version 5
  *
  * @category Route
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
 /**
  * Creates our routes for api configuration.
  *
  * @category Route
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org/
+ * @link     https://wraithproject.org/
  */
-class Route extends FOGBase
+class Route extends WRAITHBase
 {
     /**
      * The api setup is enabled?
@@ -59,7 +59,7 @@ class Route extends FOGBase
     public static $validClasses = array(
         'clientupdater',
         'dircleaner',
-        'greenfog',
+        'greenwraith',
         'group',
         'groupassociation',
         'history',
@@ -156,8 +156,8 @@ class Route extends FOGBase
             'Service',
             array(
                 'name' => array(
-                    'FOG_API_ENABLED',
-                    'FOG_API_TOKEN'
+                    'WRAITH_API_ENABLED',
+                    'WRAITH_API_TOKEN'
                 )
             ),
             'value'
@@ -168,14 +168,14 @@ class Route extends FOGBase
         if (!self::$_enabled) {
             header(
                 sprintf(
-                    'Location: %s://%s/fog/management/index.php',
+                    'Location: %s://%s/wraith/management/index.php',
                     self::$httpproto,
                     self::$httphost
                 )
             );
             exit;
         }
-        if (!self::$FOGUser->isValid()) {
+        if (!self::$WRAITHUser->isValid()) {
             /**
              * Test our token.
              */
@@ -224,7 +224,7 @@ class Route extends FOGBase
         }
         self::$router = new AltoRouter(
             array(),
-            '/fog'
+            '/wraith'
         );
         self::defineRoutes();
         self::setMatches();
@@ -379,7 +379,7 @@ class Route extends FOGBase
     private static function _testToken()
     {
         $passtoken = base64_decode(
-            filter_input(INPUT_SERVER, 'HTTP_FOG_API_TOKEN')
+            filter_input(INPUT_SERVER, 'HTTP_WRAITH_API_TOKEN')
         );
         if ($passtoken !== self::$_token) {
             self::sendResponse(
@@ -395,7 +395,7 @@ class Route extends FOGBase
     private static function _testAuth()
     {
         $usertoken = base64_decode(
-            filter_input(INPUT_SERVER, 'HTTP_FOG_USER_TOKEN')
+            filter_input(INPUT_SERVER, 'HTTP_WRAITH_USER_TOKEN')
         );
         $pwtoken = self::getClass('User')
             ->set('token', $usertoken)
@@ -403,7 +403,7 @@ class Route extends FOGBase
         if ($pwtoken->isValid() && $pwtoken->get('api')) {
             return;
         }
-        $auth = self::$FOGUser->passwordValidate(
+        $auth = self::$WRAITHUser->passwordValidate(
             $_SERVER['PHP_AUTH_USER'],
             $_SERVER['PHP_AUTH_PW']
         );
@@ -441,14 +441,14 @@ class Route extends FOGBase
         );
     }
     /**
-     * Streams a full SQL backup of the FOG database.
+     * Streams a full SQL backup of the WRAITH database.
      *
      * Token-authenticated, headless equivalent of the management
      * "Export Database" button (management/export.php?type=sql), which
      * requires a logged-in session and CSRF token and so cannot be used
      * by scripts. This endpoint relies only on the standard API auth
-     * already enforced in the constructor (fog-api-token plus an
-     * api-enabled fog-user-token, or HTTP basic auth) and reuses
+     * already enforced in the constructor (wraith-api-token plus an
+     * api-enabled wraith-user-token, or HTTP basic auth) and reuses
      * Schema::exportdb() so the dump matches the web UI byte-for-byte.
      *
      * The dump is streamed as an attachment; we exit afterward to keep
@@ -459,7 +459,7 @@ class Route extends FOGBase
     public static function export()
     {
         $backup_name = sprintf(
-            'fog_backup_%s.sql',
+            'wraith_backup_%s.sql',
             self::formatTime('', 'Ymd_His')
         );
         self::getClass('Schema')->exportdb($backup_name);
@@ -1053,13 +1053,13 @@ class Route extends FOGBase
                 }
                 break;
         }
-        global $foglang;
+        global $wraithlang;
         foreach ($classVars['databaseFieldsRequired'] as &$key) {
             $key = $class->key($key);
             $val = $class->get($key);
             if (null === $val) {
                 self::setErrorMessage(
-                    $foglang['RequiredDB'] . ": " . $key,
+                    $wraithlang['RequiredDB'] . ": " . $key,
                     HTTPResponseCodes::HTTP_EXPECTATION_FAILED
                 );
             }
@@ -1079,12 +1079,12 @@ class Route extends FOGBase
     /**
      * Create a Snapin from a multipart upload.
      *
-     * POST /fog/snapin/createwithfile
+     * POST /wraith/snapin/createwithfile
      *
      * The only Snapin endpoint that accepts a binary file. Delegates
      * validation / FTP / DB save to Snapin::uploadAndCreate, then returns
      * the freshly-loaded row using the standard indiv() formatter so the
-     * response shape matches GET /fog/snapin/<id>.
+     * response shape matches GET /wraith/snapin/<id>.
      *
      * @return void
      */
@@ -1132,9 +1132,9 @@ class Route extends FOGBase
     /**
      * Upload one or more snapin files to a Storage Group's Master Node
      * without creating any database row. Files land in the snapin path;
-     * FOGSnapinReplicator distributes them to other nodes on its cycle.
+     * WRAITHSnapinReplicator distributes them to other nodes on its cycle.
      *
-     * POST /fog/storagegroup/[i:id]/uploadsnapinfiles
+     * POST /wraith/storagegroup/[i:id]/uploadsnapinfiles
      *
      * Form field MUST be 'snapinfiles[]' (the [] is what makes PHP
      * populate $_FILES as a multi-file array, even for one file).
@@ -1445,7 +1445,7 @@ class Route extends FOGBase
                         $productKey = $productKeytest;
                     }
                 }
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'ADPass' => $pass,
@@ -1467,7 +1467,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'inventory':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'memory' => $class->getMem()
@@ -1475,7 +1475,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'group':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'hostcount' => $class->getHostCount()
@@ -1483,7 +1483,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'image':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'os' => $class->get('os')->get(),
@@ -1499,7 +1499,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'snapin':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'storagegroupname' => $class->getStorageGroup()->get('name')
@@ -1535,7 +1535,7 @@ class Route extends FOGBase
                        )
                     );
                 }
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     $extra,
                     array(
@@ -1549,7 +1549,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'storagegroup':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'totalsupportedclients' => $class->getTotalSupportedClients(),
@@ -1559,7 +1559,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'task':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'image' => $class->get('image')->get(),
@@ -1575,7 +1575,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'plugin':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'location' => $class->getPath(),
@@ -1587,7 +1587,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'imaginglog':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'host' => self::getter(
@@ -1602,7 +1602,7 @@ class Route extends FOGBase
                 unset($data['images']);
                 break;
             case 'snapintask':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'snapin' => $class->get('snapin')->get(),
@@ -1615,7 +1615,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'snapinjob':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'host' => self::getter(
@@ -1627,7 +1627,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'usertracking':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'host' => self::getter(
@@ -1638,7 +1638,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'multicastsession':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'imageID' => $class->get('image'),
@@ -1649,7 +1649,7 @@ class Route extends FOGBase
                 unset($data['imagename']);
                 break;
             case 'scheduledtask':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         (
@@ -1673,7 +1673,7 @@ class Route extends FOGBase
                 );
                 break;
             case 'tasktype':
-                $data = FOGCore::fastmerge(
+                $data = WRAITHCore::fastmerge(
                     $class->get(),
                     array(
                         'isSnapinTasking' => $class->isSnapinTasking()

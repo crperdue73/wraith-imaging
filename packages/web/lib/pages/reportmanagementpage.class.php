@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ReportManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Displays 'reports' for the admins.
  *
  * @category ReportManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ReportManagementPage extends FOGPage
+class ReportManagementPage extends WRAITHPage
 {
     /**
      * The node this page displays from.
@@ -151,10 +151,10 @@ class ReportManagementPage extends FOGPage
     public function __construct($name = '')
     {
         set_time_limit(0);
-        $this->name = self::$foglang['Report Management'];
+        $this->name = self::$wraithlang['Report Management'];
         parent::__construct($this->name);
         $this->menu = array(
-            'home' => self::$foglang['Home']
+            'home' => self::$wraithlang['Home']
         );
         $reportlink = "?node={$this->node}&sub=file&f=";
         foreach (self::_loadCustomReports() as &$report) {
@@ -190,7 +190,7 @@ class ReportManagementPage extends FOGPage
                     'notes' => &$this->notes
                 )
             );
-        $_SESSION['foglastreport'] = null;
+        $_SESSION['wraithlastreport'] = null;
         $this->ReportMaker = self::getClass('ReportMaker');
     }
     /**
@@ -209,7 +209,7 @@ class ReportManagementPage extends FOGPage
      */
     public function upload()
     {
-        $this->title = _('Import FOG Reports');
+        $this->title = _('Import WRAITH Reports');
         unset(
             $this->data,
             $this->form,
@@ -274,7 +274,7 @@ class ReportManagementPage extends FOGPage
             . ' '
             . _('defined reports that may not be a part of')
             . ' '
-            . _('the base FOG install')
+            . _('the base WRAITH install')
             . '.';
         echo '<hr/>';
         echo '<form class="form-horizontal" method="post" action="'
@@ -293,7 +293,7 @@ class ReportManagementPage extends FOGPage
      */
     public function index()
     {
-        $this->title = _('About FOG Reports');
+        $this->title = _('About WRAITH Reports');
         echo '<div class="col-xs-9">';
         echo '<div class="panel panel-info">';
         echo '<div class="panel-heading text-center">';
@@ -302,9 +302,9 @@ class ReportManagementPage extends FOGPage
         echo '</h4>';
         echo '</div>';
         echo '<div class="panel-body">';
-        echo _('FOG Reports exist to give you information about what')
+        echo _('WRAITH Reports exist to give you information about what')
             . ' '
-            . _('is going on with your FOG System')
+            . _('is going on with your WRAITH System')
             . '. '
             . _('To view a report, select an item from the menu')
             . '.';

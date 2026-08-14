@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddSiteAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects access control stuff into the api system.
  *
  * @category AddSiteAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddSiteAPI extends Hook
 {
@@ -203,7 +203,7 @@ class AddSiteAPI extends Hook
         }
         switch ($arguments['classname']) {
             case 'sitehostassociation':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'site' => $arguments['class']->get('site')->get(),

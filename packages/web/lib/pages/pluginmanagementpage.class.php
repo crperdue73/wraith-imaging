@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category PluginManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Plugin management page
  *
  * @category PluginManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PluginManagementPage extends FOGPage
+class PluginManagementPage extends WRAITHPage
 {
     /**
      * Stores the type of sub we're working on.
@@ -48,7 +48,7 @@ class PluginManagementPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['Plugin Management'];
+        $this->name = self::$wraithlang['Plugin Management'];
         parent::__construct($this->name);
         Route::listem('plugin');
         self::$_plugins = json_decode(
@@ -56,10 +56,10 @@ class PluginManagementPage extends FOGPage
         );
         self::$_plugins = self::$_plugins->plugins;
         $this->menu = array(
-            'home'=>self::$foglang['Home'],
-            'activate'=>self::$foglang['ActivatePlugins'],
-            'install'=>self::$foglang['InstallPlugins'],
-            'installed'=>self::$foglang['InstalledPlugins'],
+            'home'=>self::$wraithlang['Home'],
+            'activate'=>self::$wraithlang['ActivatePlugins'],
+            'install'=>self::$wraithlang['InstallPlugins'],
+            'installed'=>self::$wraithlang['InstalledPlugins'],
         );
         self::$HookManager->processEvent(
             'SUB_MENULINK_DATA',
@@ -404,12 +404,12 @@ class PluginManagementPage extends FOGPage
                     );
                     $dmifield = array_shift(self::getSubObjectIDs(
                         'Service',
-                        array('name' => 'FOG_PLUGIN_CAPONE_DMI'),
+                        array('name' => 'WRAITH_PLUGIN_CAPONE_DMI'),
                         'value'
                     ));
                     $shutdown = array_shift(self::getSubObjectIDs(
                         'Service',
-                        array('name' => 'FOG_PLUGIN_CAPONE_SHUTDOWN'),
+                        array('name' => 'WRAITH_PLUGIN_CAPONE_SHUTDOWN'),
                         'value'
                     ));
                     $dmiSel = self::selectForm(
@@ -648,12 +648,12 @@ class PluginManagementPage extends FOGPage
                 $dmifield = filter_input(INPUT_POST, 'dmifield');
                 $shutdown = (int)filter_input(INPUT_POST, 'shutdown');
                 self::getClass('Service')
-                    ->set('name', 'FOG_PLUGIN_CAPONE_DMI')
+                    ->set('name', 'WRAITH_PLUGIN_CAPONE_DMI')
                     ->load('name')
                     ->set('value', $dmifield)
                     ->save();
                 self::getClass('Service')
-                    ->set('name', 'FOG_PLUGIN_CAPONE_SHUTDOWN')
+                    ->set('name', 'WRAITH_PLUGIN_CAPONE_SHUTDOWN')
                     ->load('name')
                     ->set('value', $shutdown)
                     ->save();

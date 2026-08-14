@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category SubMenuData
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Sub menu hook changer.
  *
  * @category SubMenuData
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Peter Gilchrist <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class SubMenuData extends Hook
 {
@@ -83,18 +83,18 @@ class SubMenuData extends Hook
                 break;
             case 'about':
                 $arguments['menu'] = array(
-                    'home' => self::$foglang['Home'],
-                    'license' => self::$foglang['License'],
-                    'kernelUpdate' => self::$foglang['KernelUpdate'],
-                    'initrdUpdate' => self::$foglang['InitrdUpdate'],
-                    'pxemenu' => self::$foglang['PXEBootMenu'],
-                    'customizepxe' => self::$foglang['PXEConfiguration'],
-                    'newMenu' => self::$foglang['NewMenu'],
-                    'clientupdater' => self::$foglang['ClientUpdater'],
-                    'maclist' => self::$foglang['MACAddrList'],
-                    'settings' => self::$foglang['FOGSettings'],
-                    'logviewer' => self::$foglang['LogViewer'],
-                    'config' => self::$foglang['ConfigSave'],
+                    'home' => self::$wraithlang['Home'],
+                    'license' => self::$wraithlang['License'],
+                    'kernelUpdate' => self::$wraithlang['KernelUpdate'],
+                    'initrdUpdate' => self::$wraithlang['InitrdUpdate'],
+                    'pxemenu' => self::$wraithlang['PXEBootMenu'],
+                    'customizepxe' => self::$wraithlang['PXEConfiguration'],
+                    'newMenu' => self::$wraithlang['NewMenu'],
+                    'clientupdater' => self::$wraithlang['ClientUpdater'],
+                    'maclist' => self::$wraithlang['MACAddrList'],
+                    'settings' => self::$wraithlang['WRAITHSettings'],
+                    'logviewer' => self::$wraithlang['LogViewer'],
+                    'config' => self::$wraithlang['ConfigSave'],
             
                 );
                 break;
@@ -105,16 +105,16 @@ class SubMenuData extends Hook
             case 'image':
                 $arguments['menu']['multicast'] = sprintf(
                     '%s %s',
-                    self::$foglang['Multicast'],
-                    self::$foglang['Image']
+                    self::$wraithlang['Multicast'],
+                    self::$wraithlang['Image']
                 );
                 break;
             case 'plugin':
                 $arguments['menu'] = array(
-                    'home'=>self::$foglang['Home'],
-                    'activate'=>self::$foglang['ActivatePlugins'],
-                    'install'=>self::$foglang['InstallPlugins'],
-                    'installed'=>self::$foglang['InstalledPlugins'],
+                    'home'=>self::$wraithlang['Home'],
+                    'activate'=>self::$wraithlang['ActivatePlugins'],
+                    'install'=>self::$wraithlang['InstallPlugins'],
+                    'installed'=>self::$wraithlang['InstalledPlugins'],
                 );
                 break;
             case 'printer':
@@ -132,18 +132,18 @@ class SubMenuData extends Hook
                 break;
             case 'storage':
                 $arguments['menu'] = array(
-                    'list' => self::$foglang['AllSN'],
-                    'addStorageNode' => self::$foglang['AddSN'],
-                    'storageGroup' => self::$foglang['AllSG'],
-                    'addStorageGroup' => self::$foglang['AddSG'],
+                    'list' => self::$wraithlang['AllSN'],
+                    'addStorageNode' => self::$wraithlang['AddSN'],
+                    'storageGroup' => self::$wraithlang['AllSG'],
+                    'addStorageGroup' => self::$wraithlang['AddSG'],
                 );
                 break;
             case 'task':
                 $arguments['menu'] = array(
-                    'active' => self::$foglang['ActiveTasks'],
-                    'activemulticast' => self::$foglang['ActiveMCTasks'],
-                    'activesnapins' => self::$foglang['ActiveSnapins'],
-                    'activescheduled' => self::$foglang['ScheduledTasks'],
+                    'active' => self::$wraithlang['ActiveTasks'],
+                    'activemulticast' => self::$wraithlang['ActiveMCTasks'],
+                    'activesnapins' => self::$wraithlang['ActiveSnapins'],
+                    'activescheduled' => self::$wraithlang['ScheduledTasks'],
                 );
                 break;
             case 'hwinfo':

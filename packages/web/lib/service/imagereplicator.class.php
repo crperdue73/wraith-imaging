@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ImageReplicator
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Replication service for images
  *
  * @category ImageReplicator
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ImageReplicator extends FOGService
+class ImageReplicator extends WRAITHService
 {
     /**
      * Is the service globally enabled.
@@ -66,12 +66,12 @@ class ImageReplicator extends FOGService
             (
                 self::$logpath ?
                 self::$logpath :
-                '/opt/fog/log/'
+                '/opt/wraith/log/'
             ),
             (
                 $log ?
                 $log :
-                'fogreplicator.log'
+                'wraithreplicator.log'
             )
         );
         if (file_exists(static::$log)) {
@@ -109,7 +109,7 @@ class ImageReplicator extends FOGService
                         get_class($this),
                         _('I am the group manager')
                     ),
-                    '/opt/fog/log/groupmanager.log'
+                    '/opt/wraith/log/groupmanager.log'
                 );
                 $myStorageGroupID = $StorageNode->get('storagegroupID');
                 $myStorageNodeID = $StorageNode->get('id');
@@ -157,7 +157,7 @@ class ImageReplicator extends FOGService
                 $ImageIDs = self::getSubObjectIDs('Image');
                 /**
                  * Find any images that are no longer valid within
-                 * fog, but still existing in the group assoc.
+                 * wraith, but still existing in the group assoc.
                  */
                 $ImageAssocs = self::getSubObjectIDs(
                     'ImageAssociation',
@@ -324,7 +324,7 @@ class ImageReplicator extends FOGService
                 get_class($this),
                 _('Checking if I am the group manager')
             ),
-            '/opt/fog/log/groupmanager.log'
+            '/opt/wraith/log/groupmanager.log'
         );
         $this->_commonOutput();
         parent::serviceRun();

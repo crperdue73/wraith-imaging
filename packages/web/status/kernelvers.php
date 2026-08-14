@@ -1,23 +1,23 @@
 <?php
 /**
- * Presents the FOG Kernels version that the clients will use.
+ * Presents the WRAITH Kernels version that the clients will use.
  *
  * PHP version 5
  *
  * @category KernelVersion
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * Presents the FOG Kernels version that the clients will use.
+ * Presents the WRAITH Kernels version that the clients will use.
  *
  * @category KernelVersion
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 session_write_close();
@@ -27,7 +27,7 @@ header('Content-Type: text/event-stream');
 
 if (isset($_POST['url'])) {
     // Prevent an unauthenticated user from making arbitrary requests.
-    FOGCore::checkAuthAndCSRF();
+    WRAITHCore::checkAuthAndCSRF();
 
     $url = filter_input(INPUT_POST, 'url');
     if (!$url || !filter_var($url, FILTER_VALIDATE_URL)) {
@@ -45,7 +45,7 @@ if (isset($_POST['url'])) {
         exit;
     }
 
-    $res = $FOGURLRequests
+    $res = $WRAITHURLRequests
         ->process(filter_input(INPUT_POST, 'url'));
     foreach ((array) $res as &$response) {
         echo $response;
@@ -73,7 +73,7 @@ $kernelvers = function ($kernel) {
 };
 printf(
     "%s\n",
-    FOG_VERSION
+    WRAITH_VERSION
 );
 printf(
     "bzImage Version: %s\n",

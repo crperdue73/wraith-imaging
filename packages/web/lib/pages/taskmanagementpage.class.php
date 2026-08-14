@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category TaskManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Displays tasks to the user.
  *
  * @category TaskManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class TaskManagementPage extends FOGPage
+class TaskManagementPage extends WRAITHPage
 {
     /**
      * The node this page works with.
@@ -39,18 +39,18 @@ class TaskManagementPage extends FOGPage
         $this->name = _('Task Management');
         parent::__construct($this->name);
         $this->menu = array(
-            'active' => self::$foglang['ActiveTasks'],
+            'active' => self::$wraithlang['ActiveTasks'],
             'listhosts' => sprintf(
-                self::$foglang['ListAll'],
-                self::$foglang['Hosts']
+                self::$wraithlang['ListAll'],
+                self::$wraithlang['Hosts']
             ),
             'listgroups' => sprintf(
-                self::$foglang['ListAll'],
-                self::$foglang['Groups']
+                self::$wraithlang['ListAll'],
+                self::$wraithlang['Groups']
             ),
-            'activemulticast' => self::$foglang['ActiveMCTasks'],
-            'activesnapins' => self::$foglang['ActiveSnapins'],
-            'activescheduled' => self::$foglang['ScheduledTasks'],
+            'activemulticast' => self::$wraithlang['ActiveMCTasks'],
+            'activesnapins' => self::$wraithlang['ActiveSnapins'],
+            'activescheduled' => self::$wraithlang['ScheduledTasks'],
         );
         self::$HookManager
             ->processEvent(
@@ -576,7 +576,7 @@ class TaskManagementPage extends FOGPage
                 $enableDebug,
                 $enableSnapins,
                 $type === 'group',
-                self::$FOGUser->get('name'),
+                self::$WRAITHUser->get('name'),
                 false,
                 false,
                 $TaskType->isInitNeededTasking() || $TaskType->get('id') == 14

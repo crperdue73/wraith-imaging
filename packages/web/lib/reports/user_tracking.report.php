@@ -5,19 +5,19 @@
  * PHP Version 5
  *
  * @category User_Tracking
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * User tracking report.
  *
  * @category User_Tracking
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class User_Tracking extends ReportManagementPage
 {
@@ -28,7 +28,7 @@ class User_Tracking extends ReportManagementPage
      */
     public function file()
     {
-        $this->title = _('FOG User tracking - Search');
+        $this->title = _('WRAITH User tracking - Search');
         unset(
             $this->data,
             $this->form,
@@ -236,7 +236,7 @@ class User_Tracking extends ReportManagementPage
      */
     public function filedisp()
     {
-        $this->title = _('FOG User tracking history');
+        $this->title = _('WRAITH User tracking history');
         $this->headerData = array(
             _('Action'),
             _('Username'),
@@ -371,6 +371,6 @@ class User_Tracking extends ReportManagementPage
         echo '</div>';
         echo '</div>';
         echo '</div>';
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
     }
 }

@@ -1,23 +1,23 @@
 <?php
 /**
- * The queue handling system for FOG's checkin/checkout processes.
+ * The queue handling system for WRAITH's checkin/checkout processes.
  *
  * PHP version 5
  *
  * @category TaskQueue
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * The queue handling system for FOG's checkin/checkout processes.
+ * The queue handling system for WRAITH's checkin/checkout processes.
  *
  * @category TaskQueue
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class TaskQueue extends TaskingElement
 {
@@ -212,10 +212,10 @@ class TaskQueue extends TaskingElement
             'Service',
             array(
                 'name' => array(
-                    'FOG_EMAIL_ACTION',
-                    'FOG_EMAIL_ADDRESS',
-                    'FOG_EMAIL_BINARY',
-                    'FOG_FROM_EMAIL'
+                    'WRAITH_EMAIL_ACTION',
+                    'WRAITH_EMAIL_ADDRESS',
+                    'WRAITH_EMAIL_BINARY',
+                    'WRAITH_FROM_EMAIL'
                 )
             ),
             'value',
@@ -251,10 +251,10 @@ class TaskQueue extends TaskingElement
             );
         }
         if (!$emailBinary) {
-            $emailBinary = '/usr/sbin/sendmail -t -f noreply@fogserver.com -i';
+            $emailBinary = '/usr/sbin/sendmail -t -f noreply@wraithserver.com -i';
         }
         $reg = '#\$\{server-name\}#';
-        $nodeName = 'fogserver';
+        $nodeName = 'wraithserver';
         if ($this->StorageNode->isValid()) {
             $nodeName = $this->StorageNode->get('name');
         }
@@ -264,7 +264,7 @@ class TaskQueue extends TaskingElement
             $emailBinary
         );
         if (!$fromEmail) {
-            $fromEmail = 'noreply@fogserver.com';
+            $fromEmail = 'noreply@wraithserver.com';
         }
         $fromEmail = preg_replace(
             $reg,
@@ -397,7 +397,7 @@ class TaskQueue extends TaskingElement
             $this->StorageNode->get('ftppath'),
             $this->Image->get('path')
         );
-        self::$FOGFTP
+        self::$WRAITHFTP
             ->set('host', $this->StorageNode->get('ip'))
             ->set('username', $this->StorageNode->get('user'))
             ->set('password', $this->StorageNode->get('pass'))

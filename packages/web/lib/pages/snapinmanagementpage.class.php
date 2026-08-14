@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SnapinManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Snapin management page
  *
  * @category SnapinManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SnapinManagementPage extends FOGPage
+class SnapinManagementPage extends WRAITHPage
 {
     /**
      * Arg types for snapin template
@@ -73,9 +73,9 @@ class SnapinManagementPage extends FOGPage
         /**
          * The real name not using our name passer.
          */
-        $this->name = self::$foglang['Snapin Management'];
+        $this->name = self::$wraithlang['Snapin Management'];
         /**
-         * Pull in the FOG Page class items.
+         * Pull in the WRAITH Page class items.
          */
         parent::__construct($name);
         /**
@@ -117,21 +117,21 @@ class SnapinManagementPage extends FOGPage
              * The other sub menu items.
              */
             $this->subMenu = array(
-                "$this->linkformat#snap-gen" => self::$foglang['General'],
+                "$this->linkformat#snap-gen" => self::$wraithlang['General'],
                 "$this->linkformat#snap-storage" => sprintf(
                     '%s %s',
-                    self::$foglang['Storage'],
-                    self::$foglang['Group']
+                    self::$wraithlang['Storage'],
+                    self::$wraithlang['Group']
                 ),
-                $this->membership => self::$foglang['Membership'],
-                $this->delformat => self::$foglang['Delete'],
+                $this->membership => self::$wraithlang['Membership'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             /**
              * The notes for this item.
              */
             $this->notes = array(
-                self::$foglang['Snapin'] => $this->obj->get('name'),
-                self::$foglang['File'] => $this->obj->get('file'),
+                self::$wraithlang['Snapin'] => $this->obj->get('name'),
+                self::$wraithlang['File'] => $this->obj->get('file'),
                 _('Filesize') => self::formatByteSize($this->obj->get('size')),
             );
         }
@@ -319,41 +319,41 @@ class SnapinManagementPage extends FOGPage
         $args = array(
             'MSI' => array(
                 'msiexec.exe',
-                '/i &quot;[FOG_SNAPIN_PATH]\\MyMSI.msi&quot;'
+                '/i &quot;[WRAITH_SNAPIN_PATH]\\MyMSI.msi&quot;'
             ),
             'MSI + MST' => array(
                 'msiexec.exe',
-                '/i &quot;[FOG_SNAPIN_PATH]\\MyMST.mst&quot;'
+                '/i &quot;[WRAITH_SNAPIN_PATH]\\MyMST.mst&quot;'
             ),
             'Batch Script' => array(
                 'cmd.exe',
-                '/c &quot;[FOG_SNAPIN_PATH]\\MyScript.bat&quot;'
+                '/c &quot;[WRAITH_SNAPIN_PATH]\\MyScript.bat&quot;'
             ),
             'Bash Script' => array(
                 '/bin/bash',
-                '&quot;[FOG_SNAPIN_PATH]/MyScript.sh&quot;'
+                '&quot;[WRAITH_SNAPIN_PATH]/MyScript.sh&quot;'
             ),
             'VB Script' => array(
                 'cscript.exe',
-                '&quot;[FOG_SNAPIN_PATH]\\MyScript.vbs&quot;'
+                '&quot;[WRAITH_SNAPIN_PATH]\\MyScript.vbs&quot;'
             ),
             'PowerShell Script' => array(
                 'powershell.exe',
                 '-ExecutionPolicy Bypass -File &quot;'
-                .'[FOG_SNAPIN_PATH]\\MyScript.ps1&quot;'
+                .'[WRAITH_SNAPIN_PATH]\\MyScript.ps1&quot;'
             ),
             'PowerShell x64 Script' => array(
                 '&quot;%SYSTEMROOT%\\sysnative\\windowspowershell'
                 . '\\v1.0\\powershell.exe&quot;',
                 '-ExecutionPolicy Bypass -File &quot;'
-                .'[FOG_SNAPIN_PATH]\\MyScript.ps1&quot;'
+                .'[WRAITH_SNAPIN_PATH]\\MyScript.ps1&quot;'
             ),
             'EXE' => array(
-                '[FOG_SNAPIN_PATH]\\MyFile.exe'
+                '[WRAITH_SNAPIN_PATH]\\MyFile.exe'
             ),
             'Mono' => array(
                 'mono',
-                '&quot;[FOG_SNAPIN_PATH]/MyFile.exe&quot;'
+                '&quot;[WRAITH_SNAPIN_PATH]/MyFile.exe&quot;'
             ),
         );
         ob_start();
@@ -777,7 +777,7 @@ class SnapinManagementPage extends FOGPage
                     sprintf(
                         '%s, %s.',
                         _('Please choose a different name'),
-                        _('this one is reserved for FOG')
+                        _('this one is reserved for WRAITH')
                     )
                 );
             }
@@ -804,11 +804,11 @@ class SnapinManagementPage extends FOGPage
             if ($uploadfile && file_exists($src)) {
                 $hash = hash_file('sha512', $src);
                 $size = self::getFilesize($src);
-                self::$FOGFTP
+                self::$WRAITHFTP
                     ->set('host', $StorageNode->get('ip'))
                     ->set('username', $StorageNode->get('user'))
                     ->set('password', $StorageNode->get('pass'));
-                if (!self::$FOGFTP->connect()) {
+                if (!self::$WRAITHFTP->connect()) {
                     throw new Exception(
                         sprintf(
                             '%s: %s: %s.',
@@ -818,20 +818,20 @@ class SnapinManagementPage extends FOGPage
                         )
                     );
                 }
-                if (!self::$FOGFTP->chdir($StorageNode->get('snapinpath'))) {
-                    if (!self::$FOGFTP->mkdir($StorageNode->get('snapinpath'))) {
+                if (!self::$WRAITHFTP->chdir($StorageNode->get('snapinpath'))) {
+                    if (!self::$WRAITHFTP->mkdir($StorageNode->get('snapinpath'))) {
                         throw new Exception(
                             _('Failed to add snapin')
                         );
                     }
                 }
-                self::$FOGFTP->delete($dest);
-                if (!self::$FOGFTP->put($dest, $src)) {
+                self::$WRAITHFTP->delete($dest);
+                if (!self::$WRAITHFTP->put($dest, $src)) {
                     throw new Exception(
                         _('Failed to add/update snapin file')
                     );
                 }
-                self::$FOGFTP
+                self::$WRAITHFTP
                     ->chmod(0777, $dest)
                     ->close();
             }
@@ -868,7 +868,7 @@ class SnapinManagementPage extends FOGPage
                 )
             );
         } catch (Exception $e) {
-            self::$FOGFTP->close();
+            self::$WRAITHFTP->close();
             $hook = 'SNAPIN_ADD_FAIL';
             $msg = json_encode(
                 array(
@@ -1537,7 +1537,7 @@ class SnapinManagementPage extends FOGPage
                 sprintf(
                     '%s, %s.',
                     _('Please choose a different name'),
-                    _('this one is reserved for FOG')
+                    _('this one is reserved for WRAITH')
                 )
             );
         }
@@ -1574,11 +1574,11 @@ class SnapinManagementPage extends FOGPage
             $snapinfile
         );
         if ($uploadfile) {
-            self::$FOGFTP
+            self::$WRAITHFTP
                 ->set('host', $StorageNode->get('ip'))
                 ->set('username', $StorageNode->get('user'))
                 ->set('password', $StorageNode->get('pass'));
-            if (!self::$FOGFTP->connect()) {
+            if (!self::$WRAITHFTP->connect()) {
                 throw new Exception(
                     sprintf(
                         '%s: %s: %s.',
@@ -1588,20 +1588,20 @@ class SnapinManagementPage extends FOGPage
                     )
                 );
             }
-            if (!self::$FOGFTP->chdir($StorageNode->get('snapinpath'))) {
-                if (!self::$FOGFTP->mkdir($StorageNode->get('snapinpath'))) {
+            if (!self::$WRAITHFTP->chdir($StorageNode->get('snapinpath'))) {
+                if (!self::$WRAITHFTP->mkdir($StorageNode->get('snapinpath'))) {
                     throw new Exception(
                         _('Failed to add snapin')
                     );
                 }
             }
-            self::$FOGFTP->delete($dest);
-            if (!self::$FOGFTP->put($dest, $src)) {
+            self::$WRAITHFTP->delete($dest);
+            if (!self::$WRAITHFTP->put($dest, $src)) {
                 throw new Exception(
                     _('Failed to add/update snapin file')
                 );
             }
-            self::$FOGFTP
+            self::$WRAITHFTP
                 ->chmod(0777, $dest)
                 ->close();
         }
@@ -1720,7 +1720,7 @@ class SnapinManagementPage extends FOGPage
                 )
             );
         } catch (Exception $e) {
-            self::$FOGFTP->close();
+            self::$WRAITHFTP->close();
             $hook = 'SNAPIN_UPDATE_FAIL';
             $msg = json_encode(
                 array(

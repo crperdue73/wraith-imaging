@@ -1,25 +1,25 @@
 <?php
 /**
- * Sends the printer information for the FOG Client
+ * Sends the printer information for the WRAITH Client
  *
  * PHP version 5
  *
  * @category PrinterClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * Sends the printer information for the FOG Client
+ * Sends the printer information for the WRAITH Client
  *
  * @category PrinterClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class PrinterClient extends FOGClient implements FOGClientSend
+class PrinterClient extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname
@@ -30,8 +30,8 @@ class PrinterClient extends FOGClient implements FOGClientSend
     /**
      * The available modes
      * 0 = no management
-     * a = FOG Managed only
-     * ar = FOG Handles all printers
+     * a = WRAITH Managed only
+     * ar = WRAITH Handles all printers
      *
      * @var array
      */

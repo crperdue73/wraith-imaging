@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category ProcessLogin
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Processes the current login.
  *
  * @category ProcessLogin
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class ProcessLogin extends FOGPage
+class ProcessLogin extends WRAITHPage
 {
     /**
      * The username to process.
@@ -58,7 +58,7 @@ class ProcessLogin extends FOGPage
      */
     public function index()
     {
-        if (self::$FOGUser->isValid()) {
+        if (self::$WRAITHUser->isValid()) {
             self::redirect('../management/index.php?node=home');
         }
     }
@@ -70,11 +70,11 @@ class ProcessLogin extends FOGPage
     private function _getLanguages()
     {
         $selected = (
-            self::getSetting('FOG_DEFAULT_LOCALE')
+            self::getSetting('WRAITH_DEFAULT_LOCALE')
         );
         ob_start();
-        global $foglangt;
-        foreach ($foglangt['Language'] as $base => &$lang) {
+        global $wraithlangt;
+        foreach ($wraithlangt['Language'] as $base => &$lang) {
             printf(
                 '<option value="%s"%s>%s</option>',
                 Initiator::e($base),
@@ -126,12 +126,12 @@ class ProcessLogin extends FOGPage
     public function processMainLogin()
     {
         global $currentUser;
-        $ulang = filter_input(INPUT_POST, 'ulang') ?: self::getSetting('FOG_DEFAULT_LOCALE');
+        $ulang = filter_input(INPUT_POST, 'ulang') ?: self::getSetting('WRAITH_DEFAULT_LOCALE');
         $uname = filter_input(INPUT_POST, 'uname');
         $upass = filter_input(INPUT_POST, 'upass');
         $this->_username = $uname;
         $this->_password = $upass;
-        $type = self::$FOGUser->get('type');
+        $type = self::$WRAITHUser->get('type');
         self::$HookManager
             ->processEvent(
                 'USER_TYPE_HOOK',
@@ -140,23 +140,23 @@ class ProcessLogin extends FOGPage
         if (!isset($_POST['login'])) {
             return;
         }
-        if (isset($_SESSION['FOG_LANG']) && $_SESSION['FOG_LANG'] != $ulang) {
-            $_SESSION['FOG_LANG'] = $ulang;
+        if (isset($_SESSION['WRAITH_LANG']) && $_SESSION['WRAITH_LANG'] != $ulang) {
+            $_SESSION['WRAITH_LANG'] = $ulang;
             Initiator::language($ulang);
         }
         if (!$this->_username) {
-            self::setMessage(self::$foglang['InvalidLogin']);
+            self::setMessage(self::$wraithlang['InvalidLogin']);
             self::redirect('index.php?node=logout');
         }
-        self::$FOGUser = self::attemptLogin(
+        self::$WRAITHUser = self::attemptLogin(
             $this->_username,
             $this->_password
         );
-        if (!self::$FOGUser->isValid()) {
+        if (!self::$WRAITHUser->isValid()) {
             error_log(
                 sprintf(
                     "[%s] - %s - %s - %s - %s: %s %s\n",
-                    FOGService::getDateTime(),
+                    WRAITHService::getDateTime(),
                     $_SERVER['REMOTE_ADDR'],
                     $_SERVER['HTTP_USER_AGENT'],
                     _('Login failed'),
@@ -165,9 +165,9 @@ class ProcessLogin extends FOGPage
                     _('failed to login')
                 ),
                 3,
-                BASEPATH . 'fog_login_failed.log'
+                BASEPATH . 'wraith_login_failed.log'
             );
-            chmod(BASEPATH . 'fog_login_failed.log', 0200);
+            chmod(BASEPATH . 'wraith_login_failed.log', 0200);
             $this->_setRedirMode();
         }
         self::$HookManager
@@ -181,7 +181,7 @@ class ProcessLogin extends FOGPage
         error_log(
             sprintf(
                 "[%s] - %s - %s - %s - %s: %s %s\n",
-                FOGService::getDateTime(),
+                WRAITHService::getDateTime(),
                 $_SERVER['REMOTE_ADDR'],
                 $_SERVER['HTTP_USER_AGENT'],
                 _('Login accepted'),
@@ -190,13 +190,13 @@ class ProcessLogin extends FOGPage
                 _('logged in')
             ),
             3,
-            BASEPATH . 'fog_login_accepted.log'
+            BASEPATH . 'wraith_login_accepted.log'
         );
-        chmod(BASEPATH . 'fog_login_accepted.log', 0200);
+        chmod(BASEPATH . 'wraith_login_accepted.log', 0200);
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-        $_SESSION['FOG_LANG'] = $ulang;
+        $_SESSION['WRAITH_LANG'] = $ulang;
         Initiator::language($ulang);
         $this->_setRedirMode();
     }
@@ -210,30 +210,30 @@ class ProcessLogin extends FOGPage
         global $node;
         if (in_array($node, array('login', 'logout'))) {
             if (session_status() === PHP_SESSION_ACTIVE) {
-                self::setMessage(isset($_SESSION['FOG_MESSAGES']) ? $_SESSION['FOG_MESSAGES'] : '');
+                self::setMessage(isset($_SESSION['WRAITH_MESSAGES']) ? $_SESSION['WRAITH_MESSAGES'] : '');
             }
             unset($_GET['login']);
             self::redirect('index.php');
         }
         $this->_getLanguages();
-        $logininfo = self::getSetting('FOG_LOGIN_INFO_DISPLAY');
+        $logininfo = self::getSetting('WRAITH_LOGIN_INFO_DISPLAY');
         $extra = '';
         if ($logininfo) {
             $extra = '<div id="login-form-info">'
                 . '<p>'
-                . self::$foglang['FOGSites']
+                . self::$wraithlang['WRAITHSites']
                 . ': <b>'
                 . '<i class="icon fa fa-circle-o-notch fa-spin fa-fw"></i>'
                 . '</b>'
                 . '</p>'
                 . '<p>'
-                . self::$foglang['LatestVer']
+                . self::$wraithlang['LatestVer']
                 . ': <b>'
                 . '<i class="icon fa fa-circle-o-notch fa-spin fa-fw"></i>'
                 . '</b>'
                 . '</p>'
                 . '<p>'
-                . self::$foglang['LatestDevVer']
+                . self::$wraithlang['LatestDevVer']
                 . ': <b>'
                 . '<i class="icon fa fa-circle-o-notch fa-spin fa-fw"></i>'
                 . '</b>'
@@ -248,16 +248,16 @@ class ProcessLogin extends FOGPage
         echo '<h3 class="form-signin-heading text-center">';
         echo '<span class="col-xs-1">';
         echo '<img src="../favicon.ico" class="logoimg" alt="'
-            . self::$foglang['Slogan']
+            . self::$wraithlang['Slogan']
             . '"/>';
         echo '</span>';
-        echo _('FOG Project');
+        echo _('WRAITH Project');
         echo '</h3>';
         echo '<hr/>';
         // Username
         echo '<div class="form-group">';
         echo '<label class="control-label col-md-2" for="uname">';
-        echo self::$foglang['Username'];
+        echo self::$wraithlang['Username'];
         echo '</label>';
         echo '<div class="col-md-10">';
         echo '<input type="text" class="form-control" name="uname" '
@@ -267,7 +267,7 @@ class ProcessLogin extends FOGPage
         // Password
         echo '<div class="form-group">';
         echo '<label class="control-label col-md-2" for="upass">';
-        echo self::$foglang['Password'];
+        echo self::$wraithlang['Password'];
         echo '</label>';
         echo '<div class="col-md-10">';
         echo '<input type="password" class="form-control" name="upass" '
@@ -277,7 +277,7 @@ class ProcessLogin extends FOGPage
         // Language
         echo '<div class="form-group">';
         echo '<label class="control-label col-md-2" for="ulang">';
-        echo self::$foglang['LanguagePhrase'];
+        echo self::$wraithlang['LanguagePhrase'];
         echo '</label>';
         echo '<div class="col-md-10">';
         echo '<select class="form-control" name="ulang" id="ulang">';
@@ -290,7 +290,7 @@ class ProcessLogin extends FOGPage
         echo '<div class="col-md-offset-2 col-md-10">';
         echo '<button class="btn btn-default btn-block" '
             . 'type="submit" name="login">';
-        echo self::$foglang['Login'];
+        echo self::$wraithlang['Login'];
         echo '</button>';
         echo '</div>';
         echo '</div>';

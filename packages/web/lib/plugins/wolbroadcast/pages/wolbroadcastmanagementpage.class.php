@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category WOLBroadcastManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The wol broadcast page.
  *
  * @category WOLBroadcastManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class WOLBroadcastManagementPage extends FOGPage
+class WOLBroadcastManagementPage extends WRAITHPage
 {
     /**
      * The node this page displays with.
@@ -37,14 +37,14 @@ class WOLBroadcastManagementPage extends FOGPage
     public function __construct($name = '')
     {
         $this->name = _('WOL Broadcast Management');
-        self::$foglang['ExportWolbroadcast'] = _('Export WOLBroadcasts');
-        self::$foglang['ImportWolbroadcast'] = _('Import WOLBroadcasts');
+        self::$wraithlang['ExportWolbroadcast'] = _('Export WOLBroadcasts');
+        self::$wraithlang['ImportWolbroadcast'] = _('Import WOLBroadcasts');
         parent::__construct($this->name);
         global $id;
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#wol-general" => self::$foglang['General'],
-                $this->delformat => self::$foglang['Delete'],
+                "$this->linkformat#wol-general" => self::$wraithlang['General'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('Broadcast Name') => $this->obj->get('name'),

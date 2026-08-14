@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category AutoLogout
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Handles auto log information as requested.
  *
  * @category AutoLogout
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Autologout extends FOGClient implements FOGClientSend
+class Autologout extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

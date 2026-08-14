@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SnapinHash
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Hashing service for snapins
  *
  * @category SnapinHash
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SnapinHash extends FOGService
+class SnapinHash extends WRAITHService
 {
     /**
      * Is the service globally enabled.
@@ -66,12 +66,12 @@ class SnapinHash extends FOGService
             (
                 self::$logpath ?
                 self::$logpath :
-                '/opt/fog/log/'
+                '/opt/wraith/log/'
             ),
             (
                 $log ?
                 $log :
-                'fogsnapinhash.log'
+                'wraithsnapinhash.log'
             )
         );
         if (file_exists(static::$log)) {

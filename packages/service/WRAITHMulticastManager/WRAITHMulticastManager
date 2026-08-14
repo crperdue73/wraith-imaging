@@ -1,0 +1,39 @@
+#!/usr/bin/php -q
+<?php
+/**
+ * WRAITHMulticastManager service to enabled MC tasks in WRAITH
+ *
+ * PHP version 5
+ *
+ * @category WRAITHMulticastManager
+ * @package  WRAITHProject
+ * @author   Tom Elliott <tommygunsster@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
+ * @link     https://wraithproject.org
+ */
+/**
+ * WRAITHMulticastManager service to enable MC tasks in WRAITH
+ *
+ * @category WRAITHMulticastManager
+ * @package  WRAITHProject
+ * @author   Tom Elliott <tommygunsster@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
+ * @link     https://wraithproject.org
+ */
+@error_reporting(0);
+require dirname(realpath(__FILE__)).'/../etc/config.php';
+require dirname(realpath(__FILE__)).'/../lib/service_lib.php';
+$service_name = 'WRAITHMulticastManager';
+service_persist($service_name);
+$ServiceClass = WRAITHCore::getClass('MulticastManager');
+if (!file_exists(UDPSENDERPATH)) {
+    $ServiceClass::outall(' * Unable to locate udp-sender!.');
+    exit(1);
+}
+$ServiceClass->getBanner();
+$ServiceClass->waitInterfaceReady();
+$ServiceClass->waitDbReady();
+$ServiceClass->serviceStart();
+$ServiceClass->serviceRun();
+$ServiceClass::outall(' * Service has ended.');
+exit(0);

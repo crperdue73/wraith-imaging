@@ -13,11 +13,11 @@
  * PHP version 5
  *
  * @category LogViewerHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Just allows user to add in any logs they feel they need on the log viewer.
@@ -31,11 +31,11 @@
  * chmod +r <filename>
  *
  * @category LogViewerHook
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class LogViewerHook extends Hook
 {
@@ -90,17 +90,17 @@ class LogViewerHook extends Hook
      */
     public function logViewerAdd($arguments)
     {
-        self::$FOGFTP
+        self::$WRAITHFTP
             ->set('host', $arguments['StorageNode']->get('ip'))
             ->set('username', $arguments['StorageNode']->get('user'))
             ->set('password', $arguments['StorageNode']->get('pass'));
-        if (!self::$FOGFTP->connect()) {
+        if (!self::$WRAITHFTP->connect()) {
             return;
         }
-        $fogfiles = array();
-        $fogfiles = self::$FOGFTP->nlist('/var/log/');
-        self::$FOGFTP->close();
-        $systemlog = preg_grep('#(syslog$|messages$)#', $fogfiles);
+        $wraithfiles = array();
+        $wraithfiles = self::$WRAITHFTP->nlist('/var/log/');
+        self::$WRAITHFTP->close();
+        $systemlog = preg_grep('#(syslog$|messages$)#', $wraithfiles);
         $systemlog = array_shift($systemlog);
         if ($systemlog) {
             $arguments['files'][$arguments['StorageNode']->get('name')]['System Log']

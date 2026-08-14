@@ -5,31 +5,31 @@
  * PHP version 5
  *
  * @category Grouplisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Returns a listing of all groups in the system.
  *
  * @category Grouplisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    $groupCount = FOGCore::getClass('GroupManager')
+    $groupCount = WRAITHCore::getClass('GroupManager')
         ->count();
     if ($groupCount < 1) {
         throw new Exception(
             _('There are no groups on this server')
         );
     }
-    $groupids = FOGCore::getSubObjectIDs('Group');
-    $groupnames = FOGCore::getSubObjectIDs(
+    $groupids = WRAITHCore::getSubObjectIDs('Group');
+    $groupnames = WRAITHCore::getSubObjectIDs(
         'Group',
         array('id' => $groupids),
         'name'

@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category TaskSchedule
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Handles scheduled tasks and performs other "ondemand" related tasks.
  *
  * @category TaskSchedule
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class TaskScheduler extends FOGService
+class TaskScheduler extends WRAITHService
 {
     /**
      * Is the host lookup/ping enabled
@@ -65,10 +65,10 @@ class TaskScheduler extends FOGService
             '%s%s',
             self::$logpath ?
             self::$logpath :
-            '/opt/fog/log/',
+            '/opt/wraith/log/',
             $log ?
             $log :
-            'fogscheduler.log'
+            'wraithscheduler.log'
         );
         if (file_exists(static::$log)) {
             unlink(static::$log);

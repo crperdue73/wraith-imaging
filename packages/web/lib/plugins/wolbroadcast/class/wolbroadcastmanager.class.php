@@ -5,21 +5,21 @@
  * PHP Version 5
  *
  * @category WolbroadcastManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Manager class for wolbroadcast
  *
  * @category WolbroadcastManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class WolbroadcastManager extends FOGManagerController
+class WolbroadcastManager extends WRAITHManagerController
 {
     /**
      * The base table name.

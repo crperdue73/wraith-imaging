@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category WindowsKey
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nope@nope.nope>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * The Windows Keys class.
  *
  * @category WindowsKey
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Lee Rowlett <nope@nope.nope>
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class WindowsKey extends FOGController
+class WindowsKey extends WRAITHController
 {
     /**
      * The windows keys table

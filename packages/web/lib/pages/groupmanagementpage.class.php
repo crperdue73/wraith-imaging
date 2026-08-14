@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category GroupManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Group management page
  *
  * @category GroupManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class GroupManagementPage extends FOGPage
+class GroupManagementPage extends WRAITHPage
 {
     /**
      * Group -> Host common items
@@ -42,41 +42,41 @@ class GroupManagementPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['Group Management'];
+        $this->name = self::$wraithlang['Group Management'];
         parent::__construct($this->name);
         global $id;
         if ($id) {
             $this->subMenu = array(
                 "$this->linkformat#group-general" =>
-                self::$foglang['General'],
+                self::$wraithlang['General'],
                 "$this->linkformat#group-image" =>
-                self::$foglang['ImageAssoc'],
+                self::$wraithlang['ImageAssoc'],
                 "$this->linkformat#group-tasks" =>
-                self::$foglang['BasicTasks'],
+                self::$wraithlang['BasicTasks'],
                 "$this->linkformat#group-active-directory" =>
-                self::$foglang['AD'],
+                self::$wraithlang['AD'],
                 "$this->linkformat#group-printers" =>
-                self::$foglang['Printers'],
+                self::$wraithlang['Printers'],
                 "$this->linkformat#group-snapins" =>
-                self::$foglang['Snapins'],
+                self::$wraithlang['Snapins'],
                 "$this->linkformat#group-service" => sprintf(
                     '%s %s',
-                    self::$foglang['Service'],
-                    self::$foglang['Settings']
+                    self::$wraithlang['Service'],
+                    self::$wraithlang['Settings']
                 ),
                 "$this->linkformat#group-powermanagement" =>
-                self::$foglang['PowerManagement'],
+                self::$wraithlang['PowerManagement'],
                 str_replace(
                     'membership',
                     'inventory',
                     $this->membership
-                ) => self::$foglang['Inventory'],
-                $this->membership => self::$foglang['Membership'],
-                $this->delformat => self::$foglang['Delete'],
+                ) => self::$wraithlang['Inventory'],
+                $this->membership => self::$wraithlang['Membership'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
-                self::$foglang['Group'] => $this->obj->get('name'),
-                self::$foglang['Members'] => $this->obj->getHostCount(),
+                self::$wraithlang['Group'] => $this->obj->get('name'),
+                self::$wraithlang['Members'] => $this->obj->getHostCount(),
             );
         }
         self::$HookManager->processEvent(
@@ -839,7 +839,7 @@ class GroupManagementPage extends FOGPage
         echo '<div class="radio">';
         echo '<label for="nolevel" data-toggle="tooltip" data-placement="left" '
             . 'title="'
-            . _('This setting turns off all FOG Printer Management')
+            . _('This setting turns off all WRAITH Printer Management')
             . '. '
             . _('Although there are multiple levels already')
             . ' '
@@ -862,7 +862,7 @@ class GroupManagementPage extends FOGPage
             . 'title="'
             . _(
                 'This setting only adds and removes '
-                . 'printers that are managed by FOG. '
+                . 'printers that are managed by WRAITH. '
                 . 'If the printer exists in printer '
                 . 'management but is not assigned to a '
                 . 'host, it will remove the printer if '
@@ -878,17 +878,17 @@ class GroupManagementPage extends FOGPage
                 ''
             )
             . '/>';
-        echo _('FOG Managed Printers');
+        echo _('WRAITH Managed Printers');
         echo '</label>';
         echo '</div>';
         echo '<div class="radio">';
         echo '<label for="alllevel" data-toggle="tooltip" data-placement="left" '
             . 'title="'
             . _(
-                'This setting will only allow FOG Assigned '
+                'This setting will only allow WRAITH Assigned '
                 . 'printers to be added to the host. Any '
                 . 'printer that is not assigned will be '
-                . 'removed including non-FOG managed printers.'
+                . 'removed including non-WRAITH managed printers.'
             )
             . '">';
         echo '<input type="radio" name="level" value="2" id="alllevel"'
@@ -1122,7 +1122,7 @@ class GroupManagementPage extends FOGPage
         $dcnote = sprintf(
             '%s. %s. %s %s.',
             _('This module is only used on the old client'),
-            _('The old client is what was distributed with FOG 1.2.0 and earlier'),
+            _('The old client is what was distributed with WRAITH 1.2.0 and earlier'),
             _('This module did not work past Windows XP due to'),
             _('UAC introduced in Vista and up')
         );
@@ -1130,17 +1130,17 @@ class GroupManagementPage extends FOGPage
             '%s. %s %s. %s %s %s. %s.',
             _('This module is only used on the old client'),
             _('The old client is what was distributed with'),
-            _('FOG 1.2.0 and earlier'),
+            _('WRAITH 1.2.0 and earlier'),
             _('This module has been replaced in the new client'),
             _('and the equivalent module for what Green'),
-            _('FOG did is now called Power Management'),
+            _('WRAITH did is now called Power Management'),
             _('This is only here to maintain old client operations')
         );
         $ucnote = sprintf(
             '%s. %s %s. %s %s.',
             _('This module is only used on the old client'),
             _('The old client is what was distributed with'),
-            _('FOG 1.2.0 and earlier'),
+            _('WRAITH 1.2.0 and earlier'),
             _('This module did not work past Windows XP due'),
             _('to UAC introduced in Vista and up')
         );
@@ -1199,7 +1199,7 @@ class GroupManagementPage extends FOGPage
                         $dcnote
                     );
                     break;
-                case 'greenfog':
+                case 'greenwraith':
                     $note = sprintf(
                         '<i class="icon fa fa-exclamation-triangle '
                         . 'fa-1x hand" '
@@ -1299,7 +1299,7 @@ class GroupManagementPage extends FOGPage
         echo '<div class="panel panel-info">';
         echo '<div class="panel-heading text-center">';
         echo '<h4 class="title">';
-        echo _('Group FOG Client Module configuration');
+        echo _('Group WRAITH Client Module configuration');
         echo '</h4>';
         echo '</div>';
         echo '<div class="panel-body">';
@@ -1358,9 +1358,9 @@ class GroupManagementPage extends FOGPage
             'Service',
             array(
                 'name' => array(
-                    'FOG_CLIENT_DISPLAYMANAGER_R',
-                    'FOG_CLIENT_DISPLAYMANAGER_X',
-                    'FOG_CLIENT_DISPLAYMANAGER_Y',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_R',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_X',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_Y',
                 )
             ),
             'description',
@@ -1378,9 +1378,9 @@ class GroupManagementPage extends FOGPage
             'Service',
             array(
                 'name' => array(
-                    'FOG_CLIENT_DISPLAYMANAGER_R',
-                    'FOG_CLIENT_DISPLAYMANAGER_X',
-                    'FOG_CLIENT_DISPLAYMANAGER_Y',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_R',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_X',
+                    'WRAITH_CLIENT_DISPLAYMANAGER_Y',
                 )
             ),
             'value'
@@ -1492,11 +1492,11 @@ class GroupManagementPage extends FOGPage
             '${desc}',
         );
         $alodesc = self::getClass('Service')
-            ->set('name', 'FOG_CLIENT_AUTOLOGOFF_MIN')
+            ->set('name', 'WRAITH_CLIENT_AUTOLOGOFF_MIN')
             ->load('name')
             ->get('description');
         $aloval = self::getClass('Service')
-            ->set('name', 'FOG_CLIENT_AUTOLOGOFF_MIN')
+            ->set('name', 'WRAITH_CLIENT_AUTOLOGOFF_MIN')
             ->load('name')
             ->get('value');
         $this->data[] = array(
@@ -1695,7 +1695,7 @@ class GroupManagementPage extends FOGPage
         $this->title = sprintf(
             '%s %s',
             _('Group'),
-            self::$foglang['Inventory']
+            self::$wraithlang['Inventory']
         );
         echo '<div class="col-xs-9">';
         echo '<div class="tab-pane fade in active">';
@@ -1811,7 +1811,7 @@ class GroupManagementPage extends FOGPage
         }
         unset($Hosts);
         $this->ReportMaker->appendHTML($this->process(12));
-        $_SESSION['foglastreport'] = base64_encode(serialize($this->ReportMaker));
+        $_SESSION['wraithlastreport'] = base64_encode(serialize($this->ReportMaker));
         echo '</div>';
         echo '</div>';
         echo '</div>';
@@ -2022,10 +2022,10 @@ class GroupManagementPage extends FOGPage
                         'Service',
                         array(
                             'name' => array(
-                                'FOG_CLIENT_AUTOLOGOFF_MIN',
-                                'FOG_CLIENT_DISPLAYMANAGER_R',
-                                'FOG_CLIENT_DISPLAYMANAGER_X',
-                                'FOG_CLIENT_DISPLAYMANAGER_Y'
+                                'WRAITH_CLIENT_AUTOLOGOFF_MIN',
+                                'WRAITH_CLIENT_DISPLAYMANAGER_R',
+                                'WRAITH_CLIENT_DISPLAYMANAGER_X',
+                                'WRAITH_CLIENT_DISPLAYMANAGER_Y'
                             )
                         ),
                         'value'

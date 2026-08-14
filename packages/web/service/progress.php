@@ -5,32 +5,32 @@
  * PHP version 5
  *
  * @category Progress
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Updates the progress information
  *
  * @category Progress
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    FOGCore::getHostItem(false);
-    $Task = FOGCore::$Host->get('task');
+    WRAITHCore::getHostItem(false);
+    $Task = WRAITHCore::$Host->get('task');
     $TaskType = new TaskType($Task->get('typeID'));
     if (!$Task->isValid()) {
         throw new Exception(
             sprintf(
                 '%s: %s (%s)',
                 _('No Active Task found for Host'),
-                FOGCore::$Host->get('name'),
-                FOGCore::$Host->get('mac')->__toString()
+                WRAITHCore::$Host->get('name'),
+                WRAITHCore::$Host->get('mac')->__toString()
             )
         );
     }

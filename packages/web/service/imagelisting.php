@@ -5,31 +5,31 @@
  * PHP version 5
  *
  * @category Imagelisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Returns a listing of all images in the system.
  *
  * @category Imagelisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    $imageCount = FOGCore::getClass('ImageManager')
+    $imageCount = WRAITHCore::getClass('ImageManager')
         ->count();
     if ($imageCount < 1) {
         throw new Exception(
             _('There are no images on this server')
         );
     }
-    $imageids = FOGCore::getSubObjectIDs('Image');
-    $imagenames = FOGCore::getSubObjectIDs(
+    $imageids = WRAITHCore::getSubObjectIDs('Image');
+    $imagenames = WRAITHCore::getSubObjectIDs(
         'Image',
         array('id' => $imageids),
         'name'

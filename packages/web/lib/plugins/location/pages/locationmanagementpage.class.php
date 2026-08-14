@@ -5,23 +5,23 @@
  * PHP version 5
  *
  * @category LocationManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Location management page.
  *
  * @category LocationManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Lee Rowlett <nah@nah.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class LocationManagementPage extends FOGPage
+class LocationManagementPage extends WRAITHPage
 {
     /**
      * The node this page operates on.
@@ -39,30 +39,30 @@ class LocationManagementPage extends FOGPage
     public function __construct($name = '')
     {
         $this->name = _('Location Management');
-        self::$foglang['ExportLocation'] = _('Export Locations');
-        self::$foglang['ImportLocation'] = _('Import Locations');
+        self::$wraithlang['ExportLocation'] = _('Export Locations');
+        self::$wraithlang['ImportLocation'] = _('Import Locations');
         parent::__construct($this->name);
         global $id;
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#location-gen" => self::$foglang['General'],
-                $this->membership => self::$foglang['Membership'],
-                "$this->delformat" => self::$foglang['Delete'],
+                "$this->linkformat#location-gen" => self::$wraithlang['General'],
+                $this->membership => self::$wraithlang['Membership'],
+                "$this->delformat" => self::$wraithlang['Delete'],
             );
             $this->notes = array(
-                self::$foglang['Location'] => $this->obj->get('name'),
+                self::$wraithlang['Location'] => $this->obj->get('name'),
                 sprintf(
                     '%s %s',
-                    self::$foglang['Storage'],
-                    self::$foglang['Group']
+                    self::$wraithlang['Storage'],
+                    self::$wraithlang['Group']
                 ) => $this->obj->getStorageGroup()->get('name')
             );
             if ($this->obj->getStorageNode()->isValid()) {
                 $this->notes[
                     sprintf(
                         '%s %s',
-                        self::$foglang['Storage'],
-                        self::$foglang['Node']
+                        self::$wraithlang['Storage'],
+                        self::$wraithlang['Node']
                     )
                 ] = $this->obj->getStorageNode()->get('name');
             }

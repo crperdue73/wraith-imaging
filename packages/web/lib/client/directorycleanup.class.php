@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category DirectoryCleanup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Cleans directories but only for legacy client
  *
  * @category DirectoryCleanup
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class DirectoryCleanup extends FOGClient implements FOGClientSend
+class DirectoryCleanup extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

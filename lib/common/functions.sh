@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  FOG - Free, Open-Source Ghost is a computer imaging solution.
+#  WRAITH - Free, Open-Source Ghost is a computer imaging solution.
 #  Copyright (C) 2007  Chuck Syperski & Jian Zhang
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ registerStorageNode() {
     if [[ $storageNodeExists != exists ]]; then
         [[ -z $maxClients ]] && maxClients=10
         dots "Node being registered"
-        curl -s -k -X POST -d "newNode" -d "name=$(echo -n $ipaddress|base64)" -d "path=$(echo -n $storageLocation|base64)" -d "ftppath=$(echo -n $storageLocation|base64)" -d "snapinpath=$(echo -n $snapindir|base64)" -d "sslpath=$(echo -n $sslpath|base64)" -d "ip=$(echo -n $ipaddress|base64)" -d "maxClients=$(echo -n $maxClients|base64)" -d "user=$(echo -n $username|base64)" --data-urlencode "pass=$(echo -n $password|base64)" -d "interface=$(echo -n $interface|base64)" -d "bandwidth=1" -d "webroot=$(echo -n $webroot|base64)" -d "fogverified" ${httpproto}://${ipaddress}${webroot}/maintenance/create_update_node.php
+        curl -s -k -X POST -d "newNode" -d "name=$(echo -n $ipaddress|base64)" -d "path=$(echo -n $storageLocation|base64)" -d "ftppath=$(echo -n $storageLocation|base64)" -d "snapinpath=$(echo -n $snapindir|base64)" -d "sslpath=$(echo -n $sslpath|base64)" -d "ip=$(echo -n $ipaddress|base64)" -d "maxClients=$(echo -n $maxClients|base64)" -d "user=$(echo -n $username|base64)" --data-urlencode "pass=$(echo -n $password|base64)" -d "interface=$(echo -n $interface|base64)" -d "bandwidth=1" -d "webroot=$(echo -n $webroot|base64)" -d "wraithverified" ${httpproto}://${ipaddress}${webroot}/maintenance/create_update_node.php
         echo "Done"
     else
         echo " * Node is registered"
@@ -52,7 +52,7 @@ registerStorageNode() {
 updateStorageNodeCredentials() {
     [[ -z $webroot ]] && webroot="/"
     dots "Ensuring node username and passwords match"
-    curl -s -k -X POST -d "nodePass" -d "ip=$(echo -n $ipaddress|base64)" -d "user=$(echo -n $username|base64)" --data-urlencode "pass=$(echo -n $password|base64)" -d "fogverified" $httpproto://$ipaddress${webroot}maintenance/create_update_node.php
+    curl -s -k -X POST -d "nodePass" -d "ip=$(echo -n $ipaddress|base64)" -d "user=$(echo -n $username|base64)" --data-urlencode "pass=$(echo -n $password|base64)" -d "wraithverified" $httpproto://$ipaddress${webroot}maintenance/create_update_node.php
     echo "Done"
 }
 backupDB() {
@@ -66,9 +66,9 @@ backupDB() {
     fi
     # ---------------------------------------------------------
     dots "Backing up database"
-    if [[ -d $backupPath/fog_web_${version}.BACKUP ]]; then
-        [[ ! -d $backupPath/fogDBbackups ]] && mkdir -p $backupPath/fogDBbackups >>$error_log 2>&1
-        wget --no-check-certificate -O $backupPath/fogDBbackups/fog_sql_${version}_$(date +"%Y%m%d_%I%M%S").sql "${httpproto}://${ipaddress}${webroot}/maintenance/backup_db.php" --post-data="type=sql&fogajaxonly=1" >>$error_log 2>&1
+    if [[ -d $backupPath/wraith_web_${version}.BACKUP ]]; then
+        [[ ! -d $backupPath/wraithDBbackups ]] && mkdir -p $backupPath/wraithDBbackups >>$error_log 2>&1
+        wget --no-check-certificate -O $backupPath/wraithDBbackups/wraith_sql_${version}_$(date +"%Y%m%d_%I%M%S").sql "${httpproto}://${ipaddress}${webroot}/maintenance/backup_db.php" --post-data="type=sql&wraithajaxonly=1" >>$error_log 2>&1
     fi
     if [[ $? -ne 0 ]]; then
         echo "Failed"
@@ -89,7 +89,7 @@ updateDB() {
             local replace='s/[]"\/$&*.^|[]/\\&/g'
             local escstorageLocation=$(echo $storageLocation | sed -e $replace)
             sed -i -e "s/'\/images\/'/'$escstorageLocation'/g" $webdirdest/commons/schema.php
-            wget --no-check-certificate -qO - --header="X-Fog-Install-Token: ${installToken}" --post-data="schemaupdate=1" --no-proxy ${httpproto}://${ipaddress}${webroot}management/index.php?node=schema >>$error_log 2>&1
+            wget --no-check-certificate -qO - --header="X-Wraith-Install-Token: ${installToken}" --post-data="schemaupdate=1" --no-proxy ${httpproto}://${ipaddress}${webroot}management/index.php?node=schema >>$error_log 2>&1
             errorStat $?
             ;;
         *)
@@ -97,7 +97,7 @@ updateDB() {
             echo " * You still need to install/update your database schema."
             echo " * This can be done by opening a web browser and going to:"
             echo
-            echo "   ${httpproto}://${ipaddress}${webroot}management/index.php?node=schema&fogtoken=${installToken}"
+            echo "   ${httpproto}://${ipaddress}${webroot}management/index.php?node=schema&wraithtoken=${installToken}"
             echo
             read -p " * Press [Enter] key when database is updated/installed."
             echo
@@ -105,35 +105,35 @@ updateDB() {
     esac
     # ---------------------------------------------------------
     # External Unprivileged Database Implementation
-    # Bypass DB user management (fogstorage) requiring root GRANT
+    # Bypass DB user management (wraithstorage) requiring root GRANT
     # ---------------------------------------------------------
     if [[ "${snmysqlexternal}" == "1" ]]; then
-        echo " * Skipping fogstorage DB user management (External Database Mode)"
+        echo " * Skipping wraithstorage DB user management (External Database Mode)"
         # Return cleanly, skipping the GRANT/ALTER commands below
         return 0 
     fi
     # ---------------------------------------------------------
-    dots "Update fogstorage database password"
-    mysql $sqloptionsuser --password="${snmysqlpass}" --execute="INSERT INTO globalSettings (settingKey, settingDesc, settingValue, settingCategory) VALUES ('FOG_STORAGENODE_MYSQLPASS', 'This setting defines the password the storage nodes should use to connect to the fog server.', \"$snmysqlstoragepass\", 'FOG Storage Nodes') ON DUPLICATE KEY UPDATE settingValue=\"$snmysqlstoragepass\"" $mysqldbname >>$error_log 2>&1
+    dots "Update wraithstorage database password"
+    mysql $sqloptionsuser --password="${snmysqlpass}" --execute="INSERT INTO globalSettings (settingKey, settingDesc, settingValue, settingCategory) VALUES ('WRAITH_STORAGENODE_MYSQLPASS', 'This setting defines the password the storage nodes should use to connect to the wraith server.', \"$snmysqlstoragepass\", 'WRAITH Storage Nodes') ON DUPLICATE KEY UPDATE settingValue=\"$snmysqlstoragepass\"" $mysqldbname >>$error_log 2>&1
     errorStat $?
-    dots "Granting access to fogstorage database user"
-    mysql ${host} -s --user=fogstorage --password="${snmysqlstoragepass}" --execute="INSERT INTO $mysqldbname.taskLog VALUES ( 0, '999test', 3, '127.0.0.1', NOW(), 'fog');" >/dev/null 2>&1
-    connect_as_fogstorage=$?
-    if [[ $connect_as_fogstorage -eq 0 ]]; then
+    dots "Granting access to wraithstorage database user"
+    mysql ${host} -s --user=wraithstorage --password="${snmysqlstoragepass}" --execute="INSERT INTO $mysqldbname.taskLog VALUES ( 0, '999test', 3, '127.0.0.1', NOW(), 'wraith');" >/dev/null 2>&1
+    connect_as_wraithstorage=$?
+    if [[ $connect_as_wraithstorage -eq 0 ]]; then
         mysql $sqloptionsuser --password="${snmysqlpass}" --execute="DELETE FROM $mysqldbname.taskLog WHERE taskID='999test' AND ip='127.0.0.1';" >/dev/null 2>&1
         echo "Skipped"
         return
     fi
 
-    # we still need to grant access for the fogstorage DB user
+    # we still need to grant access for the wraithstorage DB user
     # and therefore need root DB access
     mysql $sqloptionsroot --password="${snmysqlrootpass}" --execute="quit" >>$error_log 2>&1
     if [[ $? -ne 0 ]]; then
         echo
         echo "   To improve the overall security the installer will restrict"
-        echo "   permissions for the *fogstorage* database user."
+        echo "   permissions for the *wraithstorage* database user."
         echo "   Please provide the database *root* user password. Be asured"
-        echo "   that this password will only be used while the FOG installer"
+        echo "   that this password will only be used while the WRAITH installer"
         echo -n "   is running and won't be stored anywhere: "
         read -rs snmysqlrootpass
         echo
@@ -152,24 +152,24 @@ updateDB() {
         fi
     fi
     [[ ! -d ../tmp/ ]] && mkdir -p ../tmp/ >/dev/null 2>&1
-    cat >../tmp/fog-db-grant-fogstorage-access.sql <<EOF
+    cat >../tmp/wraith-db-grant-wraithstorage-access.sql <<EOF
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ANSI' ;
-GRANT SELECT ON $mysqldbname.* TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.hosts TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.inventory TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.multicastSessions TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.multicastSessionsAssoc TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.nfsGroupMembers TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.tasks TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.taskStates TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.taskLog TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.snapinTasks TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.snapinJobs TO 'fogstorage'@'%' ;
-GRANT INSERT,UPDATE ON $mysqldbname.imagingLog TO 'fogstorage'@'%' ;
+GRANT SELECT ON $mysqldbname.* TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.hosts TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.inventory TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.multicastSessions TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.multicastSessionsAssoc TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.nfsGroupMembers TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.tasks TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.taskStates TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.taskLog TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.snapinTasks TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.snapinJobs TO 'wraithstorage'@'%' ;
+GRANT INSERT,UPDATE ON $mysqldbname.imagingLog TO 'wraithstorage'@'%' ;
 FLUSH PRIVILEGES ;
 SET SQL_MODE=@OLD_SQL_MODE ;
 EOF
-    mysql $sqloptionsroot --password="${snmysqlrootpass}" <../tmp/fog-db-grant-fogstorage-access.sql >>$error_log 2>&1
+    mysql $sqloptionsroot --password="${snmysqlrootpass}" <../tmp/wraith-db-grant-wraithstorage-access.sql >>$error_log 2>&1
     errorStat $?
 }
 validip() {
@@ -407,7 +407,7 @@ checkInternetConnection() {
     DEBIAN_FRONTEND=noninteractive $packageinstaller curl >>$error_log 2>&1
 
     http_sites=("httpbin.org" "neverssl.com")
-    https_sites=("github.com" "fogproject.org")
+    https_sites=("github.com" "wraithproject.org")
     dns_ok=0
     http_ok=0
     https_ok=0
@@ -478,8 +478,8 @@ restoreReports() {
     fi
     errorStat $?
 }
-installFOGServices() {
-    dots "Setting up FOG Services"
+installWRAITHServices() {
+    dots "Setting up WRAITH Services"
     mkdir -p $servicedst
     cp -Rf $servicesrc/* $servicedst/
     chmod +x -R $servicedst/
@@ -524,7 +524,7 @@ configureUDPCast() {
 configureFTP() {
     dots "Setting up and starting VSFTP Server"
     if [[ -f $ftpxinetd ]]; then
-        mv $ftpxinetd ${ftpxinetd}.fogbackup
+        mv $ftpxinetd ${ftpxinetd}.wraithbackup
     fi
     vsftp=$(vsftpd -version 0>&1 | awk -F'version ' '{print $2}')
     vsvermaj=$(echo $vsftp | awk -F. '{print $1}')
@@ -572,13 +572,13 @@ configureDefaultiPXEfile() {
 configureTFTPandPXE() {
     [[ -d ${tftpdirdst}.prev ]] && rm -rf ${tftpdirdst}.prev >>$error_log 2>&1
     [[ ! -d ${tftpdirdst} ]] && mkdir -p $tftpdirdst >>$error_log 2>&1
-    [[ -e ${tftpdirdst}.fogbackup ]] && rm -rf ${tftpdirdst}.fogbackup >>$error_log 2>&1
+    [[ -e ${tftpdirdst}.wraithbackup ]] && rm -rf ${tftpdirdst}.wraithbackup >>$error_log 2>&1
     [[ -d $tftpdirdst && ! -d ${tftpdirdst}.prev ]] && mkdir -p ${tftpdirdst}.prev >>$error_log 2>&1
     [[ -d ${tftpdirdst}.prev ]] && cp -Rf $tftpdirdst/* ${tftpdirdst}.prev/ >>$error_log 2>&1
     if [[ "x$httpproto" = "xhttps" ]]; then
         dots "Compiling iPXE binaries trusting your SSL certificate"
         cd $buildipxesrc
-        ./buildipxe.sh ${sslpath}CA/.fogCA.pem >>$workingdir/error_logs/fog_ipxe-build_${version}.log 2>&1
+        ./buildipxe.sh ${sslpath}CA/.wraithCA.pem >>$workingdir/error_logs/wraith_ipxe-build_${version}.log 2>&1
         errorStat $?
         cd $workingdir
     fi
@@ -602,28 +602,28 @@ configureTFTPandPXE() {
                 rm -f /etc/xinetd.d/tftp
             fi
             if [[ $osid -eq 2 && -f $tftpconfigupstartdefaults ]]; then
-                echo -e "# /etc/default/tftpd-hpa\n# FOG Modified version\nTFTP_USERNAME=\"root\"\nTFTP_DIRECTORY=\"/tftpboot\"\nTFTP_ADDRESS=\":69\"\nTFTP_OPTIONS=\"${tftpAdvOpts:+$tftpAdvOpts }-s\"" > "$tftpconfigupstartdefaults"
+                echo -e "# /etc/default/tftpd-hpa\n# WRAITH Modified version\nTFTP_USERNAME=\"root\"\nTFTP_DIRECTORY=\"/tftpboot\"\nTFTP_ADDRESS=\":69\"\nTFTP_OPTIONS=\"${tftpAdvOpts:+$tftpAdvOpts }-s\"" > "$tftpconfigupstartdefaults"
                 systemctl is-enabled --quiet tftpd-hpa && true || systemctl enable tftpd-hpa >>$error_log 2>&1
                 systemctl is-active --quiet tftpd-hpa && systemctl stop tftpd-hpa >>$error_log 2>&1 || true
                 systemctl is-active --quiet tftpd-hpa && true || systemctl start tftpd-hpa >>$error_log 2>&1
                 systemctl status tftpd-hpa >>$error_log 2>&1
             else
-                if [[ -f /etc/systemd/system/fog-tftp.service ]]; then
-                    mv -fv /etc/systemd/system/fog-tftp.service "/etc/systemd/system/fog-tftp.service.${timestamp}" >>$error_log 2>&1
+                if [[ -f /etc/systemd/system/wraith-tftp.service ]]; then
+                    mv -fv /etc/systemd/system/wraith-tftp.service "/etc/systemd/system/wraith-tftp.service.${timestamp}" >>$error_log 2>&1
                 fi
-                echo -e "[Unit]\nDescription=Tftp Server\nRequires=fog-tftp.socket\nDocumentation=man:in.tftpd\n\n[Service]\nExecStart=/usr/sbin/in.tftpd ${tftpAdvOpts:+$tftpAdvOpts }-s ${tftpdirdst}\nStandardInput=socket\n\n[Install]\nAlso=fog-tftp.socket" > /etc/systemd/system/fog-tftp.service
-                diffconfig "/etc/systemd/system/fog-tftp.service"
-                find /usr/lib/systemd/system -maxdepth 1 \( -name "tftp.socket" -o -name "tftpd.socket" \) -exec cp -v {} /etc/systemd/system/fog-tftp.socket \; -quit >>$error_log 2>&1
+                echo -e "[Unit]\nDescription=Tftp Server\nRequires=wraith-tftp.socket\nDocumentation=man:in.tftpd\n\n[Service]\nExecStart=/usr/sbin/in.tftpd ${tftpAdvOpts:+$tftpAdvOpts }-s ${tftpdirdst}\nStandardInput=socket\n\n[Install]\nAlso=wraith-tftp.socket" > /etc/systemd/system/wraith-tftp.service
+                diffconfig "/etc/systemd/system/wraith-tftp.service"
+                find /usr/lib/systemd/system -maxdepth 1 \( -name "tftp.socket" -o -name "tftpd.socket" \) -exec cp -v {} /etc/systemd/system/wraith-tftp.socket \; -quit >>$error_log 2>&1
                 systemctl daemon-reload
-                systemctl is-enabled --quiet fog-tftp.socket && true || systemctl enable fog-tftp.socket >>$error_log 2>&1
-                systemctl is-active --quiet fog-tftp.socket && systemctl stop fog-tftp.socket >>$error_log 2>&1 || true
-                systemctl is-active --quiet fog-tftp.socket && true || systemctl start fog-tftp.socket >>$error_log 2>&1
-                systemctl status fog-tftp.socket >>$error_log 2>&1
+                systemctl is-enabled --quiet wraith-tftp.socket && true || systemctl enable wraith-tftp.socket >>$error_log 2>&1
+                systemctl is-active --quiet wraith-tftp.socket && systemctl stop wraith-tftp.socket >>$error_log 2>&1 || true
+                systemctl is-active --quiet wraith-tftp.socket && true || systemctl start wraith-tftp.socket >>$error_log 2>&1
+                systemctl status wraith-tftp.socket >>$error_log 2>&1
             fi
             ;;
         *)
             if [[ $osid -eq 2 && -f $tftpconfigupstartdefaults ]]; then
-                echo -e "# /etc/default/tftpd-hpa\n# FOG Modified version\nTFTP_USERNAME=\"root\"\nTFTP_DIRECTORY=\"/tftpboot\"\nTFTP_ADDRESS=\":69\"\nTFTP_OPTIONS=\"${tftpAdvOpts:+$tftpAdvOpts }-s\"" > "$tftpconfigupstartdefaults"
+                echo -e "# /etc/default/tftpd-hpa\n# WRAITH Modified version\nTFTP_USERNAME=\"root\"\nTFTP_DIRECTORY=\"/tftpboot\"\nTFTP_ADDRESS=\":69\"\nTFTP_OPTIONS=\"${tftpAdvOpts:+$tftpAdvOpts }-s\"" > "$tftpconfigupstartdefaults"
                 sysv-rc-conf xinetd off >>$error_log 2>&1
                 service xinetd stop >>$error_log 2>&1
                 sysv-rc-conf tftpd-hpa on >>$error_log 2>&1
@@ -652,24 +652,24 @@ configureMinHttpd() {
     echo " * PHP version 5" >> "$webdirdest/management/index.php"
     echo " *" >> "$webdirdest/management/index.php"
     echo " * @category Index_Page" >> "$webdirdest/management/index.php"
-    echo " * @package  FOGProject" >> "$webdirdest/management/index.php"
+    echo " * @package  WRAITHProject" >> "$webdirdest/management/index.php"
     echo " * @author   Tom Elliott <tommygunsster@gmail.com>" >> "$webdirdest/management/index.php"
     echo " * @license  http://opensource.org/licenses/gpl-3.0 GPLv3" >> "$webdirdest/management/index.php"
-    echo " * @link     https://fogproject.org" >> "$webdirdest/management/index.php"
+    echo " * @link     https://wraithproject.org" >> "$webdirdest/management/index.php"
     echo " */" >> "$webdirdest/management/index.php"
     echo "/**" >> "$webdirdest/management/index.php"
     echo " * The main index presenter" >> "$webdirdest/management/index.php"
     echo " *" >> "$webdirdest/management/index.php"
     echo " * @category Index_Page" >> "$webdirdest/management/index.php"
-    echo " * @package  FOGProject" >> "$webdirdest/management/index.php"
+    echo " * @package  WRAITHProject" >> "$webdirdest/management/index.php"
     echo " * @author   Tom Elliott <tommygunsster@gmail.com>" >> "$webdirdest/management/index.php"
     echo " * @license  http://opensource.org/licenses/gpl-3.0 GPLv3" >> "$webdirdest/management/index.php"
-    echo " * @link     https://fogproject.org" >> "$webdirdest/management/index.php"
+    echo " * @link     https://wraithproject.org" >> "$webdirdest/management/index.php"
     echo " */" >> "$webdirdest/management/index.php"
     echo "require '../commons/base.inc.php';" >> "$webdirdest/management/index.php"
     echo "require '../commons/text.php';" >> "$webdirdest/management/index.php"
     echo "ob_start();" >> "$webdirdest/management/index.php"
-    echo "FOGCore::getClass('FOGPageManager')->render();" >> "$webdirdest/management/index.php"
+    echo "WRAITHCore::getClass('WRAITHPageManager')->render();" >> "$webdirdest/management/index.php"
     echo "ob_end_clean();" >> "$webdirdest/management/index.php"
     echo "die(_('This is a storage node, please do not access the web ui here!'));" >> "$webdirdest/management/index.php"
 }
@@ -684,8 +684,8 @@ addOndrejRepo() {
     LANG='en_US.UTF-8' LC_ALL='en_US.UTF-8' add-apt-repository -y ppa:ondrej/apache2 >>$error_log 2>&1
 }
 resolveDHCPEngine() {
-    # Decide between Kea and ISC-DHCP for the optional FOG-hosted DHCP service.
-    # Only relevant when FOG is actually building DHCP and the ISC package is
+    # Decide between Kea and ISC-DHCP for the optional WRAITH-hosted DHCP service.
+    # Only relevant when WRAITH is actually building DHCP and the ISC package is
     # still in the install set (the storage-node and bldhcp=0 paths strip it in
     # doOSSpecificIncludes before we ever get here). Must run after repo setup
     # so the Kea availability probe sees enabled repos (e.g. EPEL on RHEL).
@@ -839,12 +839,12 @@ installPackages() {
     $packmanUpdate >>$error_log 2>&1
     if [[ $osid -eq 2 ]]; then
         if [[ $? != 0 ]] && [[ $linuxReleaseName_lower == +(*ubuntu*|*mint*) ]]; then
-            cp /etc/apt/sources.list /etc/apt/sources.list.original_fog_$(date +%s)
+            cp /etc/apt/sources.list /etc/apt/sources.list.original_wraith_$(date +%s)
             sed -i -e 's/\/\/*archive.ubuntu.com\|\/\/*security.ubuntu.com/\/\/old-releases.ubuntu.com/g' /etc/apt/sources.list
             $packmanUpdate >>$error_log 2>&1
             if [[ $? != 0 ]]; then
-                cp -f /etc/apt/sources.list.original_fog /etc/apt/sources.list >>$error_log 2>&1
-                rm -f /etc/apt/sources.list.original_fog >>$error_log 2>&1
+                cp -f /etc/apt/sources.list.original_wraith /etc/apt/sources.list >>$error_log 2>&1
+                rm -f /etc/apt/sources.list.original_wraith >>$error_log 2>&1
                 false
             fi
         fi
@@ -973,7 +973,7 @@ checkSELinux() {
     configmode=$(LANG=C sestatus | grep "^Mode from config file" | awk '{print $5}')
     [[ "x$currentmode" != "xenforcing" && "x$configmode" != "xenforcing" ]] && return
     echo " * SELinux is currently enabled on your system. This is often causing"
-    echo " * issues and we recommend setting to permissive on FOG Servers as of now."
+    echo " * issues and we recommend setting to permissive on WRAITH Servers as of now."
     echo -n " * Should the installer set this for you now? (Y/n) "
     sedisable=""
     while [[ -z $sedisable ]]; do
@@ -1011,7 +1011,7 @@ checkFirewall() {
     fi
     [[ $fwrunning -ne 1 ]] && return
     echo " * The local firewall, currently, seems to be enabled on your system. This can cause"
-    echo " * issues on FOG Servers if you are not well experienced and know what you are doing."
+    echo " * issues on WRAITH Servers if you are not well experienced and know what you are doing."
     echo -n " * Should the installer try to disable the local firewall for you now? (y/N) "
     fwdisable=""
     while [[ -z $fwdisable ]]; do
@@ -1063,7 +1063,7 @@ checkFirewall() {
 displayOSChoices() {
     blFirst=1
     while [[ -z $osid ]]; do
-        if [[ $fogupdateloaded -eq 1 && $blFirst -eq 1 ]]; then
+        if [[ $wraithupdateloaded -eq 1 && $blFirst -eq 1 ]]; then
             blFirst=0
         else
             osid=$strSuggestedOS
@@ -1223,12 +1223,12 @@ enableInitScript() {
     done
 }
 installInitScript() {
-    dots "Installing FOG System Scripts"
+    dots "Installing WRAITH System Scripts"
     cp -f $initdsrc/* $initdpath/ && systemctl daemon-reload >>$error_log 2>&1
     errorStat $?
     echo
     echo
-    echo " * Configuring FOG System Services"
+    echo " * Configuring WRAITH System Services"
     echo
     echo
     enableInitScript
@@ -1246,7 +1246,7 @@ configureMySql() {
         if [[ $? -ne 0 ]]; then
             echo "Failed!"
             echo " * Error: Cannot connect to the external database '${snmysqldb}' at '${snmysqlhost}'."
-            echo " * Please verify your credentials in /opt/fog/.fogsettings and ensure the DB exists."
+            echo " * Please verify your credentials in /opt/wraith/.wraithsettings and ensure the DB exists."
             exit 1
         fi
         
@@ -1287,8 +1287,8 @@ configureMySql() {
                 ;;
         esac
     fi
-    # if someone still has DB user root set in .fogsettings we want to change that
-    [[ "x$snmysqluser" == "xroot" ]] && snmysqluser='fogmaster'
+    # if someone still has DB user root set in .wraithsettings we want to change that
+    [[ "x$snmysqluser" == "xroot" ]] && snmysqluser='wraithmaster'
     [[ -z $snmysqlpass ]] && snmysqlpass=$(generatePassword 20)
     [[ -n $snmysqlhost ]] && host="--host=$snmysqlhost"
     sqloptionsroot="${host} --user=root"
@@ -1316,7 +1316,7 @@ configureMySql() {
             echo
             echo "   The installer detected a blank database *root* password. This"
             echo "   is very common on a new install or if you upgrade from any"
-            echo "   version of FOG before 1.5.8. To improve overall security we ask"
+            echo "   version of WRAITH before 1.5.8. To improve overall security we ask"
             echo "   you to supply an appropriate database *root* password now."
             echo
             echo "   NOTICE: Make sure you choose a good password but also one"
@@ -1350,15 +1350,15 @@ configureMySql() {
             # MariaDB auth plugin used.
             mysqladmin $sqloptionsroot password "${snmysqlrootpass}" >>$error_log 2>&1
         fi
-        snmysqlstoragepass=$(mysql -s $sqloptionsroot --password="${snmysqlrootpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%FOG_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
+        snmysqlstoragepass=$(mysql -s $sqloptionsroot --password="${snmysqlrootpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%WRAITH_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
     else
-        snmysqlstoragepass=$(mysql $sqloptionsuser --password="${snmysqlpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%FOG_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
+        snmysqlstoragepass=$(mysql $sqloptionsuser --password="${snmysqlpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%WRAITH_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
     fi
     mysql $sqloptionsuser --password="${snmysqlpass}" --execute="quit" >/dev/null 2>&1
-    connect_as_fogmaster=$?
-    mysql ${host} -s --user=fogstorage --password="${snmysqlstoragepass}" --execute="quit" >/dev/null 2>&1
-    connect_as_fogstorage=$?
-    if [[ $connect_as_fogmaster -eq 0 && $connect_as_fogstorage -eq 0 ]]; then
+    connect_as_wraithmaster=$?
+    mysql ${host} -s --user=wraithstorage --password="${snmysqlstoragepass}" --execute="quit" >/dev/null 2>&1
+    connect_as_wraithstorage=$?
+    if [[ $connect_as_wraithmaster -eq 0 && $connect_as_wraithstorage -eq 0 ]]; then
         echo "Skipped"
         return
     fi
@@ -1368,9 +1368,9 @@ configureMySql() {
     if [[ $connect_as_root -ne 0 ]]; then
         echo
         echo "   To improve the overall security the installer will create an"
-        echo "   unprivileged database user account for FOG's database access."
+        echo "   unprivileged database user account for WRAITH's database access."
         echo "   Please provide the database *root* user password. Be asured"
-        echo "   that this password will only be used while the FOG installer"
+        echo "   that this password will only be used while the WRAITH installer"
         echo -n "   is running and won't be stored anywhere: "
         read -rs snmysqlrootpass
         echo
@@ -1389,20 +1389,20 @@ configureMySql() {
         fi
     fi
 
-    snmysqlstoragepass=$(mysql -s $sqloptionsroot --password="${snmysqlrootpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%FOG_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
-    # generate a new fogstorage password if it doesn't exist yet or if it's old style fs0123456789
+    snmysqlstoragepass=$(mysql -s $sqloptionsroot --password="${snmysqlrootpass}" --execute="SELECT settingValue FROM globalSettings WHERE settingKey LIKE '%WRAITH_STORAGENODE_MYSQLPASS%'" $mysqldbname 2>/dev/null | tail -1)
+    # generate a new wraithstorage password if it doesn't exist yet or if it's old style fs0123456789
     if [[ -z $snmysqlstoragepass ]]; then
         snmysqlstoragepass=$(generatePassword 20)
     elif [[ -n $(echo $snmysqlstoragepass | grep "^fs[0-9][0-9]*$") ]]; then
         snmysqlstoragepass=$(generatePassword 20)
         echo
-        echo "   The current *fogstorage* database password does not meet high"
+        echo "   The current *wraithstorage* database password does not meet high"
         echo "   security standards. We will generate a new password and update"
-        echo "   all the settings on this FOG server for you. Please take note"
+        echo "   all the settings on this WRAITH server for you. Please take note"
         echo "   of the following credentials that you need to manually update"
-        echo "   on all your storage nodes' /opt/fog/.fogsettings configuration"
-        echo "   files and re-run (!) the FOG installer:"
-        echo "   snmysqluser='fogstorage'"
+        echo "   on all your storage nodes' /opt/wraith/.wraithsettings configuration"
+        echo "   files and re-run (!) the WRAITH installer:"
+        echo "   snmysqluser='wraithstorage'"
         echo "   snmysqlpass='${snmysqlstoragepass}'"
         echo
         if [[ -z $autoaccept ]]; then
@@ -1411,7 +1411,7 @@ configureMySql() {
         fi
     fi
     [[ ! -d ../tmp/ ]] && mkdir -p ../tmp/ >/dev/null 2>&1
-    cat >../tmp/fog-db-and-user-setup.sql <<EOF
+    cat >../tmp/wraith-db-and-user-setup.sql <<EOF
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ANSI' ;
 DELETE FROM mysql.user WHERE User='' ;
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1') ;
@@ -1435,11 +1435,11 @@ BEGIN
   GRANT ALL PRIVILEGES ON $mysqldbname.* TO '${snmysqluser}'@'${snmysqlhost}' ;
 
   SELECT COUNT(*) INTO storageuser FROM mysql.user
-    WHERE User = 'fogstorage' and  Host = '%' ;
+    WHERE User = 'wraithstorage' and  Host = '%' ;
   IF storageuser > 0 THEN
-    DROP USER 'fogstorage'@'%';
+    DROP USER 'wraithstorage'@'%';
   END IF ;
-  CREATE USER 'fogstorage'@'%' IDENTIFIED BY '${snmysqlstoragepass}' ;
+  CREATE USER 'wraithstorage'@'%' IDENTIFIED BY '${snmysqlstoragepass}' ;
 END ;$$
 DELIMITER ;
 CALL $mysqldbname.create_user_if_not_exists() ;
@@ -1447,10 +1447,10 @@ DROP PROCEDURE IF EXISTS $mysqldbname.create_user_if_not_exists ;
 FLUSH PRIVILEGES ;
 SET SQL_MODE=@OLD_SQL_MODE ;
 EOF
-    mysql $sqloptionsroot --password="${snmysqlrootpass}" <../tmp/fog-db-and-user-setup.sql >>$error_log 2>&1
+    mysql $sqloptionsroot --password="${snmysqlrootpass}" <../tmp/wraith-db-and-user-setup.sql >>$error_log 2>&1
     errorStat $?
 }
-configureFOGService() {
+configureWRAITHService() {
     [[ ! -d $servicedst ]] && mkdir -p $servicedst >>$error_log 2>&1
     [[ ! -d $servicedst/etc ]] && mkdir -p $servicedst/etc >>$error_log 2>&1
     echo "<?php define('WEBROOT','${webdirdest}');" > $servicedst/etc/config.php
@@ -1468,13 +1468,13 @@ configureNFS() {
     elif [[ -f "/usr/etc/nfs.conf" && ! -d "/usr/etc/nfs.conf.d/" ]]; then
         mkdir /usr/etc/nfs.conf.d
     fi
-    if [[ -f "/etc/nfs.conf" && ! -f "/etc/nfs.conf.d/fog-nfs.conf" ]]; then
-        cat > /etc/nfs.conf.d/fog-nfs.conf <<EOF
+    if [[ -f "/etc/nfs.conf" && ! -f "/etc/nfs.conf.d/wraith-nfs.conf" ]]; then
+        cat > /etc/nfs.conf.d/wraith-nfs.conf <<EOF
 [mountd]
 port=20048
 EOF
-    elif [[ -f "/usr/etc/nfs.conf" && ! -f "/usr/etc/nfs.conf.d/fog-nfs.conf" ]]; then
-        cat > /usr/etc/nfs.conf.d/fog-nfs.conf <<EOF
+    elif [[ -f "/usr/etc/nfs.conf" && ! -f "/usr/etc/nfs.conf.d/wraith-nfs.conf" ]]; then
+        cat > /usr/etc/nfs.conf.d/wraith-nfs.conf <<EOF
 [mountd]
 port=20048
 EOF
@@ -1535,7 +1535,7 @@ EOF
     fi
 }
 configureSnapins() {
-    dots "Setting up FOG Snapins"
+    dots "Setting up WRAITH Snapins"
     mkdir -p $snapindir >>$error_log 2>&1
     if [[ -d $snapindir ]]; then
         chmod -R 775 $snapindir
@@ -1545,11 +1545,11 @@ configureSnapins() {
 }
 configureUsers() {
     userexists=0
-    [[ -z $username || "x$username" == "xfog" ]] && username='fogproject'
+    [[ -z $username || "x$username" == "xwraith" ]] && username='wraithproject'
     dots "Setting up $username user"
     getent passwd $username > /dev/null
     if [[ $? -eq 0 ]]; then
-        if [[ ! -f "$fogprogramdir/.fogsettings" && ! -x /home/$username/warnfogaccount.sh ]]; then
+        if [[ ! -f "$wraithprogramdir/.wraithsettings" && ! -x /home/$username/warnwraithaccount.sh ]]; then
             echo "Already exists"
             echo
             echo "The account \"$username\" already exists but this seems to be a"
@@ -1580,23 +1580,23 @@ configureUsers() {
     fi
     dots "Locking $username as a system account"
     chsh -s /bin/bash $username >>$error_log 2>&1
-    textmessage="You seem to be using the '$username' system account to logon and work \non your FOG Server system.\n\nIt's NOT recommended to use this account! Please create a new\naccount for administrative tasks.\n\nIf you re-run the installer it would reset the '$username' account\npassword and therefore lock you out of the system!\n\nTake care,\nyour FOGProject team"
+    textmessage="You seem to be using the '$username' system account to logon and work \non your WRAITH Server system.\n\nIt's NOT recommended to use this account! Please create a new\naccount for administrative tasks.\n\nIf you re-run the installer it would reset the '$username' account\npassword and therefore lock you out of the system!\n\nTake care,\nyour WRAITHProject team"
     grep -q "exit 1" /home/$username/.bashrc >/dev/null 2>&1 || cat >>/home/$username/.bashrc <<EOF
 echo -e "$textmessage"
 exit 1
 EOF
     mkdir -p /home/$username/.config/autostart/
-    cat >/home/$username/.config/autostart/warnfogaccount.desktop <<EOF
+    cat >/home/$username/.config/autostart/warnwraithaccount.desktop <<EOF
 [Desktop Entry]
 Type=Application
 Name=Warn users to not use the $username account
-Exec=/home/$username/warnfogaccount.sh
+Exec=/home/$username/warnwraithaccount.sh
 Comment=Warn users who use the $username system account to log on
 EOF
     chown -R $username:$username /home/$username/.config/
-    cat >/home/$username/warnfogaccount.sh <<EOF
+    cat >/home/$username/warnwraithaccount.sh <<EOF
 #!/bin/bash
-title="FOG System Account"
+title="WRAITH System Account"
 text="$textmessage"
 z=\$(which zenity)
 x=\$(which xmessage)
@@ -1609,17 +1609,17 @@ else
     \$n -u critical "\$title" "\$(echo \$text | sed -e 's/ \\n/ /g')"
 fi
 EOF
-    chmod 755 /home/$username/warnfogaccount.sh
-    chown $username:$username /home/$username/warnfogaccount.sh
+    chmod 755 /home/$username/warnwraithaccount.sh
+    chown $username:$username /home/$username/warnwraithaccount.sh
     errorStat $?
     dots "Setting up $username password"
     if [[ -z $password ]]; then
-        # if we don't have a password from .fogsettings we check config.class.php as well
-        if [[ -r $webdirdest/lib/fog/config.class.php ]]; then
+        # if we don't have a password from .wraithsettings we check config.class.php as well
+        if [[ -r $webdirdest/lib/wraith/config.class.php ]]; then
             # extract password from old style config
-            password=$(awk -F '"' -e '/TFTP_FTP_PASSWORD/,/);/{print $2}' $webdirdest/lib/fog/config.class.php | grep -v "^$")
+            password=$(awk -F '"' -e '/TFTP_FTP_PASSWORD/,/);/{print $2}' $webdirdest/lib/wraith/config.class.php | grep -v "^$")
             # if that didn't get us the password we try again new style
-            [[ -z $password ]] && password=$(awk -F "'" -e '/TFTP_FTP_PASSWORD/{print $4}' $webdirdest/lib/fog/config.class.php)
+            [[ -z $password ]] && password=$(awk -F "'" -e '/TFTP_FTP_PASSWORD/{print $4}' $webdirdest/lib/wraith/config.class.php)
         fi
     fi
     checkPasswordChars "$password"
@@ -1635,15 +1635,15 @@ EOF
     unset cnt
     unset ret
 }
-linkOptFogDir() {
-    if [[ ! -h /var/log/fog ]]; then
-        dots "Linking FOG Logs to Linux Logs"
-        ln -s /opt/fog/log /var/log/fog >>$error_log 2>&1
+linkOptWraithDir() {
+    if [[ ! -h /var/log/wraith ]]; then
+        dots "Linking WRAITH Logs to Linux Logs"
+        ln -s /opt/wraith/log /var/log/wraith >>$error_log 2>&1
         errorStat $?
     fi
-    if [[ ! -h /etc/fog ]]; then
-        dots "Linking FOG Service config /etc"
-        ln -s /opt/fog/service/etc /etc/fog >>$error_log 2>&1
+    if [[ ! -h /etc/wraith ]]; then
+        dots "Linking WRAITH Service config /etc"
+        ln -s /opt/wraith/service/etc /etc/wraith >>$error_log 2>&1
         errorStat $?
     fi
     local element='httpd'
@@ -1661,24 +1661,24 @@ configureStorage() {
     [[ ! -d $storageLocation ]] && mkdir $storageLocation >>$error_log 2>&1
     [[ ! -f $storageLocation/.mntcheck ]] && touch $storageLocation/.mntcheck >>$error_log 2>&1
     [[ ! -d $storageLocation/postdownloadscripts ]] && mkdir $storageLocation/postdownloadscripts >>$error_log 2>&1
-    if [[ ! -f $storageLocation/postdownloadscripts/fog.postdownload ]]; then
-        echo "#!/bin/bash" >"$storageLocation/postdownloadscripts/fog.postdownload"
-        echo "## This file serves as a starting point to call your custom postimaging scripts." >>"$storageLocation/postdownloadscripts/fog.postdownload"
-        echo "## <SCRIPTNAME> should be changed to the script you're planning to use." >>"$storageLocation/postdownloadscripts/fog.postdownload"
-        echo "## Syntax of post download scripts are" >>"$storageLocation/postdownloadscripts/fog.postdownload"
-        echo "#. \${postdownpath}<SCRIPTNAME>" >> "$storageLocation/postdownloadscripts/fog.postdownload"
+    if [[ ! -f $storageLocation/postdownloadscripts/wraith.postdownload ]]; then
+        echo "#!/bin/bash" >"$storageLocation/postdownloadscripts/wraith.postdownload"
+        echo "## This file serves as a starting point to call your custom postimaging scripts." >>"$storageLocation/postdownloadscripts/wraith.postdownload"
+        echo "## <SCRIPTNAME> should be changed to the script you're planning to use." >>"$storageLocation/postdownloadscripts/wraith.postdownload"
+        echo "## Syntax of post download scripts are" >>"$storageLocation/postdownloadscripts/wraith.postdownload"
+        echo "#. \${postdownpath}<SCRIPTNAME>" >> "$storageLocation/postdownloadscripts/wraith.postdownload"
     fi
     [[ ! -d $storageLocationCapture ]] && mkdir $storageLocationCapture >>$error_log 2>&1
     [[ ! -f $storageLocationCapture/.mntcheck ]] && touch $storageLocationCapture/.mntcheck >>$error_log 2>&1
     [[ ! -d $storageLocationCapture/postinitscripts ]] && mkdir $storageLocationCapture/postinitscripts >>$error_log 2>&1
-    if [[ ! -f $storageLocationCapture/postinitscripts/fog.postinit ]]; then
-        echo "#!/bin/bash" >"$storageLocationCapture/postinitscripts/fog.postinit"
-        echo "## This file serves as a starting point to call your custom pre-imaging/post init loading scripts." >>"$storageLocationCapture/postinitscripts/fog.postinit"
-        echo "## <SCRIPTNAME> should be changed to the script you're planning to use." >>"$storageLocationCapture/postinitscripts/fog.postinit"
-        echo "## Syntax of post init scripts are" >>"$storageLocationCapture/postinitscripts/fog.postinit"
-        echo "#. \${postinitpath}<SCRIPTNAME>" >>"$storageLocationCapture/postinitscripts/fog.postinit"
+    if [[ ! -f $storageLocationCapture/postinitscripts/wraith.postinit ]]; then
+        echo "#!/bin/bash" >"$storageLocationCapture/postinitscripts/wraith.postinit"
+        echo "## This file serves as a starting point to call your custom pre-imaging/post init loading scripts." >>"$storageLocationCapture/postinitscripts/wraith.postinit"
+        echo "## <SCRIPTNAME> should be changed to the script you're planning to use." >>"$storageLocationCapture/postinitscripts/wraith.postinit"
+        echo "## Syntax of post init scripts are" >>"$storageLocationCapture/postinitscripts/wraith.postinit"
+        echo "#. \${postinitpath}<SCRIPTNAME>" >>"$storageLocationCapture/postinitscripts/wraith.postinit"
     else
-        (head -1 "$storageLocationCapture/postinitscripts/fog.postinit" | grep -q '^#!/bin/bash') || sed -i '1i#!/bin/bash' "$storageLocationCapture/postinitscripts/fog.postinit" >/dev/null 2>&1
+        (head -1 "$storageLocationCapture/postinitscripts/wraith.postinit" | grep -q '^#!/bin/bash') || sed -i '1i#!/bin/bash' "$storageLocationCapture/postinitscripts/wraith.postinit" >/dev/null 2>&1
     fi
     chmod -R 775 $storageLocation $storageLocationCapture >>$error_log 2>&1
     chown -R $username:$username $storageLocation $storageLocationCapture >>$error_log 2>&1
@@ -1698,7 +1698,7 @@ writeUpdateFile() {
         ipaddress copybackold interface submask hostname routeraddress plainrouter
         dnsaddress username password osid osname dodhcp bldhcp dhcpd dhcpengine
         blexports installtype snmysqlexternal snmysqluser snmysqlpass snmysqlhost
-        mysqldbname installlang storageLocation fogupdateloaded docroot webroot
+        mysqldbname installlang storageLocation wraithupdateloaded docroot webroot
         caCreated httpproto startrange endrange packages noTftpBuild tftpAdvOpts
         sslpath backupPath php_ver sslprivkey sendreports
     )
@@ -1706,20 +1706,20 @@ writeUpdateFile() {
     local -a deprecatedKeys=( storageftpuser storageftppass bootfilename notpxedefaultfile php_verAdds )
 
     # Emit one "key='value'" line, single-quote-safe for any value (embedded
-    # single quotes become '\''). fogupdateloaded stays unquoted+numeric to
+    # single quotes become '\''). wraithupdateloaded stays unquoted+numeric to
     # match the historical file format.
     settingLine() {
         local key="$1" val
         case "$key" in
-            fogupdateloaded) printf 'fogupdateloaded=%s\n' "${fogupdateloaded:-1}"; return ;;
+            wraithupdateloaded) printf 'wraithupdateloaded=%s\n' "${wraithupdateloaded:-1}"; return ;;
             *) val="${!key}" ;;
         esac
         printf "%s='%s'\n" "$key" "${val//\'/\'\\\'\'}"
     }
 
     local key
-    if [[ -f $fogprogramdir/.fogsettings ]] && \
-        { grep -q "^## Start of FOG Settings" "$fogprogramdir/.fogsettings" || grep -q "^## Version:" "$fogprogramdir/.fogsettings"; }; then
+    if [[ -f $wraithprogramdir/.wraithsettings ]] && \
+        { grep -q "^## Start of WRAITH Settings" "$wraithprogramdir/.wraithsettings" || grep -q "^## Version:" "$wraithprogramdir/.wraithsettings"; }; then
         # Existing, valid file: update managed keys in place, strip deprecated
         # keys, refresh the version header, and leave every other line untouched.
         local managedLines depList
@@ -1749,28 +1749,28 @@ writeUpdateFile() {
                 if (!seenver) print verline
                 for (i = 1; i <= n; i++) if (!(ORDER[i] in SEEN)) print MAP[ORDER[i]]
             }
-        ' "$fogprogramdir/.fogsettings" > "$fogprogramdir/.fogsettings.tmp" \
-            && cat "$fogprogramdir/.fogsettings.tmp" > "$fogprogramdir/.fogsettings" \
-            && rm -f "$fogprogramdir/.fogsettings.tmp"
+        ' "$wraithprogramdir/.wraithsettings" > "$wraithprogramdir/.wraithsettings.tmp" \
+            && cat "$wraithprogramdir/.wraithsettings.tmp" > "$wraithprogramdir/.wraithsettings" \
+            && rm -f "$wraithprogramdir/.wraithsettings.tmp"
     else
         # No file, or a file with no recognizable header: (re)write from scratch.
         # Fresh files default an empty snmysqlexternal to 0 (historical behavior;
         # the in-place upgrade path leaves it as-is).
         snmysqlexternal="${snmysqlexternal:-0}"
         {
-            echo "## Start of FOG Settings"
-            echo "## Created by the FOG Installer"
-            echo "## Find more information about this file in the FOG Project wiki:"
-            echo "##     https://wiki.fogproject.org/wiki/index.php?title=.fogsettings"
+            echo "## Start of WRAITH Settings"
+            echo "## Created by the WRAITH Installer"
+            echo "## Find more information about this file in the WRAITH Project wiki:"
+            echo "##     https://wiki.wraithproject.org/wiki/index.php?title=.wraithsettings"
             echo "## Version: $version"
             echo "## Install time: $tmpDte"
             for key in "${managedKeys[@]}"; do settingLine "$key"; done
-            echo "## End of FOG Settings"
-        } > "$fogprogramdir/.fogsettings"
+            echo "## End of WRAITH Settings"
+        } > "$wraithprogramdir/.wraithsettings"
     fi
     # Remove world-readable permissions
-    chmod 0600 "${fogprogramdir}/.fogsettings" >>$error_log 2>&1
-    chown "${username}" "${fogprogramdir}/.fogsettings" >>$error_log 2>&1
+    chmod 0600 "${wraithprogramdir}/.wraithsettings" >>$error_log 2>&1
+    chown "${username}" "${wraithprogramdir}/.wraithsettings" >>$error_log 2>&1
 }
 displayBanner() {
     echo
@@ -1786,8 +1786,8 @@ displayBanner() {
     echo "   +------------------------------------------+"
     echo "   |      Free Computer Imaging Solution      |"
     echo "   +------------------------------------------+"
-    echo "   |  Credits: http://fogproject.org/Credits  |"
-    echo "   |       http://fogproject.org/Credits      |"
+    echo "   |  Credits: http://wraithproject.org/Credits  |"
+    echo "   |       http://wraithproject.org/Credits      |"
     echo "   |       Released under GPL Version 3       |"
     echo "   +------------------------------------------+"
     echo
@@ -1795,20 +1795,20 @@ displayBanner() {
 }
 createSSLCA() {
     if [[ -z $sslpath ]]; then
-        [[ -d /opt/fog/snapins/CA && -d /opt/fog/snapins/ssl ]] && mv /opt/fog/snapins/CA /opt/fog/snapins/ssl/
-        sslpath='/opt/fog/snapins/ssl/'
+        [[ -d /opt/wraith/snapins/CA && -d /opt/wraith/snapins/ssl ]] && mv /opt/wraith/snapins/CA /opt/wraith/snapins/ssl/
+        sslpath='/opt/wraith/snapins/ssl/'
     fi
-    if [[ $recreateCA == yes || $caCreated != yes || ! -e $sslpath/CA || ! -e $sslpath/CA/.fogCA.key ]]; then
+    if [[ $recreateCA == yes || $caCreated != yes || ! -e $sslpath/CA || ! -e $sslpath/CA/.wraithCA.key ]]; then
         mkdir -p $sslpath/CA >>$error_log 2>&1
         dots "Creating SSL CA"
-        openssl genrsa -out $sslpath/CA/.fogCA.key 4096 >>$error_log 2>&1
-        openssl req -x509 -new -sha512 -nodes -key $sslpath/CA/.fogCA.key -days 3650 -out $sslpath/CA/.fogCA.pem >>$error_log 2>&1 << EOF
+        openssl genrsa -out $sslpath/CA/.wraithCA.key 4096 >>$error_log 2>&1
+        openssl req -x509 -new -sha512 -nodes -key $sslpath/CA/.wraithCA.key -days 3650 -out $sslpath/CA/.wraithCA.pem >>$error_log 2>&1 << EOF
 .
 .
 .
 .
 .
-FOG Server CA
+WRAITH Server CA
 .
 EOF
         errorStat $?
@@ -1821,7 +1821,7 @@ EOF
             echo "  You seem to be using a DNS name instead of an IP address."
             echo "  This would cause an error when generating SSL key and certs"
             echo "  and so we will stop here! Please adjust variable 'ipaddress'"
-            echo "  in .fogsettings file if this is an update and make sure you"
+            echo "  in .wraithsettings file if this is an update and make sure you"
             echo "  provide an IP address when re-running the installer."
             exit 1
         fi
@@ -1840,7 +1840,7 @@ subjectAltName = @alt_names
 IP.1 = $ipaddress
 DNS.1 = $hostname
 EOF
-        openssl req -new -sha512 -key $sslprivkey -out $sslpath/fog.csr -config $sslpath/req.cnf >>$error_log 2>&1 << EOF
+        openssl req -new -sha512 -key $sslprivkey -out $sslpath/wraith.csr -config $sslpath/req.cnf >>$error_log 2>&1 << EOF
 $ipaddress
 EOF
         errorStat $?
@@ -1855,10 +1855,10 @@ subjectAltName = @alt_names
 IP.1 = $ipaddress
 DNS.1 = $hostname
 EOF
-    openssl x509 -req -in $sslpath/fog.csr -CA $sslpath/CA/.fogCA.pem -CAkey $sslpath/CA/.fogCA.key -CAcreateserial -out $webdirdest/management/other/ssl/srvpublic.crt -days 3650 -extensions v3_ca -extfile $sslpath/ca.cnf >>$error_log 2>&1
+    openssl x509 -req -in $sslpath/wraith.csr -CA $sslpath/CA/.wraithCA.pem -CAkey $sslpath/CA/.wraithCA.key -CAcreateserial -out $webdirdest/management/other/ssl/srvpublic.crt -days 3650 -extensions v3_ca -extfile $sslpath/ca.cnf >>$error_log 2>&1
     errorStat $?
     dots "Creating auth pub key and cert"
-    cp $sslpath/CA/.fogCA.pem $webdirdest/management/other/ca.cert.pem >>$error_log 2>&1
+    cp $sslpath/CA/.wraithCA.pem $webdirdest/management/other/ca.cert.pem >>$error_log 2>&1
     openssl x509 -outform der -in $webdirdest/management/other/ca.cert.pem -out $webdirdest/management/other/ca.cert.der >>$error_log 2>&1
     errorStat $?
     dots "Resetting SSL Permissions"
@@ -1872,7 +1872,7 @@ EOF
             ;;
         *)
             if [[ $osid -eq 2 ]]; then
-                a2dissite 001-fog >>$error_log 2>&1
+                a2dissite 001-wraith >>$error_log 2>&1
                 a2ensite 000-default >>$error_log 2>&1
             fi
             mv -fv "${etcconf}" "${etcconf}.${timestamp}" >>$error_log 2>&1
@@ -1926,7 +1926,7 @@ EOF
                 echo "    RewriteRule .* - [F]" >> "$etcconf"
                 echo "    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f" >> "$etcconf"
                 echo "    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d" >> "$etcconf"
-                echo "    RewriteRule ^/fog/(.*)$ /fog/api/index.php [QSA,L]" >> "$etcconf"
+                echo "    RewriteRule ^/wraith/(.*)$ /wraith/api/index.php [QSA,L]" >> "$etcconf"
                 echo "</VirtualHost>" >> "$etcconf"
             else
                 echo "    <Directory $webdirdest>" >> "$etcconf"
@@ -1939,7 +1939,7 @@ EOF
                 echo "    RewriteRule .* - [F]" >> "$etcconf"
                 echo "    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f" >> "$etcconf"
                 echo "    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d" >> "$etcconf"
-                echo "    RewriteRule ^/fog/(.*)$ /fog/api/index.php [QSA,L]" >> "$etcconf"
+                echo "    RewriteRule ^/wraith/(.*)$ /wraith/api/index.php [QSA,L]" >> "$etcconf"
                 echo "</VirtualHost>" >> "$etcconf"
             fi
             diffconfig "${etcconf}"
@@ -1970,7 +1970,7 @@ EOF
                 a2enmod proxy_fcgi setenvif >>$error_log 2>&1
                 a2enmod rewrite >>$error_log 2>&1
                 a2enmod ssl >>$error_log 2>&1
-                a2ensite "001-fog" >>$error_log 2>&1
+                a2ensite "001-wraith" >>$error_log 2>&1
                 a2dissite "000-default" >>$error_log 2>&1
             fi
             ;;
@@ -2080,8 +2080,8 @@ configureHttpd() {
         sed -i '/LoadModule ssl_module modules\/mod_ssl.so/s/^#//g' $httpdconf >>$error_log 2>&1
         # Enable rewrite
         sed -i '/LoadModule rewrite_module modules\/mod_rewrite.so/s/^#//g' $httpdconf >>$error_log 2>&1
-        # Enable our virtual host file for fog
-        grep -q "^Include conf/extra/fog\.conf" $httpdconf || echo -e "# FOG Virtual Host\nListen 443\nInclude conf/extra/fog.conf" >>$httpdconf
+        # Enable our virtual host file for wraith
+        grep -q "^Include conf/extra/wraith\.conf" $httpdconf || echo -e "# WRAITH Virtual Host\nListen 443\nInclude conf/extra/wraith.conf" >>$httpdconf
         # Enable php extensions
         sed -i 's/;extension=bcmath/extension=bcmath/g' $phpini >>$error_log 2>&1
         sed -i 's/;extension=curl/extension=curl/g' $phpini >>$error_log 2>&1
@@ -2102,36 +2102,36 @@ configureHttpd() {
     sed -i 's/.*max_input_vars\ \=.*$/max_input_vars\ \=\ 250000/g' $phpini >>$error_log 2>&1
     errorStat $?
     dots "Testing and removing symbolic links if found"
-    if [[ -h ${docroot}fog ]]; then
-        rm -f ${docroot}fog >>$error_log 2>&1
+    if [[ -h ${docroot}wraith ]]; then
+        rm -f ${docroot}wraith >>$error_log 2>&1
     fi
     if [[ -h ${docroot}${webroot} ]]; then
         rm -f ${docroot}${webroot} >>$error_log 2>&1
     fi
     errorStat $?
     dots "Backing up old data"
-    if [[ -d $backupPath/fog_web_${version}.BACKUP ]]; then
-        rm -rf $backupPath/fog_web_${version}.BACKUP >>$error_log 2>&1
+    if [[ -d $backupPath/wraith_web_${version}.BACKUP ]]; then
+        rm -rf $backupPath/wraith_web_${version}.BACKUP >>$error_log 2>&1
     fi
     if [[ -d $webdirdest ]]; then
-        cp -RT "$webdirdest" "${backupPath}/fog_web_${version}.BACKUP" >>$error_log 2>&1
-        rm -rf ${backupPath}/fog_web_${version}.BACKUP/lib/plugins/accesscontrol
+        cp -RT "$webdirdest" "${backupPath}/wraith_web_${version}.BACKUP" >>$error_log 2>&1
+        rm -rf ${backupPath}/wraith_web_${version}.BACKUP/lib/plugins/accesscontrol
         rm -rf "$webdirdest" >>$error_log 2>&1
     fi
     if [[ $osid -eq 2 ]]; then
-        if [[ -d ${docroot}fog ]]; then
+        if [[ -d ${docroot}wraith ]]; then
             rm -rf ${docroot} >>$error_log 2>&1
         fi
     fi
     mkdir -p "$webdirdest" >>$error_log 2>&1
-    if [[ -d $docroot && ! -h ${docroot}fog ]] || [[ ! -d ${docroot}fog ]]; then
-        ln -s $webdirdest  ${docroot}/fog >>$error_log 2>&1
+    if [[ -d $docroot && ! -h ${docroot}wraith ]] || [[ ! -d ${docroot}wraith ]]; then
+        ln -s $webdirdest  ${docroot}/wraith >>$error_log 2>&1
     fi
     errorStat $?
     if [[ $copybackold -gt 0 ]]; then
-        if [[ -d ${backupPath}/fog_web_${version}.BACKUP ]]; then
+        if [[ -d ${backupPath}/wraith_web_${version}.BACKUP ]]; then
             dots "Copying back old web folder as is";
-            cp -Rf ${backupPath}/fog_web_${version}.BACKUP/* $webdirdest/
+            cp -Rf ${backupPath}/wraith_web_${version}.BACKUP/* $webdirdest/
             errorStat $?
             dots "Ensuring all classes are lowercased"
             for i in $(find $webdirdest -type f -name "*[A-Z]*\.class\.php" -o -name "*[A-Z]*\.event\.php" -o -name "*[A-Z]*\.hook\.php" 2>>$error_log); do
@@ -2143,7 +2143,7 @@ configureHttpd() {
     dots "Copying new files to web folder"
     cp -Rf $webdirsrc/* $webdirdest/
     errorStat $?
-    for i in $(find $backupPath/fog_web_${version}.BACKUP/management/other/ -maxdepth 1 -type f -not -name gpl-3.0.txt -a -not -name index.php -a -not -name 'ca.*' 2>>$error_log); do
+    for i in $(find $backupPath/wraith_web_${version}.BACKUP/management/other/ -maxdepth 1 -type f -not -name gpl-3.0.txt -a -not -name index.php -a -not -name 'ca.*' 2>>$error_log); do
         cp -Rf $i ${webdirdest}/management/other/ >>$error_log 2>&1
     done
     if [[ $installlang -eq 1 ]]; then
@@ -2154,8 +2154,8 @@ configureHttpd() {
         echo "Done"
     fi
     # Generate a per-install schema bootstrap token written into config.class.php
-    # as FOG_SCHEMA_INSTALL_TOKEN. It lets the installer deploy the schema before
-    # any FOG user/database exists without leaving the endpoint open to anonymous
+    # as WRAITH_SCHEMA_INSTALL_TOKEN. It lets the installer deploy the schema before
+    # any WRAITH user/database exists without leaving the endpoint open to anonymous
     # callers. Reused by updateDB() (called after this) for the deploy request.
     installToken=$(openssl rand -hex 32 2>/dev/null)
     [[ -z $installToken ]] && installToken=$(tr -dc 'a-f0-9' < /dev/urandom 2>/dev/null | head -c 64)
@@ -2164,26 +2164,26 @@ configureHttpd() {
     phpescsnmysqlpass="${phpescsnmysqlpass//\'/\\\'}"   # and then every ' with \' for full PHP escaping
     echo "<?php
 /**
- * The main configuration FOG uses.
+ * The main configuration WRAITH uses.
  *
  * PHP Version 5
  *
- * Constructs the configuration we need to run FOG.
+ * Constructs the configuration we need to run WRAITH.
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * The main configuration FOG uses.
+ * The main configuration WRAITH uses.
  *
  * @category Config
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class Config
 {
@@ -2202,7 +2202,7 @@ class Config
         }
     }
     /**
-     * Defines the database settings for FOG
+     * Defines the database settings for WRAITH
      *
      * @return void
      */
@@ -2216,7 +2216,7 @@ class Config
         // Per-install secret allowing the schema deploy endpoint to run before
         // any user/database exists. Presented back by the installer; required
         // for any unauthenticated schema operation.
-        define('FOG_SCHEMA_INSTALL_TOKEN', '$installToken');
+        define('WRAITH_SCHEMA_INSTALL_TOKEN', '$installToken');
     }
     /**
      * Defines the service settings
@@ -2235,7 +2235,7 @@ class Config
      * installation to set the database values.
      * If this is an upgrade, they do not change
      * the values within the Database.
-     * Please use FOG Configuration->FOG Settings
+     * Please use WRAITH Configuration->WRAITH Settings
      * to change these values after everything is
      * setup.
      *
@@ -2272,18 +2272,18 @@ class Config
         define('UDPCAST_INTERFACE', \"${interface}\");
         // Must be an even number! recommended between 49152 to 65535
         define('UDPCAST_STARTINGPORT', 63100);
-        define('FOG_MULTICAST_MAX_SESSIONS', 64);
-        define('FOG_JPGRAPH_VERSION', '2.3');
-        define('FOG_REPORT_DIR', './reports/');
-        define('FOG_CAPTUREIGNOREPAGEHIBER', true);
-        define('FOG_THEME', 'default/fog.css');
+        define('WRAITH_MULTICAST_MAX_SESSIONS', 64);
+        define('WRAITH_JPGRAPH_VERSION', '2.3');
+        define('WRAITH_REPORT_DIR', './reports/');
+        define('WRAITH_CAPTUREIGNOREPAGEHIBER', true);
+        define('WRAITH_THEME', 'default/wraith.css');
     }
-}" > "${webdirdest}/lib/fog/config.class.php"
+}" > "${webdirdest}/lib/wraith/config.class.php"
     errorStat $?
     dots "Creating redirection index file"
     if [[ ! -f ${docroot}/index.php ]]; then
         echo "<?php
-header('Location: /fog/index.php');
+header('Location: /wraith/index.php');
 die();
 ?>" > ${docroot}/index.php && chown ${apacheuser}:${apacheuser} ${docroot}/index.php
         errorStat $?
@@ -2325,30 +2325,30 @@ die();
     chmod +rx $apacheerrlog
     chmod +rx $apacheacclog
     chown -R ${apacheuser}:${apacheuser} $webdirdest
-    touch $webdirdest/fog_login_accepted.log
-    touch $webdirdest/fog_login_failed.log
-    chown ${apacheuser}:${apacheuser} $webdirdest/fog_login_*.log
-    chmod 0200 $webdirdest/fog_login_*.log
+    touch $webdirdest/wraith_login_accepted.log
+    touch $webdirdest/wraith_login_failed.log
+    chown ${apacheuser}:${apacheuser} $webdirdest/wraith_login_*.log
+    chmod 0200 $webdirdest/wraith_login_*.log
     errorStat $?
-    [[ -d /var/www/html/ && ! -e /var/www/html/fog/ ]] && ln -s "$webdirdest" /var/www/html/
-    [[ -d /var/www/ && ! -e /var/www/fog ]] && ln -s "$webdirdest" /var/www/
+    [[ -d /var/www/html/ && ! -e /var/www/html/wraith/ ]] && ln -s "$webdirdest" /var/www/html/
+    [[ -d /var/www/ && ! -e /var/www/wraith ]] && ln -s "$webdirdest" /var/www/
     chown -R ${apacheuser}:${apacheuser} "$webdirdest"
     chown -R ${username}:${apacheuser} "$webdirdest/service/ipxe"
 }
 downloadfiles() {
     local copypath=""
-    dots "Downloading kernel, init and fog-client binaries"
-    clientVer="$(awk -F\' /"define\('FOG_CLIENT_VERSION'[,](.*)"/'{print $4}' ../packages/web/lib/fog/system.class.php | tr -d '[[:space:]]')"
-    fosURL="https://github.com/FOGProject/fos/releases/download"
-    fosLatestURL="https://github.com/FOGProject/fos/releases/latest/download"
-    fogclientURL="https://github.com/FOGProject/fog-client/releases/download"
+    dots "Downloading kernel, init and wraith-client binaries"
+    clientVer="$(awk -F\' /"define\('WRAITH_CLIENT_VERSION'[,](.*)"/'{print $4}' ../packages/web/lib/wraith/system.class.php | tr -d '[[:space:]]')"
+    fosURL="https://github.com/WRAITHProject/fos/releases/download"
+    fosLatestURL="https://github.com/WRAITHProject/fos/releases/latest/download"
+    wraithclientURL="https://github.com/WRAITHProject/wraith-client/releases/download"
     [[ ! -d ../tmp/  ]] && mkdir -p ../tmp/ >/dev/null 2>&1
     cwd=$(pwd)
     cd ../tmp/
     if [[ $version =~ ^[0-9]\.[0-9]\.[0-9]+$ ]]; then
-        urls=( "${fosURL}/${version}/init.xz" "${fosURL}/${version}/init_32.xz" "${fosURL}/${version}/bzImage" "${fosURL}/${version}/bzImage32" "${fosURL}/${version}/arm_init.cpio.gz" "${fosURL}/${version}/arm_Image" "${fogclientURL}/${clientVer}/FOGService.msi" "${fogclientURL}/${clientVer}/SmartInstaller.exe" )
+        urls=( "${fosURL}/${version}/init.xz" "${fosURL}/${version}/init_32.xz" "${fosURL}/${version}/bzImage" "${fosURL}/${version}/bzImage32" "${fosURL}/${version}/arm_init.cpio.gz" "${fosURL}/${version}/arm_Image" "${wraithclientURL}/${clientVer}/WRAITHService.msi" "${wraithclientURL}/${clientVer}/SmartInstaller.exe" )
     else
-        urls=( "${fosLatestURL}/init.xz" "${fosLatestURL}/init_32.xz" "${fosLatestURL}/bzImage" "${fosLatestURL}/bzImage32" "${fosLatestURL}/arm_init.cpio.gz" "${fosLatestURL}/arm_Image" "${fogclientURL}/${clientVer}/FOGService.msi" "${fogclientURL}/${clientVer}/SmartInstaller.exe" )
+        urls=( "${fosLatestURL}/init.xz" "${fosLatestURL}/init_32.xz" "${fosLatestURL}/bzImage" "${fosLatestURL}/bzImage32" "${fosLatestURL}/arm_init.cpio.gz" "${fosLatestURL}/arm_Image" "${wraithclientURL}/${clientVer}/WRAITHService.msi" "${wraithclientURL}/${clientVer}/SmartInstaller.exe" )
     fi
     for url in "${urls[@]}"; do
         checksum=1
@@ -2384,7 +2384,7 @@ downloadfiles() {
     cp -vf ${copypath}init_32.xz ${webdirdest}/service/ipxe/ >>$error_log 2>&1 || errorStat $?
     cp -vf ${copypath_arm}arm_Image ${webdirdest}/service/ipxe/ >>$error_log 2>&1 || errorStat $?
     cp -vf ${copypath_arm}arm_init.cpio.gz ${webdirdest}/service/ipxe/ >>$error_log 2>&1 || errorStat $?
-    cp -vf ${copypath}FOGService.msi ${copypath}SmartInstaller.exe ${webdirdest}/client/ >>$error_log 2>&1
+    cp -vf ${copypath}WRAITHService.msi ${copypath}SmartInstaller.exe ${webdirdest}/client/ >>$error_log 2>&1
     errorStat $?
     cd $cwd
 }
@@ -2395,42 +2395,42 @@ downloadfiles() {
 _keaBaseClasses() {
     cat <<'EOFCLS'
         {
-            "name": "FOG-Legacy-BIOS",
+            "name": "WRAITH-Legacy-BIOS",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00000'",
             "boot-file-name": "undionly.kkpxe"
         },
         {
-            "name": "FOG-UEFI-32-2",
+            "name": "WRAITH-UEFI-32-2",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00002'",
             "boot-file-name": "i386-efi/snponly.efi"
         },
         {
-            "name": "FOG-UEFI-32-1",
+            "name": "WRAITH-UEFI-32-1",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00006'",
             "boot-file-name": "i386-efi/snponly.efi"
         },
         {
-            "name": "FOG-UEFI-64-1",
+            "name": "WRAITH-UEFI-64-1",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00007'",
             "boot-file-name": "snponly.efi"
         },
         {
-            "name": "FOG-UEFI-64-2",
+            "name": "WRAITH-UEFI-64-2",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00008'",
             "boot-file-name": "snponly.efi"
         },
         {
-            "name": "FOG-UEFI-64-3",
+            "name": "WRAITH-UEFI-64-3",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00009'",
             "boot-file-name": "snponly.efi"
         },
         {
-            "name": "FOG-UEFI-ARM64",
+            "name": "WRAITH-UEFI-ARM64",
             "test": "substring(option[60].hex,0,20) == 'PXEClient:Arch:00011'",
             "boot-file-name": "arm64-efi/snponly.efi"
         },
         {
-            "name": "FOG-Surface-Pro-4",
+            "name": "WRAITH-Surface-Pro-4",
             "test": "substring(option[60].hex,0,32) == 'PXEClient:Arch:00007:UNDI:003016'",
             "boot-file-name": "snponly.efi"
         }
@@ -2439,7 +2439,7 @@ EOFCLS
 _keaAppleClass() {
     cat <<'EOFAPL'
         {
-            "name": "FOG-Apple-Intel-Netboot",
+            "name": "WRAITH-Apple-Intel-Netboot",
             "test": "substring(option[60].text,0,14) == 'AAPLBSDPC/i386'",
             "boot-file-name": "snponly.efi",
             "option-data": [
@@ -2482,7 +2482,7 @@ EOFKEA
 configureKeaDHCP() {
     local cidr=$(mask2cidr $submask)
     local target="$dhcpconfig"
-    local tmp="${target}.fogtmp"
+    local tmp="${target}.wraithtmp"
     [[ -d $(dirname "$target") ]] || mkdir -p "$(dirname "$target")" >>$error_log 2>&1
     [[ -f $target ]] && mv -fv "$target" "${target}.${timestamp}" >>$error_log 2>&1
     local optdata="                { \"name\": \"subnet-mask\", \"data\": \"$submask\" }"
@@ -2524,12 +2524,12 @@ ${appleclass}"
     return 0
 }
 writeKeaSample() {
-    # For admins who run a dedicated/external Kea DHCP server (FOG is NOT hosting
-    # DHCP): drop a ready-to-copy kea-dhcp4.conf next to the FOG web root so they
+    # For admins who run a dedicated/external Kea DHCP server (WRAITH is NOT hosting
+    # DHCP): drop a ready-to-copy kea-dhcp4.conf next to the WRAITH web root so they
     # have a working starting point instead of hand-writing one. Not activated and
     # no service is touched here -- it is a reference file for their DHCP server.
-    local target="${webdirdest%/}/kea-dhcp4.conf.fog-sample"
-    [[ -z $webdirdest ]] && target="/etc/kea/kea-dhcp4.conf.fog-sample"
+    local target="${webdirdest%/}/kea-dhcp4.conf.wraith-sample"
+    [[ -z $webdirdest ]] && target="/etc/kea/kea-dhcp4.conf.wraith-sample"
     [[ -d $(dirname "$target") ]] || return 0
     local sampleip
     sampleip=$(ip -4 -o addr show $interface | awk -F'([ /])+' '/global/ {print $4}')
@@ -2553,7 +2553,7 @@ $(_keaAppleClass)"
         echo " | written to: $target"
         echo " | Copy it to your DHCP server as /etc/kea/kea-dhcp4.conf and adjust the"
         echo " | subnet/pool/routers/domain-name-servers to match that network."
-        echo " | next-server is already set to this FOG server ($ipaddress)."
+        echo " | next-server is already set to this WRAITH server ($ipaddress)."
     fi
 }
 configureDHCP() {
@@ -2564,7 +2564,7 @@ configureDHCP() {
             *debian*)
                 if [[ $bldhcp -eq 1 ]]; then
                     dots "Setting up and starting DHCP Server (incl. fix for Debian)"
-                    sed -i.fog "s/INTERFACESv4=\"\"/INTERFACESv4=\"$interface\"/g" /etc/default/isc-dhcp-server
+                    sed -i.wraith "s/INTERFACESv4=\"\"/INTERFACESv4=\"$interface\"/g" /etc/default/isc-dhcp-server
                 else
                     dots "Setting up and starting DHCP Server"
                 fi
@@ -2604,7 +2604,7 @@ configureDHCP() {
             fi
             mv -fv "${dhcptouse}" "${dhcptouse}.${timestamp}" >>$error_log 2>&1
             echo "# DHCP Server Configuration file\n#see /usr/share/doc/dhcp*/dhcpd.conf.sample" > $dhcptouse
-            echo "# This file was created by FOG" >> "$dhcptouse"
+            echo "# This file was created by WRAITH" >> "$dhcptouse"
             echo "#Definition of PXE-specific options" >> "$dhcptouse"
             echo "# Code 1: Multicast IP Address of bootfile" >> "$dhcptouse"
             echo "# Code 2: UDP Port that client should monitor for MTFTP Responses" >> "$dhcptouse"
@@ -2687,7 +2687,7 @@ configureDHCP() {
                 dhcpd -t -cf "$dhcptouse" >>$error_log 2>&1 || echo " * Warning: dhcpd -t reported issues with $dhcptouse (see $error_log)" >>$error_log 2>&1
             fi
             fi
-            # When FOG owns DHCP, make sure the other engine is not also bound to
+            # When WRAITH owns DHCP, make sure the other engine is not also bound to
             # port 67 (covers an admin switching engines on an existing box).
             otherdhcp=""
             [[ $dhcpengine == kea ]] && otherdhcp="$iscservice" || otherdhcp="$keaservice"
@@ -2780,9 +2780,9 @@ checkPasswordChars() {
     if [[ -n "$checkpass" ]]; then
         echo "Failed"
         echo ""
-        echo "# The fog system account password includes characters we cannot properly"
+        echo "# The wraith system account password includes characters we cannot properly"
         echo "# handle. Please remove the following character(s) in line password= of"
-        echo "# your .fogsettings file before re-running the installer: $checkpass"
+        echo "# your .wraithsettings file before re-running the installer: $checkpass"
         echo ""
         exit 1
     fi
@@ -2797,21 +2797,21 @@ diffconfig() {
         backupconfig="${backupconfig} ${conffile}"
     fi
 }
-setupFogReporting() {
+setupWraithReporting() {
     [[ $sendreports == "N" ]] && return
-    local rreports="/opt/fog/reporting/report.sh"
-    dots "Setting up FOG External Reporting"
+    local rreports="/opt/wraith/reporting/report.sh"
+    dots "Setting up WRAITH External Reporting"
     # Make sure required directories exist
-    mkdir -p /opt/fog/reporting >>$error_log 2>&1
-    mkdir -p /var/log/fog >>$error_log 2>&1
+    mkdir -p /opt/wraith/reporting >>$error_log 2>&1
+    mkdir -p /var/log/wraith >>$error_log 2>&1
     # If the report settings file does not exist, create it.
-    if [[ ! -f /opt/fog/reporting/settings ]]; then
-        /usr/bin/awk -f $workingdir/../utils/reporting/reportingcronrandom.awk >> /opt/fog/reporting/settings
+    if [[ ! -f /opt/wraith/reporting/settings ]]; then
+        /usr/bin/awk -f $workingdir/../utils/reporting/reportingcronrandom.awk >> /opt/wraith/reporting/settings
     fi
     # Pull in our reporting settings
-    source /opt/fog/reporting/settings >>$error_log 2>&1
+    source /opt/wraith/reporting/settings >>$error_log 2>&1
 
-    crondfile="/etc/cron.d/fog_reporting"
+    crondfile="/etc/cron.d/wraith_reporting"
     mv -fv "${crondfile}" "${crondfile}.${timestamp}" >>$error_log 2>&1
     # Build the cron.d file
     cat > ${crondfile} <<END_OF_REPORTING_FILE

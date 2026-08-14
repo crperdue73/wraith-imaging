@@ -5,21 +5,21 @@
  * PHP version 7
  *
  * @category SiteUserRestriction
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Site plugin
  *
  * @category SiteUserRestriction
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SiteUserRestriction extends FOGController
+class SiteUserRestriction extends WRAITHController
 {
     /**
      * The table name.

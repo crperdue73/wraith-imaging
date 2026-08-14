@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Dbrunning
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Checks the database is running
  *
  * @category Dbrunning
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 session_write_close();
@@ -26,8 +26,8 @@ set_time_limit(0);
 $link = DatabaseManager::getLink();
 $redirect = false;
 if ($link) {
-    $redirect = FOGCore::getClass('Schema', 1)
-        ->get('version') == FOG_SCHEMA;
+    $redirect = WRAITHCore::getClass('Schema', 1)
+        ->get('version') == WRAITH_SCHEMA;
 }
 $ret = array(
     'running' => (bool)$link,

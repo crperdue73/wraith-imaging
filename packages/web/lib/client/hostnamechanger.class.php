@@ -6,22 +6,22 @@
  * PHP version 5
  *
  * @category HostnameChanger
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Sends the client with the hostname and domain
  * information needed to perform the client actions.
  *
  * @category HostnameChanger
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class HostnameChanger extends FOGClient implements FOGClientSend
+class HostnameChanger extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname

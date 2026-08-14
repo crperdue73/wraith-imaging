@@ -5,21 +5,21 @@
  * PHP Version 5
  *
  * @category SlackManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Slack page edit/add.
  *
  * @category SlackManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SlackManagementPage extends FOGPage
+class SlackManagementPage extends WRAITHPage
 {
     /**
      * Node to work with.
@@ -40,7 +40,7 @@ class SlackManagementPage extends FOGPage
         parent::__construct($this->name);
         $this->menu = array(
             'list' => sprintf(
-                self::$foglang['ListAll'],
+                self::$wraithlang['ListAll'],
                 _('Slack Accounts')
             ),
             'add' => _('Link Slack Account'),
@@ -264,8 +264,8 @@ class SlackManagementPage extends FOGPage
                 'text' => sprintf(
                     '%s %s: %s',
                     $user,
-                    _('Account linked to FOG GUI at'),
-                    self::getSetting('FOG_WEB_HOST')
+                    _('Account linked to WRAITH GUI at'),
+                    self::getSetting('WRAITH_WEB_HOST')
                 )
             );
             $Slack->call(

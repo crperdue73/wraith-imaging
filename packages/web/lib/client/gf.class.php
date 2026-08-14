@@ -1,32 +1,32 @@
 <?php
 /**
- * Handles GreenFog, now only for legacy client
+ * Handles GreenWraith, now only for legacy client
  *
  * PHP version 5
  *
- * @category Greenfog
- * @package  FOGProject
+ * @category Greenwraith
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
- * Handles GreenFog, now only for legacy client
+ * Handles GreenWraith, now only for legacy client
  *
- * @category Greenfog
- * @package  FOGProject
+ * @category Greenwraith
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class GF extends FOGClient implements FOGClientSend
+class GF extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname
      *
      * @var string
      */
-    public $shortName = 'greenfog';
+    public $shortName = 'greenwraith';
     /**
      * Creates the send string and stores to send variable
      *
@@ -34,13 +34,13 @@ class GF extends FOGClient implements FOGClientSend
      */
     public function send()
     {
-        $gfcount = self::getClass('GreenFogManager')
+        $gfcount = self::getClass('GreenWraithManager')
             ->count();
         if ($gfcount < 1) {
             throw new Exception('#!na');
         }
         $Send = array();
-        foreach ((array)self::getClass('GreenFogManager')
+        foreach ((array)self::getClass('GreenWraithManager')
             ->find() as $index => &$gf
         ) {
             $actionTemp = $gf->get('action');

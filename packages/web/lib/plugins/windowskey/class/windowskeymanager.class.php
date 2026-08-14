@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category WindowsKeyManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Windows Key manager mass management class
  *
  * @category WindowsKeyManager
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class WindowsKeyManager extends FOGManagerController
+class WindowsKeyManager extends WRAITHManagerController
 {
     /**
      * The base table name.

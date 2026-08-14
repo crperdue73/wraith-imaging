@@ -144,7 +144,7 @@ class SlackHandler extends Slack
      */
     private function _curlRequest($url, $method, $data = null, $sendAsJSON = false, $auth = true)
     {
-        $data = self::$FOGURLRequests->process($url, $method, $data, $sendAsJSON, ($auth ? $this->_apiToken : false), $this->_curlCallback);
+        $data = self::$WRAITHURLRequests->process($url, $method, $data, $sendAsJSON, ($auth ? $this->_apiToken : false), $this->_curlCallback);
         return json_decode($data[0]);
     }
 }

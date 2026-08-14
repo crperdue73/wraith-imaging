@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category Antivirus
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Antivirus handler
  *
  * @category Antivirus
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
@@ -26,11 +26,11 @@ try {
     }
     $string = explode(':', base64_decode($_REQUEST['string']));
     $vInfo = explode(' ', trim($string[1]));
-    $Virus = FOGCore::getClass('Virus')
+    $Virus = WRAITHCore::getClass('Virus')
         ->set('name', $vInfo[0])
         ->set('mac', strtolower($_REQUEST['mac']))
         ->set('file', $string[0])
-        ->set('date', FOGCore::formatTime('now', 'Y-m-d H:i:s'))
+        ->set('date', WRAITHCore::formatTime('now', 'Y-m-d H:i:s'))
         ->set('mode', $_REQUEST['mode']);
     if (!$Virus->save()) {
         throw new Exception(_('Failed'));

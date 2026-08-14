@@ -5,21 +5,21 @@
  * PHP Version 5
  *
  * @category TasktypeeditManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Task type edit page.
  *
  * @category TasktypeeditManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class TasktypeeditManagementPage extends FOGPage
+class TasktypeeditManagementPage extends WRAITHPage
 {
     /**
      * The node to work from.
@@ -37,17 +37,17 @@ class TasktypeeditManagementPage extends FOGPage
     public function __construct($name = '')
     {
         $this->name = _('Task Type Management');
-        self::$foglang['ExportTasktypeedit'] = _('Export Task Types');
-        self::$foglang['ImportTasktypeedit'] = _('Import Task Types');
+        self::$wraithlang['ExportTasktypeedit'] = _('Export Task Types');
+        self::$wraithlang['ImportTasktypeedit'] = _('Import Task Types');
         parent::__construct($this->name);
-        $this->menu['list'] = sprintf(self::$foglang['ListAll'], _('Task Types'));
-        $this->menu['add'] = sprintf(self::$foglang['CreateNew'], _('Task Type'));
+        $this->menu['list'] = sprintf(self::$wraithlang['ListAll'], _('Task Types'));
+        $this->menu['add'] = sprintf(self::$wraithlang['CreateNew'], _('Task Type'));
         global $id;
         global $sub;
         if ($id) {
             $this->subMenu = array(
-                "$this->linkformat#tasktype-gen" => self::$foglang['General'],
-                $this->delformat => self::$foglang['Delete'],
+                "$this->linkformat#tasktype-gen" => self::$wraithlang['General'],
+                $this->delformat => self::$wraithlang['Delete'],
             );
             $this->notes = array(
                 _('Name') => $this->obj->get('name'),

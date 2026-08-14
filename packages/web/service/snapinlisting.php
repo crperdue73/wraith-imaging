@@ -5,31 +5,31 @@
  * PHP version 5
  *
  * @category Snapinlisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Returns a listing of all snapins in the system.
  *
  * @category Snapinlisting
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 require '../commons/base.inc.php';
 try {
-    $snapinCount = FOGCore::getClass('SnapinManager')
+    $snapinCount = WRAITHCore::getClass('SnapinManager')
         ->count();
     if ($snapinCount < 1) {
         throw new Exception(
             _('There are no snapins on this server')
         );
     }
-    $snapinids = FOGCore::getSubObjectIDs('Snapin');
-    $snapinnames = FOGCore::getSubObjectIDs(
+    $snapinids = WRAITHCore::getSubObjectIDs('Snapin');
+    $snapinnames = WRAITHCore::getSubObjectIDs(
         'Snapin',
         array('id' => $snapinids),
         'name'

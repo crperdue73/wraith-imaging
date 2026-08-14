@@ -5,19 +5,19 @@
  * PHP version 5
  *
  * @category AddLocationAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Injects location stuff into the api system.
  *
  * @category AddLocationAPI
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 class AddLocationAPI extends Hook
 {
@@ -206,7 +206,7 @@ class AddLocationAPI extends Hook
         }
         switch ($arguments['classname']) {
             case 'location':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'storagenode' => $arguments['class']
@@ -219,7 +219,7 @@ class AddLocationAPI extends Hook
                 );
                 break;
             case 'locationassociation':
-                $arguments['data'] = FOGCore::fastmerge(
+                $arguments['data'] = WRAITHCore::fastmerge(
                     $arguments['class']->get(),
                     array(
                         'host' => Route::getter(

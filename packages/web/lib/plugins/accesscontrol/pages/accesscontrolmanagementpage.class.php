@@ -5,21 +5,21 @@
  * PHP version 7
  *
  * @category AccessControlManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Access Control plugin
  *
  * @category AccessControlManagementPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class AccessControlManagementPage extends FOGPage
+class AccessControlManagementPage extends WRAITHPage
 {
     public $node = 'accesscontrol';
     /**
@@ -49,8 +49,8 @@ class AccessControlManagementPage extends FOGPage
         global $node;
         global $sub;
         global $id;
-        self::$foglang['ExportAccesscontrol'] = _('Export Accesscontrols');
-        self::$foglang['ImportAccesscontrol'] = _('Import Accesscontrols');
+        self::$wraithlang['ExportAccesscontrol'] = _('Export Accesscontrols');
+        self::$wraithlang['ImportAccesscontrol'] = _('Import Accesscontrols');
         /**
          * Customize our settings as needed.
          */
@@ -60,15 +60,15 @@ class AccessControlManagementPage extends FOGPage
                 parent::__construct($this->name);
                 if ($id) {
                     $this->subMenu = array(
-                        "$this->linkformat#role-general" => self::$foglang['General'],
-                        $this->membership => self::$foglang['Members'],
+                        "$this->linkformat#role-general" => self::$wraithlang['General'],
+                        $this->membership => self::$wraithlang['Members'],
                         sprintf(
                             '?node=%s&sub=%s&id=%s',
                             $this->node,
                             'assocRule',
                             $id
                         ) => _('Rule Association'),
-                            "$this->delformat" => self::$foglang['Delete'],
+                            "$this->delformat" => self::$wraithlang['Delete'],
                         );
                     $this->notes = array(
                         _('Role Name') => $this->obj->get('name'),
@@ -130,15 +130,15 @@ class AccessControlManagementPage extends FOGPage
                 parent::__construct($this->name);
                 if ($id) {
                     $this->subMenu = array(
-                        "$this->linkformat#role-general" => self::$foglang['General'],
-                        $this->membership => self::$foglang['Members'],
+                        "$this->linkformat#role-general" => self::$wraithlang['General'],
+                        $this->membership => self::$wraithlang['Members'],
                         sprintf(
                             '?node=%s&sub=%s&id=%s',
                             $this->node,
                             'assocRule',
                             $id
                         ) => _('Rule Association'),
-                            "$this->delformat" => self::$foglang['Delete'],
+                            "$this->delformat" => self::$wraithlang['Delete'],
                         );
                     $this->notes = array(
                         _('Role Name') => $this->obj->get('name'),
@@ -163,13 +163,13 @@ class AccessControlManagementPage extends FOGPage
                         'editRule'
                     );
                     $this->subMenu = array(
-                        "$this->linkformat" => self::$foglang['General'],
+                        "$this->linkformat" => self::$wraithlang['General'],
                         sprintf(
                             '?node=%s&sub=%s&id=%s',
                             $this->node,
                             'deleteRule',
                             $id
-                        ) => self::$foglang['Delete'],
+                        ) => self::$wraithlang['Delete'],
                     );
                     $this->notes = array(
                         _('Rule type') => $this->obj->get('type'),
@@ -829,9 +829,9 @@ class AccessControlManagementPage extends FOGPage
      */
     public function deletemultiRuleAjax()
     {
-        if (self::getSetting('FOG_REAUTH_ON_DELETE')) {
-            $user = filter_input(INPUT_POST, 'fogguiuser');
-            $pass = filter_input(INPUT_POST, 'fogguipass');
+        if (self::getSetting('WRAITH_REAUTH_ON_DELETE')) {
+            $user = filter_input(INPUT_POST, 'wraithguiuser');
+            $pass = filter_input(INPUT_POST, 'wraithguipass');
             $validate = self::getClass('User')
                 ->passwordValidate(
                     $user,
@@ -841,7 +841,7 @@ class AccessControlManagementPage extends FOGPage
             if (!$validate) {
                 echo json_encode(
                     array(
-                        'error' => self::$foglang['InvalidLogin'],
+                        'error' => self::$wraithlang['InvalidLogin'],
                         'title' => _('Unable to Authenticate')
                     )
                 );
@@ -1254,7 +1254,7 @@ class AccessControlManagementPage extends FOGPage
     {
         $this->title = sprintf(
             '%s: %s',
-            self::$foglang['Remove'],
+            self::$wraithlang['Remove'],
             $this->obj->get('name')
         );
         unset($this->headerData);
@@ -1328,17 +1328,17 @@ class AccessControlManagementPage extends FOGPage
      */
     public function deleteRulePost()
     {
-        if (self::getSetting('FOG_REAUTH_ON_DELETE')) {
+        if (self::getSetting('WRAITH_REAUTH_ON_DELETE')) {
             $validate = self::getClass('User')
                 ->passwordValidate(
-                    $_POST['fogguiuser'],
-                    $_POST['fogguipass'],
+                    $_POST['wraithguiuser'],
+                    $_POST['wraithguipass'],
                     true
                 );
             if (!$validate) {
                 echo json_encode(
                     array(
-                        'error' => self::$foglang['InvalidLogin']
+                        'error' => self::$wraithlang['InvalidLogin']
                     )
                 );
                 exit;

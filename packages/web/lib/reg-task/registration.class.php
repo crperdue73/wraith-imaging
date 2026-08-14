@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category Registration
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Performs host registration
  *
  * @category Registration
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class Registration extends FOGBase
+class Registration extends WRAITHBase
 {
     /**
      * The MACs to register with.
@@ -61,7 +61,7 @@ class Registration extends FOGBase
     public function __construct($check = false)
     {
         parent::__construct();
-        if (!self::getSetting('FOG_REGISTRATION_ENABLED')) {
+        if (!self::getSetting('WRAITH_REGISTRATION_ENABLED')) {
             return;
         }
         try {
@@ -86,12 +86,12 @@ class Registration extends FOGBase
             );
             $this->description = sprintf(
                 '%s %s',
-                _('Created by FOG Reg on'),
+                _('Created by WRAITH Reg on'),
                 self::formatTime('now', 'F j, Y, g:i a')
             );
             if (isset($_REQUEST['advanced'])) {
                 $this->_fullReg();
-            } elseif (self::getSetting('FOG_QUICKREG_AUTOPOP')) {
+            } elseif (self::getSetting('WRAITH_QUICKREG_AUTOPOP')) {
                 $this->_quickRegAuto();
             } else {
                 $this->_quickReg();
@@ -165,12 +165,12 @@ class Registration extends FOGBase
             $doimage = isset($_REQUEST['doimage']) ? trim($_REQUEST['doimage']) : 0;
             if (isset($_REQUEST['doad']) && $_REQUEST['doad']) {
                 $serviceNames = array(
-                    'FOG_AD_DEFAULT_DOMAINNAME',
-                    'FOG_AD_DEFAULT_OU',
-                    'FOG_AD_DEFAULT_PASSWORD',
-                    'FOG_AD_DEFAULT_PASSWORD_LEGACY',
-                    'FOG_AD_DEFAULT_USER',
-                    'FOG_ENFORCE_HOST_CHANGES'
+                    'WRAITH_AD_DEFAULT_DOMAINNAME',
+                    'WRAITH_AD_DEFAULT_OU',
+                    'WRAITH_AD_DEFAULT_PASSWORD',
+                    'WRAITH_AD_DEFAULT_PASSWORD_LEGACY',
+                    'WRAITH_AD_DEFAULT_USER',
+                    'WRAITH_ENFORCE_HOST_CHANGES'
                 );
                 list(
                     $ADDomain,
@@ -320,11 +320,11 @@ class Registration extends FOGBase
                 return;
             }
             $serviceNames = array(
-                'FOG_QUICKREG_GROUP_ASSOC',
-                'FOG_QUICKREG_IMG_ID',
-                'FOG_QUICKREG_IMG_WHEN_REG',
-                'FOG_QUICKREG_SYS_NAME',
-                'FOG_QUICKREG_SYS_NUMBER'
+                'WRAITH_QUICKREG_GROUP_ASSOC',
+                'WRAITH_QUICKREG_IMG_ID',
+                'WRAITH_QUICKREG_IMG_WHEN_REG',
+                'WRAITH_QUICKREG_SYS_NAME',
+                'WRAITH_QUICKREG_SYS_NUMBER'
             );
             list(
                 $groupsToJoin,
@@ -398,7 +398,7 @@ class Registration extends FOGBase
             if (!self::getClass('Host')->isHostnameSafe($hostname)) {
                 $hostname = $this->macsimple;
             }
-            self::setSetting('FOG_QUICKREG_SYS_NUMBER', ++$autoRegSysNumber);
+            self::setSetting('WRAITH_QUICKREG_SYS_NUMBER', ++$autoRegSysNumber);
             self::$Host = self::getClass('Host')
                 ->set('name', $hostname)
                 ->set('description', $this->description)
@@ -407,7 +407,7 @@ class Registration extends FOGBase
                 ->addGroup($groupsToJoin)
                 ->addPriMAC($this->PriMAC)
                 ->addAddMAC($this->MACs);
-            if (self::getSetting('FOG_QUICKREG_PROD_KEY_BIOS') > 0) {
+            if (self::getSetting('WRAITH_QUICKREG_PROD_KEY_BIOS') > 0) {
                 $productKey = trim(base64_decode(filter_var($_REQUEST['productKey'] ?? '', FILTER_UNSAFE_RAW)));
                 if ($productKey !== '' && !preg_match('/^[A-Za-z0-9\\-]{1,29}$/', $productKey)) {
                     throw new Exception(_('Invalid product key supplied'));
@@ -469,7 +469,7 @@ class Registration extends FOGBase
                 ->set('modules', $this->modulesToJoin)
                 ->addPriMAC($this->PriMAC)
                 ->addAddMAC($this->MACs);
-            if (self::getSetting('FOG_QUICKREG_PROD_KEY_BIOS') > 0) {
+            if (self::getSetting('WRAITH_QUICKREG_PROD_KEY_BIOS') > 0) {
                 $productKey = trim(base64_decode(filter_var($_REQUEST['productKey'] ?? '', FILTER_UNSAFE_RAW)));
                 if ($productKey !== '' && !preg_match('/^[A-Za-z0-9\\-]{1,29}$/', $productKey)) {
                     throw new Exception(_('Invalid product key supplied'));

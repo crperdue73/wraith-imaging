@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category SnapinClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Handles snapins for the host
  *
  * @category SnapinClient
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class SnapinClient extends FOGClient implements FOGClientSend
+class SnapinClient extends WRAITHClient implements WRAITHClientSend
 {
     /**
      * Module associated shortname
@@ -572,11 +572,11 @@ class SnapinClient extends FOGClient implements FOGClientSend
         $host = $StorageNode->get('ip');
         $user = $StorageNode->get('user');
         $pass = $StorageNode->get('pass');
-        self::$FOGFTP
+        self::$WRAITHFTP
             ->set('host', $host)
             ->set('username', $user)
             ->set('password', $pass);
-        if (!self::$FOGFTP->connect()) {
+        if (!self::$WRAITHFTP->connect()) {
             throw new Exception(
                 sprintf(
                     '%s: %s',
@@ -585,7 +585,7 @@ class SnapinClient extends FOGClient implements FOGClientSend
                 )
             );
         }
-        self::$FOGFTP->close();
+        self::$WRAITHFTP->close();
         $SnapinFile = sprintf(
             'ftp://%s:%s@%s%s',
             $user,

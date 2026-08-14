@@ -5,21 +5,21 @@
  * PHP version 5
  *
  * @category DashboardPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
 /**
  * Presents the home/dashboard page.
  *
  * @category DashboardPage
- * @package  FOGProject
+ * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://fogproject.org
+ * @link     https://wraithproject.org
  */
-class DashboardPage extends FOGPage
+class DashboardPage extends WRAITHPage
 {
     /**
      * The tftp variable.
@@ -72,7 +72,7 @@ class DashboardPage extends FOGPage
      */
     public function __construct($name = '')
     {
-        $this->name = self::$foglang['Dashboard'];
+        $this->name = self::$wraithlang['Dashboard'];
         parent::__construct($this->name);
         $this->menu = array();
         global $sub;
@@ -123,7 +123,7 @@ class DashboardPage extends FOGPage
             $url = self::$httpproto.'://' . $url;
             unset($ip);
             self::$_nodeOpts[] = sprintf(
-                '<option value="%s" class="fogversion" urlcall="%s">%s%s ()</option>',
+                '<option value="%s" class="wraithversion" urlcall="%s">%s%s ()</option>',
                 Initiator::e($StorageNode->id),
                 sprintf(
                     '%sservice/getversion.php',
@@ -165,8 +165,8 @@ class DashboardPage extends FOGPage
             'Service',
             array(
                 'name' => array(
-                    'FOG_BANDWIDTH_TIME',
-                    'FOG_TFTP_HOST'
+                    'WRAITH_BANDWIDTH_TIME',
+                    'WRAITH_TFTP_HOST'
                 )
             ),
             'value'
@@ -213,9 +213,9 @@ class DashboardPage extends FOGPage
         if (!empty($setMesg)) {
             self::setMessage($setMesg);
         }
-        $SystemUptime = self::$FOGCore->systemUptime();
+        $SystemUptime = self::$WRAITHCore->systemUptime();
         $fields = array(
-            _('Username') => self::$FOGUser->get('name'),
+            _('Username') => self::$WRAITHUser->get('name'),
             _('Web Server') => filter_input(
                 INPUT_SERVER,
                 'SERVER_ADDR'
@@ -279,7 +279,7 @@ class DashboardPage extends FOGPage
         echo '</p>';
         echo '</div>';
         echo '<div class="panel-body">';
-        echo '<div class="graph pie-graph fogdashbox" id="graph-activity"></div>';
+        echo '<div class="graph pie-graph wraithdashbox" id="graph-activity"></div>';
         echo '<div class="graph-selectors" id="graph-activity-selector">';
         printf(
             '<select name="groupsel">%s</select>',
@@ -305,7 +305,7 @@ class DashboardPage extends FOGPage
         echo '</div>';
         echo '<div class="panel-body">';
         echo '<a href="?node=hwinfo">';
-        echo '<div class="graph pie-graph fogdashbox" id="graph-diskusage"></div>';
+        echo '<div class="graph pie-graph wraithdashbox" id="graph-diskusage"></div>';
         echo '</a>';
         echo '<div class="graph-selectors" id="diskusage-selector">';
         printf(
@@ -329,8 +329,8 @@ class DashboardPage extends FOGPage
         echo '</div>';
         echo '</div>';
         echo '<div class="panel-body">';
-        echo '<div id="graph-30day" class="graph fogdashbox"></div>';
-        echo '<div class="fog-variable" id="Graph30dayData"></div>';
+        echo '<div id="graph-30day" class="graph wraithdashbox"></div>';
+        echo '<div class="wraith-variable" id="Graph30dayData"></div>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
@@ -351,26 +351,26 @@ class DashboardPage extends FOGPage
         echo '<div class="panel panel-info">';
         echo '<div class="panel-heading">';
         echo '<h4 class="title">';
-        echo self::$foglang['Bandwidth'];
+        echo self::$wraithlang['Bandwidth'];
         echo '</h4>';
         echo '<div id="graph-bandwidth-filters-type">';
         echo '<div class="col-xs-2">';
         echo '<p class="category" id="graph-bandwidth-title">';
-        echo self::$foglang['Bandwidth'];
+        echo self::$wraithlang['Bandwidth'];
         echo ' - ';
         echo '<span>';
-        echo self::$foglang['Transmit'];
+        echo self::$wraithlang['Transmit'];
         echo '</span>';
         echo '</p>';
         echo '</div>';
         echo '<div class="col-xs-2">';
         echo '<a href="#" id="graph-bandwidth-filters-transmit" '
             . 'class="type-filters graph-filters active">';
-        echo self::$foglang['Transmit'];
+        echo self::$wraithlang['Transmit'];
         echo '</a>';
         echo '<a href="#" id="graph-bandwidth-filters-receive" class='
             . '"type-filters graph-filters">';
-        echo self::$foglang['Receive'];
+        echo self::$wraithlang['Receive'];
         echo '</a>';
         echo '</div>';
         echo '</div>';
@@ -411,7 +411,7 @@ class DashboardPage extends FOGPage
         echo '</div>';
         echo '</div>';
         echo '<div class="panel-body">';
-        echo '<div id="graph-bandwidth" class="graph fogdashbox"></div>';
+        echo '<div id="graph-bandwidth" class="graph wraithdashbox"></div>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
@@ -464,7 +464,7 @@ class DashboardPage extends FOGPage
     public function diskusage()
     {
         $url = sprintf(
-            '%s://%s/fog/status/freespace.php?path=%s',
+            '%s://%s/wraith/status/freespace.php?path=%s',
             self::$httpproto,
             $this->obj->get('ip'),
             base64_encode($this->obj->get('path'))
@@ -484,7 +484,7 @@ class DashboardPage extends FOGPage
             );
             exit;
         }
-        $data = self::$FOGURLRequests
+        $data = self::$WRAITHURLRequests
             ->process($url);
         $data = json_decode(
             array_shift($data)
@@ -578,7 +578,7 @@ class DashboardPage extends FOGPage
         $urls = array_values(
             array_filter($urls)
         );
-        $datas = self::$FOGURLRequests->process($urls);
+        $datas = self::$WRAITHURLRequests->process($urls);
         $dataSet = [];
         foreach ((array)$datas as $i => &$data) {
             $d = json_decode($data);
@@ -620,7 +620,7 @@ class DashboardPage extends FOGPage
             $testurls[] = parse_url($url, PHP_URL_HOST);
             unset($url);
         }
-        $tests = self::$FOGURLRequests->isAvailable($testurls, 1);
+        $tests = self::$WRAITHURLRequests->isAvailable($testurls, 1);
         unset($testurls);
         foreach ($tests as $index => &$test) {
             if (!$test) {
