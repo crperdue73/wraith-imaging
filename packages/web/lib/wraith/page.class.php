@@ -164,6 +164,10 @@ class Page extends WRAITHBase
                     self::$wraithlang['Storage'],
                     'fa fa-archive'
                 ),
+                'isomanager' => array(
+                    _('ISO Manager'),
+                    'fa fa-cd'
+                ),
                 'snapin' => array(
                     self::$wraithlang['Snapin'],
                     'fa fa-files-o'

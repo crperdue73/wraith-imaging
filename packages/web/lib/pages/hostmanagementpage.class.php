@@ -518,6 +518,45 @@ class HostManagementPage extends WRAITHPage
             . $this->exitEfi
             . '</div>',
         );
+        // WRAITH per-host default boot menu selector.
+        $bootMenuVal = (
+            $this->obj instanceof Host && $this->obj->isValid()
+            ? $this->obj->get('bootMenu')
+            : (int)filter_input(INPUT_POST, 'bootMenu')
+        );
+        $bootMenuSelect = '<select name="bootMenu" id="bootMenu" '
+            . 'class="form-control">'
+            . '<option value="0">'
+            . _('Use Global Default')
+            . '</option>';
+        foreach ((array)self::getSubObjectIDs('PXEMenuOptions', '', 'id') as $menuID) {
+            $MenuItem = new PXEMenuOptions($menuID);
+            if (!$MenuItem->isValid()) {
+                continue;
+            }
+            $sel = (
+                (int)$bootMenuVal === (int)$menuID
+                ? ' selected'
+                : ''
+            );
+            $bootMenuSelect .= '<option value="'
+                . (int)$menuID
+                . '"'
+                . $sel
+                . '>'
+                . Initiator::e($MenuItem->get('name'))
+                . '</option>';
+            unset($MenuItem);
+        }
+        $bootMenuSelect .= '</select>';
+        $fields['<label for="bootMenu">'
+            . _('Default Boot Menu')
+            . '</label>'] = '<div class="input-group">'
+            . $bootMenuSelect
+            . '<span class="input-group-addon">'
+            . '<i class="fa fa-bars"></i>'
+            . '</span>'
+            . '</div>';
         self::$HookManager
             ->processEvent(
                 'HOST_FIELDS',
@@ -682,6 +721,7 @@ class HostManagementPage extends WRAITHPage
                 ->set('biosexit', $bootTypeExit)
                 ->set('efiexit', $efiBootTypeExit)
                 ->set('productKey', $productKey)
+                ->set('bootMenu', (int)filter_input(INPUT_POST, 'bootMenu'))
                 ->set('modules', $ModuleIDs)
                 ->addPriMAC($MAC)
                 ->setAD(
@@ -1400,7 +1440,8 @@ class HostManagementPage extends WRAITHPage
             ->set('init', $init)
             ->set('biosexit', $bte)
             ->set('efiexit', $ebte)
-            ->set('productKey', $productKey);
+            ->set('productKey', $productKey)
+            ->set('bootMenu', (int)filter_input(INPUT_POST, 'bootMenu'));
         $primac = $this->obj->get('mac')->__toString();
         $setmac = $mac->__toString();
         if ($primac != $setmac) {

@@ -2357,6 +2357,12 @@ downloadfiles() {
         hashfile="${filename}.sha256"
         baseurl=$(dirname -- "$url")
         hashurl="${baseurl}/${hashfile}"
+        # Skip if the file already exists locally (pre-seeded / previously downloaded).
+        # This avoids needing the upstream download URLs at install time.
+        if [[ -s $filename ]]; then
+            echo " * Already present: $filename"
+            continue
+        fi
         # make sure we download the most recent hash file to start with
         if [[ -f $hashfile ]]; then
             rm -f $hashfile

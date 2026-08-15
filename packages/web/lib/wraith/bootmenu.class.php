@@ -465,6 +465,15 @@ class BootMenu extends WRAITHBase
                 )
             )
         );
+        // Per-host default boot override: if this host has a bootMenu
+        // configured (hostBootMenu), prefer it over the global default.
+        if (self::$Host->isValid() && self::$Host->get('bootMenu')) {
+            $hostMenu = new PXEMenuOptions(self::$Host->get('bootMenu'));
+            if ($hostMenu->isValid()) {
+                $PXEMenuID = self::$Host->get('bootMenu');
+            }
+            unset($hostMenu);
+        }
         $defaultMenu = new PXEMenuOptions($PXEMenuID);
         $menuname = (
             $defaultMenu->isValid() ?

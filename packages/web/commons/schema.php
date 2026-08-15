@@ -3785,3 +3785,9 @@ $this->schema[] = array(
     // host:port targets (e.g. CUPS/IPP queues). Widen to VARCHAR(255).
     "ALTER TABLE `printers` MODIFY COLUMN `pIP` VARCHAR(255) NOT NULL"
 );
+// 275
+$this->schema[] = array(
+    // WRAITH per-host default boot menu (PXE menu override).
+    // 0 = use global default; otherwise references pxeMenu.pxeID.
+    "ALTER TABLE `hosts` ADD COLUMN `hostBootMenu` MEDIUMINT(9) NOT NULL DEFAULT 0"
+);

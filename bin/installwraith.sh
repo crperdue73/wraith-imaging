@@ -315,7 +315,7 @@ echo "Done"
 #clearScreen
 if [[ -z $* || $* != +(-h|-?|--help|--uninstall) ]]; then
     echo > "$workingdir/error_logs/wraithinstall.log"
-    exec &> >(tee -a "$workingdir/error_logs/wraithinstall.log")
+    true  # logging redirect disabled: bash 5.2 read-spin workaround
 fi
 displayBanner
 echo -e "   Version: $version Installer/Updater\n"

@@ -62,6 +62,7 @@ class Host extends WRAITHController
         'biosexit' => 'hostExitBios',
         'efiexit' => 'hostExitEfi',
         'enforce' => 'hostEnforce',
+        'bootMenu' => 'hostBootMenu',
         'token' => 'hostInfoKey',
         'tokenlock' => 'hostInfoLock'
     );

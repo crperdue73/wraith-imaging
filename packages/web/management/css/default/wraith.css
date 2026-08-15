@@ -50,16 +50,16 @@ body {
 }
 #login-form-info b {
     float: right;
-    color: #00567A;
+    color: #16181D;
 }
 .graph-filters {
     margin-left: 10px;
-    color: #00567a;
+    color: #16181d;
     font-weight: bold;
 }
 .graph-filters.active,
 .graph-filters:hover {
-    color: #0799ce;
+    color: #7c5ce0;
 }
 table td {
     padding-right: 10px;
