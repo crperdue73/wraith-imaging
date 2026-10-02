@@ -15,15 +15,15 @@ Versions below track the upstream FOG Project baseline. See [NOTICE](NOTICE).
 
 ### WRAITH 1.5.10.48
 
-https://github.com/WRAITHProject/wraithproject/releases/tag/1.5.10.48
+https://github.com/FOGProject/fogproject/releases/tag/1.5.10.48
 
 ### WRAITH 1.5.10.41
 
-https://github.com/WRAITHProject/wraithproject/releases/tag/1.5.10.41
+https://github.com/FOGProject/fogproject/releases/tag/1.5.10.41
 
 ## WRAITH 1.5.10 overview
 
-WRAITH 1.5.10 officially released: https://news.wraithproject.org/wraith-1-5-10-officially-released/
+WRAITH 1.5.10 officially released: https://news.fogproject.org/fog-1-5-10-officially-released/
 
 Below is a summary of the many fixes and improvements introduced over the last 2.5 years since the last official release.
 We have squashed bugs, further hardened the security of the system, and introduced new features, improvements, and support for new operating systems.
@@ -46,7 +46,7 @@ This version was re-released (re-tagged) not long after the initial release to p
 
 ## WRAITH Web UI and Services
 
-To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/WRAITHProject/wraithproject/commits/dev-branch)
+To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/FOGProject/fogproject/commits/dev-branch)
 
 ### Security Fixes
 
@@ -62,7 +62,7 @@ To view the full list of commits with the code changes introducing these fixes a
 * Check download URL and destination filename to prevent from malicious use, thanks @sml
 * Added web login logging
 * Add changes to firewall and SELinux checks
-* Added a defined [security policy](https://github.com/WRAITHProject/wraithproject/blob/8ce090ba82ce22208daa0a20bc5018364e20949a/SECURITY.md)
+* Added a defined [security policy](https://github.com/FOGProject/fogproject/blob/8ce090ba82ce22208daa0a20bc5018364e20949a/SECURITY.md)
 
 ### Improvements
 
@@ -226,9 +226,9 @@ We have upgraded the versions of its main dependencies, added many improvements 
 
 This release mainly focuses on bug fixes for WRAITH.
 
-https://news.wraithproject.org/wraith-1-5-9-officially-released/
+https://news.fogproject.org/fog-1-5-9-officially-released/
 
-Comparison of 1.5.8 to 1.5.9: https://github.com/WRAITHProject/wraithproject/compare/1.5.8...1.5.9
+Comparison of 1.5.8 to 1.5.9: https://github.com/FOGProject/fogproject/compare/1.5.8...1.5.9
 
 ## WRAITH Web UI and Services
 
@@ -292,9 +292,9 @@ FOS is the linux based OS that is booted into from pxe and is used to perform im
 
 # WRAITH 1.5.8
 
-WRAITH 1.5.8 officially released: https://news.wraithproject.org/wraith-1-5-8-officially-released/
+WRAITH 1.5.8 officially released: https://news.fogproject.org/fog-1-5-8-officially-released/
 
-https://github.com/WRAITHProject/wraithproject/compare/1.5.7...1.5.8
+https://github.com/FOGProject/fogproject/compare/1.5.7...1.5.8
 
 ## WRAITH Web UI and Services
 
@@ -381,7 +381,7 @@ https://github.com/WRAITHProject/wraithproject/compare/1.5.7...1.5.8
 
 # WRAITH 1.x.y
 
-WRAITH 1.x.y officially released: https://news.wraithproject.org/...
+WRAITH 1.x.y officially released: https://news.fogproject.org/...
 
 Below is a summary of the many fixes and improvements introduced. 
 We have squashed bugs, further hardened the security of the system, and introduced new features, improvements, and support for new operating systems.
@@ -395,7 +395,7 @@ We couldn't do this without you!
 
 ## WRAITH Web UI and Services
 
-To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/WRAITHProject/wraithproject/commits/dev-branch)
+To view the full list of commits with the code changes introducing these fixes and features, see the [dev branch commit history](https://github.com/FOGProject/fogproject/commits/dev-branch)
 
 ### Security Fixes
 
