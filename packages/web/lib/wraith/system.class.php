@@ -53,10 +53,13 @@ class System
     public function __construct()
     {
         self::_versionCompare();
-        define('WRAITH_VERSION', '1.5.10.1903');
-        // WRAITH build identifier: distinguishes a WRAITH install from an
-        // upstream install sharing the same numeric baseline. See UPSTREAM_VERSION.
-        define('WRAITH_RELEASE', 'wraith-1.5.10.1903');
+        define('WRAITH_VERSION', '1.6.0.0');
+        // WRAITH cuts its own version line from 1.6.0.0 — the rebrand and the
+        // lab PXE features have diverged from the upstream. The FOG Project
+        // baseline this release is built from is recorded here and in
+        // UPSTREAM_VERSION.
+        define('WRAITH_UPSTREAM_BASELINE', '1.5.10.1903');
+        define('WRAITH_RELEASE', 'wraith-1.6.0.0');
         define('WRAITH_SCHEMA', 274);
         define('WRAITH_BCACHE_VER', 141);
         define('WRAITH_CLIENT_VERSION', '0.13.0');

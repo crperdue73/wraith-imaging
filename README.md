@@ -35,7 +35,7 @@ credit is a license obligation, not a cosmetic one.
 
 ## Versioning and branches
 
-WRAITH uses a versioning schema that follows the general principles of semantic versioning with some adjustments to fit the development lifecycle. Until a WRAITH-own version line is cut, the numeric version tracks the upstream FOG Project baseline and a `WRAITH_RELEASE` build identifier distinguishes a WRAITH install. Release automation is planned for the WRAITH fork repository (see [ROADMAP.md](ROADMAP.md)).
+WRAITH follows semantic versioning with adjustments to fit the development lifecycle. From **1.6.0.0** WRAITH tracks its **own** version line, independent of upstream; the FOG Project baseline each release is built from is recorded in [UPSTREAM_VERSION](UPSTREAM_VERSION) and exposed as `WRAITH_UPSTREAM_BASELINE`. Release automation is planned for the WRAITH fork repository (see [ROADMAP.md](ROADMAP.md)).
 
 * The default branch of `stable` will always have the latest patch release, for most users this is where you want to install from.
 * The `master` branch has the baseline of the latest Minor release. You should not typically install from here as it won't include security patches released since the baseline was set.

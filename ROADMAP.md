@@ -67,10 +67,9 @@ Playwright pass, security scan. Cutover checklist + rollback documented.
 3. **README/docs refresh** — OS support corrected, doc URLs normalized.
    ⚠️ `wraithproject.org` / `docs.wraithproject.org` / the GitHub org are
    **unconfirmed as resolvable** — see decision below.
-4. **Version identifier** — a `WRAITH_RELEASE` build id now distinguishes a
-   WRAITH install from a same-numbered upstream install. Next step (deferred):
-   decide whether to fork a WRAITH-own minor line (e.g. `1.6.x`) or keep
-   tracking the FOG Project baseline with a suffix.
+4. **Version divergence** — **done**: WRAITH now cuts its own line at
+   `1.6.0.0` (`WRAITH_VERSION`), with `WRAITH_RELEASE = wraith-1.6.0.0` and the
+   tracked upstream baseline exposed as `WRAITH_UPSTREAM_BASELINE`. See D3.
 5. **Remote-URL cleanup** — `status/mainversion.php` and other endpoints
    pointed at `WRAITHProject/wraithproject`; repointed to the real fork
    (`crperdue73/wraith-imaging`). The release-check still assumes public
@@ -102,6 +101,14 @@ it waits on Robbie.
 
 ## Open decisions (need Robbie)
 
+- **D3 — Version line (owner call, made):** WRAITH cuts its own line at
+  `1.6.0.0` rather than tracking FOG's `1.5.10.x`. Rationale: the product has
+  diverged (rebrand + per-host boot, ISO Manager, LTSP chaining), and a support
+  ticket must be able to tell a WRAITH install from an upstream one at a glance.
+  The upstream baseline each release is built from stays recorded
+  (`UPSTREAM_VERSION`, `WRAITH_UPSTREAM_BASELINE`) so the FOG mapping is never
+  lost. Reversible: revert the two constants if the org prefers to keep the
+  numeric baseline.
 - **D1 — Publish or privatize:** `github.com/WRAITHProject/wraithproject` and
   the org 404 publicly; `wraithproject.org` unverified. README install/docs
   links cannot all resolve until this is settled. Options: (a) publish the org
