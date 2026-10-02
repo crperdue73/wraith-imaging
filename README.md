@@ -1,12 +1,41 @@
-# WRAITHProject starting point
+# WRAITH — Deployment System
 
 ## Introduction
 
- WRAITH is a free open-source cloning/imaging/rescue suite/inventory management system. WRAITH can be used to image Windows XP, Vista, Windows 7, Window 8/8.1, and Windows 10, Windows 11 PCs using PXE, PartClone, and a Web GUI to tie it together. Includes features like memory and disk test, disk wipe, av scan, task scheduling, inventory management, remote deployment of OS's, and remote installation of software packages. Features can be triggered through the web GUI, once the client machine has been registered with WRAITH.
+WRAITH is a free, open-source network cloning / imaging / rescue / inventory
+platform — a fork of the FOG Project. WRAITH images **Windows 10 and Windows 11**
+and modern **Linux** distributions over PXE (iPXE boot menu + PartClone), with a
+web GUI for inventory, task scheduling, disk wipe, memory/disk testing, and remote
+OS and software deployment. Features are triggered from the web GUI once a client
+machine has registered with WRAITH.
+
+> **Legacy OS note:** Windows XP, Vista, 7, and 8/8.1 support is inherited from
+> upstream FOG Project and is **legacy / untested** here. It is not a supported
+> target for WRAITH.
+
+## Upstream & Attribution
+
+WRAITH is a fork of the [FOG Project](https://github.com/FOGProject/fogproject) —
+an open-source cloning/imaging suite by Chuck Syperski, Jian Zhang, and the
+FOG Project contributors.
+
+| | |
+|---|---|
+| **License** | GNU General Public License v3.0 — see [LICENSE](LICENSE) |
+| **Upstream** | FOG Project — https://github.com/FOGProject/fogproject |
+| **Baseline** | FOG Project `stable` 1.5.10.1903 |
+| **Fork point** | 2026-07-26 |
+| **Changes** | this repository contains modified files; see [NOTICE](NOTICE) |
+
+WRAITH is not affiliated with or endorsed by the FOG Project. "FOG" and
+"FOG Project" are the marks of their authors and are used here solely to satisfy
+the attribution requirements of the GPL. The rebrand keeps the WRAITH *product
+surface* free of upstream branding; it does **not** erase upstream credit — that
+credit is a license obligation, not a cosmetic one.
 
 ## Versioning and branches
 
-WRAITH uses a versioning schema that follows the general principles of semantic versioning with some adjustments to fit the development lifecycle. You can find the automatic release workflows in the [wraith-workflows repo](https://github.com/WRAITHProject/wraith-workflows) [![Stable Release](https://github.com/WRAITHProject/wraith-workflows/actions/workflows/stable-releases.yml/badge.svg)](https://github.com/WRAITHProject/wraith-workflows/actions/workflows/stable-releases.yml)
+WRAITH uses a versioning schema that follows the general principles of semantic versioning with some adjustments to fit the development lifecycle. Until a WRAITH-own version line is cut, the numeric version tracks the upstream FOG Project baseline and a `WRAITH_RELEASE` build identifier distinguishes a WRAITH install. Release automation is planned for the WRAITH fork repository (see [ROADMAP.md](ROADMAP.md)).
 
 * The default branch of `stable` will always have the latest patch release, for most users this is where you want to install from.
 * The `master` branch has the baseline of the latest Minor release. You should not typically install from here as it won't include security patches released since the baseline was set.
@@ -44,17 +73,17 @@ Our versions are formatted in a x.x.x.x format like so:
 
 * All that is needed to start installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
-  * **ZIP archive** `wget https://github.com/WRAITHProject/wraithproject/archive/stable.zip; unzip stable.zip`
+  * **ZIP archive** `wget https://github.com/crperdue73/wraith-imaging/archive/stable.zip; unzip stable.zip`
 
-  * **TAR/GZ archive** `wget https://github.com/WRAITHProject/wraithproject/archive/stable.tar.gz; tar xzf stable.tar.gz`
+  * **TAR/GZ archive** `wget https://github.com/crperdue73/wraith-imaging/archive/stable.tar.gz; tar xzf stable.tar.gz`
 
-  * **git** `git clone https://github.com/wraithproject/wraithproject.git wraithproject-stable`
+  * **git** `git clone https://github.com/crperdue73/wraith-imaging.git wraith-imaging-stable`
 
 2. Run the install script **as root** and follow all prompts accordingly
 
 ```
 sudo -i
-cd /path/to/wraithproject-stable/bin
+cd /path/to/wraith-imaging-stable/bin
 ./installwraith.sh
 ```
 
@@ -68,28 +97,33 @@ cd /path/to/wraithproject-stable/bin
 
 * All that is needed to start the installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
-  * **git** `git clone https://github.com/wraithproject/wraithproject.git wraithproject-dev-branch; cd wraithproject-dev-branch; git checkout dev-branch` (**recommended if you want to keep up with current developments!**
+  * **git** `git clone https://github.com/crperdue73/wraith-imaging.git wraith-imaging-dev-branch; cd wraith-imaging-dev-branch; git checkout dev-branch` (**recommended if you want to keep up with current developments!**
 
-  * **ZIP archive** `wget https://github.com/WRAITHProject/wraithproject/archive/dev-branch.zip; unzip dev-branch.zip`
+  * **ZIP archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev-branch.zip; unzip dev-branch.zip`
 
-  * **TAR/GZ archive** `wget https://github.com/WRAITHProject/wraithproject/archive/dev-branch.tar.gz; tar xzf dev-branch.tar.gz`
+  * **TAR/GZ archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev-branch.tar.gz; tar xzf dev-branch.tar.gz`
 
 2. Run the install script **as root** and follow all prompts accordingly
 
 ```
 sudo -i
-cd /path/to/wraithproject-dev-branch/bin
+cd /path/to/wraith-imaging-dev-branch/bin
 ./installwraith.sh
 ```
 3. You should now be ready to use WRAITH
 
-All should now be installed and you can start configuring and registering systems. Please see: http://wraithproject.org/wiki/index.php/Managing_WRAITH to assist you in setting up further.
+All should now be installed and you can start configuring and registering systems. See the documentation at https://docs.wraithproject.org to assist you in setting up further.
 
 There are many resources for assistance.
- - **docs:** https://docs.wraithproject.org for documentation. (New docs, under construction)
- - **Wiki:** http://wraithproject.org/wiki for any information. (Legacy docs)
- - **Forum:** http://wraithproject.org/forum.
- - **Email:** A Developer directly. If a dev permits a change, they can have themselves added on the wiki/Credits page.
+
+ - **Docs:** https://docs.wraithproject.org — installation and administration guides.
+ - **Forum:** https://forums.wraithproject.org — general help and bug reports.
+ - **Source:** https://github.com/crperdue73/wraith-imaging — the WRAITH fork.
+ - **Attribution:** see [NOTICE](NOTICE) and [UPSTREAM_VERSION](UPSTREAM_VERSION).
+
+> ⚠️ **Link status:** the documentation site, forum, and public Git organization
+> are still being finalized. If a link above does not resolve, treat the in-repo
+> files as canonical. (Tracked in [ROADMAP.md](ROADMAP.md), decision D1.)
 
 ## Development
 

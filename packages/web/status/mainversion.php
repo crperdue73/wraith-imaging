@@ -26,9 +26,9 @@ set_time_limit(0);
 
 $curversion = WRAITH_VERSION;
 $urls = array(
-    'https://api.github.com/repos/wraithproject/wraithproject/tags',
-    'https://raw.githubusercontent.com/WRAITHProject/wraithproject/dev-branch/packages/web/lib/wraith/system.class.php',
-    'https://raw.githubusercontent.com/WRAITHProject/wraithproject/working-1.6/packages/web/lib/wraith/system.class.php'
+    'https://api.github.com/repos/crperdue73/wraith-imaging/tags',
+    'https://raw.githubusercontent.com/crperdue73/wraith-imaging/dev-branch/packages/web/lib/wraith/system.class.php',
+    'https://raw.githubusercontent.com/crperdue73/wraith-imaging/working-1.6/packages/web/lib/wraith/system.class.php'
 );
 $resp = $WRAITHURLRequests->process($urls);
 
@@ -52,7 +52,7 @@ $alphacheck = version_compare($curversion, $alphaversion, '=');
 
 if (!$stablecheck && !$devcheck && !$alphacheck) {
     $result = '<font face="arial" color="red" size="4"><b>You are not running the most current version of WRAITH!</b></font>'
-    . "<p>You are currently running version: $curversion</p>"
+    . "<p>You are currently running WRAITH version: $curversion (" . WRAITH_RELEASE . ")</p>"
     . "<p>Latest stable version is " . $stableversion . "</p>"
     . "<p>Latest dev-branch version is $devversion</p>"
     . "<p>Latest alpha-branch version is $alphaversion</p>";

@@ -1,0 +1,89 @@
+# WRAITH — Roadmap
+
+Owner: Ezra 🛡️ (WRAITH project owner). Upstream: [FOG Project](https://github.com/FOGProject/fogproject).
+Attribution/license obligations: see [NOTICE](NOTICE).
+
+The public/marketing name of a WRAITH release is the product surface only; the
+underlying version line tracks the upstream FOG Project baseline until we cut a
+WRAITH-own minor line (see item 4 under Housekeeping).
+
+---
+
+## Phase 1 — Full rebrand ✅ DONE (2026-08-14, commit `3209a8acc`)
+
+- FOG → WRAITH across content and filenames (504 files), installer
+  (`installfog.sh` → `installwraith.sh`), services, database (`wraith`).
+- `scripts/rebrand.sh` (replayable) + `scripts/verify-rebrand.sh` (CI gate).
+- Raven-violet theme, shield mark, favicon.
+
+## Phase 2 — Custom options & lab feature work ✅ (first slice DONE 2026-08-15, commit `ca27ed6c`)
+
+Delivered:
+- Per-host default boot: `hosts.hostBootMenu` column, Host-page dropdown,
+  `bootmenu.class.php` override (host default beats global default),
+  schema migration **275**.
+- ISO Manager (`node=isomanager`): upload ISO → `/images/custom-isos`,
+  auto-creates a memdisk `pxeMenu` entry; delete removes both; added to nav.
+- Seeded `wraith.ltsp` entry chaining to the LTSP terminal server.
+
+Still in scope for Phase 2 (not yet done):
+- **Plugin architecture**: stable hook/event model; enable/disable from GUI.
+- **Multi-step imaging workflows** (YAML): deploy → domain join → software →
+  compliance check → report, with per-host progress and failure alerts.
+- **n8n post-imaging webhook** on the final workflow step (machine identity,
+  image, status) to chain downstream orchestration.
+- **Image versioning & deprecation policy** (`version`, `deprecated_at`,
+  `archived` columns; deploy-time warnings).
+- **Re-registration bridge** so machines still running the upstream FOG client
+  can register against a WRAITH server during cutover.
+
+## Phase 3 — Dashboard
+
+In-page Vue 3 SPA mounted into the existing PHP layout (no separate service,
+no duplicate auth). Chart.js for trends, SSE for live task feed, Tailwind for
+CSS. Pages: Overview, Hosts, Tasks, Images, Snap-ins, Reports, Compliance,
+Settings. REST API under `/api/v1/...`. (Design captured; not started.)
+
+## Phase 4 — Deployment pipeline
+
+GitHub Actions: rebrand gate → web asset build → client build → package →
+artifact. `deploy-wraith.sh` provisioning. UPSTREAM_VERSION tracking on every
+base. (Planned.)
+
+## Phase 5 — Testing & cutover
+
+Staging VLAN for PXE isolation (never test PXE next to production FOG),
+unit/integration tests, Win11 image round-trip, client test, dashboard
+Playwright pass, security scan. Cutover checklist + rollback documented.
+(Planned.)
+
+---
+
+## Housekeeping / open items
+
+1. **GPL attribution** — done in this change (README + NOTICE + UPSTREAM_VERSION).
+2. **Rebrand-script exceptions** — done (`scripts/rebrand.sh` allowlist +
+   LICENSE/copyright guards; `verify-rebrand.sh` allowlist).
+3. **README/docs refresh** — OS support corrected, doc URLs normalized.
+   ⚠️ `wraithproject.org` / `docs.wraithproject.org` / the GitHub org are
+   **unconfirmed as resolvable** — see decision below.
+4. **Version identifier** — a `WRAITH_RELEASE` build id now distinguishes a
+   WRAITH install from a same-numbered upstream install. Next step (deferred):
+   decide whether to fork a WRAITH-own minor line (e.g. `1.6.x`) or keep
+   tracking the FOG Project baseline with a suffix.
+5. **Remote-URL cleanup** — `status/mainversion.php` and other endpoints
+   pointed at `WRAITHProject/wraithproject`; repointed to the real fork
+   (`crperdue73/wraith-imaging`). The release-check still assumes public
+   availability (see decision).
+
+## Open decisions (need Robbie)
+
+- **D1 — Publish or privatize:** `github.com/WRAITHProject/wraithproject` and
+  the org 404 publicly; `wraithproject.org` unverified. README install/docs
+  links cannot all resolve until this is settled. Options: (a) publish the org
+  + site, or (b) mark WRAITH private and point README at the internal repo only.
+- **D2 — Brand mark:** the tree ships a **violet shield + white "W"**; the
+  brand doctrine (`WRAITH-BRAND.md`) and the design package specify a **cyan
+  wolf head**. One has to go canonical. Recommendation: wolf (it matches the
+  documented doctrine and both design artifacts); treat the shield as a
+  placeholder to be replaced. Confirm before we do the asset pass.

@@ -1,0 +1,46 @@
+NOTICE
+======
+
+WRAITH Deployment System is a fork of the FOG Project.
+
+  Upstream project : FOG Project
+  Upstream URL     : https://github.com/FOGProject/fogproject
+  Original work    : Copyright (C) 2007 Chuck Syperski & Jian Zhang,
+                     and the FOG Project contributors.
+  License          : GNU General Public License, version 3 (see LICENSE)
+
+This repository is a derivative work of the FOG Project. Numerous files have
+been modified from their upstream form. This NOTICE is provided to satisfy the
+attribution and "state changes / dates" requirements of GPLv3 section 5.
+
+Modification record
+-------------------
+
+  Upstream baseline : FOG Project "stable" 1.5.10.1903 (commit c8a566517)
+  Fork point        : 2026-07-26
+  Maintained by     : CRPerdue / WRAITH Project
+
+  2026-08-14  Phase 1 - full rebrand (FOG -> WRAITH); 504 files rebranded,
+              installer renamed, database renamed to `wraith`, brand assets.
+              Commit 3209a8acc.
+  2026-08-15  PXE boot-menu customization - per-host default boot
+              (`hosts.hostBootMenu`, schema migration 275), ISO Manager
+              (`node=isomanager`), seeded `wraith.ltsp` LTSP chain entry,
+              raven-violet theme. Commit ca27ed6c.
+
+Preserved notices
+-----------------
+
+All upstream copyright and license notices are preserved. In particular, the
+copyright headers of the shell scripts and source files retain the original
+"Chuck Syperski & Jian Zhang" attribution, and the LICENSE file is the
+verbatim GNU General Public License v3.
+
+The rebrand applies to the WRAITH *product surface* (names, UI, paths, package
+identifiers). It does NOT remove, and must never remove, upstream credit.
+See scripts/rebrand.sh and scripts/verify-rebrand.sh for the enforced
+allowlist that keeps this attribution intact.
+
+"FOG" and "FOG Project" are the marks of their respective authors and are used
+here solely to comply with the attribution requirements of the GPL. WRAITH is
+not affiliated with or endorsed by the FOG Project.

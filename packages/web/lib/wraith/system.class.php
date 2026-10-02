@@ -54,6 +54,9 @@ class System
     {
         self::_versionCompare();
         define('WRAITH_VERSION', '1.5.10.1903');
+        // WRAITH build identifier: distinguishes a WRAITH install from an
+        // upstream install sharing the same numeric baseline. See UPSTREAM_VERSION.
+        define('WRAITH_RELEASE', 'wraith-1.5.10.1903');
         define('WRAITH_SCHEMA', 274);
         define('WRAITH_BCACHE_VER', 141);
         define('WRAITH_CLIENT_VERSION', '0.13.0');

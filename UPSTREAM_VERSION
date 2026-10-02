@@ -1,0 +1,6 @@
+upstream=FOG Project
+upstream_url=https://github.com/FOGProject/fogproject
+upstream_branch=stable
+upstream_version=1.5.10.1903
+upstream_commit=c8a566517
+fork_point=2026-07-26

@@ -1,8 +1,13 @@
 #!/bin/bash
-# verify-rebrand.sh — CI check: no stale "FOG" references remain
-# Returns non-zero if any are found. Designed for pre-commit hooks and CI.
+# verify-rebrand.sh — CI gate: no stale "FOG" references remain on the product
+# surface. Returns non-zero if any non-allowlisted reference is found.
+# Designed for pre-commit hooks and CI.
+#
+# Uses `git grep` so only tracked files are scanned and pathspec exclusions are
+# honoured reliably. Genuine upstream attribution (required by GPLv3 §5) is
+# allowlisted and will not fail the gate.
 
-set -euo pipefail
+set -uo pipefail
 
 TARGET_PATH="${1:-/opt/wraith}"
 cd "$TARGET_PATH"
@@ -10,11 +15,28 @@ cd "$TARGET_PATH"
 echo "=== WRAITH Rebrand Verification ==="
 echo ""
 
-# NOTE: This script intentionally contains the strings it detects (FOG, fog, etc.)
-# as search patterns. The scripts/ directory is therefore excluded from the scan.
-EXCLUDE="--exclude-dir=scripts --exclude-dir=.git"
+# Text file types to scan (mirrors scripts/rebrand.sh).
+INCLUDES=(
+    '*.php' '*.js' '*.css' '*.sh' '*.md' '*.html' '*.txt' '*.sql'
+    '*.json' '*.xml' '*.yml' '*.conf' '*.ini' '*.cfg' '*.class'
+)
 
-# Patterns that should NOT appear in our codebase
+# Attribution / meta files that legitimately reference upstream by design:
+#   LICENSE / NOTICE      — verbatim license + required upstream credit
+#   ROADMAP.md / UPSTREAM_VERSION — document the fork lineage
+#   scripts/*             — contain FOG only as search patterns
+EXCLUDES=(
+    ':(exclude)LICENSE'
+    ':(exclude)NOTICE'
+    ':(exclude)ROADMAP.md'
+    ':(exclude)UPSTREAM_VERSION'
+    ':(exclude)scripts/*'
+)
+
+# Legitimate upstream credit — must NOT fail the gate.
+ALLOWED='FOG Project|github\.com/FOGProject|FOGProject/fogproject'
+
+# Patterns that should NOT appear on the product surface.
 BAD_PATTERNS=(
     "\\bFOG\\b"
     "\\bfog\\b"
@@ -33,11 +55,9 @@ BAD_PATTERNS=(
 EXIT_CODE=0
 
 for pattern in "${BAD_PATTERNS[@]}"; do
-    RESULTS=$(grep -rn "$pattern" $EXCLUDE --include="*.php" --include="*.js" \
-        --include="*.css" --include="*.sh" --include="*.md" --include="*.sql" \
-        --include="*.html" --include="*.json" --include="*.xml" --include="*.yml" \
-        --include="*.conf" --include="*.ini" \
-        . 2>/dev/null | grep -v ".git/" | head -50) || true
+    RESULTS=$(git grep -nE "$pattern" -- "${INCLUDES[@]}" "${EXCLUDES[@]}" 2>/dev/null \
+        | grep -vE "$ALLOWED" \
+        | head -50) || true
 
     if [ -n "$RESULTS" ]; then
         echo "❌ Found '$pattern':"
@@ -46,7 +66,7 @@ for pattern in "${BAD_PATTERNS[@]}"; do
     fi
 done
 
-# Filename check: any tracked file with fog in the name fails the gate
+# Filename check: any tracked file with fog in the name fails the gate.
 FILE_HITS=$(git ls-files 2>/dev/null | grep -i "fog" | head -50) || true
 if [ -n "$FILE_HITS" ]; then
     echo "❌ Filenames still contain 'fog':"
@@ -57,10 +77,13 @@ else
 fi
 
 if [ "$EXIT_CODE" -eq 0 ]; then
-    echo "✅ Clean — no FOG branding remnants found."
+    echo "✅ Clean — no uncredited FOG branding remnants found."
+    echo "   (Allowlisted upstream attribution: $ALLOWED)"
 else
     echo ""
     echo "⚠️  Some branding remnants remain. Review and fix before committing."
+    echo "   Genuine upstream credit (e.g. 'FOG Project') is allowed; this gate"
+    echo "   fails only on non-allowlisted references."
 fi
 
 exit $EXIT_CODE

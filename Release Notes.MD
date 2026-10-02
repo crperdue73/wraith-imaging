@@ -1,5 +1,8 @@
-WRAITH Release Notes (fork of WRAITH Project)
-=========================
+WRAITH Release Notes
+====================
+
+WRAITH is a fork of the [FOG Project](https://github.com/FOGProject/fogproject).
+Versions below track the upstream FOG Project baseline. See [NOTICE](NOTICE).
 
 * [WRAITH 1.5.10](#wraith-1510)
 * [WRAITH 1.5.10 revisions](##wraith-1510-revisions)
