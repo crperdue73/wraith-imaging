@@ -75,6 +75,30 @@ Playwright pass, security scan. Cutover checklist + rollback documented.
    pointed at `WRAITHProject/wraithproject`; repointed to the real fork
    (`crperdue73/wraith-imaging`). The release-check still assumes public
    availability (see decision).
+6. **Secret scan (2026-10-02)** — `gitleaks git --all` over the full history:
+   33 hits, **all upstream FOG artifacts** (default FTP passwords in a historical
+   `config.class.php`, client PASSKEYs, jpgraph base64 false positives); none
+   introduced by WRAITH. Independent full-blob scan found **no** private keys,
+   PATs, AWS/GH/Slack tokens, deploy keys, internal hostnames, or personal data
+   in content. Two **upstream default AES keys** are still seeded in
+   `packages/web/commons/schema.php` (`WRAITH_AES_PASS_ENCRYPT_KEY`,
+   `WRAITH_AES_ADPASS_ENCRYPT_KEY`). Recommend generating a random key per
+   install instead of shipping the known upstream default. Tracked, **not yet
+   fixed** (touches existing-install compatibility).
+7. **Commit metadata** — our commits carry `ezra@crperdue.com` and
+   `root@debian.crperdue.com`, which become public on flip. Consider a
+   `.mailmap` to display-neutralize, or accept it as the maintainer identity.
+
+## Publish sequencing (do not reorder)
+
+1. Attribution in the tree — **done** (`ae49d1713`).
+2. Push the fork.
+3. Confirm the *public* tree still shows the attribution.
+4. **Only then** flip visibility.
+
+Publishing before the attribution is public would briefly expose an
+un-attributed GPLv3 derivative. And the push is the same decision as the flip —
+it waits on Robbie.
 
 ## Open decisions (need Robbie)
 
