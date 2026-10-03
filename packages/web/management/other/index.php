@@ -174,11 +174,8 @@ echo '<li><a href="https://github.com/crperdue73/wraith-imaging">'
 echo '<li><a href="?node=client">'
     . _('WRAITH Client')
     . '</a></li>';
-echo '<li><a href="https://www.paypal.com/cgi-bin/webscr?item_name=Donation'
-    . '+to+WRAITH+-+A+Free+Cloning+Solution&cmd=_donations&business=wraithproject.org'
-    . '@gmail.com" target="_blank">'
-    . _('Donate to WRAITH')
-    . '</a></li>';
+// Donate link removed: the upstream PayPal account (wraithproject.org) no
+// longer exists. Add a WRAITH donation target here if/when one is set up.
 if (self::$WRAITHUser->isValid()) {
     echo '<li class="pull-right">';
     echo '<a href="../management/index.php?node=about">';

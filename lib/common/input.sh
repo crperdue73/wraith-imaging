@@ -67,7 +67,7 @@ while [[ -z $installtype ]]; do
         echo "          to make this server act as a node in a storage group"
         echo
         echo "  More information:  "
-        echo "     http://www.wraithproject.org/wiki/index.php?title=InstallationModes"
+        echo "     https://github.com/crperdue73/wraith-imaging"
         echo
         echo -n "  What type of installation would you like to do? [N/s (Normal/Storage)] "
         read installtype
@@ -294,7 +294,7 @@ while [[ -z $dohttps ]]; do
         echo "  Using encrypted connections is state of the art on the web and we"
         echo "  encourage you to enable this for your WRAITH server. But using HTTPS"
         echo "  has some implications within WRAITH, PXE and wraith-client and you want"
-        echo "  to read https://wiki.wraithproject.org/HTTPS before you decide!"
+        echo "  to read https://github.com/crperdue73/wraith-imaging before you decide!"
         echo -n "  Would you like to enable secure HTTPS on your WRAITH server? [y/N] "
         read dohttps
     fi

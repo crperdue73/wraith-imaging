@@ -17,7 +17,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# REF: https://forums.wraithproject.org/post/115420 - @Tom Elliott mentions to
+# REF: FOG Project forums, post 115420 - @Tom Elliott mentions to
 #   truncate 5 tables of tasks. This will create a database backup, then get
 #   rid of some of that history. He also mentions this won't be needed in 1.6
 #   due to proper SQL pagination. So, only use this on 1.5.x

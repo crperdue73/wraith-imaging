@@ -407,7 +407,7 @@ checkInternetConnection() {
     DEBIAN_FRONTEND=noninteractive $packageinstaller curl >>$error_log 2>&1
 
     http_sites=("httpbin.org" "neverssl.com")
-    https_sites=("github.com" "wraithproject.org")
+    https_sites=("github.com" "raw.githubusercontent.com")
     dns_ok=0
     http_ok=0
     https_ok=0
@@ -655,7 +655,7 @@ configureMinHttpd() {
     echo " * @package  WRAITHProject" >> "$webdirdest/management/index.php"
     echo " * @author   Tom Elliott <tommygunsster@gmail.com>" >> "$webdirdest/management/index.php"
     echo " * @license  http://opensource.org/licenses/gpl-3.0 GPLv3" >> "$webdirdest/management/index.php"
-    echo " * @link     https://wraithproject.org" >> "$webdirdest/management/index.php"
+    echo " * @link     https://github.com/crperdue73/wraith-imaging" >> "$webdirdest/management/index.php"
     echo " */" >> "$webdirdest/management/index.php"
     echo "/**" >> "$webdirdest/management/index.php"
     echo " * The main index presenter" >> "$webdirdest/management/index.php"
@@ -664,7 +664,7 @@ configureMinHttpd() {
     echo " * @package  WRAITHProject" >> "$webdirdest/management/index.php"
     echo " * @author   Tom Elliott <tommygunsster@gmail.com>" >> "$webdirdest/management/index.php"
     echo " * @license  http://opensource.org/licenses/gpl-3.0 GPLv3" >> "$webdirdest/management/index.php"
-    echo " * @link     https://wraithproject.org" >> "$webdirdest/management/index.php"
+    echo " * @link     https://github.com/crperdue73/wraith-imaging" >> "$webdirdest/management/index.php"
     echo " */" >> "$webdirdest/management/index.php"
     echo "require '../commons/base.inc.php';" >> "$webdirdest/management/index.php"
     echo "require '../commons/text.php';" >> "$webdirdest/management/index.php"
@@ -1761,7 +1761,7 @@ writeUpdateFile() {
             echo "## Start of WRAITH Settings"
             echo "## Created by the WRAITH Installer"
             echo "## Find more information about this file in the WRAITH Project wiki:"
-            echo "##     https://wiki.wraithproject.org/wiki/index.php?title=.wraithsettings"
+            echo "##     https://github.com/crperdue73/wraith-imaging"
             echo "## Version: $version"
             echo "## Install time: $tmpDte"
             for key in "${managedKeys[@]}"; do settingLine "$key"; done
@@ -1786,8 +1786,8 @@ displayBanner() {
     echo "   +------------------------------------------+"
     echo "   |      Free Computer Imaging Solution      |"
     echo "   +------------------------------------------+"
-    echo "   |  Credits: http://wraithproject.org/Credits  |"
-    echo "   |       http://wraithproject.org/Credits      |"
+    echo "   |  Credits: https://github.com/crperdue73/wraith-imaging  |"
+    echo "   |       https://github.com/crperdue73/wraith-imaging      |"
     echo "   |       Released under GPL Version 3       |"
     echo "   +------------------------------------------+"
     echo
@@ -2174,7 +2174,7 @@ configureHttpd() {
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * The main configuration WRAITH uses.
@@ -2183,7 +2183,7 @@ configureHttpd() {
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class Config
 {

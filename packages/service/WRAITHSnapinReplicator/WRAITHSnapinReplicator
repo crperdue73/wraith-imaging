@@ -9,7 +9,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * WRAITHSnapinReplicator service to replicate snapins in WRAITH
@@ -18,7 +18,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 @error_reporting(0);
 require dirname(realpath(__FILE__)).'/../etc/config.php';

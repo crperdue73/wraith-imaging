@@ -1,4 +1,6 @@
 #!/bin/bash
+# NOTE (WRAITH fork): version check repointed to crperdue73/wraith-imaging.
+# Best-effort — the stable download mirrors below still use legacy hosts (TODO).
 . ../../lib/common/utils.sh
 [[ -z $downloaddir ]] && downloaddir="/opt/"
 echo " ***************************************************************"
@@ -10,11 +12,11 @@ echo " *                                                             *"
 echo " ***************************************************************"
 dots "Checking latest version"
 if [[ -z $trunk ]]; then
-    latest=$(wget --no-check-certificate -qO - --post-data="stable" https://wraithproject.org/version/index.php)
-    latest=$(echo $latest | $(pwd)/jq32 .stable)
+    latest=$(wget --no-check-certificate -qO - https://api.github.com/repos/crperdue73/wraith-imaging/releases/latest)
+    latest=$(echo $latest | $(pwd)/jq32 -r .tag_name)
 else
-    latest=$(wget --no-check-certificate -qO - --post-data="dev" https://wraithproject.org/version/index.php)
-    latest=$(echo $latest | $(pwd)/jq32 .dev)
+    latest=$(wget --no-check-certificate -qO - https://raw.githubusercontent.com/crperdue73/wraith-imaging/dev/packages/web/lib/wraith/system.class.php)
+    latest=$(echo "$latest" | sed -n "s/.*WRAITH_VERSION', '\([^']*\)'.*/\1/p")
 fi
 [[ -z $latest ]] && errorStat 1
 echo "Done"
@@ -27,7 +29,7 @@ if [[ -z $trunk ]]; then
     echo " * Preparing to upgrade"
     echo " * Attempting to download latest stable to $downloaddir"
 else
-    [[ -z $updatemirrors ]] && updatemirrors="https://github.com/wraithproject/wraithproject/tarball"
+    [[ -z $updatemirrors ]] && updatemirrors="https://github.com/crperdue73/wraith-imaging/archive"
     [[ $version == $latest ]] && handleError " * You are already up to date!" 0
     echo "   You are not running the latest dev version"
     echo " * Preparing to upgrade"
@@ -38,7 +40,7 @@ for url in $updatemirrors; do
     echo " * Trying mirror $url"
     dots "Attempting Download"
     fileplace="$downloaddir/wraith_${latest}.tar.gz"
-    [[ -z $trunk ]] && filedownload="wraith_${latest}.tar.gz" || filedownload='dev-branch'
+    [[ -z $trunk ]] && filedownload="wraith_${latest}.tar.gz" || filedownload='dev.tar.gz'
     wget --no-check-certificate -qO $fileplace $url/$filedownload >/dev/null 2>&1
     case $? in
         0)
