@@ -96,7 +96,7 @@ representative at an online or offline event.
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement through the
 project's regular community channels — the
-[WRAITH forums](https://forums.wraithproject.org) or the
+[WRAITH forums](https://github.com/crperdue73/wraith-imaging/issues) or the
 [GitHub issue tracker](https://github.com/WRAITHProject/wraithproject/issues).
 All complaints will be reviewed and investigated promptly and fairly.
 
@@ -173,9 +173,9 @@ for confirmed bugs and concrete enhancement proposals. If you simply need help,
 have a usage question, or aren't yet sure whether something is a bug, start in
 one of these places instead:
 
- - **Forums:** https://forums.wraithproject.org — the best place for general help,
+ - **Forums:** https://github.com/crperdue73/wraith-imaging/issues — the best place for general help,
    "how do I…?" questions, and discussion.
- - **Wiki / documentation:** https://docs.wraithproject.org — installation guides,
+ - **Wiki / documentation:** https://github.com/crperdue73/wraith-imaging — installation guides,
    configuration, and troubleshooting.
 
 Questions answered in the right place get better, faster responses and keep the
@@ -247,7 +247,7 @@ Before opening one:
 
 1. **Search existing issues** (open and closed) to avoid duplicates.
 2. **Confirm it's a bug**, not a configuration or usage question — if in doubt,
-   ask on the [forums](https://forums.wraithproject.org) first.
+   ask on the [forums](https://github.com/crperdue73/wraith-imaging/issues) first.
 3. **Use the latest version** if you can, to verify the problem still exists.
 
 A good bug report includes:
@@ -262,7 +262,7 @@ A good bug report includes:
    are often the most useful thing you can attach.
 
 You can also report bugs in the
-[bug-reports forum category](https://forums.wraithproject.org/category/17/bug-reports).
+[bug-reports forum category](https://github.com/crperdue73/wraith-imaging/issues/category/17/bug-reports).
 
 ### Suggesting Enhancements
 
@@ -372,7 +372,7 @@ PHP is the primary language; please match the existing conventions:
    lowercasing the heading, replacing spaces with hyphens, and dropping
    punctuation).
  - User-facing end-user documentation lives in the
-   [wiki / docs](https://docs.wraithproject.org).
+   [wiki / docs](https://github.com/crperdue73/wraith-imaging).
 
 
 ## Additional Notes

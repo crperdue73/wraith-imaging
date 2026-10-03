@@ -55,11 +55,11 @@
 
 4. Enjoy
 
-All should now be installed and you can start configuring and registering systems. Please see: http://wraithproject.org/wiki/index.php/Managing_WRAITH to assist you in setting up further.
+All should now be installed and you can start configuring and registering systems. Please see: https://github.com/crperdue73/wraith-imaging to assist you in setting up further.
 
 There are many resources for assistance.
- - **Wiki:** http://wraithproject.org/wiki for any information.
- - **Forum:** http://wraithproject.org/forum.
+ - **Wiki:** https://github.com/crperdue73/wraith-imaging for any information.
+ - **Forum:** https://github.com/crperdue73/wraith-imaging/issues.
  - **Email:** A Developer directly. If a dev permit it they have added themselves on the wiki/Credits page.
 
 ## Development
@@ -69,6 +69,6 @@ There are many resources for assistance.
  As you are running a development branch, please post bugs to either:
 
  - A new issue on https://github.com/WRAITHProject/wraithproject/issues
- - https://forums.wraithproject.org/category/17/bug-reports
+ - https://github.com/crperdue73/wraith-imaging/issues
 
  If you would like to create a pull request, please make the pull request into the `working` branch.
