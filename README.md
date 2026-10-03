@@ -37,18 +37,18 @@ credit is a license obligation, not a cosmetic one.
 
 WRAITH follows semantic versioning with adjustments to fit the development lifecycle. From **1.6.0.0** WRAITH tracks its **own** version line, independent of upstream; the FOG Project baseline each release is built from is recorded in [UPSTREAM_VERSION](UPSTREAM_VERSION) and exposed as `WRAITH_UPSTREAM_BASELINE`. Release automation is planned for the WRAITH fork repository (see [ROADMAP.md](ROADMAP.md)).
 
-* The default branch of `stable` will always have the latest patch release, for most users this is where you want to install from.
-* The `master` branch has the baseline of the latest Minor release. You should not typically install from here as it won't include security patches released since the baseline was set.
-* `dev-branch` is where the latest patch release changes are staged and tested. You can install from dev-branch to help test bug-fixes, security-fixes, and minor feature enhancements on a more frequent cadence.
-* `working-*` and `feature-named` branches are where work on the next Major or Minor release take place. They can be used to install and test the current beta version or specific working features.
+* `stable` (default) always holds the latest release — most users install from here.
+* `staging` holds changes that are being staged and tested before they reach `stable`.
+* `dev` is where active development happens. Install from `dev` to test upcoming fixes and features more frequently.
+* `feature-*` branches hold work on specific features.
 
-This gives us a Production, Staging, and Dev branches to follow standard devops practices.
+This gives a Production / Staging / Dev flow.
 
-| Dev Cycle Stage  | Branches                                                                                                              | Version Property Associated |
-|------------------|-----------------------------------------------------------------------------------------------------------------------| ----------------------------|
-| Production       | stable, master                                                                                                        | Minor and Patch
-| Staging          | dev-branch                                                                                                            | Patch
-| Dev              | working-*, {feature-name}                                                                                             | Major, Minor
+| Dev Cycle Stage | Branch |
+|-----------------|--------|
+| Production      | `stable` |
+| Staging         | `staging` |
+| Dev             | `dev` |
 
 
 ### Version Format
@@ -97,17 +97,17 @@ cd /path/to/wraith-imaging-stable/bin
 
 * All that is needed to start the installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
-  * **git** `git clone https://github.com/crperdue73/wraith-imaging.git wraith-imaging-dev-branch; cd wraith-imaging-dev-branch; git checkout dev-branch` (**recommended if you want to keep up with current developments!**
+  * **git** `git clone https://github.com/crperdue73/wraith-imaging.git wraith-imaging-dev; cd wraith-imaging-dev; git checkout dev` (**recommended if you want to keep up with current developments!**
 
-  * **ZIP archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev-branch.zip; unzip dev-branch.zip`
+  * **ZIP archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev.zip; unzip dev.zip`
 
-  * **TAR/GZ archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev-branch.tar.gz; tar xzf dev-branch.tar.gz`
+  * **TAR/GZ archive** `wget https://github.com/crperdue73/wraith-imaging/archive/dev.tar.gz; tar xzf dev.tar.gz`
 
 2. Run the install script **as root** and follow all prompts accordingly
 
 ```
 sudo -i
-cd /path/to/wraith-imaging-dev-branch/bin
+cd /path/to/wraith-imaging-dev/bin
 ./installwraith.sh
 ```
 3. You should now be ready to use WRAITH
@@ -126,6 +126,6 @@ There are many resources for assistance.
 
 ## Development
 
- Download the source with git and checkout the branch `dev-branch` for the latest code or a more specific feature branch you would like to help work on.
+ Download the source with git and checkout the branch `dev` for the latest code or a more specific feature branch you would like to help work on.
 
  For further details please check out the [information on contributing to the project](CONTRIBUTING.md).

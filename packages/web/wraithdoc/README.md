@@ -1,8 +1,10 @@
-# WRAITHProject starting point
+# WRAITH — Deployment System
 
 ## Introduction
 
- WRAITH is a free open-source cloning/imaging solution/rescue suite. WRAITH can be used to image Windows XP, Vista, Windows 7 and Window 8 PCs using PXE, PartClone, and a Web GUI to tie it together. Includes features like memory and disk test, disk wipe, av scan & task scheduling.
+WRAITH is a free, open-source network cloning / imaging / rescue suite — a fork of the FOG Project. WRAITH images **Windows 10 and Windows 11** and modern **Linux** distributions over PXE (PartClone + an iPXE boot menu), with a Web GUI. It includes memory and disk test, disk wipe, AV scan, and task scheduling.
+
+> Legacy Windows XP / Vista / 7 / 8 support is inherited from upstream and is **unsupported** here.
 
 ## Install Stable
 
@@ -12,7 +14,7 @@
 
  - All that is needed to start installation is to download the files to perform the install. Choose one of the following methods you prefer;
 
- - **git** ` git clone https://github.com/wraithproject/wraithproject.git wraith_stable/`
+ - **git** `git clone https://github.com/crperdue73/wraith-imaging.git wraith_stable/`
 
 2. Go into the downloaded source/bin folder
 
@@ -24,10 +26,9 @@
 
 4. Enjoy
 
-## Install Development AKA trunk
+## Install Development (`dev` branch)
 
 0. Install and update your chosen linux server
-
 
 1. Download the file(s)
 
@@ -37,7 +38,7 @@
 
  - ### Initial setup
 
- - **git** `git clone https://github.com/wraithproject/wraithproject.git trunk/; git checkout dev-branch; cd trunk/bin/`
+ - **git** `git clone https://github.com/crperdue73/wraith-imaging.git trunk/; git checkout dev; cd trunk/bin/`
 
  - **Update setup**
 
@@ -55,20 +56,19 @@
 
 4. Enjoy
 
-All should now be installed and you can start configuring and registering systems. Please see: https://github.com/crperdue73/wraith-imaging to assist you in setting up further.
+All should now be installed and you can start configuring and registering systems. See https://github.com/crperdue73/wraith-imaging to assist you in setting up further.
 
 There are many resources for assistance.
- - **Wiki:** https://github.com/crperdue73/wraith-imaging for any information.
- - **Forum:** https://github.com/crperdue73/wraith-imaging/issues.
- - **Email:** A Developer directly. If a dev permit it they have added themselves on the wiki/Credits page.
+
+ - **Docs:** https://github.com/crperdue73/wraith-imaging (README, ROADMAP, CONTRIBUTING).
+ - **Issues:** https://github.com/crperdue73/wraith-imaging/issues.
 
 ## Development
 
- Download the source with git and checkout the `working` for the latest code or a more specific feature branch you would like to help work on.
+ Download the source with git and checkout the `dev` branch for the latest code or a more specific feature branch you would like to help work on.
 
- As you are running a development branch, please post bugs to either:
+ As you are running a development branch, please post bugs to:
 
- - A new issue on https://github.com/WRAITHProject/wraithproject/issues
- - https://github.com/crperdue73/wraith-imaging/issues
+ - A new issue on https://github.com/crperdue73/wraith-imaging/issues
 
- If you would like to create a pull request, please make the pull request into the `working` branch.
+ If you would like to create a pull request, please make the pull request into the `dev` branch.

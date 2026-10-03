@@ -25,7 +25,7 @@ release as soon as possible.
 
 If you know of a publicly disclosed security vulnerability for WRAITH Project, 
 please open a **private security advisory** to inform the WRAITH Project Security
-Team: https://github.com/WRAITHProject/wraithproject/security/advisories/new
+Team: https://github.com/crperdue73/wraith-imaging/security/advisories/new
  
 **IMPORTANT: Do not file public issues on GitHub for security 
 vulnerabilities**
@@ -35,7 +35,7 @@ addressed within 7 business days, including a detailed plan to investigate
 the issue and any potential workarounds to perform in the meantime.
 
 Do not report non-security-impacting bugs through this channel. Use 
-[GitHub issues](https://github.com/WRAITHProject/wraithproject/issues/new/choose) 
+[GitHub issues](https://github.com/crperdue73/wraith-imaging/issues/new/choose) 
 instead.
 
 ### Proposed Content
@@ -103,7 +103,7 @@ version of WRAITH Project, we will follow the **Public Disclosure Process**.
 
 ### Public Disclosure Process
 The Security Team publishes a public 
-[advisory](https://github.com/WRAITHProject/wraithproject/security/advisories) 
+[advisory](https://github.com/crperdue73/wraith-imaging/security/advisories) 
 to the WRAITH Project community via GitHub. In most cases, additional 
 communication via forums, website and other channels will assist in 
 educating WRAITH Project users and rolling out the patched release to 
@@ -119,7 +119,7 @@ of this mailing list. A request for membership represents your
 acceptance to the terms and conditions of the Embargo Policy**
 
 ### Embargo Policy
-The information that members receive on noreply@wraithproject.org must not 
+The information that members receive on the WRAITH security list must not 
 be made public, shared, or even hinted at anywhere beyond those who need 
 to know within your specific team, unless you receive explicit approval 
 to do so from the WRAITH Project Security Team. This remains true until the 
@@ -132,12 +132,13 @@ same terms, and only be provided with information on a need-to-know basis.
 
 In the unfortunate event that you share information beyond what is 
 permitted by this policy, you must urgently inform the 
-noreply@wraithproject.org mailing list of exactly what information was leaked 
+the WRAITH security list of exactly what information was leaked 
 and to whom. If you continue to leak information and break the policy 
 outlined here, you will be permanently removed from the list.
  
 ### Requesting to Join
-Send new membership requests to security@wraithproject.org.
+Send new membership requests via the
+[private security advisory channel](https://github.com/crperdue73/wraith-imaging/security/advisories/new).
 In the body of your request please specify how you qualify for membership 
 and fulfill each criterion listed in the Membership Criteria section above.
 

@@ -97,7 +97,7 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement through the
 project's regular community channels — the
 [WRAITH forums](https://github.com/crperdue73/wraith-imaging/issues) or the
-[GitHub issue tracker](https://github.com/WRAITHProject/wraithproject/issues).
+[GitHub issue tracker](https://github.com/crperdue73/wraith-imaging/issues).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -186,17 +186,18 @@ issue tracker focused on actual work.
 
 ### Repos, languages and foo
 
-The WRAITH Project is split across a few repositories under the
-[WRAITHProject organization](https://github.com/WRAITHProject):
+WRAITH lives on GitHub under the
+[crperdue73](https://github.com/crperdue73) account (`wraith-imaging` is the
+public fork):
 
- - [**wraithproject**](https://github.com/WRAITHProject/wraithproject) — the main
+ - [**wraith-imaging**](https://github.com/crperdue73/wraith-imaging) — the main
    repository: the web management interface, the installer, and the background
    services. This is where most contributions land.
- - [**fos**](https://github.com/WRAITHProject/fos) — the WRAITH Operating System: the
-   Linux/Buildroot environment that boots on clients to capture and deploy
-   images.
- - [**wraith-client**](https://github.com/WRAITHProject/wraith-client) — the cross-platform
-   client agent that runs on managed hosts.
+ - **fos** — the WRAITH Operating System: the Linux/Buildroot environment that
+   boots on clients to capture and deploy images. *Not published yet* (upstream:
+   [FOGProject/fos](https://github.com/FOGProject/fos)).
+ - **wraith-client** — the cross-platform client agent that runs on managed
+   hosts. *Not published yet.*
 
 Languages and tooling you'll encounter in the main repo:
 
@@ -229,8 +230,8 @@ wraithproject/
 
 We use [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`).
 
- - **`dev-branch`** is the latest development branch. **All pull requests should
-   target `dev-branch`** unless a maintainer explicitly directs you elsewhere.
+ - **`dev`** is the latest development branch. **All pull requests should
+   target `dev`** unless a maintainer explicitly directs you elsewhere.
  - **`working-1.6`** is the active 1.6 working line.
  - **`stable`** tracks the current released line.
 
@@ -242,7 +243,7 @@ issue before you start — it saves rework.
 
 ### Reporting Bugs
 
-Bugs are tracked as [GitHub issues](https://github.com/WRAITHProject/wraithproject/issues).
+Bugs are tracked as [GitHub issues](https://github.com/crperdue73/wraith-imaging/issues).
 Before opening one:
 
 1. **Search existing issues** (open and closed) to avoid duplicates.
@@ -267,7 +268,7 @@ You can also report bugs in the
 ### Suggesting Enhancements
 
 Enhancement suggestions are also tracked as
-[GitHub issues](https://github.com/WRAITHProject/wraithproject/issues). When proposing
+[GitHub issues](https://github.com/crperdue73/wraith-imaging/issues). When proposing
 one:
 
  - **Search first** to see if it's already been suggested.
@@ -291,22 +292,22 @@ To get a local development environment running:
 1. Stand up a test WRAITH server (a throwaway VM is ideal — never develop against
    production).
 2. **Fork** the repository and clone your fork.
-3. Create a topic branch off `dev-branch`:
-   `git checkout dev-branch && git checkout -b my-fix dev-branch`.
+3. Create a topic branch off `dev`:
+   `git checkout dev && git checkout -b my-fix dev`.
 4. Make your changes and test them against your running WRAITH server.
 5. Push to your fork and open a pull request (see below).
 
 ### Pull Requests
 
-1. **Target `dev-branch`.** Always open your pull request against the latest
-   development branch (currently `dev-branch`) unless a maintainer tells you
+1. **Target `dev`.** Always open your pull request against the latest
+   development branch (currently `dev`) unless a maintainer tells you
    otherwise.
 
 2. **One logical change per PR.** Keep pull requests focused — it makes review
    far easier and faster. Open separate PRs for unrelated changes.
 
 3. **Bump the version.** Increase the version number in
-   [`system.class.php`](https://github.com/WRAITHProject/wraithproject/blob/dev-branch/packages/web/lib/wraith/system.class.php)
+   [`system.class.php`](https://github.com/crperdue73/wraith-imaging/blob/dev/packages/web/lib/wraith/system.class.php)
    (the `WRAITH_VERSION` define) to the version this change would represent,
    following [SemVer](https://semver.org/).
 
