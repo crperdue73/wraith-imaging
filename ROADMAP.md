@@ -109,12 +109,14 @@ it waits on Robbie.
   (`UPSTREAM_VERSION`, `WRAITH_UPSTREAM_BASELINE`) so the FOG mapping is never
   lost. Reversible: revert the two constants if the org prefers to keep the
   numeric baseline.
-- **D1 — Publish or privatize:** `github.com/WRAITHProject/wraithproject` and
-  the org 404 publicly; `wraithproject.org` unverified. README install/docs
-  links cannot all resolve until this is settled. Options: (a) publish the org
-  + site, or (b) mark WRAITH private and point README at the internal repo only.
-- **D2 — Brand mark:** the tree ships a **violet shield + white "W"**; the
-  brand doctrine (`WRAITH-BRAND.md`) and the design package specify a **cyan
-  wolf head**. One has to go canonical. Recommendation: wolf (it matches the
-  documented doctrine and both design artifacts); treat the shield as a
-  placeholder to be replaced. Confirm before we do the asset pass.
+- **D1 — Publish (RESOLVED 2026-10-02): publish.** Sequence: push attribution →
+  verify → flip public. Push **done** (`f9d8007e7`); attribution verified live in
+  the pushed tree (NOTICE, README upstream section, GPLv3 LICENSE). **The flip is
+  an owner action:** the agent holds only a push deploy key (`wraith-deploy-key`),
+  no admin token, so visibility can only be changed by Robbie in GitHub
+  (repo → Settings → General → Danger Zone → Change visibility). Publish target is
+  the existing `crperdue73/wraith-imaging`; since `wraithproject.org` does not
+  exist, README doc/forum links are repointed at the fork.
+- **D2 — Brand mark (RESOLVED 2026-10-02): wolf.** The violet shield in the tree
+  is the placeholder and is being retired. Awaiting the final wolf assets
+  (logo/favicon/login/menubar/palette) before the asset pass.
