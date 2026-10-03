@@ -11,7 +11,7 @@
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Allows Events and defines how they operate.
@@ -23,7 +23,7 @@
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 abstract class Event extends WRAITHBase
 {

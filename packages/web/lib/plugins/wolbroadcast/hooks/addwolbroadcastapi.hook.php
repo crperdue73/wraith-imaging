@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Injects wol broadcast stuff into the api system.
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Fernando Gietz <fernando.gietz@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class AddWOLBroadcastAPI extends Hook
 {

@@ -11,7 +11,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Client Management Page
@@ -23,7 +23,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class ClientManagementPage extends WRAITHPage
 {
@@ -155,7 +155,7 @@ class ClientManagementPage extends WRAITHPage
         echo '<br/>';
         printf(
             '<a href="'
-            . 'https://wiki.wraithproject.org/wiki/index.php?title=WRAITH_client'
+            . 'https://github.com/crperdue73/wraith-imaging'
             . '" data-toggle="tooltip" data-placement="right" '
             . 'title="%s. %s">%s</a><br/>',
             _('Detailed documentation'),
@@ -164,7 +164,7 @@ class ClientManagementPage extends WRAITHPage
         );
         printf(
             '<a href="'
-            . 'https://forums.wraithproject.org'
+            . 'https://github.com/crperdue73/wraith-imaging/issues'
             . '" data-toggle="tooltip" data-placement="right" '
             . 'title="%s? %s. %s %s. %s.">%s</a>',
             _('Need more support'),

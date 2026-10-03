@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * The WRAITH Configuration Page display.
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class WRAITHConfigurationPage extends WRAITHPage
 {
@@ -52,15 +52,15 @@ class WRAITHConfigurationPage extends WRAITHPage
             'logviewer' => self::$wraithlang['LogViewer'],
             'config' => self::$wraithlang['ConfigSave'],
             'http://www.sf.net/projects/freeghost' => self::$wraithlang['WRAITHSFPage'],
-            'https://wraithproject.org' => self::$wraithlang['WRAITHWebPage'],
+            'https://github.com/crperdue73/wraith-imaging' => self::$wraithlang['WRAITHWebPage'],
             'https://github.com/wraithproject/wraithproject.git' => _(
                 'WRAITH Project on Github'
             ),
             'https://github.com/wraithproject/wraith-client.git' => _(
                 'WRAITH Client on Github'
             ),
-            'https://wiki.wraithproject.org/wiki/index.php' => _('WRAITH Wiki'),
-            'https://forums.wraithproject.org' => _('WRAITH Forums'),
+            'https://github.com/crperdue73/wraith-imaging' => _('WRAITH Wiki'),
+            'https://github.com/crperdue73/wraith-imaging/issues' => _('WRAITH Forums'),
             'https://www.paypal.com/cgi-bin/webscr?i'
             . 'item_name=Donation+to+WRAITH+-+A+Free+Cloning+'
             . 'Solution&cmd=_donations&business=wraithproject'

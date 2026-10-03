@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Handles the wraith linux services
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 abstract class WRAITHService extends WRAITHBase
 {
@@ -211,7 +211,7 @@ abstract class WRAITHService extends WRAITHBase
         echo "===== Free Opensource Ghost ======\n";
         echo "==================================\n";
         echo "============ Credits =============\n";
-        echo "= https://wraithproject.org/Credits =\n";
+        echo "= https://github.com/crperdue73/wraith-imaging/Credits =\n";
         echo "==================================\n";
         echo "== Released under GPL Version 3 ==\n";
         echo "==================================\n";

@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Pushes notification on image completion.
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Joe Schmitt <jbob182@gmail.com>
  * @license  http://opensource.org/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class ImageComplete_PushBullet extends PushbulletExtends
 {

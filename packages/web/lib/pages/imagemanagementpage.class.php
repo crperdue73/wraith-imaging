@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Image management page
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 class ImageManagementPage extends WRAITHPage
 {
@@ -606,7 +606,7 @@ class ImageManagementPage extends WRAITHPage
             . 'title="Image Type is a very important setting and can have '
             . 'major impact on how your imaging works or fails. Please read '
             . 'more about the different image types and how to use those '
-            . '<a href=\'https://wiki.wraithproject.org/wiki/index.php?title=Managing_WRAITH#Images\' '
+            . '<a href=\'https://github.com/crperdue73/wraith-imaging' '
             . 'target=\'_blank\'>in our wiki</a> before you chose!"></i>' => $ImageTypes,
             '<label for="imagepartitiontype">'
             . _('Partition')
@@ -968,7 +968,7 @@ class ImageManagementPage extends WRAITHPage
             . 'title="Image Type is a very important setting and can have '
             . 'major impact on how your imaging works or fails. Please read '
             . 'more about the different image types and how to use those '
-            . '<a href=\'https://wiki.wraithproject.org/wiki/index.php?title=Managing_WRAITH#Images\' '
+            . '<a href=\'https://github.com/crperdue73/wraith-imaging' '
             . 'target=\'_blank\'>in our wiki</a> before you chose!"></i>' => $ImageTypes,
             '<label for="imagepartitiontype">'
             . _('Partition')

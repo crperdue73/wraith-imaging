@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Presents the page the same to all.
@@ -18,7 +18,7 @@ declare(strict_types=1);
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 // Ensure session is started
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -168,7 +168,7 @@ echo '<footer class="footer">';
 echo '<nav class="navbar navbar-inverse navbar-fixed-bottom">';
 echo '<div class="container-fluid">';
 echo '<ul class="nav navbar-nav">';
-echo '<li><a href="https://wiki.wraithproject.org/wiki/index.php?title=Credits">'
+echo '<li><a href="https://github.com/crperdue73/wraith-imaging">'
     . _('Credits')
     . '</a></li>';
 echo '<li><a href="?node=client">'

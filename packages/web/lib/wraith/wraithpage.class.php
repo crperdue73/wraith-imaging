@@ -9,7 +9,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 /**
  * Presents many defaults for the pages and is
@@ -19,7 +19,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 abstract class WRAITHPage extends WRAITHBase
 {
@@ -2590,7 +2590,7 @@ abstract class WRAITHPage extends WRAITHBase
                         throw new Exception(_('Dot in Filename not allowed!'));
                     }
                     $dlUrl = $_SESSION['dl-kernel-file'];
-                    if (!(0 === stripos($dlUrl, 'https://wraithproject.org/') ||
+                    if (!(0 === stripos($dlUrl, 'https://github.com/crperdue73/wraith-imaging/') ||
                         0 === stripos($dlUrl, 'https://github.com/WRAITHProject/'))
                     ) {
                         throw new Exception(_('Specified download URL not allowed!'));
@@ -2724,7 +2724,7 @@ abstract class WRAITHPage extends WRAITHBase
                         throw new Exception(_('Wrong file name!'));
                     }
                     $dlUrl = $_SESSION['dl-initrd-file'];
-                    if (!(0 === stripos($dlUrl, 'https://wraithproject.org/') ||
+                    if (!(0 === stripos($dlUrl, 'https://github.com/crperdue73/wraith-imaging/') ||
                         0 === stripos($dlUrl, 'https://github.com/WRAITHProject/'))
                     ) {
                         throw new Exception(_('Specified download URL not allowed!'));
@@ -2847,7 +2847,7 @@ abstract class WRAITHPage extends WRAITHBase
         $stable = '';
         $development = '';
         $urls = array(
-            'https://wraithproject.org/globalusers',
+            'https://github.com/crperdue73/wraith-imaging/globalusers',
             'https://api.github.com/repos/wraithproject/wraithproject/tags',
             'https://raw.githubusercontent.com/WRAITHProject/wraithproject/dev-branch/packages/web/lib/wraith/system.class.php'
         );

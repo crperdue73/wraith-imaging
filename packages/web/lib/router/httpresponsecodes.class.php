@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.com/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org/
+ * @link     https://github.com/crperdue73/wraith-imaging/
  */
 /**
  * Builds the response codes.
@@ -17,7 +17,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.com/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org/
+ * @link     https://github.com/crperdue73/wraith-imaging/
  */
 class HTTPResponseCodes
 {

@@ -8,7 +8,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org/
+ * @link     https://github.com/crperdue73/wraith-imaging/
  */
 /**
  * Generates a new token on ajax request.
@@ -19,7 +19,7 @@
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org/
+ * @link     https://github.com/crperdue73/wraith-imaging/
  */
 /**
  * Lambda to create random data.

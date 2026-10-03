@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @package  WRAITHProject
  * @author   Tom Elliott <tommygunsster@gmail.com>
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
- * @link     https://wraithproject.org
+ * @link     https://github.com/crperdue73/wraith-imaging
  */
 
 if (!function_exists('str_contains')) {
@@ -23,7 +23,7 @@ header('X-Frame-Options: sameorigin');
 header('X-XSS-Protection: 1; mode=block');
 header('X-Content-Type-Options: nosniff');
 header('Strict-Transport-Security: max-age=31536000');
-header("Content-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self' https://wraithproject.org; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'self';");
+header("Content-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self' https://github.com/crperdue73/wraith-imaging; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'self';");
 
 // Include required initialization script.
 require 'init.php';
