@@ -112,18 +112,17 @@ cd /path/to/wraith-imaging-dev-branch/bin
 ```
 3. You should now be ready to use WRAITH
 
-All should now be installed and you can start configuring and registering systems. See the documentation at https://docs.wraithproject.org to assist you in setting up further.
+All should now be installed and you can start configuring and registering systems. See the in-repo documentation ([README.md](README.md), [ROADMAP.md](ROADMAP.md), [CONTRIBUTING.md](CONTRIBUTING.md)) to assist you in setting up further.
 
 There are many resources for assistance.
 
- - **Docs:** https://docs.wraithproject.org — installation and administration guides.
- - **Forum:** https://forums.wraithproject.org — general help and bug reports.
+ - **Docs:** in-repo — [README.md](README.md), [ROADMAP.md](ROADMAP.md), [CONTRIBUTING.md](CONTRIBUTING.md).
+ - **Issues / help:** https://github.com/crperdue73/wraith-imaging/issues.
  - **Source:** https://github.com/crperdue73/wraith-imaging — the WRAITH fork.
  - **Attribution:** see [NOTICE](NOTICE) and [UPSTREAM_VERSION](UPSTREAM_VERSION).
 
-> ⚠️ **Link status:** the documentation site, forum, and public Git organization
-> are still being finalized. If a link above does not resolve, treat the in-repo
-> files as canonical. (Tracked in [ROADMAP.md](ROADMAP.md), decision D1.)
+> Documentation lives in this repository. There is no separate WRAITH docs site
+> or forum yet; track that in [ROADMAP.md](ROADMAP.md).
 
 ## Development
 
